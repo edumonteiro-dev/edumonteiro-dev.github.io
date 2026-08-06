@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src 'none'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImZnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuOCIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMEEwQTBGIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyIDI3LDguNSAyNywyMS41IDE2LDI4IDUsMjEuNSA1LDguNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNmZykiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPHRleHQgeD0iOC41IiB5PSIyMCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIxMSIgZmlsbD0idXJsKCNmZykiIGZpbHRlcj0idXJsKCNnZikiPkVNPC90ZXh0Pgo8L3N2Zz4K"/>
+<title>SOW &amp; MSA — Eduardo Monteiro Dev</title>
+<style>
+:root{
+  --bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.5);
+  --purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--amber:#F59E0B;
+  --text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;
+  --grad:linear-gradient(135deg,#7B5CF0,#00F5A0);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding:0 0 64px}
+a{color:var(--purple);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:'Courier New',monospace;letter-spacing:-.01em}
+code,kbd{font-family:'Courier New',monospace;font-size:.9em;background:var(--faint);padding:2px 6px;border-radius:4px}
+.no-print{} @media print{.no-print{display:none!important}.print-break{page-break-before:always}}
+
+/* ── HEADER ── */
+.doc-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:20px 0;position:sticky;top:0;z-index:50}
+.header-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.em-mark{width:40px;height:40px;flex-shrink:0}
+.doc-title-block h1{font-size:1rem;color:var(--teal);letter-spacing:.08em;text-transform:uppercase}
+.doc-title-block p{font-size:.75rem;color:var(--muted);font-family:monospace}
+.header-controls{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.lang-btn,.toggle-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.75rem;cursor:pointer;transition:all .2s;letter-spacing:.06em}
+.lang-btn.active,.toggle-btn.active{border-color:var(--purple);color:var(--purple);background:rgba(123,92,240,.1)}
+.lang-btn:hover,.toggle-btn:hover{color:var(--text);border-color:var(--border-h)}
+.sep{width:1px;height:20px;background:var(--faint);flex-shrink:0}
+.print-btn{padding:5px 14px;border-radius:6px;background:var(--purple);color:#fff;border:none;font-family:monospace;font-size:.75rem;cursor:pointer;letter-spacing:.06em}
+.print-btn:hover{background:#6b4de0}
+
+/* ── CONTAINER ── */
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ── TOP BAND ── */
+.doc-band{padding:32px 0 0}
+.contract-ref{font-family:monospace;font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.contract-main-title{font-size:clamp(1.3rem,3vw,2rem);font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:6px}
+.contract-sub{font-family:monospace;font-size:.8rem;color:var(--muted);letter-spacing:.08em}
+
+/* ── DEVELOPER BOX ── */
+.dev-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:10px;padding:18px 22px;margin:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dev-box .field label{font-family:monospace;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.dev-box .field p{font-size:.9rem;font-weight:600}
+
+/* ── CLIENT INPUTS ── */
+.client-box{background:var(--card);border:1px solid var(--border-h);border-left:3px solid var(--coral);border-radius:10px;padding:18px 22px;margin:0 0 32px}
+.client-box h3{font-family:monospace;font-size:.8rem;color:var(--coral);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.input-group{display:flex;flex-direction:column;gap:4px}
+.input-group label{font-family:monospace;font-size:.7rem;color:var(--muted);letter-spacing:.08em}
+.input-group input{background:rgba(255,255,255,.04);border:1px solid var(--faint);border-radius:6px;padding:8px 12px;color:var(--text);font-family:'Courier New',monospace;font-size:.88rem;outline:none;transition:border-color .2s;width:100%}
+.input-group input:focus{border-color:var(--purple)}
+
+/* ── SECTIONS ── */
+.section{padding:36px 0 0}
+.s-eyebrow{font-family:monospace;font-size:.7rem;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.s-title{font-size:1.15rem;font-weight:700;color:var(--teal);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:20px}
+.clause{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:14px}
+.clause h4{font-family:monospace;font-size:.8rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.clause p,.clause li{font-size:.9rem;color:var(--muted);line-height:1.75}
+.clause ul,.clause ol{padding-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.clause.highlight{border-color:var(--teal);background:rgba(0,245,160,.04)}
+.clause.warning{border-color:var(--coral);background:rgba(255,60,172,.04)}
+.clause.amber{border-color:var(--amber);background:rgba(245,158,11,.04)}
+
+/* ── PAYMENT TOGGLE ── */
+.payment-controls{display:flex;gap:8px;margin-bottom:20px;align-items:center}
+.payment-controls span{font-family:monospace;font-size:.75rem;color:var(--muted)}
+#payment-50,.cls-50{display:block}
+#payment-hr,.cls-hr{display:none}
+body.show-hr #payment-50,body.show-hr .cls-50{display:none}
+body.show-hr #payment-hr,body.show-hr .cls-hr{display:block}
+
+/* ── UAT TABLE ── */
+.uat-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:16px}
+.uat-table th{background:var(--faint);color:var(--teal);font-family:monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;text-align:left;border:1px solid var(--border)}
+.uat-table td{padding:8px 12px;border:1px solid var(--border);vertical-align:top;color:var(--muted)}
+.uat-table td:first-child{font-family:monospace;color:var(--purple);font-weight:700;white-space:nowrap}
+.uat-table td.criteria{color:var(--text);font-size:.8rem}
+.uat-table tr:hover td{background:rgba(123,92,240,.04)}
+.status-chk{display:flex;gap:10px;font-family:monospace;font-size:.75rem;white-space:nowrap}
+.status-chk span{padding:2px 8px;border-radius:4px;border:1px solid var(--faint);color:var(--muted)}
+
+/* ── GOLDEN RULES ── */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.rule-card{background:var(--card);border:1px solid var(--border-h);border-radius:10px;padding:18px;position:relative;overflow:hidden}
+.rule-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--grad)}
+.rule-n{font-family:monospace;font-size:2rem;font-weight:700;color:var(--faint);position:absolute;top:8px;right:12px;line-height:1}
+.rule-title{font-family:monospace;font-size:.8rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.rule-text{font-size:.85rem;color:var(--muted);line-height:1.65}
+
+/* ── ANNEX ── */
+.annex-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:12px 0}
+.annex-table th{background:rgba(123,92,240,.12);color:var(--purple);font-family:monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;text-align:left;border:1px solid var(--border)}
+.annex-table td{padding:8px 12px;border:1px solid var(--border);color:var(--muted);vertical-align:top}
+.annex-table td:first-child{font-family:monospace;color:var(--text);font-size:.8rem;white-space:nowrap;width:30%}
+.annex-table input{background:transparent;border:none;color:var(--text);font-family:'Courier New',monospace;font-size:.82rem;width:100%;outline:none;border-bottom:1px dashed var(--faint);padding-bottom:2px}
+.annex-table input:focus{border-bottom-color:var(--purple)}
+
+/* ── DOD ── */
+.dod-list{display:flex;flex-direction:column;gap:8px}
+.dod-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:.88rem;color:var(--muted)}
+.dod-item input[type=checkbox]{margin-top:3px;flex-shrink:0;accent-color:var(--teal);width:16px;height:16px;cursor:pointer}
+.dod-n{font-family:monospace;color:var(--purple);font-weight:700;flex-shrink:0}
+
+/* ── SIGNATURE ── */
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sig-party{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px}
+.sig-party h4{font-family:monospace;font-size:.8rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.sig-line{margin-bottom:14px}
+.sig-line label{font-family:monospace;font-size:.7rem;color:var(--muted);display:block;margin-bottom:4px;letter-spacing:.08em}
+.sig-line input,.sig-line .sig-underline{background:transparent;border:none;border-bottom:1px solid var(--faint);width:100%;padding:4px 0;color:var(--text);font-family:'Courier New',monospace;font-size:.9rem;display:block;outline:none;transition:border-color .2s}
+.sig-line input:focus{border-bottom-color:var(--purple)}
+.sig-block{height:56px;border-bottom:1px solid var(--faint);margin-bottom:6px;display:flex;align-items:flex-end;padding-bottom:6px}
+.sig-block span{font-family:monospace;font-size:.7rem;color:var(--faint);letter-spacing:.1em}
+
+/* ── BACK LINK ── */
+.back-link{display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-size:.8rem;color:var(--muted);margin:32px 0 0;padding:8px 16px;border:1px solid var(--border);border-radius:6px;transition:all .2s}
+.back-link:hover{color:var(--purple);border-color:var(--purple);text-decoration:none}
+
+/* PRINT */
+@media print{
+  body{background:#fff;color:#000;font-size:11pt}
+  .doc-header{position:static;background:#fff;border-bottom:2px solid #7B5CF0}
+  .contract-main-title{-webkit-text-fill-color:#7B5CF0;background:none;color:#7B5CF0}
+  .clause,.rule-card,.dod-item,.sig-party,.dev-box,.client-box{border:1px solid #ccc;background:#fafafa}
+  .clause h4,.s-title,.s-eyebrow,.rule-title{color:#555}
+  .clause p,.clause li,.rule-text,.dod-item,.uat-table td{color:#333}
+  .uat-table th{background:#eee;color:#555}
+  .no-print{display:none!important}
+  a{color:#7B5CF0}
+  .rules-grid,.input-grid,.sig-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .rules-grid,.sig-grid,.input-grid,.dev-box{grid-template-columns:1fr}
+  .header-controls{gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header no-print">
+  <div class="header-inner">
+    <svg class="em-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="EM">
+      <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B5CF0"/><stop offset="100%" stop-color="#00F5A0"/></linearGradient></defs>
+      <polygon points="20,2 34,10 34,28 20,36 6,28 6,10" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+      <text x="8" y="24" font-family="monospace" font-weight="700" font-size="11" fill="url(#g)">EM</text>
+    </svg>
+    <div class="doc-title-block">
+      <h1 id="hdr-title">SOW &amp; MSA</h1>
+      <p>Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev</p>
+    </div>
+    <div class="header-controls">
+      <button class="lang-btn active" data-lang="pt-PT">PT</button>
+      <button class="lang-btn" data-lang="en-US">EN</button>
+      <button class="lang-btn" data-lang="fr-CH">FR</button>
+      <button class="lang-btn" data-lang="de-CH">DE</button>
+      <button class="lang-btn" data-lang="es-ES">ES</button>
+      <button class="lang-btn" data-lang="it-IT">IT</button>
+      <div class="sep"></div>
+      <button class="toggle-btn active" data-model="50" id="btn50">50/50</button>
+      <button class="toggle-btn" data-model="hr" id="btnhr">T&amp;M/h</button>
+      <div class="sep"></div>
+      <button class="print-btn" onclick="window.print()">⎙ Print</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TOP BAND -->
+<div class="doc-band">
+  <p class="contract-ref" id="doc-ref">REF: EM-SOW-2026-001 · DATA: <span id="doc-date"></span></p>
+  <h1 class="contract-main-title" id="doc-title">CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE DESENVOLVIMENTO DE SOFTWARE</h1>
+  <p class="contract-sub" id="doc-sub">Acordo de Serviços Gerais (MSA) + Declaração de Trabalho (SOW) — Eduardo Monteiro Dev</p>
+</div>
+
+<!-- DEVELOPER BOX -->
+<div class="dev-box" style="margin-top:24px">
+  <div class="field"><label id="lbl-dev">Prestador de Serviços</label><p>Eduardo Monteiro</p></div>
+  <div class="field"><label>Email</label><p>edumonteiro.dev@gmail.com</p></div>
+  <div class="field"><label>Website</label><p>monteiro.is-a.dev</p></div>
+  <div class="field"><label id="lbl-jurisdiction">Jurisdição</label><p id="jurisdiction-val">Suíça — Foro de Zurique</p></div>
+</div>
+
+<!-- CLIENT INPUTS -->
+<div class="client-box">
+  <h3 id="lbl-client-section">Dados do Cliente</h3>
+  <div class="input-grid">
+    <div class="input-group"><label id="lbl-client-name">Nome / Entidade</label><input type="text" id="inp-name" autocomplete="organization"/></div>
+    <div class="input-group"><label id="lbl-client-nif">NIF / Tax ID</label><input type="text" id="inp-nif"/></div>
+    <div class="input-group"><label id="lbl-client-email">Email Oficial</label><input type="email" id="inp-email" autocomplete="email"/></div>
+    <div class="input-group"><label id="lbl-client-phone">Telemóvel / WhatsApp</label><input type="tel" id="inp-phone" autocomplete="tel"/></div>
+    <div class="input-group"><label id="lbl-project">Nome do Projeto</label><input type="text" id="inp-project" placeholder="Ex: kmlucropro_v2"/></div>
+    <div class="input-group"><label id="lbl-start-date">Data de Início</label><input type="date" id="inp-date"/></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   PART 1 — SCOPE
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-1">Cláusula 1</p>
+  <h2 class="s-title" id="t-1">ÂMBITO DOS SERVIÇOS</h2>
+  <div class="clause">
+    <p id="txt-scope">O Prestador compromete-se a realizar os serviços técnicos descritos no Anexo A (Statement of Work) em anexo, conforme as especificações funcionais e arquitecturais acordadas entre as partes. Qualquer funcionalidade ou módulo não descrito no Anexo A constitui trabalho adicional, sujeito a orçamento e aditamento contratual.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   PART 2 — PAYMENT
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-2">Cláusula 2</p>
+  <h2 class="s-title" id="t-2">CONDIÇÕES DE PAGAMENTO</h2>
+  <div class="payment-controls no-print">
+    <span id="lbl-model">Modelo activo:</span>
+    <button class="toggle-btn active" data-model="50" id="p-btn50">50% + 50% (Fixo)</button>
+    <button class="toggle-btn" data-model="hr" id="p-btnhr">T&amp;M / Por Hora</button>
+  </div>
+
+  <!-- 50/50 clause -->
+  <div id="payment-50" class="clause highlight">
+    <h4 id="t-p50">MODELO PREÇO FIXO — 50% SINAL + 50% LIQUIDAÇÃO FINAL</h4>
+    <p id="txt-p50">O Cliente procederá ao pagamento de <strong>cinquenta por cento (50%) do valor total acordado</strong> no momento da assinatura deste documento, a título de <em>Sinal / Retainer Não Reembolsável</em>. O Prestador não iniciará a produção enquanto este montante não se encontrar creditado. Os restantes <strong>cinquenta por cento (50%)</strong> serão liquidados no momento da Aceitação Final (Sign-off), após o período de UAT de <strong>5 (cinco) dias úteis consecutivos</strong>. O código-fonte, credenciais administrativas e a transferência de propriedade intelectual só serão efectuados após a recepção integral do saldo final. Qualquer pedido de nova funcionalidade fora do âmbito (Scope Creep) será faturado separadamente à taxa horária em vigor.</p>
+  </div>
+
+  <!-- T&M clause -->
+  <div id="payment-hr" class="clause highlight">
+    <h4 id="t-phr">MODELO TIME &amp; MATERIALS — TAXA HORÁRIA COM TETO MÁXIMO (CAP)</h4>
+    <p id="txt-phr">O Prestador faturará os serviços à <strong>taxa horária acordada</strong> por escrito em adenda a este contrato. O número máximo de horas mensais faturáveis (<em>Cap Mensal</em>) é fixado em <strong>[X] horas/mês</strong>, não podendo este limite ser excedido sem <strong>autorização prévia por escrito</strong> do Cliente. As faturas serão emitidas mensalmente, acompanhadas do Timesheet detalhado (Anexo B). O prazo de vencimento é de <strong>7 (sete) dias</strong> a contar da data de emissão da fatura. Este regime de horas tem <strong>vigência máxima de [X] meses</strong> a contar da data de início, findo o qual o contrato cessa automaticamente, salvo renovação expressa por escrito com 15 dias de antecedência.</p>
+  </div>
+
+  <div class="clause" style="margin-top:10px">
+    <h4 id="t-late">MORA E PENALIDADES</h4>
+    <p id="txt-late">O atraso no pagamento superior a 10 (dez) dias corridos confere ao Prestador o direito de suspender todos os serviços e acessos ao ambiente de staging/produção, sem prejuízo do direito a juros de mora à taxa legal em vigor na jurisdição aplicável.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   CLAUSE 3 — IP
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-3">Cláusula 3</p>
+  <h2 class="s-title" id="t-3">PROPRIEDADE INTELECTUAL</h2>
+  <div class="clause warning">
+    <h4 id="t-ip">RETENÇÃO E TRANSFERÊNCIA DE PROPRIEDADE INTELECTUAL</h4>
+    <p id="txt-ip">Todo o código-fonte, bases de dados, designs, algoritmos e arquitecturas de software especificamente desenvolvidos no âmbito deste contrato (os <em>"Entregáveis"</em>) são, até ao pagamento integral de 100% dos montantes devidos, propriedade exclusiva de <strong>Eduardo Monteiro</strong>. Durante este período, o Cliente dispõe unicamente de uma licença revogável, não exclusiva e não transferível para fins de teste. Após a liquidação integral, todos os direitos patrimoniais sobre os Entregáveis são transmitidos irrevogavelmente ao Cliente. O Prestador reserva o direito de reutilizar componentes genéricos, bibliotecas de código aberto e módulos desenvolvidos anteriormente ao presente contrato (<em>Background IP</em>).</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   CLAUSES 4-8
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-other">Cláusulas 4–8</p>
+  <h2 class="s-title" id="t-other">DISPOSIÇÕES CONTRATUAIS GERAIS</h2>
+
+  <div class="clause">
+    <h4 id="t-conf">4. CONFIDENCIALIDADE</h4>
+    <p id="txt-conf">O Prestador compromete-se a manter estrita confidencialidade sobre toda a informação de negócio, segredos comerciais, dados de utilizadores e código-fonte do Cliente, não divulgando qualquer informação a terceiros sem consentimento prévio e expresso. Esta obrigação vigora durante a execução do contrato e por um período de 3 (três) anos após a sua cessação.</p>
+  </div>
+
+  <div class="clause">
+    <h4 id="t-oblig">5. OBRIGAÇÕES DO CLIENTE</h4>
+    <p id="txt-oblig">O Cliente obriga-se a fornecer atempadamente todos os acessos, activos digitais (logótipos, textos, imagens), credenciais necessárias e feedback de validação. Os atrasos imputáveis ao Cliente que afectem o cronograma de desenvolvimento resultarão numa extensão proporcional e automática do prazo de entrega acordado, sem qualquer penalidade para o Prestador.</p>
+  </div>
+
+  <div class="clause">
+    <h4 id="t-liab">6. LIMITAÇÃO DE RESPONSABILIDADE</h4>
+    <p id="txt-liab">Na máxima extensão permitida por lei, a responsabilidade total do Prestador perante o Cliente por quaisquer reclamações emergentes deste contrato fica limitada ao montante total efectivamente pago pelo Cliente ao Prestador no âmbito deste acordo. O Prestador não é responsável por danos indirectos, incidentais, consequenciais ou lucros cessantes.</p>
+  </div>
+
+  <div class="clause">
+    <h4 id="t-warranty">7. GARANTIA E CORRECÇÃO DE ERROS</h4>
+    <p id="txt-warranty">O Prestador garante que o software funcionará substancialmente em conformidade com o Anexo A durante um período de <strong>30 (trinta) dias</strong> após a Aceitação Final. Durante este período, o Prestador corrigirá, sem custos adicionais, quaisquer erros críticos e reprodutíveis directamente imputáveis ao desenvolvimento. Ficam excluídos da garantia os defeitos causados por serviços de terceiros (Stripe, Firebase, APIs externas), modificações efectuadas pelo Cliente ou utilização contrária à documentação.</p>
+  </div>
+
+  <div class="clause">
+    <h4 id="t-term">8. RESCISÃO</h4>
+    <p id="txt-term">Por conveniência: O Cliente pode rescindir em qualquer momento. No modelo 50/50, o sinal é não reembolsável; o Cliente deverá pagar o trabalho concluído além do sinal. No modelo T&M, o Cliente paga todas as horas registadas até à data de rescisão. Por justa causa: Qualquer das partes pode rescindir imediatamente se a outra parte incumprir materialmente este contrato e não sanar o incumprimento no prazo de 10 (dez) dias úteis após notificação escrita.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   CLAUSE 9 — GOVERNING LAW
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-9">Cláusula 9</p>
+  <h2 class="s-title" id="t-9">LEI APLICÁVEL E JURISDIÇÃO</h2>
+  <div class="clause amber">
+    <h4 id="t-law">FORO E LEGISLAÇÃO APLICÁVEL</h4>
+    <p id="txt-law">O presente contrato é regido e interpretado nos termos da <strong>legislação suíça</strong>. Para a resolução de qualquer litígio emergente ou relacionado com este contrato, as partes fixam a competência exclusiva dos tribunais de <strong>Zurique, Suíça</strong>. A lei suíça foi seleccionada pela sua neutralidade reconhecida internacionalmente e aptidão para enquadrar relações comerciais transfronteiriças nos mercados português, espanhol, italiano, francês e alemão.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   PART 3 — UAT CHECKLIST
+══════════════════════════════════════ -->
+<div class="section print-break">
+  <p class="s-eyebrow" id="ey-uat">Parte 3</p>
+  <h2 class="s-title" id="t-uat">VALIDAÇÃO UAT — CRITÉRIOS DE ACEITAÇÃO (T01–T11)</h2>
+  <div class="clause" style="padding:16px;overflow-x:auto">
+    <p id="txt-uat-intro" style="margin-bottom:14px;font-size:.85rem">O Cliente dispõe de <strong>5 (cinco) dias úteis consecutivos</strong> após a entrega em ambiente de Staging para validar todos os cenários abaixo. A ausência de reporte formal dentro deste prazo constitui Aceitação Tácita e activa a obrigação de liquidação dos 50% finais.</p>
+    <table class="uat-table" id="uat-table">
+      <thead><tr><th>ID</th><th id="th-scenario">Cenário</th><th id="th-criteria">Critério de Aceitação</th><th id="th-status">Estado</th></tr></thead>
+      <tbody id="uat-body">
+        <tr><td>T01</td><td>Registo de Utilizador</td><td class="criteria">Envio e validação de OTP/Email. Criação correta do perfil na base de dados com sanitização completa dos inputs.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T02</td><td>Segurança de Auth</td><td class="criteria">Rejeição de credenciais inválidas com rate-limiting ativo (bloqueio após 5 tentativas consecutivas).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T03</td><td>Performance Dashboard</td><td class="criteria">Carregamento total de componentes e gráficos D3.js interativos em menos de <strong>3.0 segundos</strong>.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T04</td><td>Importação CSV Válida</td><td class="criteria">Processamento de ficheiro de teste com cálculo exacto de lucros/margens no servidor (inteiros/cêntimos).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T05</td><td>CSV Inválido / Injeção</td><td class="criteria">Sanitização de inputs malformados com retorno de mensagens de erro claras por linha, sem exposição de stack traces.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T06</td><td>Subscrição Stripe</td><td class="criteria">Pagamento em sandbox, validação de assinatura criptográfica do webhook, activação do estado "Premium" de forma idempotente.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T07</td><td>Cancelamento Stripe</td><td class="criteria">Webhook de cancelamento processado, downgrade de permissões no fim do ciclo de faturação sem perda de dados.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T08</td><td>Acesso Protegido</td><td class="criteria">Verificação do estado da subscrição antes de conceder acesso ao flipbook/conteúdo premium. RLS validado.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T09</td><td>Biometria / IA</td><td class="criteria">Pipeline WebAuthn ou LLM com resposta em menos de <strong>2.0 segundos</strong>. Fallback funcional em caso de timeout.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T10</td><td>Layout Responsivo</td><td class="criteria">Ausência de quebras visuais em viewports mobile (375×812), tablet (768px) e desktop (1280px+).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T11</td><td>Qualidade Lighthouse</td><td class="criteria">Pontuação Google Lighthouse <strong>≥ 80</strong> em Performance, Acessibilidade, Best Practices e SEO em produção.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-family:monospace;font-size:.85rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin:20px 0 12px" id="t-dod">Definition of Done (DoD)</h3>
+  <div class="dod-list" id="dod-list">
+    <div class="dod-item"><input type="checkbox"/><span class="dod-n">1</span><span>Todas as funcionalidades do Anexo A implementadas e validadas em ambiente de Produção.</span></div>
+    <div class="dod-item"><input type="checkbox"/><span class="dod-n">2</span><span>Checklist UAT (T01–T11) executada com aprovação a 100% pelo Cliente.</span></div>
+    <div class="dod-item"><input type="checkbox"/><span class="dod-n">3</span><span>Código-fonte consolidado em repositório GitHub privado com transferência de acessos efectuada.</span></div>
+    <div class="dod-item"><input type="checkbox"/><span class="dod-n">4</span><span>Documentação Técnica de Arquitectura e Manual de Administração entregues.</span></div>
+    <div class="dod-item"><input type="checkbox"/><span class="dod-n">5</span><span>Liquidação integral dos 50% finais (ou última fatura T&M) recebida pelo Prestador.</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   4 GOLDEN RULES
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow" id="ey-rules">Cláusula 10</p>
+  <h2 class="s-title" id="t-rules">4 REGRAS FINANCEIRAS E LEGAIS DE PROTECÇÃO</h2>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <span class="rule-n">01</span>
+      <p class="rule-title" id="r1-title">Retenção de Propriedade Intelectual</p>
+      <p class="rule-text" id="r1-text">Todos os direitos patrimoniais sobre o código, arquitectura e infraestrutura permanecem da titularidade exclusiva de Eduardo Monteiro até à liquidação de 100% dos montantes devidos. Qualquer licença de uso é imediatamente revogada em caso de incumprimento de pagamento.</p>
+    </div>
+    <div class="rule-card">
+      <span class="rule-n">02</span>
+      <p class="rule-title" id="r2-title">Controlo Rígido de Escopo</p>
+      <p class="rule-text" id="r2-text">O valor contratado inclui estritamente <strong>2 (duas) rondas formais de revisão</strong> sobre interface e código entregue. Qualquer pedido de nova funcionalidade, alteração de arquitectura ou modificação de fluxos exige emissão de aditamento técnico com orçamento e prazo adicionais.</p>
+    </div>
+    <div class="rule-card">
+      <span class="rule-n">03</span>
+      <p class="rule-title" id="r3-title">Controlo de Esforço — Cap Horário</p>
+      <p class="rule-text" id="r3-text">No modelo T&M, nenhuma hora que exceda o teto mensal acordado será trabalhada ou faturada sem <strong>autorização prévia por escrito</strong> do Cliente. O timesheet mensal é entregue juntamente com a fatura e constitui documento de prova vinculativo.</p>
+    </div>
+    <div class="rule-card">
+      <span class="rule-n">04</span>
+      <p class="rule-title" id="r4-title">Jurisdição — Foro de Zurique</p>
+      <p class="rule-text" id="r4-text">Para resolução de qualquer litígio emergente deste contrato, a lei aplicável é a <strong>legislação suíça</strong>, sendo fixada a competência exclusiva do <strong>Foro de Zurique</strong>. Escolha decorrente da neutralidade reconhecida internacionalmente para contratos transfronteiriços.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   ANNEX A — SOW
+══════════════════════════════════════ -->
+<div class="section print-break">
+  <p class="s-eyebrow" id="ey-annexA">Anexo A</p>
+  <h2 class="s-title" id="t-annexA">DECLARAÇÃO DE TRABALHO — STATEMENT OF WORK (SOW)</h2>
+  <div class="clause" style="padding:16px;overflow-x:auto">
+    <table class="annex-table">
+      <thead><tr><th id="th-a-field">Campo</th><th id="th-a-detail">Detalhe do Projecto</th></tr></thead>
+      <tbody>
+        <tr><td id="a-project">Nome do Projecto</td><td><input id="sow-project" placeholder="Ex: kmlucropro_v2 · MVP SaaS"/></td></tr>
+        <tr><td id="a-stack">Stack de Arquitectura</td><td><input id="sow-stack" placeholder="Next.js + Firebase + Stripe + Python FastAPI"/></td></tr>
+        <tr><td id="a-deliverables">Entregáveis Principais</td><td><input id="sow-del" placeholder="1. Auth & RLS · 2. Dashboard · 3. Módulo CSV · 4. Stripe Billing"/></td></tr>
+        <tr><td id="a-model">Modelo de Pagamento</td><td>
+          <label style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);cursor:pointer"><input type="radio" name="pm" value="50" style="accent-color:var(--purple)"/> Preço Fixo — 50% entrada / 50% entrega</label><br/>
+          <label style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);cursor:pointer;margin-top:6px"><input type="radio" name="pm" value="hr" style="accent-color:var(--purple)"/> T&M — Taxa horária: <input id="sow-rate" style="width:80px;display:inline;margin:0 4px" placeholder="€/h"/> Cap: <input id="sow-cap" style="width:60px;display:inline;margin:0 4px" placeholder="h/mês"/></label>
+        </td></tr>
+        <tr><td id="a-deadline">Prazo Estimado</td><td><input id="sow-deadline" placeholder="DD/MM/2026 ou X semanas"/></td></tr>
+        <tr><td id="a-value">Investimento Total</td><td><input id="sow-value" placeholder="Ex: 3.500€ fixo / 45€/h"/></td></tr>
+        <tr><td id="a-modules">Módulos Incluídos</td><td>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;padding:4px 0">
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Auth / RBAC</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Dashboard Analytics</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Stripe Billing</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Importação CSV</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Gestão de Frotas</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Flipbook / E-book</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Integração IA / RAG</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Biometria / WebAuthn</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Notificações Push</label>
+            <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> Gamificação</label>
+          </div>
+        </td></tr>
+        <tr><td id="a-notes">Notas Adicionais</td><td><input id="sow-notes" placeholder="Infraestrutura existente, restrições técnicas, APIs externas..."/></td></tr>
+        <tr><td id="a-scope">Controlo de Escopo</td><td style="font-size:.82rem;color:var(--muted)">2 rondas de revisão incluídas. Adicionais à taxa horária em vigor. Scope Creep exige aditamento escrito.</td></tr>
+        <tr><td id="a-maint">Manutenção Pós-Launch</td><td>
+          <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> SLA Manutenção: 50€–150€/mês (ou 80–250 CHF/mês) · Patches · 2h ajustes</label>
+        </td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   ANNEX B — TIMESHEET
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="s-eyebrow cls-hr" id="ey-annexB">Anexo B</p>
+  <h2 class="s-title cls-hr" id="t-annexB">TIMESHEET — REGISTO DE HORAS (T&amp;M)</h2>
+  <div class="clause cls-hr" style="padding:16px;overflow-x:auto">
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px" id="txt-annexB">Apresentado mensalmente junto da fatura de serviços. Constitui documento de prova vinculativo para fins de auditoria e controlo de Cap Horário.</p>
+    <table class="annex-table">
+      <thead>
+        <tr>
+          <th id="th-b-date">Data</th>
+          <th id="th-b-task">Descrição da Tarefa / Implementação</th>
+          <th id="th-b-hours">Horas</th>
+          <th id="th-b-cum">Acumulado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input placeholder="DD/MM/2026" style="width:110px"/></td><td><input placeholder="Configuração do ambiente Firebase, Esquema de Dados e Auth"/></td><td><input placeholder="4h" style="width:50px"/></td><td><input placeholder="4h" style="width:60px"/></td></tr>
+        <tr><td><input placeholder="DD/MM/2026" style="width:110px"/></td><td><input placeholder="Desenvolvimento do Dashboard UI e integração D3.js"/></td><td><input placeholder="6h" style="width:50px"/></td><td><input placeholder="10h" style="width:60px"/></td></tr>
+        <tr><td><input placeholder="DD/MM/2026" style="width:110px"/></td><td><input placeholder="[Adicionar linha...]"/></td><td><input placeholder="–" style="width:50px"/></td><td><input placeholder="–" style="width:60px"/></td></tr>
+        <tr style="background:rgba(0,245,160,.05)"><td colspan="2" style="font-family:monospace;font-size:.8rem;font-weight:700;color:var(--teal)" id="b-total">TOTAL DO MÊS</td><td colspan="2"><input placeholder="__ h" style="font-weight:700;color:var(--teal)"/></td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:monospace;font-size:.72rem;color:var(--muted);margin-top:10px" id="txt-cap-warn">⚠ Cap Mensal Acordado: <strong id="cap-val">[X] horas</strong>. Horas excedentes só são faturadas com autorização escrita prévia.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   SIGNATURE
+══════════════════════════════════════ -->
+<div class="section print-break">
+  <p class="s-eyebrow" id="ey-sig">Aceitação Final</p>
+  <h2 class="s-title" id="t-sig">DECLARAÇÃO E ASSINATURA</h2>
+  <div class="clause" style="margin-bottom:20px">
+    <p id="txt-sig-decl">O abaixo-assinado declara que as especificações constantes deste documento reflectem na íntegra os requisitos do projecto. O Cliente compromete-se a responder aos pedidos de validação e feedback no prazo máximo de <strong>48 horas úteis</strong>, sob pena de reajuste no cronograma de entrega.</p>
+  </div>
+  <div class="sig-grid">
+    <!-- Developer -->
+    <div class="sig-party">
+      <h4 id="sig-dev-title">Prestador de Serviços</h4>
+      <div class="sig-line"><label>Nome</label><div class="sig-underline">Eduardo Monteiro</div></div>
+      <div class="sig-line"><label>Email</label><div class="sig-underline">edumonteiro.dev@gmail.com</div></div>
+      <div class="sig-line"><label id="sig-date-lbl">Data</label><input type="date" id="sig-date-dev"/></div>
+      <div class="sig-line"><label id="sig-sign-lbl">Assinatura</label><div class="sig-block"><span>_____________________________</span></div></div>
+    </div>
+    <!-- Client -->
+    <div class="sig-party">
+      <h4 id="sig-client-title">Cliente</h4>
+      <div class="sig-line"><label id="sig-name-lbl">Nome</label><input type="text" id="sig-name" autocomplete="name"/></div>
+      <div class="sig-line"><label id="sig-co-lbl">Empresa / Entidade</label><input type="text" id="sig-co" autocomplete="organization"/></div>
+      <div class="sig-line"><label id="sig-nif-lbl">NIF / Tax ID</label><input type="text" id="sig-nif"/></div>
+      <div class="sig-line"><label>Email</label><input type="email" id="sig-email" autocomplete="email"/></div>
+      <div class="sig-line"><label id="sig-loc-lbl">Localidade e Data</label><input type="text" id="sig-loc" placeholder="Lisboa, 01 de Agosto de 2026"/></div>
+      <div class="sig-line"><label id="sig-sign-cl-lbl">Assinatura</label><div class="sig-block"><span>_____________________________</span></div></div>
+    </div>
+  </div>
+</div>
+
+<a href="./index.html" class="back-link no-print">← <span id="back-lbl">Voltar ao Portfólio</span></a>
+
+</div><!-- /container -->
+
+<script>
+'use strict';
+/* ── i18n TRANSLATIONS ── */
+const C={
+'pt-PT':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE DESENVOLVIMENTO DE SOFTWARE',
+  docSub:'Acordo de Serviços Gerais (MSA) + Declaração de Trabalho (SOW)',
+  lbl:{dev:'Prestador de Serviços',jur:'Jurisdição',jurVal:'Suíça — Foro de Zurique',client:'Dados do Cliente',name:'Nome / Entidade',nif:'NIF / Tax ID',email:'Email Oficial',phone:'Telemóvel / WhatsApp',project:'Nome do Projeto',start:'Data de Início'},
+  s:{s1:'ÂMBITO DOS SERVIÇOS',s2:'CONDIÇÕES DE PAGAMENTO',s3:'PROPRIEDADE INTELECTUAL',s4:'DISPOSIÇÕES GERAIS',s9:'LEI APLICÁVEL E JURISDIÇÃO',suat:'VALIDAÇÃO UAT — CRITÉRIOS DE ACEITAÇÃO (T01–T11)',srules:'4 REGRAS FINANCEIRAS E LEGAIS DE PROTECÇÃO',sA:'DECLARAÇÃO DE TRABALHO — SOW',sB:'TIMESHEET — REGISTO DE HORAS (T&M)',ssig:'DECLARAÇÃO E ASSINATURA'},
+  model:'Modelo activo:',btn50:'50% + 50% (Fixo)',btnhr:'T&M / Por Hora',
+  p50title:'MODELO PREÇO FIXO — 50% SINAL + 50% LIQUIDAÇÃO FINAL',
+  p50:'O Cliente procederá ao pagamento de <strong>cinquenta por cento (50%) do valor total</strong> na assinatura (<em>Sinal Não Reembolsável</em>). Os restantes <strong>50%</strong> são devidos após <strong>5 dias úteis de UAT</strong> e aprovação formal. O código-fonte e credenciais só são transferidos após liquidação integral a 100%.',
+  phrTitle:'MODELO TIME & MATERIALS — TAXA HORÁRIA COM CAP MENSAL',
+  phr:'O Prestador faturará à <strong>taxa horária acordada</strong>. O Cap Mensal ([X] horas) não pode ser excedido sem <strong>autorização prévia por escrito</strong>. Faturas emitidas mensalmente com Timesheet (Anexo B), pagáveis em 7 dias. Vigência máxima de <strong>[X] meses</strong>, cessando automaticamente no termo.',
+  rules:[
+    {t:'Retenção de Propriedade Intelectual',d:'Todos os direitos patrimoniais sobre código, arquitectura e infraestrutura pertencem exclusivamente a Eduardo Monteiro até à liquidação de 100% dos montantes devidos.'},
+    {t:'Controlo Rígido de Escopo',d:'O contrato inclui estritamente 2 rondas formais de revisão. Alterações adicionais exigem aditamento técnico com orçamento e prazo.'},
+    {t:'Controlo de Esforço — Cap Horário',d:'Nenhuma hora excedente ao Cap acordado será trabalhada ou faturada sem autorização prévia por escrito do Cliente.'},
+    {t:'Jurisdição — Foro de Zurique',d:'Lei suíça aplicável. Competência exclusiva dos tribunais de Zurique para resolução de litígios.'}
+  ],
+  sig:{dev:'Prestador de Serviços',client:'Cliente',date:'Data',sign:'Assinatura',name:'Nome',co:'Empresa / Entidade',nif:'NIF / Tax ID',loc:'Localidade e Data'},
+  uat:{th:['Cenário','Critério de Aceitação','Estado']},
+  annexA:{field:'Campo',detail:'Detalhe do Projecto',rows:['Nome do Projecto','Stack de Arquitectura','Entregáveis','Modelo de Pagamento','Prazo Estimado','Investimento','Módulos','Notas','Controlo de Escopo','Manutenção']},
+  annexB:{th:['Data','Descrição da Tarefa','Horas','Acumulado'],total:'TOTAL DO MÊS',cap:'Cap Mensal Acordado'},
+  back:'Voltar ao Portfólio',late:'MORA E PENALIDADES',
+  scope:'O Prestador compromete-se a realizar os serviços descritos no Anexo A. Funcionalidades não descritas constituem trabalho adicional sujeito a orçamento.',
+  dod:'Definition of Done (DoD)',
+  sigDecl:'O abaixo-assinado declara que as especificações constantes deste documento reflectem na íntegra os requisitos do projecto. O Cliente compromete-se a responder em <strong>48 horas úteis</strong>.'
+},
+'en-US':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'SOFTWARE DEVELOPMENT SERVICES AGREEMENT',
+  docSub:'Master Service Agreement (MSA) + Statement of Work (SOW)',
+  lbl:{dev:'Service Provider',jur:'Jurisdiction',jurVal:'Switzerland — Zurich Courts',client:'Client Details',name:'Full Name / Company',nif:'NIF / Tax ID',email:'Official Email',phone:'Phone / WhatsApp',project:'Project Name',start:'Start Date'},
+  s:{s1:'SCOPE OF SERVICES',s2:'PAYMENT TERMS',s3:'INTELLECTUAL PROPERTY',s4:'GENERAL PROVISIONS',s9:'GOVERNING LAW & JURISDICTION',suat:'UAT VALIDATION — ACCEPTANCE CRITERIA (T01–T11)',srules:'4 FINANCIAL & LEGAL PROTECTION RULES',sA:'STATEMENT OF WORK (SOW)',sB:'TIMESHEET — HOURS LOG (T&M)',ssig:'DECLARATION & SIGNATURES'},
+  model:'Active model:',btn50:'50% + 50% (Fixed)',btnhr:'T&M / Hourly',
+  p50title:'FIXED PRICE MODEL — 50% DEPOSIT + 50% FINAL PAYMENT',
+  p50:'The Client shall pay <strong>fifty percent (50%) of the total fee</strong> upon signing as a <em>Non-Refundable Retainer</em>. The remaining <strong>50%</strong> is due after <strong>5 business days of UAT</strong> and formal sign-off. Source code and credentials are transferred only upon full payment.',
+  phrTitle:'TIME & MATERIALS MODEL — HOURLY RATE WITH MONTHLY CAP',
+  phr:'Developer bills at the <strong>agreed hourly rate</strong>. The Monthly Cap ([X] hours) cannot be exceeded without <strong>prior written authorization</strong>. Monthly invoices with Timesheet (Annex B), payable in 7 days. Maximum term of <strong>[X] months</strong>, automatically terminating at expiry.',
+  rules:[
+    {t:'Intellectual Property Retention',d:'All patrimonial rights over code, architecture and infrastructure remain exclusively with Eduardo Monteiro until 100% of amounts due are received.'},
+    {t:'Strict Scope Control',d:'The contract includes strictly 2 formal revision rounds. Additional changes require a written addendum with budget and timeline.'},
+    {t:'Effort Control — Monthly Cap',d:'No hours exceeding the agreed Cap will be worked or invoiced without prior written authorization from the Client.'},
+    {t:'Jurisdiction — Zurich Courts',d:'Swiss law applies. Exclusive jurisdiction of Zurich courts for dispute resolution.'}
+  ],
+  sig:{dev:'Service Provider',client:'Client',date:'Date',sign:'Signature',name:'Name',co:'Company / Entity',nif:'Tax ID',loc:'Location & Date'},
+  uat:{th:['Scenario','Acceptance Criteria','Status']},
+  annexA:{field:'Field',detail:'Project Detail',rows:['Project Name','Architecture Stack','Key Deliverables','Payment Model','Estimated Deadline','Total Investment','Included Modules','Additional Notes','Scope Control','Post-Launch Support']},
+  annexB:{th:['Date','Task Description','Hours','Cumulative'],total:'MONTHLY TOTAL',cap:'Agreed Monthly Cap'},
+  back:'Back to Portfolio',late:'LATE PAYMENT & PENALTIES',
+  scope:'The Provider agrees to deliver the services described in Annex A. Any functionality not listed in Annex A constitutes additional work subject to a separate budget.',
+  dod:'Definition of Done (DoD)',
+  sigDecl:'The undersigned declares that the specifications in this document fully reflect the project requirements. The Client agrees to respond to validation requests within <strong>48 business hours</strong>.'
+},
+'fr-CH':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'CONTRAT DE PRESTATION DE SERVICES DE DÉVELOPPEMENT LOGICIEL',
+  docSub:'Accord Cadre de Services (MSA) + Déclaration de Travaux (SOW)',
+  lbl:{dev:'Prestataire',jur:'Juridiction',jurVal:'Suisse — Tribunaux de Zurich',client:'Coordonnées Client',name:'Nom / Société',nif:'IDE / Tax ID',email:'Email Officiel',phone:'Téléphone / WhatsApp',project:'Nom du Projet',start:'Date de Début'},
+  s:{s1:'PÉRIMÈTRE DES SERVICES',s2:'CONDITIONS DE PAIEMENT',s3:'PROPRIÉTÉ INTELLECTUELLE',s4:'DISPOSITIONS GÉNÉRALES',s9:'DROIT APPLICABLE ET JURIDICTION',suat:'VALIDATION UAT — CRITÈRES D\'ACCEPTATION (T01–T11)',srules:'4 RÈGLES FINANCIÈRES ET JURIDIQUES DE PROTECTION',sA:'DÉCLARATION DE TRAVAUX (SOW)',sB:'TIMESHEET — RELEVÉ D\'HEURES (T&M)',ssig:'DÉCLARATION ET SIGNATURES'},
+  model:'Modèle actif:',btn50:'50% + 50% (Fixe)',btnhr:'T&M / Horaire',
+  p50title:'MODÈLE PRIX FIXE — 50% ACOMPTE + 50% SOLDE FINAL',
+  p50:'Le Client versera <strong>cinquante pour cent (50%) du montant total</strong> à la signature (<em>Acompte Non Remboursable</em>). Les <strong>50%</strong> restants sont dus après <strong>5 jours ouvrables d\'UAT</strong> et l\'acceptation formelle. Le code source et les identifiants ne sont transférés qu\'après paiement intégral.',
+  phrTitle:'MODÈLE TIME & MATERIALS — TAUX HORAIRE AVEC PLAFOND MENSUEL',
+  phr:'Le Prestataire facture au <strong>taux horaire convenu</strong>. Le Plafond Mensuel ([X] heures) ne peut être dépassé sans <strong>autorisation écrite préalable</strong>. Factures mensuelles avec Timesheet (Annexe B), payables sous 7 jours. Durée maximale de <strong>[X] mois</strong>, résiliation automatique à l\'échéance.',
+  rules:[
+    {t:'Rétention de Propriété Intellectuelle',d:'Tous les droits patrimoniaux sur le code, l\'architecture et l\'infrastructure restent la propriété exclusive d\'Eduardo Monteiro jusqu\'au paiement intégral.'},
+    {t:'Contrôle Strict du Périmètre',d:'Le contrat inclut strictement 2 rounds de révision formels. Tout changement supplémentaire exige un avenant écrit avec budget et délai.'},
+    {t:'Contrôle de l\'Effort — Plafond Horaire',d:'Aucune heure dépassant le plafond convenu ne sera travaillée ou facturée sans autorisation écrite préalable du Client.'},
+    {t:'Juridiction — Tribunaux de Zurich',d:'Droit suisse applicable. Compétence exclusive des tribunaux de Zurich pour la résolution des litiges.'}
+  ],
+  sig:{dev:'Prestataire',client:'Client',date:'Date',sign:'Signature',name:'Nom',co:'Société / Entité',nif:'IDE / Tax ID',loc:'Lieu et Date'},
+  uat:{th:['Scénario','Critère d\'Acceptation','Statut']},
+  annexA:{field:'Champ',detail:'Détail du Projet',rows:['Nom du Projet','Stack Architecture','Livrables Principaux','Modèle de Paiement','Délai Estimé','Investissement Total','Modules Inclus','Notes Additionnelles','Contrôle du Périmètre','Maintenance Post-Launch']},
+  annexB:{th:['Date','Description de la Tâche','Heures','Cumulé'],total:'TOTAL DU MOIS',cap:'Plafond Mensuel Convenu'},
+  back:'Retour au Portfolio',late:'RETARD DE PAIEMENT ET PÉNALITÉS',
+  scope:'Le Prestataire s\'engage à réaliser les services décrits à l\'Annexe A. Toute fonctionnalité non décrite constitue un travail supplémentaire soumis à devis.',
+  dod:'Critères de Fin de Projet (DoD)',
+  sigDecl:'Le soussigné déclare que les spécifications du présent document reflètent intégralement les exigences du projet. Le Client s\'engage à répondre dans les <strong>48 heures ouvrables</strong>.'
+},
+'de-CH':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'SOFTWAREENTWICKLUNGS-DIENSTLEISTUNGSVERTRAG',
+  docSub:'Rahmendienstleistungsvertrag (MSA) + Leistungsbeschreibung (SOW)',
+  lbl:{dev:'Auftragnehmer',jur:'Gerichtsstand',jurVal:'Schweiz — Zuständige Gerichte Zürich',client:'Kundendaten',name:'Name / Unternehmen',nif:'UID / Steuer-ID',email:'Offizielle E-Mail',phone:'Telefon / WhatsApp',project:'Projektname',start:'Startdatum'},
+  s:{s1:'LEISTUNGSUMFANG',s2:'ZAHLUNGSBEDINGUNGEN',s3:'GEISTIGES EIGENTUM',s4:'ALLGEMEINE BESTIMMUNGEN',s9:'ANWENDBARES RECHT UND GERICHTSSTAND',suat:'UAT-VALIDIERUNG — ABNAHMEKRITERIEN (T01–T11)',srules:'4 FINANZIELLE UND RECHTLICHE SCHUTZREGELN',sA:'LEISTUNGSBESCHREIBUNG (SOW)',sB:'ZEITERFASSUNG (T&M)',ssig:'ERKLÄRUNG UND UNTERSCHRIFTEN'},
+  model:'Aktives Modell:',btn50:'50% + 50% (Pauschal)',btnhr:'T&M / Stundensatz',
+  p50title:'PAUSCHALPREISMODELL — 50% ANZAHLUNG + 50% SCHLUSSZAHLUNG',
+  p50:'Der Kunde zahlt <strong>fünfzig Prozent (50%) des Gesamtbetrags</strong> bei Vertragsunterzeichnung als <em>Nicht Rückerstattbare Anzahlung</em>. Die restlichen <strong>50%</strong> sind nach <strong>5 Werktagen UAT</strong> und formaler Abnahme fällig. Quellcode und Zugangsdaten werden erst nach vollständiger Zahlung übergeben.',
+  phrTitle:'TIME & MATERIALS MODELL — STUNDENSATZ MIT MONATLICHEM CAP',
+  phr:'Der Entwickler rechnet zum <strong>vereinbarten Stundensatz</strong> ab. Der Monatliche Cap ([X] Stunden) darf ohne <strong>vorherige schriftliche Genehmigung</strong> nicht überschritten werden. Monatliche Rechnungen mit Zeiterfassung (Anhang B), zahlbar in 7 Tagen. Maximale Laufzeit von <strong>[X] Monaten</strong>.',
+  rules:[
+    {t:'Geistiges Eigentum — Zurückbehaltungsrecht',d:'Alle Vermögensrechte an Code, Architektur und Infrastruktur bleiben bis zur vollständigen Zahlung im Eigentum von Eduardo Monteiro.'},
+    {t:'Strenge Umfangskontrolle',d:'Der Vertrag umfasst genau 2 formale Überarbeitungsrunden. Zusätzliche Änderungen erfordern einen schriftlichen Nachtrag mit Budget und Zeitplan.'},
+    {t:'Aufwandskontrolle — Monatlicher Cap',d:'Keine den Cap überschreitenden Stunden werden ohne vorherige schriftliche Genehmigung des Kunden gearbeitet oder abgerechnet.'},
+    {t:'Gerichtsstand Zürich',d:'Schweizer Recht anwendbar. Ausschließlicher Gerichtsstand Zürich für die Streitbeilegung.'}
+  ],
+  sig:{dev:'Auftragnehmer',client:'Kunde',date:'Datum',sign:'Unterschrift',name:'Name',co:'Unternehmen / Einheit',nif:'UID / Steuer-ID',loc:'Ort und Datum'},
+  uat:{th:['Szenario','Abnahmekriterium','Status']},
+  annexA:{field:'Feld',detail:'Projektdetail',rows:['Projektname','Architektur-Stack','Hauptlieferungen','Zahlungsmodell','Geschätzter Termin','Gesamtinvestition','Module','Notizen','Umfangskontrolle','Post-Launch-Support']},
+  annexB:{th:['Datum','Aufgabenbeschreibung','Stunden','Kumuliert'],total:'MONATSSUMME',cap:'Vereinbarter Monatlicher Cap'},
+  back:'Zurück zum Portfolio',late:'ZAHLUNGSVERZUG UND STRAFEN',
+  scope:'Der Auftragnehmer verpflichtet sich, die in Anhang A beschriebenen Leistungen zu erbringen. Nicht aufgeführte Funktionen sind zusätzliche Arbeit.',
+  dod:'Definition of Done (DoD)',
+  sigDecl:'Der Unterzeichnete erklärt, dass die in diesem Dokument enthaltenen Spezifikationen die Projektanforderungen vollständig widerspiegeln. Der Kunde verpflichtet sich, innerhalb von <strong>48 Geschäftsstunden</strong> zu antworten.'
+},
+'es-ES':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'CONTRATO DE PRESTACIÓN DE SERVICIOS DE DESARROLLO DE SOFTWARE',
+  docSub:'Acuerdo Marco de Servicios (MSA) + Declaración de Trabajo (SOW)',
+  lbl:{dev:'Prestador de Servicios',jur:'Jurisdicción',jurVal:'Suiza — Tribunales de Zúrich',client:'Datos del Cliente',name:'Nombre / Empresa',nif:'CIF / Tax ID',email:'Email Oficial',phone:'Teléfono / WhatsApp',project:'Nombre del Proyecto',start:'Fecha de Inicio'},
+  s:{s1:'ALCANCE DE LOS SERVICIOS',s2:'CONDICIONES DE PAGO',s3:'PROPIEDAD INTELECTUAL',s4:'DISPOSICIONES GENERALES',s9:'LEY APLICABLE Y JURISDICCIÓN',suat:'VALIDACIÓN UAT — CRITERIOS DE ACEPTACIÓN (T01–T11)',srules:'4 REGLAS FINANCIERAS Y LEGALES DE PROTECCIÓN',sA:'DECLARACIÓN DE TRABAJO (SOW)',sB:'TIMESHEET — REGISTRO DE HORAS (T&M)',ssig:'DECLARACIÓN Y FIRMAS'},
+  model:'Modelo activo:',btn50:'50% + 50% (Fijo)',btnhr:'T&M / Por Hora',
+  p50title:'MODELO PRECIO FIJO — 50% SEÑAL + 50% LIQUIDACIÓN FINAL',
+  p50:'El Cliente abonará <strong>el cincuenta por ciento (50%) del importe total</strong> en la firma (<em>Señal No Reembolsable</em>). El <strong>50%</strong> restante vence tras <strong>5 días hábiles de UAT</strong> y aceptación formal. El código fuente y credenciales solo se transfieren tras el pago íntegro.',
+  phrTitle:'MODELO TIME & MATERIALS — TARIFA HORARIA CON TOPE MENSUAL',
+  phr:'El Desarrollador facturará a la <strong>tarifa horaria acordada</strong>. El Tope Mensual ([X] horas) no puede superarse sin <strong>autorización previa por escrito</strong>. Facturas mensuales con Timesheet (Anexo B), pagaderas en 7 días. Vigencia máxima de <strong>[X] meses</strong>.',
+  rules:[
+    {t:'Retención de Propiedad Intelectual',d:'Todos los derechos patrimoniales sobre el código, arquitectura e infraestructura pertenecen exclusivamente a Eduardo Monteiro hasta el pago íntegro.'},
+    {t:'Control Estricto del Alcance',d:'El contrato incluye estrictamente 2 rondas formales de revisión. Cambios adicionales requieren adenda escrita con presupuesto y plazo.'},
+    {t:'Control de Esfuerzo — Tope Horario',d:'Ninguna hora que supere el Tope acordado será trabajada o facturada sin autorización previa por escrito del Cliente.'},
+    {t:'Jurisdicción — Tribunales de Zúrich',d:'Derecho suizo aplicable. Competencia exclusiva de los tribunales de Zúrich para resolución de disputas.'}
+  ],
+  sig:{dev:'Prestador de Servicios',client:'Cliente',date:'Fecha',sign:'Firma',name:'Nombre',co:'Empresa / Entidad',nif:'CIF / Tax ID',loc:'Localidad y Fecha'},
+  uat:{th:['Escenario','Criterio de Aceptación','Estado']},
+  annexA:{field:'Campo',detail:'Detalle del Proyecto',rows:['Nombre del Proyecto','Stack Arquitectura','Entregables Principales','Modelo de Pago','Plazo Estimado','Inversión Total','Módulos Incluidos','Notas Adicionales','Control de Alcance','Mantenimiento Post-Lanzamiento']},
+  annexB:{th:['Fecha','Descripción de la Tarea','Horas','Acumulado'],total:'TOTAL DEL MES',cap:'Tope Mensual Acordado'},
+  back:'Volver al Portafolio',late:'MORA Y PENALIDADES',
+  scope:'El Prestador se compromete a realizar los servicios descritos en el Anexo A. Funcionalidades no descritas constituyen trabajo adicional sujeto a presupuesto.',
+  dod:'Criterios de Fin de Proyecto (DoD)',
+  sigDecl:'El abajo firmante declara que las especificaciones de este documento reflejan íntegramente los requisitos del proyecto. El Cliente se compromete a responder en <strong>48 horas hábiles</strong>.'
+},
+'it-IT':{
+  hdr:'SOW & MSA — Eduardo Monteiro Dev',
+  docTitle:'CONTRATTO DI FORNITURA SERVIZI DI SVILUPPO SOFTWARE',
+  docSub:'Accordo Quadro di Servizi (MSA) + Dichiarazione del Lavoro (SOW)',
+  lbl:{dev:'Fornitore di Servizi',jur:'Giurisdizione',jurVal:'Svizzera — Tribunali di Zurigo',client:'Dati del Cliente',name:'Nome / Azienda',nif:'P.IVA / Tax ID',email:'Email Ufficiale',phone:'Telefono / WhatsApp',project:'Nome del Progetto',start:'Data di Inizio'},
+  s:{s1:'AMBITO DEI SERVIZI',s2:'CONDIZIONI DI PAGAMENTO',s3:'PROPRIETÀ INTELLETTUALE',s4:'DISPOSIZIONI GENERALI',s9:'LEGGE APPLICABILE E GIURISDIZIONE',suat:'VALIDAZIONE UAT — CRITERI DI ACCETTAZIONE (T01–T11)',srules:'4 REGOLE FINANZIARIE E LEGALI DI PROTEZIONE',sA:'DICHIARAZIONE DEL LAVORO (SOW)',sB:'TIMESHEET — REGISTRO ORE (T&M)',ssig:'DICHIARAZIONE E FIRME'},
+  model:'Modello attivo:',btn50:'50% + 50% (Fisso)',btnhr:'T&M / Orario',
+  p50title:'MODELLO PREZZO FISSO — 50% ACCONTO + 50% SALDO FINALE',
+  p50:'Il Cliente verserà <strong>il cinquanta per cento (50%) dell\'importo totale</strong> alla firma (<em>Acconto Non Rimborsabile</em>). Il restante <strong>50%</strong> è dovuto dopo <strong>5 giorni lavorativi di UAT</strong> e accettazione formale. Il codice sorgente e le credenziali vengono trasferiti solo dopo il pagamento integrale.',
+  phrTitle:'MODELLO TIME & MATERIALS — TARIFFA ORARIA CON TETTO MENSILE',
+  phr:'Lo Sviluppatore fattura alla <strong>tariffa oraria concordata</strong>. Il Tetto Mensile ([X] ore) non può essere superato senza <strong>autorizzazione preventiva scritta</strong>. Fatture mensili con Timesheet (Allegato B), pagabili entro 7 giorni. Durata massima di <strong>[X] mesi</strong>.',
+  rules:[
+    {t:'Ritenzione della Proprietà Intellettuale',d:'Tutti i diritti patrimoniali su codice, architettura e infrastruttura rimangono di proprietà esclusiva di Eduardo Monteiro fino al pagamento integrale.'},
+    {t:'Controllo Rigoroso dell\'Ambito',d:'Il contratto include esattamente 2 round formali di revisione. Modifiche aggiuntive richiedono un addendum scritto con budget e tempi.'},
+    {t:'Controllo dello Sforzo — Tetto Orario',d:'Nessuna ora che superi il Tetto concordato sarà lavorata o fatturata senza autorizzazione preventiva scritta del Cliente.'},
+    {t:'Giurisdizione — Tribunali di Zurigo',d:'Diritto svizzero applicabile. Competenza esclusiva dei tribunali di Zurigo per la risoluzione delle controversie.'}
+  ],
+  sig:{dev:'Fornitore',client:'Cliente',date:'Data',sign:'Firma',name:'Nome',co:'Azienda / Ente',nif:'P.IVA / Tax ID',loc:'Luogo e Data'},
+  uat:{th:['Scenario','Criterio di Accettazione','Stato']},
+  annexA:{field:'Campo',detail:'Dettaglio del Progetto',rows:['Nome del Progetto','Stack Architettura','Principali Deliverable','Modello di Pagamento','Scadenza Stimata','Investimento Totale','Moduli Inclusi','Note Aggiuntive','Controllo Ambito','Manutenzione Post-Lancio']},
+  annexB:{th:['Data','Descrizione Attività','Ore','Cumulato'],total:'TOTALE DEL MESE',cap:'Tetto Mensile Concordato'},
+  back:'Torna al Portfolio',late:'MORA E PENALITÀ',
+  scope:'Il Fornitore si impegna a realizzare i servizi descritti nell\'Allegato A. Funzionalità non descritte costituiscono lavoro aggiuntivo soggetto a preventivo.',
+  dod:'Criteri di Fine Progetto (DoD)',
+  sigDecl:'Il sottoscritto dichiara che le specifiche del presente documento riflettono integralmente i requisiti del progetto. Il Cliente si impegna a rispondere entro <strong>48 ore lavorative</strong>.'
+}
+};
+
+/* ── STATE ── */
+let locale=localStorage.getItem('vc-locale')||'pt-PT';
+let model='50'; // '50' or 'hr'
+
+/* ── HELPERS ── */
+const $=id=>document.getElementById(id);
+function si(id,v,html=false){const e=$(id);if(!e)return;html?e.innerHTML=v:e.textContent=v}
+
+/* ── APPLY TRANSLATIONS ── */
+function applyT(loc){
+  const t=C[loc];if(!t)return;
+  document.documentElement.lang=loc;
+  document.title=t.docTitle+' — Eduardo Monteiro';
+  // Header
+  si('hdr-title',t.hdr);
+  // Top band
+  si('doc-title',t.docTitle);si('doc-sub',t.docSub);
+  // Labels
+  si('lbl-dev',t.lbl.dev);si('lbl-jurisdiction',t.lbl.jur);si('jurisdiction-val',t.lbl.jurVal);
+  si('lbl-client-section',t.lbl.client);si('lbl-client-name',t.lbl.name);si('lbl-client-nif',t.lbl.nif);
+  si('lbl-client-email',t.lbl.email);si('lbl-client-phone',t.lbl.phone);si('lbl-project',t.lbl.project);si('lbl-start-date',t.lbl.start);
+  // Section titles
+  si('t-1',t.s.s1);si('t-2',t.s.s2);si('t-3',t.s.s3);si('t-other',t.s.s4);si('t-9',t.s.s9);
+  si('t-uat',t.s.suat);si('t-rules',t.s.srules);si('t-annexA',t.s.sA);si('t-annexB',t.s.sB);si('t-sig',t.s.ssig);
+  // Model toggle labels
+  si('lbl-model',t.model);si('btn50',t.btn50);si('btnhr',t.btnhr);si('p-btn50',t.btn50);si('p-btnhr',t.btnhr);
+  // Payment clauses
+  si('t-p50',t.p50title);si('txt-p50',t.p50,true);
+  si('t-phr',t.phrTitle);si('txt-phr',t.phr,true);
+  // Scope text
+  si('txt-scope',t.scope);
+  // Late
+  si('t-late',t.late);
+  // UAT table headers
+  const ths=document.querySelectorAll('#uat-table th');
+  if(ths.length>=4&&t.uat.th){ths[1].textContent=t.uat.th[0];ths[2].textContent=t.uat.th[1];ths[3].textContent=t.uat.th[2]}
+  // DOD
+  si('t-dod',t.dod);
+  // Rules
+  t.rules.forEach((r,i)=>{si(`r${i+1}-title`,r.t);si(`r${i+1}-text`,r.d)});
+  // Annex A
+  si('t-annexA',t.s.sA);si('th-a-field',t.annexA.field);si('th-a-detail',t.annexA.detail);
+  // Annex B
+  si('t-annexB',t.s.sB);si('b-total',t.annexB.total);
+  if(t.annexB.cap)si('txt-cap-warn','⚠ '+t.annexB.cap+': <strong id="cap-val">[X] horas</strong>. Horas excedentes só com autorização escrita.',true);
+  const bths=document.querySelectorAll('.annex-table th');
+  // Signature
+  si('sig-dev-title',t.sig.dev);si('sig-client-title',t.sig.client);
+  si('sig-date-lbl',t.sig.date);si('sig-sign-lbl',t.sig.sign);
+  si('sig-name-lbl',t.sig.name);si('sig-co-lbl',t.sig.co);si('sig-nif-lbl',t.sig.nif);si('sig-loc-lbl',t.sig.loc);si('sig-sign-cl-lbl',t.sig.sign);
+  // Sig declaration
+  si('txt-sig-decl',t.sigDecl,true);
+  // Back link
+  si('back-lbl',t.back);
+  // Eyebrows (static in PT, update from s keys)
+  // Lang buttons
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===loc));
+}
+
+/* ── PAYMENT MODEL ── */
+function applyModel(m){
+  model=m;
+  document.body.classList.toggle('show-hr',m==='hr');
+  document.querySelectorAll('.toggle-btn[data-model]').forEach(b=>b.classList.toggle('active',b.dataset.model===m));
+}
+
+/* ── DATE ── */
+function setDate(){
+  const d=new Date();
+  const opts={day:'2-digit',month:'long',year:'numeric'};
+  const el=$('doc-date');
+  if(el)el.textContent=d.toLocaleDateString(locale,opts);
+}
+
+/* ── EVENTS ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  applyT(locale);
+  applyModel(model);
+  setDate();
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{locale=btn.dataset.lang;localStorage.setItem('vc-locale',locale);applyT(locale);setDate()});
+  });
+  document.querySelectorAll('.toggle-btn[data-model]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyModel(btn.dataset.model));
+  });
+});
+</script>
+</body>
+</html>
