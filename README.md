@@ -64,7 +64,7 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 3. **Sistema Biométrico** — Fingerprint matching
 4. **UNIFED PROBATUM** — Analytics dashboard (Live)
 5. **Gestão de Turnos** — HR scheduling
-6. **Metodologia de Testes** — QA framework
+6. **Metodologia de Testes** — QA framework.
 
 ---
 *© 2026 Eduardo Monteiro · monteiro.is-a.dev*
