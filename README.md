@@ -10,9 +10,9 @@
 |---------------|------------------|-----------------------------------------------|
 | Vercel        | `vercel.json`    | `vercel --prod` or import via dashboard       |
 | Netlify       | `netlify.toml`   | Drag & drop folder or `netlify deploy --prod` |
-| Workana       | —                | Link: https://monteiro.is-a.dev               |
-| Upwork        | —                | Link: https://monteiro.is-a.dev               |
-| 99Freelas     | —                | Link: https://monteiro.is-a.dev               |
+| Workana       | —                | Link: https://edumonteiro-dev.github.io       |
+| Upwork        | —                | Link: https://edumonteiro-dev.github.io       |
+| 99Freelas     | —                | Link: https://edumonteiro-dev.github.io       |
 
 ## File Structure
 
@@ -65,4 +65,4 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 6. *Metodologia de Testes* — QA framework.
 
 ---
-*© 2026 Eduardo Monteiro · monteiro.is-a.dev*
+*© 2026 Eduardo Monteiro · edumonteiro-dev.github.io*
