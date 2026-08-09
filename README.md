@@ -1,6 +1,6 @@
 # Eduardo Monteiro — AI-Powered Full-Stack Developer Portfolio
 
-**Live:** https://monteiro.is-a.dev  
+**Live:** https://edumonteiro-dev.github.io  
 **Email:** edumonteiro.dev@gmail.com  
 **GitHub:** https://github.com/edumonteiro-dev
 
