@@ -93,4 +93,4 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 6. *Metodologia de Testes* — QA framework.
 
 ---
-*Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | edumonteiro-dev.github.io*
+*© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | edumonteiro-dev.github.io*
