@@ -4,6 +4,18 @@
 **Email:** edumonteiro.dev@gmail.com  
 **GitHub:** https://github.com/edumonteiro-dev
 
+## 🇨🇭 Modelo de Engenharia B2B (Swiss-Compliant Contractor)
+
+Atuo como **consultor externo especializado** e **prestador de serviços B2B (Freelancer / Corporate Contractor)** para empresas suíças e internacionais. Este modelo elimina a fricção da contratação tradicional, focando puramente no **resultado técnico e na entrega imediata de valor (Time-to-Value)**.
+
+### Vantagens do Modelo B2B / External Consultant
+* **Agilidade Contratual:** Integração imediata no projeto sem burocracia ou custos estruturais de RH (Sem *overhead* de contratação interna).
+* **Conformidade Legal Suíça:** Infraestrutura jurídica preparada para faturamento externo, alinhada com as exigências de *compliance* do mercado suíço (**Foro de Zurique**).
+* **Autonomia e Foco em Resultados:** Atuação totalmente independente, orientada a métricas de desempenho e sem necessidade de microgestão.
+* **Modelo Financeiro Transparente:** Flexibilidade contratual suportada diretamente no ecossistema do portfólio (`contract.html`).
+
+---
+
 ## Soluções Tecnológicas de Alto Desempenho, Fiáveis e Escaláveis
 
 Sistema de alto desempenho e máxima fiabilidade, desenvolvido com código limpo, rigorosamente tipado e de fácil manutenção. Totalmente otimizado para velocidade, SEO e escalabilidade.
@@ -36,7 +48,7 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 ```
 /
 ├── index.html          # Portfolio SPA — JS/CSS 100% inlined (GitHub Pages safe)
-├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined
+├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined (Swiss Law compliant)
 ├── assets/
 │   ├── logo.svg        # EM monogram — hexagonal neural network (purple/teal)
 │   └── favicon.svg     # EM favicon — 32×32 SVG
@@ -45,7 +57,6 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 ├── netlify.toml        # Redirects + CSP + HSTS headers
 └── _redirects          # Netlify SPA fallback rule
 ```
-
 ## Security Headers (All Platforms)
 
 - `Content-Security-Policy` — strict allowlist
@@ -58,7 +69,7 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 ## i18n — 6 Markets
 
 `PT-PT` · `EN-US` · `FR-CH` · `DE-CH` · `ES-ES` · `IT-IT`  
-Locale persisted in `localStorage('vc-locale')` — shared between `index.html` and `contract.html`.
+Locale persisted in `localStorage('vc-locale')` — shared between `index.html` and `contract.html`. Otimizado para os principais cantões e mercados da Suíça.
 
 ## Contract (contract.html)
 
@@ -82,4 +93,4 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 6. *Metodologia de Testes* — QA framework.
 
 ---
-*© 2026 Eduardo Monteiro · edumonteiro-dev.github.io*
+*Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | edumonteiro-dev.github.io*
