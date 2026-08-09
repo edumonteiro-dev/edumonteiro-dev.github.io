@@ -2,7 +2,11 @@
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**GitHub:** https://github.com/edumonteiro-dev  
+**GitHub:** https://github.com/edumonteiro-dev
+
+## Soluções Tecnológicas de Alto Desempenho, Fiáveis e Escaláveis
+
+Sistema de alto desempenho e máxima fiabilidade, desenvolvido com código limpo, rigorosamente tipado e de fácil manutenção. Totalmente otimizado para velocidade, SEO e escalabilidade.
 
 ## Deploy Targets
 
