@@ -2,13 +2,12 @@
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**GitHub:** https://github.com  
+**GitHub:** https://github.com/edumonteiro-dev  
 
 ## Deploy Targets
 
 | Platform      | Config File      | Command / Action                              |
 |---------------|------------------|-----------------------------------------------|
-| GitHub Pages  | `CNAME`          | Push to `main`; Pages → Source: root branch  |
 | Vercel        | `vercel.json`    | `vercel --prod` or import via dashboard       |
 | Netlify       | `netlify.toml`   | Drag & drop folder or `netlify deploy --prod` |
 | Workana       | —                | Link: https://monteiro.is-a.dev               |
@@ -24,7 +23,6 @@
 ├── assets/
 │   ├── logo.svg        # EM monogram — hexagonal neural network (purple/teal)
 │   └── favicon.svg     # EM favicon — 32×32 SVG
-├── CNAME               # monteiro.is-a.dev (GitHub Pages custom domain)
 ├── .nojekyll           # Bypass Jekyll build on GitHub Pages
 ├── vercel.json         # Static routing + HTTP security headers
 ├── netlify.toml        # Redirects + CSP + HSTS headers
@@ -59,12 +57,12 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 
 ## Projects Featured
 
-1. **kmlucropro.com** — SaaS TVDE (Live)
-2. **Voz do Condutor** — vozdocondutor.com (Live)
-3. **Sistema Biométrico** — Fingerprint matching
-4. **UNIFED PROBATUM** — Analytics dashboard (Live)
-5. **Gestão de Turnos** — HR scheduling
-6. **Metodologia de Testes** — QA framework.
+1. *kmlucropro.com* — SaaS TVDE (Live)
+2. *Voz do Condutor* — vozdocondutor.com (Live)
+3. *Sistema Biométrico* — Fingerprint matching
+4. *UNIFED PROBATUM* — Analytics dashboard (Live)
+5. *Gestão de Turnos* — HR scheduling
+6. *Metodologia de Testes* — QA framework.
 
 ---
 *© 2026 Eduardo Monteiro · monteiro.is-a.dev*
