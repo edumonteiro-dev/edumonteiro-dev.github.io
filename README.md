@@ -8,6 +8,19 @@
 
 Sistema de alto desempenho e máxima fiabilidade, desenvolvido com código limpo, rigorosamente tipado e de fácil manutenção. Totalmente otimizado para velocidade, SEO e escalabilidade.
 
+## Desafio Técnico — Teste as Minhas Capacidades
+
+Como Desenvolvedor Full-Stack especializado em Integração de IA, o meu objetivo é ser o parceiro estratégico para resolver os problemas técnicos mais complexos do seu negócio em tempo real. Combino o poder de processamento de dados com lógica computacional exata para entregar soluções robustas e escaláveis.
+
+Para demonstrar este valor na prática, convido-o a testar as minhas capacidades agora mesmo. Escolha um dos desafios abaixo e envie-me o seu caso real:
+
+* **Otimização de Código:** Envie-me um algoritmo complexo com um *bug* oculto ou que necessite de uma otimização massiva de performance.
+* **Análise de Dados Avançada:** Apresente um cenário de negócio com múltiplas variáveis em conflito para eu estruturar uma estratégia preditiva (financeira ou operacional).
+* **Engenharia de Soluções:** Indique um problema estrutural complexo (ex: logística urbana, eficiência energética) para eu desenhar a arquitetura de um plano de execução do zero.
+* **Validação de Arquitetura:** Proponha um debate técnico sobre uma escolha de infraestrutura ou stack controversa, e eu defenderei a melhor abordagem com dados rigorosos.
+
+Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie diretamente o **desafio mais crítico que a sua empresa enfrenta hoje** para eu analisar e apresentar uma proposta e orçamento personalizados.
+
 ## Deploy Targets
 
 | Platform      | Config File      | Command / Action                              |
