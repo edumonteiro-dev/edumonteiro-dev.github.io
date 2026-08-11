@@ -1,6 +1,6 @@
 # Eduardo Monteiro — AI-Powered Full-Stack Developer Portfolio
 
-**Live:** https://edumonteiro-dev.github.io  
+**Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
 **GitHub:** https://github.com/edumonteiro-dev
 
@@ -37,21 +37,23 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 
 | Platform      | Config File      | Command / Action                              |
 |---------------|------------------|-----------------------------------------------|
+| GitHub Pages  | `CNAME`          | Push to `main`; Pages → Source: root branch  |
 | Vercel        | `vercel.json`    | `vercel --prod` or import via dashboard       |
 | Netlify       | `netlify.toml`   | Drag & drop folder or `netlify deploy --prod` |
-| Workana       | —                | Link: https://edumonteiro-dev.github.io       |
-| Upwork        | —                | Link: https://edumonteiro-dev.github.io       |
-| 99Freelas     | —                | Link: https://edumonteiro-dev.github.io       |
+| Workana       | —                | Link: https://monteiro.is-a.dev               |
+| Upwork        | —                | Link: https://monteiro.is-a.dev               |
+| 99Freelas     | —                | Link: https://monteiro.is-a.dev               |
 
 ## File Structure
 
-```
 /
 ├── index.html          # Portfolio SPA — JS/CSS 100% inlined (GitHub Pages safe)
+├── legal.html          # GDPR/Swiss Law Policies — JS/CSS 100% inlined
 ├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined (Swiss Law compliant)
 ├── assets/
 │   ├── logo.svg        # EM monogram — hexagonal neural network (purple/teal)
 │   └── favicon.svg     # EM favicon — 32×32 SVG
+├── CNAME               # monteiro.is-a.dev (GitHub Pages custom domain)
 ├── .nojekyll           # Bypass Jekyll build on GitHub Pages
 ├── vercel.json         # Static routing + HTTP security headers
 ├── netlify.toml        # Redirects + CSP + HSTS headers
@@ -93,4 +95,4 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 6. *Metodologia de Testes* — QA framework.
 
 ---
-*© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | edumonteiro-dev.github.io*
+*© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev*
