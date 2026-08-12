@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-PT" dir="ltr">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'none'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Eduardo Monteiro — AI-Powered Full-Stack Developer. MVPs em semanas. SaaS, Biometria, IA, Analytics. 6 mercados."/>
@@ -10,6 +12,12 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://monteiro.is-a.dev"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<link rel="manifest" href="./manifest.json"/>
+<meta name="theme-color" content="#7B5CF0"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="EM Dev"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImZnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuOCIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMEEwQTBGIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyIDI3LDguNSAyNywyMS41IDE2LDI4IDUsMjEuNSA1LDguNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNmZykiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPHRleHQgeD0iOC41IiB5PSIyMCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIxMSIgZmlsbD0idXJsKCNmZykiIGZpbHRlcj0idXJsKCNnZikiPkVNPC90ZXh0Pgo8L3N2Zz4K"/>
 <title>Eduardo Monteiro — AI-Powered Full-Stack Developer</title>
 <style>
@@ -150,9 +158,9 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .tier-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .tier-features li{font-size:.875rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5;list-style:none}
 .tier-features li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px}
-.btn-tier{width:100%;padding:13px;border-radius:10px;font-family:var(--font-d);font-weight:600;font-size:.95rem;background:rgba(123,92,240,.12);color:var(--purple);border:1px solid var(--border-h);transition:all .25s}
+.btn-tier{display:block;text-align:center;text-decoration:none;width:100%;padding:13px;border-radius:10px;font-family:var(--font-d);font-weight:600;font-size:.95rem;background:rgba(123,92,240,.12);color:var(--purple);border:1px solid var(--border-h);transition:all .25s}
 .btn-tier:hover{background:var(--purple);color:#fff}
-.popular .btn-tier{background:var(--grad-cta);color:#fff;border-color:transparent}
+.popular .btn-tier{display:block;text-align:center;text-decoration:none;background:var(--grad-cta);color:#fff;border-color:transparent}
 .popular .btn-tier:hover{opacity:.9}
 .maintenance-note{margin-top:40px;padding:16px 24px;border:1px solid var(--border);border-radius:var(--r);font-family:var(--font-m);font-size:.78rem;color:var(--muted);text-align:center;background:rgba(0,245,160,.03)}
 /* CONTACT */
@@ -248,7 +256,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   <div class="container">
     <nav class="nav-inner" role="navigation">
       <a href="#" class="nav-logo" aria-label="Eduardo Monteiro — Home">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIxOCIgeT0iMzEiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTEiIGZpbGw9InVybCgjZ20pIiBmaWx0ZXI9InVybCgjZ2YpIj5FTTwvdGV4dD4KICA8IS0tIFdvcmRtYXJrIC0tPgogIDx0ZXh0IHg9IjYyIiB5PSIyOCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIxOCIgZmlsbD0iI0U4RThGRiIgbGV0dGVyLXNwYWNpbmc9Ii0wLjUiPlZpYmU8L3RleHQ+CiAgPHRleHQgeD0iMTAxIiB5PSIyOCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iMzAwIgogICAgZm9udC1zaXplPSIxOCIgZmlsbD0idXJsKCNnbSkiIGxldHRlci1zcGFjaW5nPSItMC41Ij5Db2RlcjwvdGV4dD4KICA8dGV4dCB4PSI2MiIgeT0iNDIiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLG1vbm9zcGFjZSIgZm9udC13ZWlnaHQ9IjQwMCIKICAgIGZvbnQtc2l6ZT0iNy41IiBmaWxsPSIjN0I1Q0YwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FRFVBUkRPIE1PTlRFSVJPIMK3IERFVjwvdGV4dD4KPC9zdmc+Cg==" alt="Eduardo Monteiro Dev" width="160" height="44"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIzMCIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjExIiBmaWxsPSJ1cmwoI2dtKSIgZmlsdGVyPSJ1cmwoI2dmKSI+RU08L3RleHQ+CiAgPCEtLSBXb3JkbWFyayAtLT4KICA8dGV4dCB4PSI2MiIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNFOEU4RkYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5WaWJlPC90ZXh0PgogIDx0ZXh0IHg9IjEwMSIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjMwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9InVybCgjZ20pIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q29kZXI8L3RleHQ+CiAgPHRleHQgeD0iNjIiIHk9IjQyIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJyxtb25vc3BhY2UiIGZvbnQtd2VpZ2h0PSI0MDAiCiAgICBmb250LXNpemU9IjcuNSIgZmlsbD0iIzdCNUNGMCIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RURVQVJETyBNT05URUlSTyDCtyBERVY8L3RleHQ+CjxzdHlsZT5AbWVkaWEobWluLXdpZHRoOjEwMjRweCl7dGV4dHt0ZXh0LWFuY2hvcjptaWRkbGU7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbH19PC9zdHlsZT48L3N2Zz4K" alt="Eduardo Monteiro Dev" width="160" height="44"/>
       </a>
       <button id="burger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -259,7 +267,8 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <li><a href="#projects" data-nav="projects">Projetos</a></li>
         <li><a href="#process" data-nav="process">Processo</a></li>
         <li><a href="#pricing" data-nav="pricing">Preços</a></li>
-        <li><a href="./contract.html" data-nav="contract" target="_blank">Contrato</a></li>
+        <li><a href="./contract.html" data-nav="contract" target="_blank">Contrato</a>
+        <li><a href="./legal.html" data-nav="legal" target="_blank">Legal</a></li></li>
         <li><a href="#contact" data-nav="contact">Contacto</a></li>
       </ul>
       <div class="lang-switcher" role="group" aria-label="Language selector">
@@ -391,6 +400,22 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <div class="proj-tech"><span class="tech-badge">Playwright</span><span class="tech-badge">Jest</span><span class="tech-badge">Hotjar</span><span class="tech-badge">GitHub Actions</span></div>
         <a class="proj-link" data-proj-link="5" href="#" style="display:none">Ver Projecto</a>
       </div>
+      <!-- 6: Haven — AI Mental Health PWA -->
+      <div class="project-card live-badge" data-reveal data-delay="1">
+        <p class="proj-tag" id="proj-tag-6">PWA · AI · Mental Health · FHIR</p>
+        <h3 class="proj-title" id="proj-title-6">Haven</h3>
+        <p class="proj-desc" id="proj-desc-6">Aplicação PWA de saúde mental com IA Edge on-device (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail anti-hallucination, CRDT offline-first e conformidade FHIR/FADP/RGPD. Mercado suíço primário.</p>
+        <div class="proj-tech"><span class="tech-badge">React</span><span class="tech-badge">TypeScript</span><span class="tech-badge">WASM/AI</span><span class="tech-badge">FHIR</span><span class="tech-badge">CRDT</span><span class="tech-badge">PWA</span></div>
+        <a class="proj-link" data-proj-link="6" href="#" style="display:none">Ver Projecto</a>
+      </div>
+      <!-- 7: SpriCH — Swiss Language Learning -->
+      <div class="project-card" data-reveal data-delay="2">
+        <p class="proj-tag" id="proj-tag-7">SaaS · Educação · Suíça · IA</p>
+        <h3 class="proj-title" id="proj-title-7">SpriCH</h3>
+        <p class="proj-desc" id="proj-desc-7">Plataforma SaaS de aprendizagem de idiomas para o mercado suíço (DE-CH, FR-CH, IT-CH). Gamificação adaptativa com IA, curriculum gerado por LLM e conformidade FADP para dados de menores.</p>
+        <div class="proj-tech"><span class="tech-badge">Next.js</span><span class="tech-badge">OpenAI API</span><span class="tech-badge">Firebase</span><span class="tech-badge">Stripe</span><span class="tech-badge">FADP</span></div>
+        <a class="proj-link" data-proj-link="7" href="#" style="display:none">Ver Projecto</a>
+      </div>
     </div>
   </div>
 </section>
@@ -446,7 +471,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <ul class="tier-features" data-tier-features="0">
           <li>Site Institucional ou Infoproduto</li><li>Design Responsivo (Mobile-First)</li><li>Integração de pagamentos básica</li><li>SEO On-Page</li><li>Formulário de contacto</li><li>1 ronda de revisões</li><li>Suporte 15 dias pós-entrega</li>
         </ul>
-        <button class="btn-tier" id="tier-cta-0">Começar Projeto</button>
+        <a class="btn-tier" id="tier-cta-0" href="#contact">Começar Projeto</a>
       </div>
       <div class="pricing-card popular" data-reveal data-delay="2">
         <div class="popular-badge" data-tier-popular="1">Mais Popular</div>
@@ -457,7 +482,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <ul class="tier-features" data-tier-features="1">
           <li>MVP SaaS completo (2-4 semanas)</li><li>Firebase Auth + Stripe + Functions</li><li>Dashboard em tempo real</li><li>Integração IA (OpenAI/Claude)</li><li>Admin Panel</li><li>Testes automatizados CI/CD</li><li>2 rondas de revisões</li><li>Suporte 30 dias pós-entrega</li>
         </ul>
-        <button class="btn-tier" id="tier-cta-1">Lançar MVP</button>
+        <a class="btn-tier" id="tier-cta-1" href="#contact">Lançar MVP</a>
       </div>
       <div class="pricing-card" data-reveal data-delay="3">
         <div class="popular-badge" data-tier-popular="2" style="display:none">Popular</div>
@@ -468,7 +493,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <ul class="tier-features" data-tier-features="2">
           <li>Ecossistema digital completo</li><li>Arquitectura multi-plataforma</li><li>Sistemas críticos &amp; biometria</li><li>Integrações com APIs externas</li><li>Documentação técnica completa</li><li>Formação da equipa interna</li><li>Retainer mensal incluído 3 meses</li><li>SLA de uptime definido</li>
         </ul>
-        <button class="btn-tier" id="tier-cta-2">Contactar Directo</button>
+        <a class="btn-tier" id="tier-cta-2" href="mailto:edumonteiro.dev@gmail.com">Contactar Directo</a>
       </div>
     </div>
     <p class="maintenance-note" id="maintenance-text" data-reveal>
@@ -531,13 +556,14 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <a href="#" class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIxOCIgeT0iMzEiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTEiIGZpbGw9InVybCgjZ20pIiBmaWx0ZXI9InVybCgjZ2YpIj5FTTwvdGV4dD4KICA8IS0tIFdvcmRtYXJrIC0tPgogIDx0ZXh0IHg9IjYyIiB5PSIyOCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIxOCIgZmlsbD0iI0U4RThGRiIgbGV0dGVyLXNwYWNpbmc9Ii0wLjUiPlZpYmU8L3RleHQ+CiAgPHRleHQgeD0iMTAxIiB5PSIyOCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iMzAwIgogICAgZm9udC1zaXplPSIxOCIgZmlsbD0idXJsKCNnbSkiIGxldHRlci1zcGFjaW5nPSItMC41Ij5Db2RlcjwvdGV4dD4KICA8dGV4dCB4PSI2MiIgeT0iNDIiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLG1vbm9zcGFjZSIgZm9udC13ZWlnaHQ9IjQwMCIKICAgIGZvbnQtc2l6ZT0iNy41IiBmaWxsPSIjN0I1Q0YwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FRFVBUkRPIE1PTlRFSVJPIMK3IERFVjwvdGV4dD4KPC9zdmc+Cg==" alt="Eduardo Monteiro Dev" width="130" height="36"/></a>
+      <a href="#" class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIzMCIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjExIiBmaWxsPSJ1cmwoI2dtKSIgZmlsdGVyPSJ1cmwoI2dmKSI+RU08L3RleHQ+CiAgPCEtLSBXb3JkbWFyayAtLT4KICA8dGV4dCB4PSI2MiIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNFOEU4RkYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5WaWJlPC90ZXh0PgogIDx0ZXh0IHg9IjEwMSIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjMwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9InVybCgjZ20pIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q29kZXI8L3RleHQ+CiAgPHRleHQgeD0iNjIiIHk9IjQyIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJyxtb25vc3BhY2UiIGZvbnQtd2VpZ2h0PSI0MDAiCiAgICBmb250LXNpemU9IjcuNSIgZmlsbD0iIzdCNUNGMCIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RURVQVJETyBNT05URUlSTyDCtyBERVY8L3RleHQ+CjxzdHlsZT5AbWVkaWEobWluLXdpZHRoOjEwMjRweCl7dGV4dHt0ZXh0LWFuY2hvcjptaWRkbGU7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbH19PC9zdHlsZT48L3N2Zz4K" alt="Eduardo Monteiro Dev" width="130" height="36"/></a>
       <nav class="footer-links">
         <a href="#hero" data-footer-link>Início</a>
         <a href="#services" data-footer-link>Serviços</a>
         <a href="#projects" data-footer-link>Projetos</a>
         <a href="#pricing" data-footer-link>Preços</a>
         <a href="./contract.html" data-footer-link target="_blank">Contrato</a>
+        <a href="./legal.html" data-footer-link target="_blank">Legal</a>
       </nav>
       <div class="footer-social">
         <a href="https://linkedin.com/in/vdcpt" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
@@ -546,7 +572,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       </div>
     </div>
     <p class="footer-tagline" id="footer-tagline" style="margin-top:24px">Construindo o futuro, uma linha de código de cada vez.</p>
-    <p class="footer-legal" id="footer-legal">Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026</p>
+    <p class="footer-legal" id="footer-legal">© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev</p>
   </div>
 </footer>
 
@@ -555,13 +581,27 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
      Inlined for maximum GitHub Pages compatibility with
      custom domains (monteiro.is-a.dev) before full HTTPS propagation.
 ═══════════════════════════════════════════════ -->
+
+<!-- A2HS INSTALL MODAL -->
+<div id="a2hs-modal" role="dialog" aria-label="Install App">
+  <div class="a2hs-icon">⬡</div>
+  <div class="a2hs-text">
+    <p class="a2hs-title" id="a2hs-title">Instalar Aplicação</p>
+    <p class="a2hs-desc" id="a2hs-desc">Adicione ao ecrã inicial para acesso rápido, offline e sem browser.</p>
+  </div>
+  <div class="a2hs-btns">
+    <button class="a2hs-install" id="a2hs-install">⊕ Instalar</button>
+    <button class="a2hs-dismiss" id="a2hs-dismiss">✕</button>
+  </div>
+</div>
+
 <script>
 'use strict';
 
 /* ── TRANSLATIONS ─────────────────────────────────── */
 const T={
 'pt-PT':{
-  nav:{home:'Início',services:'Serviços',projects:'Projetos',process:'Processo',pricing:'Preços',contract:'Contrato',contact:'Contacto'},
+  nav:{home:'Início',services:'Serviços',projects:'Projetos',process:'Processo',pricing:'Preços',contract:'Contrato',contact:'Contacto',legal:'Legal'},
   hero:{eyebrow:'Desenvolvedor Full-Stack com IA',t1:'MVPs em',t2:'Semanas.',t3:'Não em Meses.',sub:'Construo produtos digitais escaláveis com IA — do conceito ao lançamento, com código limpo e arquitectura preparada para crescer.',cta1:'Ver Portfólio',cta2:'Orçamento Gratuito',typing:['SaaS Platforms','Biometric Systems','AI Integrations','Analytics Dashboards','Payment Systems']},
   metrics:[{v:'10+',l:'Anos no Mercado'},{v:'50+',l:'Projetos Entregues'},{v:'15+',l:'Países Servidos'},{v:'100%',l:'Taxa de Satisfação'}],
   services:{ey:'O que construo',ti:'Serviços de Desenvolvimento',su:'Cada projeto é tratado como um produto de startup: velocidade, qualidade e escalabilidade em simultâneo.',items:[
@@ -597,7 +637,7 @@ const T={
   cookie:{text:'Este site utiliza cookies para análise. Ao continuar, aceita a nossa',link:'Política de Privacidade',accept:'Aceitar',decline:'Recusar'}
 },
 'en-US':{
-  nav:{home:'Home',services:'Services',projects:'Projects',process:'Process',pricing:'Pricing',contract:'Contract',contact:'Contact'},
+  nav:{home:'Home',services:'Services',projects:'Projects',process:'Process',pricing:'Pricing',contract:'Contract',contact:'Contact',legal:'Legal'},
   hero:{eyebrow:'AI-Powered Full-Stack Developer',t1:'MVPs in',t2:'Weeks.',t3:'Not Months.',sub:'I build scalable digital products with AI — from concept to launch, with clean code and architecture designed to grow.',cta1:'View Portfolio',cta2:'Free Quote',typing:['SaaS Platforms','Biometric Systems','AI Integrations','Analytics Dashboards','Payment Systems']},
   metrics:[{v:'10+',l:'Years in Market'},{v:'50+',l:'Projects Delivered'},{v:'15+',l:'Countries Served'},{v:'100%',l:'Satisfaction Rate'}],
   services:{ey:'What I build',ti:'Development Services',su:'Every project is treated like a startup product: speed, quality, and scalability simultaneously.',items:[
@@ -633,7 +673,7 @@ const T={
   cookie:{text:'This site uses cookies for analytics. By continuing, you accept our',link:'Privacy Policy',accept:'Accept',decline:'Decline'}
 },
 'fr-CH':{
-  nav:{home:'Accueil',services:'Services',projects:'Projets',process:'Processus',pricing:'Tarifs',contract:'Contrat',contact:'Contact'},
+  nav:{home:'Accueil',services:'Services',projects:'Projets',process:'Processus',pricing:'Tarifs',contract:'Contrat',contact:'Contact',legal:'Légal'},
   hero:{eyebrow:'Développeur Full-Stack IA',t1:'MVP en',t2:'Semaines.',t3:'Pas en Mois.',sub:"Je construis des produits numériques évolutifs avec l'IA — du concept au lancement, avec un code propre et une architecture prête à grandir.",cta1:'Voir le Portfolio',cta2:'Devis Gratuit',typing:['Plateformes SaaS','Systèmes Biométriques','Intégrations IA','Tableaux de Bord','Systèmes de Paiement']},
   metrics:[{v:'10+',l:'Ans sur le Marché'},{v:'50+',l:'Projets Livrés'},{v:'15+',l:'Pays Servis'},{v:'100%',l:'Taux de Satisfaction'}],
   services:{ey:'Ce que je construis',ti:'Services de Développement',su:'Chaque projet est traité comme un produit startup : vitesse, qualité et évolutivité simultanément.',items:[
@@ -669,7 +709,7 @@ const T={
   cookie:{text:"Ce site utilise des cookies d'analyse. En continuant, vous acceptez notre",link:'Politique de Confidentialité',accept:'Accepter',decline:'Refuser'}
 },
 'de-CH':{
-  nav:{home:'Start',services:'Leistungen',projects:'Projekte',process:'Prozess',pricing:'Preise',contract:'Vertrag',contact:'Kontakt'},
+  nav:{home:'Start',services:'Leistungen',projects:'Projekte',process:'Prozess',pricing:'Preise',contract:'Vertrag',contact:'Kontakt',legal:'Rechtliches'},
   hero:{eyebrow:'KI-gestützter Full-Stack-Entwickler',t1:'MVPs in',t2:'Wochen.',t3:'Nicht Monaten.',sub:'Ich baue skalierbare digitale Produkte mit KI — vom Konzept bis zum Launch, mit sauberem Code und skalierbarer Architektur.',cta1:'Portfolio Ansehen',cta2:'Kostenloses Angebot',typing:['SaaS-Plattformen','Biometrische Systeme','KI-Integrationen','Analytics-Dashboards','Zahlungssysteme']},
   metrics:[{v:'10+',l:'Jahre am Markt'},{v:'50+',l:'Gelieferte Projekte'},{v:'15+',l:'Bediente Länder'},{v:'100%',l:'Zufriedenheitsrate'}],
   services:{ey:'Was ich baue',ti:'Entwicklungsleistungen',su:'Jedes Projekt wird wie ein Startup-Produkt behandelt: Geschwindigkeit, Qualität und Skalierbarkeit gleichzeitig.',items:[
@@ -705,7 +745,7 @@ const T={
   cookie:{text:'Diese Website verwendet Analyse-Cookies. Durch Fortfahren akzeptieren Sie unsere',link:'Datenschutzrichtlinie',accept:'Akzeptieren',decline:'Ablehnen'}
 },
 'es-ES':{
-  nav:{home:'Inicio',services:'Servicios',projects:'Proyectos',process:'Proceso',pricing:'Precios',contract:'Contrato',contact:'Contacto'},
+  nav:{home:'Inicio',services:'Servicios',projects:'Proyectos',process:'Proceso',pricing:'Precios',contract:'Contrato',contact:'Contacto',legal:'Legal'},
   hero:{eyebrow:'Desarrollador Full-Stack con IA',t1:'MVPs en',t2:'Semanas.',t3:'No en Meses.',sub:'Construyo productos digitales escalables con IA — del concepto al lanzamiento, con código limpio y arquitectura preparada para crecer.',cta1:'Ver Portafolio',cta2:'Presupuesto Gratis',typing:['Plataformas SaaS','Sistemas Biométricos','Integraciones IA','Paneles de Análisis','Sistemas de Pago']},
   metrics:[{v:'10+',l:'Años en el Mercado'},{v:'50+',l:'Proyectos Entregados'},{v:'15+',l:'Países Atendidos'},{v:'100%',l:'Tasa de Satisfacción'}],
   services:{ey:'Lo que construyo',ti:'Servicios de Desarrollo',su:'Cada proyecto se trata como un producto startup: velocidad, calidad y escalabilidad simultáneamente.',items:[
@@ -741,7 +781,7 @@ const T={
   cookie:{text:'Este sitio usa cookies de análisis. Al continuar, acepta nuestra',link:'Política de Privacidad',accept:'Aceptar',decline:'Rechazar'}
 },
 'it-IT':{
-  nav:{home:'Home',services:'Servizi',projects:'Progetti',process:'Processo',pricing:'Prezzi',contract:'Contratto',contact:'Contatto'},
+  nav:{home:'Home',services:'Servizi',projects:'Progetti',process:'Processo',pricing:'Prezzi',contract:'Contratto',contact:'Contatto',legal:'Legale'},
   hero:{eyebrow:'Sviluppatore Full-Stack con IA',t1:'MVP in',t2:'Settimane.',t3:'Non in Mesi.',sub:'Costruisco prodotti digitali scalabili con IA — dal concetto al lancio, con codice pulito e architettura pronta a crescere.',cta1:'Vedi Portfolio',cta2:'Preventivo Gratuito',typing:['Piattaforme SaaS','Sistemi Biometrici','Integrazioni IA','Dashboard Analitici','Sistemi di Pagamento']},
   metrics:[{v:'10+',l:'Anni sul Mercato'},{v:'50+',l:'Progetti Consegnati'},{v:'15+',l:'Paesi Serviti'},{v:'100%',l:'Tasso di Soddisfazione'}],
   services:{ey:'Cosa costruisco',ti:'Servizi di Sviluppo',su:'Ogni progetto viene trattato come un prodotto startup: velocità, qualità e scalabilità simultaneamente.',items:[
@@ -779,7 +819,7 @@ const T={
 };
 
 /* ── STATE ── */
-let locale=localStorage.getItem('vc-locale')||'pt-PT';
+const _LOCALES=['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];const _stored=localStorage.getItem('vc-locale');const _nav=(navigator.language||'').replace('_','-');const _navMatch=_LOCALES.find(l=>_nav.startsWith(l.split('-')[0]));let locale=_stored||_navMatch||'de-CH';
 let pricingModel='50/50';
 
 /* ── NEURAL CANVAS ── */
@@ -985,6 +1025,54 @@ document.addEventListener('DOMContentLoaded',()=>{
   initLang();
   initHeader();
 });
+
+/* ── PWA SERVICE WORKER + A2HS ── */
+(function(){
+  // Service Worker registration
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>{
+      navigator.serviceWorker.register('./sw.js',{scope:'./'})
+        .then(r=>console.log('[SW] Registered:',r.scope))
+        .catch(e=>console.warn('[SW] Registration failed:',e));
+    });
+  }
+  // A2HS Install prompt
+  let _deferredPrompt=null;
+  const modal=document.getElementById('a2hs-modal');
+  const installBtn=document.getElementById('a2hs-install');
+  const dismissBtn=document.getElementById('a2hs-dismiss');
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    _deferredPrompt=e;
+    if(modal&&!localStorage.getItem('a2hs-dismissed')){
+      setTimeout(()=>modal.classList.add('show'),3000);
+    }
+  });
+  if(installBtn){installBtn.addEventListener('click',async()=>{
+    if(!_deferredPrompt){return;}
+    modal.classList.remove('show');
+    await _deferredPrompt.prompt();
+    const{outcome}=await _deferredPrompt.userChoice;
+    console.log('[A2HS] User choice:',outcome);
+    _deferredPrompt=null;
+  });}
+  if(dismissBtn){dismissBtn.addEventListener('click',()=>{
+    modal.classList.remove('show');
+    localStorage.setItem('a2hs-dismissed','1');
+  });}
+  // iOS detection (no beforeinstallprompt)
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
+  const isStandalone=('standalone' in navigator&&navigator.standalone)||window.matchMedia('(display-mode:standalone)').matches;
+  if(isIOS&&!isStandalone&&!localStorage.getItem('a2hs-dismissed')){
+    if(modal){
+      document.getElementById('a2hs-title').textContent='Adicionar ao Ecrã Inicial';
+      document.getElementById('a2hs-desc').textContent='No Safari: toque em ⎋ → Adicionar ao Ecrã Inicial para instalar.';
+      document.getElementById('a2hs-install').style.display='none';
+      setTimeout(()=>modal.classList.add('show'),3000);
+    }
+  }
+})();
+
 </script>
 </body>
-</html> 
+</html>

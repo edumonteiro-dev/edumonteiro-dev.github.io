@@ -2,36 +2,7 @@
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**GitHub:** https://github.com/edumonteiro-dev
-
-## 🇨🇭 Modelo de Engenharia B2B (Swiss-Compliant Contractor)
-
-Atuo como **consultor externo especializado** e **prestador de serviços B2B (Freelancer / Corporate Contractor)** para empresas suíças e internacionais. Este modelo elimina a fricção da contratação tradicional, focando puramente no **resultado técnico e na entrega imediata de valor (Time-to-Value)**.
-
-### Vantagens do Modelo B2B / External Consultant
-* **Agilidade Contratual:** Integração imediata no projeto sem burocracia ou custos estruturais de RH (Sem *overhead* de contratação interna).
-* **Conformidade Legal Suíça:** Infraestrutura jurídica preparada para faturamento externo, alinhada com as exigências de *compliance* do mercado suíço (**Foro de Zurique**).
-* **Autonomia e Foco em Resultados:** Atuação totalmente independente, orientada a métricas de desempenho e sem necessidade de microgestão.
-* **Modelo Financeiro Transparente:** Flexibilidade contratual suportada diretamente no ecossistema do portfólio (`contract.html`).
-
----
-
-## Soluções Tecnológicas de Alto Desempenho, Fiáveis e Escaláveis
-
-Sistema de alto desempenho e máxima fiabilidade, desenvolvido com código limpo, rigorosamente tipado e de fácil manutenção. Totalmente otimizado para velocidade, SEO e escalabilidade.
-
-## Desafio Técnico — Teste as Minhas Capacidades
-
-Como Desenvolvedor Full-Stack especializado em Integração de IA, o meu objetivo é ser o parceiro estratégico para resolver os problemas técnicos mais complexos do seu negócio em tempo real. Combino o poder de processamento de dados com lógica computacional exata para entregar soluções robustas e escaláveis.
-
-Para demonstrar este valor na prática, convido-o a testar as minhas capacidades agora mesmo. Escolha um dos desafios abaixo e envie-me o seu caso real:
-
-* **Otimização de Código:** Envie-me um algoritmo complexo com um *bug* oculto ou que necessite de uma otimização massiva de performance.
-* **Análise de Dados Avançada:** Apresente um cenário de negócio com múltiplas variáveis em conflito para eu estruturar uma estratégia preditiva (financeira ou operacional).
-* **Engenharia de Soluções:** Indique um problema estrutural complexo (ex: logística urbana, eficiência energética) para eu desenhar a arquitetura de um plano de execução do zero.
-* **Validação de Arquitetura:** Proponha um debate técnico sobre uma escolha de infraestrutura ou stack controversa, e eu defenderei a melhor abordagem com dados rigorosos.
-
-Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie diretamente o **desafio mais crítico que a sua empresa enfrenta hoje** para eu analisar e apresentar uma proposta e orçamento personalizados.
+**GitHub:** https://github.com  
 
 ## Deploy Targets
 
@@ -46,10 +17,10 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 
 ## File Structure
 
+```
 /
 ├── index.html          # Portfolio SPA — JS/CSS 100% inlined (GitHub Pages safe)
-├── legal.html          # GDPR/Swiss Law Policies — JS/CSS 100% inlined
-├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined (Swiss Law compliant)
+├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined
 ├── assets/
 │   ├── logo.svg        # EM monogram — hexagonal neural network (purple/teal)
 │   └── favicon.svg     # EM favicon — 32×32 SVG
@@ -59,6 +30,7 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 ├── netlify.toml        # Redirects + CSP + HSTS headers
 └── _redirects          # Netlify SPA fallback rule
 ```
+
 ## Security Headers (All Platforms)
 
 - `Content-Security-Policy` — strict allowlist
@@ -71,7 +43,7 @@ Qual destes caminhos quer seguir para testar o meu trabalho? Se preferir, envie 
 ## i18n — 6 Markets
 
 `PT-PT` · `EN-US` · `FR-CH` · `DE-CH` · `ES-ES` · `IT-IT`  
-Locale persisted in `localStorage('vc-locale')` — shared between `index.html` and `contract.html`. Otimizado para os principais cantões e mercados da Suíça.
+Locale persisted in `localStorage('vc-locale')` — shared between `index.html` and `contract.html`.
 
 ## Contract (contract.html)
 
@@ -87,12 +59,12 @@ Locale persisted in `localStorage('vc-locale')` — shared between `index.html` 
 
 ## Projects Featured
 
-1. *kmlucropro.com* — SaaS TVDE (Live)
-2. *Voz do Condutor* — vozdocondutor.com (Live)
-3. *Sistema Biométrico* — Fingerprint matching
-4. *UNIFED PROBATUM* — Analytics dashboard (Live)
-5. *Gestão de Turnos* — HR scheduling
-6. *Metodologia de Testes* — QA framework.
+1. **kmlucropro.com** — SaaS TVDE (Live)
+2. **Voz do Condutor** — vozdocondutor.com (Live)
+3. **Sistema Biométrico** — Fingerprint matching
+4. **UNIFED PROBATUM** — Analytics dashboard (Live)
+5. **Gestão de Turnos** — HR scheduling
+6. **Metodologia de Testes** — QA framework
 
 ---
-*© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev*
+*© 2026 Eduardo Monteiro · monteiro.is-a.dev*

@@ -1,49 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal & Compliance | Eduardo Monteiro B2B</title>
-    <meta name="robots" content="noindex, nofollow">
-    <style>
-        /* 100% Inlined CSS - Zero external rendering blocks */
-        :root { --bg: #0d1117; --text: #c9d1d9; --accent: #58a6ff; --border: #30363d; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 900px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
-        h1, h2, h3 { color: #ffffff; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .section { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .legal-header { text-align: center; margin-bottom: 3rem; padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(255,255,255,0.02); }
-        .legal-header h1 { margin-top: 0; font-size: 1.8rem; }
-        .badge { display: inline-block; padding: 0.2rem 0.5rem; background: var(--accent); color: var(--bg); font-size: 0.8rem; font-weight: bold; border-radius: 3px; margin-right: 0.5rem; }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Legal — Eduardo Monteiro Dev</title>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding:0 0 64px}
+a{color:var(--purple)}
+h1,h2,h3{font-family:'Courier New',monospace}
+.doc-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:16px 0;position:sticky;top:0;z-index:50}
+.header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hdr-title{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
+.lang-btn,.tab-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.06em}
+.lang-btn.active,.tab-btn.active{border-color:var(--purple);color:var(--purple);background:rgba(123,92,240,.1)}
+.back-link{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:all .2s}
+.back-link:hover{color:var(--purple);border-color:var(--purple)}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+.page-title{padding:28px 0 0;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-sub{font-family:monospace;font-size:.75rem;color:var(--muted);letter-spacing:.08em;margin-bottom:24px}
+/* TABS */
+.tabs-nav{display:flex;gap:6px;flex-wrap:wrap;margin:24px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+/* SECTIONS */
+.legal-section{margin-bottom:32px}
+.section-eyebrow{font-family:monospace;font-size:.7rem;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.section-title{font-size:1.05rem;font-weight:700;color:var(--teal);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:14px}
+.clause{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.clause h4{font-family:monospace;font-size:.75rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.clause p,.clause li{font-size:.88rem;color:var(--muted);line-height:1.75}
+.clause ul{padding-left:16px;margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.clause.highlight{border-color:var(--teal);background:rgba(0,245,160,.03)}
+.clause.warning{border-color:var(--coral);background:rgba(255,60,172,.03)}
+.badge{display:inline-block;font-family:monospace;font-size:.65rem;padding:2px 8px;border-radius:999px;border:1px solid var(--teal);color:var(--teal);letter-spacing:.08em;margin-bottom:10px}
+.sep{height:1px;background:linear-gradient(90deg,transparent,var(--border-h),transparent);margin:28px 0}
+@media(max-width:640px){.tabs-nav{gap:4px}.tab-btn{font-size:.65rem;padding:3px 7px}}
+@media print{body{background:#fff;color:#000}.clause{border:1px solid #ccc;background:#fafafa}.clause p,.clause li{color:#333}}
+</style>
 </head>
 <body>
-    <div class="legal-header">
-        <h1>Legal, Privacy & GDPR Compliance</h1>
-        <p><strong>Effective Date:</strong> August 11, 2026</p>
-        <p><strong>Governing Law:</strong> Swiss Federal Law (Zurich Courts)</p>
-    </div>
 
-    <div class="section" id="terms">
-        <h2><span class="badge">01</span> Terms of Use (B2B Contractor)</h2>
-        <p><strong>1. Services Framework:</strong> These terms govern the technical consultancy and elite software engineering services provided by Eduardo Monteiro (the "Contractor") via the infrastructure at monteiro.is-a.dev.</p>
-        <p><strong>2. Intellectual Property:</strong> All source code, systemic architecture, and project deliverables remain the exclusive intellectual property of the Contractor until complete financial settlement is executed as detailed in the applicable Statement of Work (SOW) and User Acceptance Testing (UAT) documentation.</p>
-        <p><strong>3. Liability & Warranties:</strong> Services are provisioned strictly aligned with global security protocols (OWASP Top 10, Zero Trust). The Contractor assumes zero liability for system degradation or damages originating from unauthorized third-party modifications post-deployment.</p>
+<div class="doc-header">
+  <div class="header-inner">
+    <span class="hdr-title" id="hdr-t">Documentação Legal</span>
+    <div style="display:flex;gap:4px;flex-wrap:wrap">
+      <button class="lang-btn active" data-lang="pt-PT">PT</button>
+      <button class="lang-btn" data-lang="en-US">EN</button>
+      <button class="lang-btn" data-lang="fr-CH">FR</button>
+      <button class="lang-btn" data-lang="de-CH">DE</button>
+      <button class="lang-btn" data-lang="es-ES">ES</button>
+      <button class="lang-btn" data-lang="it-IT">IT</button>
     </div>
+    <a href="./index.html" class="back-link" id="back-lbl">← Portfólio</a>
+  </div>
+</div>
 
-    <div class="section" id="privacy">
-        <h2><span class="badge">02</span> Privacy Policy (GDPR / Swiss FADP)</h2>
-        <p><strong>1. Data Collection Scope:</strong> We systematically collect only essential B2B operational data (Corporate Identifiers, Name, Professional Email) strictly for the execution and fulfillment of technical contracts.</p>
-        <p><strong>2. Processing & Encryption:</strong> All data is encrypted at rest and in transit. We maintain a strict zero-distribution policy. Client data is never leveraged, sold, or exposed for secondary commercial telemetry. Processing architectures are fully compliant with the EU General Data Protection Regulation (GDPR) and the Swiss Federal Act on Data Protection (FADP).</p>
-        <p><strong>3. Data Subject Rights:</strong> Clients hold immutable rights to request comprehensive cryptographic erasure, rectification, or extraction of their data by issuing a formal directive to <em>edumonteiro.dev@gmail.com</em>.</p>
-    </div>
+<div class="container">
+  <p class="page-title" id="page-title">Documentação Legal & Compliance</p>
+  <p class="page-sub" id="page-sub">Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Lei Aplicável: Suíça (LPD/FADP) + RGPD/GDPR</p>
 
-    <div class="section" id="cookies">
-        <h2><span class="badge">03</span> Cookie Policy (Zero-Tracking Standard)</h2>
-        <p><strong>1. Tracking Infrastructure:</strong> This operational platform adheres to a strict Zero-Tracking standard. No third-party behavioral trackers, marketing analytics (e.g., Google Analytics, Meta Pixels), or non-essential cookies are injected into the runtime environment.</p>
-        <p><strong>2. Functional State Persistence:</strong> We mandate the use of client-side storage (specifically <code>localStorage</code>) exclusively to persist critical user interface states, such as multi-market internationalization (i18n) variables required for cross-canton deployment.</p>
-        <p><strong>3. Active Consent:</strong> By accessing and utilizing the B2B endpoints and contract dashboards, you explicitly consent to the localized technical persistence strictly required for application operability.</p>
+  <div class="tabs-nav" id="tabs-nav">
+    <button class="tab-btn active" data-tab="terms" id="tab-terms">Termos de Utilização</button>
+    <button class="tab-btn" data-tab="privacy" id="tab-privacy">Política de Privacidade</button>
+    <button class="tab-btn" data-tab="disclaimer" id="tab-disclaimer">Isenção de Responsabilidade</button>
+    <button class="tab-btn" data-tab="rgpd" id="tab-rgpd">RGPD / FADP</button>
+    <button class="tab-btn" data-tab="cookies" id="tab-cookies">Política de Cookies</button>
+  </div>
+
+  <!-- ── TERMS ─────────────────────────────── -->
+  <div class="tab-panel active" id="panel-terms">
+    <div class="legal-section">
+      <p class="section-eyebrow" id="s-terms-ey">Cláusula 1</p>
+      <h2 class="section-title" id="s-terms-t">TERMOS DE UTILIZAÇÃO</h2>
+      <div class="clause highlight">
+        <h4 id="t1-h">Âmbito e Aceitação</h4>
+        <p id="t1-p">O acesso e utilização deste portfólio digital (<strong>monteiro.is-a.dev</strong>) e dos seus sub-recursos (contract.html, legal.html) implica a aceitação integral dos presentes Termos. O portfólio é uma plataforma de apresentação profissional B2B do prestador de serviços Eduardo Monteiro, desenvolvedor full-stack com IA, registado para fins de actividade independente.</p>
+      </div>
+      <div class="clause">
+        <h4 id="t2-h">Propriedade Intelectual</h4>
+        <p id="t2-p">Todo o conteúdo deste website — incluindo código-fonte, design, textos, logótipo e arquitectura — é propriedade exclusiva de Eduardo Monteiro e está protegido pelas leis de propriedade intelectual aplicáveis. É proibida a reprodução, cópia ou utilização comercial sem autorização escrita prévia.</p>
+      </div>
+      <div class="clause">
+        <h4 id="t3-h">Limitações de Uso</h4>
+        <ul id="t3-list">
+          <li>Proibida a utilização para fins ilegais, fraudulentos ou que violem direitos de terceiros.</li>
+          <li>Proibido o scraping automatizado ou extracção massiva de dados sem consentimento.</li>
+          <li>Proibida a engenharia inversa ou descompilação do código inlined.</li>
+        </ul>
+      </div>
+      <div class="clause">
+        <h4 id="t4-h">Modificações e Disponibilidade</h4>
+        <p id="t4-p">O prestador reserva-se o direito de modificar, suspender ou descontinuar qualquer parte do portfólio sem aviso prévio. O portfólio pode estar temporariamente indisponível por razões de manutenção ou força maior.</p>
+      </div>
     </div>
+  </div>
+
+  <!-- ── PRIVACY ────────────────────────────── -->
+  <div class="tab-panel" id="panel-privacy">
+    <div class="legal-section">
+      <p class="section-eyebrow" id="s-priv-ey">Cláusula 2</p>
+      <h2 class="section-title" id="s-priv-t">POLÍTICA DE PRIVACIDADE</h2>
+      <div class="clause highlight">
+        <span class="badge">Zero-Tracking · Zero-Cookies · FADP/LPD · RGPD</span>
+        <h4 id="p1-h">Dados Recolhidos</h4>
+        <p id="p1-p">Este website <strong>não recolhe, processa, armazena nem transmite</strong> quaisquer dados pessoais a servidores externos. Não existem cookies de rastreamento, pixels de análise, scripts de terceiros ou formulários que transmitam dados para servidores remotos. O único estado persistido é a preferência de idioma (<code>localStorage('vc-locale')</code>) e a preferência de instalação (<code>localStorage('a2hs-dismissed')</code>), armazenados exclusivamente no dispositivo do utilizador.</p>
+      </div>
+      <div class="clause">
+        <h4 id="p2-h">localStorage — Dados no Dispositivo</h4>
+        <ul id="p2-list">
+          <li><code>vc-locale</code> — Preferência de idioma (ex: "pt-PT"). Nunca transmitido.</li>
+          <li><code>vc-cookie</code> — Preferência de consentimento de cookies (0 ou 1).</li>
+          <li><code>a2hs-dismissed</code> — Preferência de instalação PWA. Nunca transmitido.</li>
+        </ul>
+      </div>
+      <div class="clause">
+        <h4 id="p3-h">Contacto por Email</h4>
+        <p id="p3-p">Se nos contactar via email (edumonteiro.dev@gmail.com), os dados fornecidos (nome, email, mensagem) serão utilizados exclusivamente para responder ao pedido e não serão partilhados com terceiros, nem utilizados para fins comerciais não solicitados.</p>
+      </div>
+      <div class="clause">
+        <h4 id="p4-h">Direitos do Titular dos Dados (RGPD Art. 15-22 / FADP)</h4>
+        <ul id="p4-list">
+          <li><strong>Acesso</strong> — Direito a saber quais os dados processados.</li>
+          <li><strong>Rectificação</strong> — Direito a corrigir dados incorrectos.</li>
+          <li><strong>Eliminação</strong> — Direito ao apagamento ("direito ao esquecimento").</li>
+          <li><strong>Portabilidade</strong> — Direito a receber dados em formato estruturado.</li>
+          <li><strong>Oposição</strong> — Direito a opor-se ao tratamento para fins de marketing.</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.82rem;color:var(--muted)">Para exercer estes direitos: <strong>edumonteiro.dev@gmail.com</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DISCLAIMER ─────────────────────────── -->
+  <div class="tab-panel" id="panel-disclaimer">
+    <div class="legal-section">
+      <p class="section-eyebrow" id="s-disc-ey">Cláusula 3</p>
+      <h2 class="section-title" id="s-disc-t">ISENÇÃO DE RESPONSABILIDADE</h2>
+      <div class="clause warning">
+        <h4 id="d1-h">Natureza do Portfólio</h4>
+        <p id="d1-p">Este portfólio tem carácter estritamente informativo e de apresentação profissional. As informações, métricas e descrições de projectos apresentadas são fornecidas de boa-fé e sem garantia de exactidão absoluta. Os projectos apresentados correspondem a trabalho real executado, podendo algumas funcionalidades terem sido desenvolvidas em contextos de NDA (Acordo de Não Divulgação).</p>
+      </div>
+      <div class="clause">
+        <h4 id="d2-h">Limitação de Responsabilidade</h4>
+        <p id="d2-p">Eduardo Monteiro não se responsabiliza por qualquer dano directo, indirecto, incidental ou consequente resultante do acesso, utilização ou incapacidade de utilização deste website. A responsabilidade total é limitada ao máximo permitido pela lei aplicável.</p>
+      </div>
+      <div class="clause">
+        <h4 id="d3-h">Links Externos</h4>
+        <p id="d3-p">Os links para websites externos (LinkedIn, GitHub, Workana, Upwork, 99Freelas, kmlucropro.com, vozdocondutor.com) são fornecidos por conveniência. Eduardo Monteiro não tem controlo sobre esses websites e não é responsável pelo seu conteúdo, disponibilidade ou práticas de privacidade.</p>
+      </div>
+      <div class="clause">
+        <h4 id="d4-h">Disponibilidade do Serviço</h4>
+        <p id="d4-p">O website é disponibilizado "tal como está" sem qualquer garantia de disponibilidade contínua, ausência de erros ou adequação a um fim específico.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RGPD/FADP ──────────────────────────── -->
+  <div class="tab-panel" id="panel-rgpd">
+    <div class="legal-section">
+      <p class="section-eyebrow" id="s-rgpd-ey">Cláusula 4</p>
+      <h2 class="section-title" id="s-rgpd-t">RGPD / FADP — CONFORMIDADE SUÍÇA E EUROPEIA</h2>
+      <div class="clause highlight">
+        <span class="badge">FADP (LPD) · RGPD Art.13 · nDSG · Switzerland Primary</span>
+        <h4 id="r1-h">Base Legal e Responsável pelo Tratamento</h4>
+        <p id="r1-p">O responsável pelo tratamento de dados é <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). A base legal para qualquer eventual tratamento de dados pessoais (exclusivamente via contacto por email) é o <strong>interesse legítimo</strong> (Art. 6(1)(f) RGPD / Art. 31 LPD) e o <strong>consentimento livre e informado</strong> do titular.</p>
+      </div>
+      <div class="clause">
+        <h4 id="r2-h">Conformidade com a LPD Suíça (FADP / nDSG)</h4>
+        <ul id="r2-list">
+          <li>A nova Lei Federal sobre Protecção de Dados (nLPD, em vigor desde 1 Set. 2023) é o quadro de referência primário para clientes suíços.</li>
+          <li>Não existe transferência de dados para países terceiros sem adequação ou salvaguardas equivalentes.</li>
+          <li>Não existe tomada de decisão automatizada nem criação de perfis (profiling).</li>
+          <li>Não existe Encarregado de Protecção de Dados (DPO) obrigatório neste contexto (microempresa / actividade individual).</li>
+        </ul>
+      </div>
+      <div class="clause">
+        <h4 id="r3-h">Transferências Internacionais de Dados</h4>
+        <p id="r3-p">Este website não efectua transferências internacionais de dados pessoais. O GitHub Pages (infra-estrutura de hosting) processa metadados de acesso (IPs) nos termos da sua própria política de privacidade (Microsoft/GitHub GDPR DPA). O utilizador é encorajado a consultar a <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">política de privacidade do GitHub</a>.</p>
+      </div>
+      <div class="clause">
+        <h4 id="r4-h">Adenda de Processamento de Dados (DPA)</h4>
+        <p id="r4-p">Para projectos B2B que envolvam o processamento de dados pessoais de clientes finais, Eduardo Monteiro disponibiliza um Acordo de Processamento de Dados (DPA) personalizado, adaptado à jurisdição do cliente (RGPD/FADP). Contacte: edumonteiro.dev@gmail.com.</p>
+      </div>
+      <div class="clause">
+        <h4 id="r5-h">Autoridade de Supervisão</h4>
+        <p id="r5-p">Em caso de litígio sobre protecção de dados não resolvido directamente com o responsável, o titular pode apresentar queixa junto da autoridade competente: <strong>PFPDT</strong> (Preposé Fédéral à la Protection des Données, Suíça) ou a autoridade nacional de protecção de dados do seu país de residência.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COOKIES ────────────────────────────── -->
+  <div class="tab-panel" id="panel-cookies">
+    <div class="legal-section">
+      <p class="section-eyebrow" id="s-cook-ey">Cláusula 5</p>
+      <h2 class="section-title" id="s-cook-t">POLÍTICA DE COOKIES — PADRÃO ZERO-TRACKING</h2>
+      <div class="clause highlight">
+        <span class="badge">Zero Cookies de Terceiros · Zero Analytics · Zero Rastreamento</span>
+        <h4 id="c1-h">Declaração de Zero-Tracking</h4>
+        <p id="c1-p">Este website opera segundo um padrão de <strong>Zero-Tracking</strong>. Não são utilizados quaisquer cookies de rastreamento, cookies de sessão de terceiros, pixels de análise (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), scripts de marketing ou tecnologias de fingerprinting. O website não rastreia o comportamento de navegação do utilizador.</p>
+      </div>
+      <div class="clause">
+        <h4 id="c2-h">localStorage — Armazenamento Local Funcional</h4>
+        <p id="c2-p">Tecnicamente, este website utiliza <code>localStorage</code> (armazenamento local do browser) — não cookies HTTP — para persistir preferências funcionais estritamente necessárias:</p>
+        <ul id="c2-list">
+          <li><strong>vc-locale</strong> — Idioma seleccionado pelo utilizador. Base legal: interesse legítimo / funcionamento essencial.</li>
+          <li><strong>vc-cookie</strong> — Decisão do utilizador sobre o banner informativo. Base legal: consentimento.</li>
+          <li><strong>a2hs-dismissed</strong> — Decisão sobre o modal de instalação PWA. Base legal: interesse legítimo.</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.82rem;color:var(--muted)">Estes dados são <strong>puramente locais</strong>: residem no dispositivo do utilizador, nunca são transmitidos, e podem ser apagados a qualquer momento limpando os dados do browser.</p>
+      </div>
+      <div class="clause">
+        <h4 id="c3-h">Cookies de Infraestrutura (GitHub Pages)</h4>
+        <p id="c3-p">O hosting via GitHub Pages pode definir cookies técnicos de infra-estrutura da Microsoft/GitHub, fora do controlo do responsável deste website. Consulte a política de privacidade do GitHub para detalhes. Não são cookies de rastreamento de comportamento.</p>
+      </div>
+      <div class="clause">
+        <h4 id="c4-h">Gestão e Eliminação</h4>
+        <p id="c4-p">O utilizador pode eliminar todos os dados de localStorage a qualquer momento: <strong>Definições do Browser → Privacidade → Limpar dados de navegação → Dados de sites</strong>. Após eliminação, as preferências regressam ao estado inicial na próxima visita.</p>
+      </div>
+      <div class="clause">
+        <h4 id="c5-h">Ausência de Consentimento para Rastreamento</h4>
+        <p id="c5-p">Dado que não existem cookies de rastreamento ou análise, não é necessário obter consentimento adicional para a sua colocação (conforme Directiva ePrivacy e RGPD). O banner informativo apresentado é uma medida de transparência voluntária, não uma exigência legal neste contexto específico.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+'use strict';
+
+// ── i18n sync with portfolio ───────────────────────────────────
+let locale = localStorage.getItem('vc-locale') || 'pt-PT';
+
+const L = {
+  'pt-PT':{ hdr:'Documentação Legal',back:'← Portfólio',title:'Documentação Legal & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Lei Aplicável: Suíça (FADP/LPD) + RGPD/GDPR',tabs:['Termos de Utilização','Política de Privacidade','Isenção de Responsabilidade','RGPD / FADP','Política de Cookies'] },
+  'en-US':{ hdr:'Legal Documentation',back:'← Portfolio',title:'Legal Documentation & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Governing Law: Switzerland (FADP/LPD) + GDPR',tabs:['Terms of Use','Privacy Policy','Disclaimer','GDPR / FADP','Cookie Policy'] },
+  'fr-CH':{ hdr:'Documentation Juridique',back:'← Portfolio',title:'Documentation Juridique & Conformité',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Droit applicable: Suisse (LPD/FADP) + RGPD',tabs:['Conditions d\'Utilisation','Politique de Confidentialité','Clause de Non-Responsabilité','RGPD / LPD','Politique de Cookies'] },
+  'de-CH':{ hdr:'Rechtliche Dokumentation',back:'← Portfolio',title:'Rechtliche Dokumentation & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Anwendbares Recht: Schweiz (DSG/FADP) + DSGVO',tabs:['Nutzungsbedingungen','Datenschutzerklärung','Haftungsausschluss','DSGVO / DSG','Cookie-Richtlinie'] },
+  'es-ES':{ hdr:'Documentación Legal',back:'← Portafolio',title:'Documentación Legal & Cumplimiento',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Ley aplicable: Suiza (FADP/LPD) + RGPD',tabs:['Términos de Uso','Política de Privacidad','Descargo de Responsabilidad','RGPD / FADP','Política de Cookies'] },
+  'it-IT':{ hdr:'Documentazione Legale',back:'← Portfolio',title:'Documentazione Legale & Conformità',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Legge applicabile: Svizzera (LPD/FADP) + GDPR',tabs:['Termini di Utilizzo','Informativa sulla Privacy','Limitazione di Responsabilità','GDPR / LPD','Informativa sui Cookie'] },
+};
+
+function applyLang(loc) {
+  const t = L[loc] || L['pt-PT'];
+  document.documentElement.lang = loc;
+  document.title = t.title + ' — Eduardo Monteiro Dev';
+  const si = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = v; };
+  si('hdr-t', t.hdr);
+  si('back-lbl', t.back);
+  si('page-title', t.title);
+  si('page-sub', t.sub);
+  const tabBtns = ['tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies'];
+  tabBtns.forEach((id, i) => si(id, t.tabs[i]));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === loc));
+}
+
+// ── Tab switching ──────────────────────────────────────────────
+function activateTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tabId));
+}
+
+// ── Events ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  applyLang(locale);
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      locale = btn.dataset.lang;
+      localStorage.setItem('vc-locale', locale);
+      applyLang(locale);
+    });
+  });
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+  });
+});
+</script>
 </body>
 </html>
