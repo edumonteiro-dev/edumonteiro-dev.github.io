@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT" dir="ltr">
+<html lang="de-CH" dir="ltr">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
@@ -236,6 +236,24 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
   #neural-canvas{display:none}
 }
+
+/* ── A2HS INSTALL MODAL ── */
+#a2hs-modal{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 32px);max-width:420px;background:var(--card);
+  border:1px solid var(--border-h);border-radius:var(--rl);padding:20px 22px;
+  z-index:300;box-shadow:0 8px 48px rgba(0,0,0,.8);backdrop-filter:blur(20px);
+  animation:slideUp .4s var(--ease)}
+#a2hs-modal.a2hs-visible{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#a2hs-modal .a2hs-icon{font-size:2rem;flex-shrink:0}
+#a2hs-modal .a2hs-text{flex:1}
+#a2hs-modal .a2hs-title{font-family:monospace;font-size:.8rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+#a2hs-modal .a2hs-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+#a2hs-modal .a2hs-btns{display:flex;gap:8px;width:100%}
+#a2hs-modal .a2hs-install{flex:1;padding:9px 16px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-family:monospace;font-size:.8rem;font-weight:600;cursor:pointer;transition:opacity .2s}
+#a2hs-modal .a2hs-install:hover{opacity:.85}
+#a2hs-modal .a2hs-dismiss{padding:9px 14px;border:1px solid var(--border);background:none;color:var(--muted);border-radius:8px;font-family:monospace;font-size:.8rem;cursor:pointer;transition:color .2s}
+#a2hs-modal .a2hs-dismiss:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -517,14 +535,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <div class="social-links">
           <a class="social-link" href="mailto:edumonteiro.dev@gmail.com">
             <span class="s-icon">✉</span><span>Email</span><span class="s-val">edumonteiro.dev@gmail.com</span>
-          </a>
-          <a class="social-link" href="https://linkedin.com/in/vdcpt" target="_blank" rel="noopener">
-            <span class="s-icon">💼</span><span>LinkedIn</span><span class="s-val">linkedin.com/in/vdcpt</span>
-          </a>
-          <a class="social-link" href="https://github.com" target="_blank" rel="noopener">
-            <span class="s-icon">⌥</span><span>GitHub</span><span class="s-val">github.com</span>
-          </a>
-          <a class="social-link" href="https://www.workana.com/pt/jobs?skills=web-development-1" target="_blank" rel="noopener">
+          </a>          <a class="social-link" href="https://www.workana.com/pt/jobs?skills=web-development-1" target="_blank" rel="noopener">
             <span class="s-icon">⬡</span><span>Workana</span><span class="s-val">Contratar via Workana</span>
           </a>
           <a class="social-link" href="https://www.upwork.com" target="_blank" rel="noopener">
@@ -565,10 +576,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <a href="./contract.html" data-footer-link target="_blank">Contrato</a>
         <a href="./legal.html" data-footer-link target="_blank">Legal</a>
       </nav>
-      <div class="footer-social">
-        <a href="https://linkedin.com/in/vdcpt" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
-        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">⌥</a>
-        <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email">✉</a>
+      <div class="footer-social">        <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email">✉</a>
       </div>
     </div>
     <p class="footer-tagline" id="footer-tagline" style="margin-top:24px">Construindo o futuro, uma linha de código de cada vez.</p>
@@ -612,14 +620,7 @@ const T={
     {ic:'⬡',tag:'Análise & BI',ti:'Dashboards & Analytics',de:'Visualizações D3.js interactivas, relatórios em tempo real, dashboards de performance e exportação PDF/Excel.'},
     {ic:'◉',tag:'50€–150€/mês',ti:'Manutenção Contínua',de:'Atualizações de segurança, monitorização 24/7 e 2h mensais de ajustes incluídas.'}
   ]},
-  projects:{ey:'Portfólio',ti:'Projetos em Destaque',su:'Produtos reais. Código que funciona em produção.',items:[
-    {tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecossistema SaaS completo para motoristas TVDE. Auth por telemóvel, Stripe Subscriptions, trial de 7 dias, dashboard em tempo real, geração de PDF e sistema de frotas.',link:'https://kmlucropro.com',live:true},
-    {tag:'Produção · Transporte · Web',ti:'Voz do Condutor',de:'Site institucional e plataforma informativa para profissionais do transporte. Projeto em produção com conteúdo dinâmico, design responsivo e SEO optimizado para o mercado TVDE.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Segurança · Biometria',ti:'Sistema Biométrico',de:'Plataforma de reconhecimento de impressões digitais para uso policial. Algoritmo de matching biunívoco, cross-referencing de base de dados e gestão de cadeia de custódia digital.',link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de comando de análise para o mercado Uber/Bolt. Visualizações D3.js, dados em tempo real, análise preditiva e relatórios automáticos em PDF.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'RH · Scheduling',ti:'Gestão de Turnos',de:'Sistema de agendamento de colaboradores com workflows de aprovação, cálculo automático de horas extra e integração com payroll.',link:'#',live:false},
-    {tag:'QA · Testing',ti:'Metodologia de Testes',de:'Framework de testes A/B com análise de funil de conversão, heatmaps, session recording e relatórios automáticos de qualidade.',link:'#',live:false}
-  ]},
+  projects:{ey:'Portfólio',ti:'Projetos em Destaque',su:'Produtos reais. Código que funciona em produção.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecossistema SaaS completo para motoristas TVDE. Auth por telemóvel, Stripe Subscriptions, trial 7 dias, dashboard em tempo real, geração PDF e gestão de frotas.',link:'https://kmlucropro.com',live:true},{tag:'Produção · Transporte · Web',ti:'Voz do Condutor',de:'Site institucional para profissionais do transporte. Design responsivo, SEO optimizado e conteúdo dinâmico para o mercado TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Segurança · Biometria',ti:'Sistema Biométrico',de:'Plataforma de reconhecimento de impressões digitais para uso policial. Matching biunívoco, cross-referencing e cadeia de custódia digital.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de comando analítico para o mercado Uber/Bolt. Visualizações D3.js, dados em tempo real e análise preditiva.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RH · Scheduling',ti:'Gestão de Turnos',de:'Sistema de agendamento com workflows de aprovação, cálculo de horas extra e integração com payroll.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodologia de Testes',de:'Framework A/B com análise de funil, heatmaps, session recording e relatórios automáticos de qualidade.',link:'#',live:false},{tag:'PWA · IA · Saúde Mental · FHIR',ti:'Haven',de:'PWA de saúde mental com IA Edge on-device (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail e conformidade FHIR/FADP/RGPD. Mercado suíço.',link:'#',live:false},{tag:'SaaS · Educação · Suíça · IA',ti:'SpriCH',de:'Plataforma SaaS de aprendizagem de idiomas para o mercado suíço. Gamificação adaptativa com IA, LLM curriculum e conformidade FADP.',link:'#',live:false}]},
   process:{ey:'Como trabalho',ti:'Processo de Entrega em 5 Passos',su:'Sem surpresas. Sem scope creep. Com métricas claras em cada fase.',steps:[
     {n:'01',ti:'Discovery',du:'2-3 dias',de:'Briefing, análise de viabilidade técnica, definição de MVP scope, estimativa de recursos e assinatura de contrato.'},
     {n:'02',ti:'Design',du:'3-5 dias',de:'Arquitectura de informação, wireframes, UI/UX Figma de alta fidelidade, design system e aprovação do cliente.'},
@@ -648,14 +649,7 @@ const T={
     {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Interactive D3.js visualizations, real-time reports, performance dashboards, and PDF/Excel exports.'},
     {ic:'◉',tag:'$60-$180/mo',ti:'Ongoing Maintenance',de:'Security updates, Firebase/Stripe patches, 24/7 monitoring, and 2h monthly minor adjustments included.'}
   ]},
-  projects:{ey:'Portfolio',ti:'Featured Projects',su:'Real products. Code that runs in production.',items:[
-    {tag:'SaaS · TVDE · AI',ti:'kmlucropro.com',de:'Complete SaaS ecosystem for TVDE drivers. Phone auth, Stripe Subscriptions, 7-day trial, real-time dashboard, PDF generation and fleet management.',link:'https://kmlucropro.com',live:true},
-    {tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Institutional website and informative platform for transport professionals. Live production project with dynamic content, responsive design and optimized SEO for the TVDE market.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Security · Biometrics',ti:'Biometric System',de:'Fingerprint recognition platform for law enforcement. Biunivocal matching algorithm, database cross-referencing, and digital chain of custody management.',link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Command center analytics for the Uber/Bolt market. D3.js visualizations, real-time data, predictive analysis, and automatic PDF reports.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'HR · Scheduling',ti:'Shift Management',de:'Employee scheduling system with approval workflows, automatic overtime calculation, payroll integration, and mobile calendar.',link:'#',live:false},
-    {tag:'QA · Testing',ti:'Testing Methodology',de:'A/B testing framework with conversion funnel analysis, heatmaps, session recording, and automated quality reports.',link:'#',live:false}
-  ]},
+  projects:{ey:'Portfolio',ti:'Featured Projects',su:'Real products. Code that runs in production.',items:[{tag:'SaaS · TVDE · AI',ti:'kmlucropro.com',de:'Complete SaaS ecosystem for TVDE drivers. Phone auth, Stripe Subscriptions, 7-day trial, real-time dashboard, PDF generation and fleet management.',link:'https://kmlucropro.com',live:true},{tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Institutional website for transport professionals. Responsive design, optimised SEO and dynamic content for the TVDE market.',link:'https://vozdocondutor.com',live:true},{tag:'Security · Biometrics',ti:'Biometric System',de:'Fingerprint recognition platform for law enforcement. Biunivocal matching algorithm, database cross-referencing and digital chain of custody.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Analytics command centre for the Uber/Bolt market. D3.js visualisations, real-time data and predictive analysis.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Scheduling',ti:'Shift Management',de:'Scheduling system with approval workflows, overtime calculation and payroll integration.',link:'#',live:false},{tag:'QA · Testing',ti:'Testing Methodology',de:'A/B framework with funnel analysis, heatmaps, session recording and automated quality reports.',link:'#',live:false},{tag:'PWA · AI · Mental Health · FHIR',ti:'Haven',de:'Mental health PWA with on-device Edge AI (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail and FHIR/FADP/GDPR compliance. Swiss market.',link:'#',live:false},{tag:'SaaS · Education · Switzerland · AI',ti:'SpriCH',de:'SaaS language-learning platform for the Swiss market. Adaptive AI gamification, LLM curriculum and FADP compliance for minors.',link:'#',live:false}]},
   process:{ey:'How I work',ti:'5-Step Delivery Process',su:'No surprises. No scope creep. Clear metrics at every phase.',steps:[
     {n:'01',ti:'Discovery',du:'2-3 days',de:'Briefing, technical feasibility analysis, MVP scope definition, resource estimation, and contract signing.'},
     {n:'02',ti:'Design',du:'3-5 days',de:'Information architecture, wireframes, high-fidelity Figma UI/UX, design system, and client approval.'},
@@ -684,14 +678,7 @@ const T={
     {ic:'⬡',tag:'Analytics & BI',ti:'Tableaux de Bord & Analytics',de:'Visualisations D3.js interactives, rapports en temps réel, tableaux de performance et exports PDF/Excel.'},
     {ic:'◉',tag:'80-250CHF/mois',ti:'Maintenance Continue',de:"Mises à jour de sécurité, patches Firebase/Stripe, monitoring 24/7 et 2h d'ajustements mensuels inclus."}
   ]},
-  projects:{ey:'Portfolio',ti:'Projets en Vedette',su:'Vrais produits. Code qui tourne en production.',items:[
-    {tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Écosystème SaaS complet pour chauffeurs TVDE. Auth par téléphone, Stripe Subscriptions, essai 7 jours, dashboard temps réel, génération PDF et gestion de flotte.',link:'https://kmlucropro.com',live:true},
-    {tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Site institutionnel et plateforme informative pour les professionnels du transport. Projet en production avec contenu dynamique, design responsive et SEO optimisé pour le marché TVDE.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Sécurité · Biométrie',ti:'Système Biométrique',de:"Plateforme de reconnaissance d'empreintes digitales pour usage policier. Algorithme de correspondance biunivoque, cross-référencement de base de données et gestion de chaîne de garde numérique.",link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centre de commande analytique pour le marché Uber/Bolt. Visualisations D3.js, données temps réel, analyse prédictive et rapports automatiques.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'RH · Planification',ti:'Gestion des Quarts',de:"Système de planification des employés avec workflows d'approbation, calcul automatique des heures supplémentaires, intégration paie et calendrier mobile.",link:'#',live:false},
-    {tag:'QA · Tests',ti:'Méthodologie de Tests',de:"Framework de tests A/B avec analyse d'entonnoir de conversion, heatmaps, enregistrement de session et rapports de qualité automatisés.",link:'#',live:false}
-  ]},
+  projects:{ey:'Portfolio',ti:'Projets en Vedette',su:'Vrais produits. Code qui tourne en production.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Écosystème SaaS complet pour chauffeurs TVDE. Auth téléphonique, Stripe Subscriptions, essai 7 jours, tableau de bord temps réel et gestion de flotte.',link:'https://kmlucropro.com',live:true},{tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Site institutionnel pour les professionnels du transport. Design responsive, SEO optimisé et contenu dynamique pour le marché TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Sécurité · Biométrie',ti:'Système Biométrique',de:'Plateforme de reconnaissance d\'empreintes pour usage policier. Algorithme de correspondance biunivoque et gestion de chaîne de garde numérique.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centre de commande analytique pour le marché Uber/Bolt. Visualisations D3.js, données temps réel et analyse prédictive.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RH · Planification',ti:'Gestion des Quarts',de:'Système de planification avec workflows d\'approbation, calcul des heures supplémentaires et intégration paie.',link:'#',live:false},{tag:'QA · Tests',ti:'Méthodologie de Tests',de:'Framework A/B avec analyse d\'entonnoir, heatmaps, enregistrement de session et rapports qualité automatisés.',link:'#',live:false},{tag:'PWA · IA · Santé Mentale · FHIR',ti:'Haven',de:'PWA de santé mentale avec IA Edge on-device (WASM), chiffrement BYOC Zero-Knowledge, Guardrail clinique et conformité FHIR/LPD/RGPD. Marché suisse.',link:'#',live:false},{tag:'SaaS · Éducation · Suisse · IA',ti:'SpriCH',de:'Plateforme SaaS d\'apprentissage des langues pour le marché suisse. Gamification adaptative IA, curriculum LLM et conformité LPD.',link:'#',live:false}]},
   process:{ey:'Comment je travaille',ti:'Processus de Livraison en 5 Étapes',su:'Aucune surprise. Aucun dérapage de périmètre. Des métriques claires à chaque phase.',steps:[
     {n:'01',ti:'Découverte',du:'2-3 jours',de:"Briefing, analyse de faisabilité technique, définition du périmètre MVP, estimation des ressources et signature du contrat."},
     {n:'02',ti:'Design',du:'3-5 jours',de:"Architecture de l'information, wireframes, UI/UX Figma haute fidélité, design system et validation client."},
@@ -720,14 +707,7 @@ const T={
     {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Interaktive D3.js-Visualisierungen, Echtzeit-Berichte, Performance-Dashboards und PDF/Excel-Exporte.'},
     {ic:'◉',tag:'80-250CHF/Monat',ti:'Laufende Wartung',de:'Sicherheitsupdates, Firebase/Stripe-Patches, 24/7-Monitoring und 2h monatliche Kleinanpassungen inklusive.'}
   ]},
-  projects:{ey:'Portfolio',ti:'Ausgewählte Projekte',su:'Echte Produkte. Code der in Produktion läuft.',items:[
-    {tag:'SaaS · TVDE · KI',ti:'kmlucropro.com',de:'Vollständiges SaaS-Ökosystem für TVDE-Fahrer. Telefon-Auth, Stripe Subscriptions, 7-Tage-Testversion, Echtzeit-Dashboard, PDF-Generierung und Flottenmanagement.',link:'https://kmlucropro.com',live:true},
-    {tag:'Produktion · Transport · Web',ti:'Voz do Condutor',de:'Institutionelle Website und Informationsplattform für Transportfachleute. Live-Produktionsprojekt mit dynamischen Inhalten, responsivem Design und optimiertem SEO für den TVDE-Markt.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Sicherheit · Biometrie',ti:'Biometrisches System',de:'Fingerabdruck-Erkennungsplattform für den Polizeieinsatz. Biunivokaler Matching-Algorithmus, Datenbank-Cross-Referenzierung und digitales Chain-of-Custody-Management.',link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Analysezentrale für den Uber/Bolt-Markt. D3.js-Visualisierungen, Echtzeitdaten, prädiktive Analyse und automatische Berichte.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'HR · Planung',ti:'Schichtverwaltung',de:'Mitarbeiterplanungssystem mit Genehmigungsworkflows, automatischer Überstundenberechnung, Lohnbuchhaltungsintegration und mobilem Kalender.',link:'#',live:false},
-    {tag:'QA · Tests',ti:'Testmethodologie',de:'A/B-Test-Framework mit Konversionstrichteranalyse, Heatmaps, Session-Aufzeichnung und automatisierten Qualitätsberichten.',link:'#',live:false}
-  ]},
+  projects:{ey:'Portfolio',ti:'Ausgewählte Projekte',su:'Echte Produkte. Code der in Produktion läuft.',items:[{tag:'SaaS · TVDE · KI',ti:'kmlucropro.com',de:'Vollständiges SaaS-Ökosystem für TVDE-Fahrer. Telefon-Auth, Stripe Subscriptions, 7-Tage-Test, Echtzeit-Dashboard, PDF-Generierung und Flottenmanagement.',link:'https://kmlucropro.com',live:true},{tag:'Produktion · Transport · Web',ti:'Voz do Condutor',de:'Institutionelle Website für Transportfachleute. Responsives Design, optimiertes SEO und dynamische Inhalte für den TVDE-Markt.',link:'https://vozdocondutor.com',live:true},{tag:'Sicherheit · Biometrie',ti:'Biometrisches System',de:'Fingerabdruck-Erkennungsplattform für Strafverfolgungsbehörden. Biunivokaler Matching-Algorithmus und digitales Chain-of-Custody-Management.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Analytische Kommandozentrale für den Uber/Bolt-Markt. D3.js-Visualisierungen, Echtzeitdaten und prädiktive Analyse.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Planung',ti:'Schichtverwaltung',de:'Planungssystem mit Genehmigungsworkflows, Überstundenberechnung und Lohnbuchhaltungsintegration.',link:'#',live:false},{tag:'QA · Tests',ti:'Testmethodologie',de:'A/B-Framework mit Trichteranalyse, Heatmaps, Session-Aufzeichnung und automatisierten Qualitätsberichten.',link:'#',live:false},{tag:'PWA · KI · Psychische Gesundheit · FHIR',ti:'Haven',de:'Psychische-Gesundheits-PWA mit On-Device Edge-KI (WASM), Zero-Knowledge BYOC-Verschlüsselung, Clinical Guardrail und FHIR/DSG/DSGVO-Konformität. Schweizer Markt.',link:'#',live:false},{tag:'SaaS · Bildung · Schweiz · KI',ti:'SpriCH',de:'SaaS-Sprachenlernplattform für den Schweizer Markt. Adaptive KI-Gamifizierung, LLM-Curriculum und DSG-Konformität für Minderjährige.',link:'#',live:false}]},
   process:{ey:'Wie ich arbeite',ti:'5-Schritte-Lieferprozess',su:'Keine Überraschungen. Kein Scope Creep. Klare Metriken in jeder Phase.',steps:[
     {n:'01',ti:'Entdeckung',du:'2-3 Tage',de:'Briefing, technische Machbarkeitsanalyse, MVP-Umfangsdefinition, Ressourcenschätzung und Vertragsunterzeichnung.'},
     {n:'02',ti:'Design',du:'3-5 Tage',de:'Informationsarchitektur, Wireframes, High-Fidelity Figma UI/UX, Design-System und Kundengenehmigung.'},
@@ -756,14 +736,7 @@ const T={
     {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Visualizaciones D3.js interactivas, informes en tiempo real, dashboards de rendimiento y exportación PDF/Excel.'},
     {ic:'◉',tag:'55€-160€/mes',ti:'Mantenimiento Continuo',de:'Actualizaciones de seguridad, patches Firebase/Stripe, monitoreo 24/7 y 2h mensuales de ajustes incluidas.'}
   ]},
-  projects:{ey:'Portafolio',ti:'Proyectos Destacados',su:'Productos reales. Código que funciona en producción.',items:[
-    {tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo para conductores TVDE. Auth por teléfono, Stripe Subscriptions, prueba de 7 días, dashboard en tiempo real, generación de PDF y gestión de flota.',link:'https://kmlucropro.com',live:true},
-    {tag:'Producción · Transporte · Web',ti:'Voz do Condutor',de:'Sitio institucional y plataforma informativa para profesionales del transporte. Proyecto en producción con contenido dinámico, diseño responsivo y SEO optimizado para el mercado TVDE.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Seguridad · Biometría',ti:'Sistema Biométrico',de:'Plataforma de reconocimiento de huellas dactilares para uso policial. Algoritmo de coincidencia biunívoco, cross-referencing de base de datos y gestión de cadena de custodia digital.',link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de comando de análisis para el mercado Uber/Bolt. Visualizaciones D3.js, datos en tiempo real, análisis predictivo e informes automáticos.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'RRHH · Planificación',ti:'Gestión de Turnos',de:'Sistema de programación de empleados con flujos de aprobación, cálculo automático de horas extra, integración de nómina y calendario móvil.',link:'#',live:false},
-    {tag:'QA · Testing',ti:'Metodología de Testing',de:'Framework de pruebas A/B con análisis de embudo de conversión, heatmaps, grabación de sesiones e informes de calidad automáticos.',link:'#',live:false}
-  ]},
+  projects:{ey:'Portafolio',ti:'Proyectos Destacados',su:'Productos reales. Código que funciona en producción.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo para conductores TVDE. Auth telefónica, Stripe Subscriptions, prueba 7 días, dashboard tiempo real, generación PDF y gestión de flota.',link:'https://kmlucropro.com',live:true},{tag:'Producción · Transporte · Web',ti:'Voz do Condutor',de:'Sitio institucional para profesionales del transporte. Diseño responsive, SEO optimizado y contenido dinámico para el mercado TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Seguridad · Biometría',ti:'Sistema Biométrico',de:'Plataforma de reconocimiento de huellas para uso policial. Algoritmo de coincidencia biunívoco y gestión de cadena de custodia digital.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de mando analítico para el mercado Uber/Bolt. Visualizaciones D3.js, datos en tiempo real y análisis predictivo.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RRHH · Planificación',ti:'Gestión de Turnos',de:'Sistema de programación con flujos de aprobación, cálculo de horas extra e integración de nómina.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodología de Testing',de:'Framework A/B con análisis de embudo, heatmaps, grabación de sesiones e informes de calidad automáticos.',link:'#',live:false},{tag:'PWA · IA · Salud Mental · FHIR',ti:'Haven',de:'PWA de salud mental con IA Edge on-device (WASM), cifrado BYOC Zero-Knowledge, Clinical Guardrail y conformidad FHIR/RGPD. Mercado suizo.',link:'#',live:false},{tag:'SaaS · Educación · Suiza · IA',ti:'SpriCH',de:'Plataforma SaaS de aprendizaje de idiomas para el mercado suizo. Gamificación adaptativa IA, curriculum LLM y conformidad FADP.',link:'#',live:false}]},
   process:{ey:'Cómo trabajo',ti:'Proceso de Entrega en 5 Pasos',su:'Sin sorpresas. Sin scope creep. Métricas claras en cada fase.',steps:[
     {n:'01',ti:'Descubrimiento',du:'2-3 días',de:'Briefing, análisis de viabilidad técnica, definición de alcance MVP, estimación de recursos y firma de contrato.'},
     {n:'02',ti:'Diseño',du:'3-5 días',de:'Arquitectura de información, wireframes, UI/UX Figma de alta fidelidad, design system y aprobación del cliente.'},
@@ -792,14 +765,7 @@ const T={
     {ic:'⬡',tag:'Analytics & BI',ti:'Dashboard & Analytics',de:"Visualizzazioni D3.js interattive, report in tempo reale, dashboard di performance ed esportazione PDF/Excel."},
     {ic:'◉',tag:'50€-150€/mese',ti:'Manutenzione Continua',de:'Aggiornamenti di sicurezza, patch Firebase/Stripe, monitoring 24/7 e 2h mensili di piccole modifiche incluse.'}
   ]},
-  projects:{ey:'Portfolio',ti:'Progetti in Evidenza',su:'Prodotti reali. Codice che gira in produzione.',items:[
-    {tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo per autisti TVDE. Auth telefonica, Stripe Subscriptions, prova 7 giorni, dashboard in tempo reale, generazione PDF e gestione flotta.',link:'https://kmlucropro.com',live:true},
-    {tag:'Produzione · Trasporto · Web',ti:'Voz do Condutor',de:'Sito istituzionale e piattaforma informativa per professionisti del trasporto. Progetto live in produzione con contenuto dinamico, design responsive e SEO ottimizzato per il mercato TVDE.',link:'https://vozdocondutor.com',live:true},
-    {tag:'Sicurezza · Biometria',ti:'Sistema Biometrico',de:"Piattaforma di riconoscimento delle impronte digitali per uso delle forze dell'ordine. Algoritmo di matching biunivoco, cross-referencing database e gestione catena di custodia digitale.",link:'#',live:false},
-    {tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro di comando analitico per il mercato Uber/Bolt. Visualizzazioni D3.js, dati in tempo reale, analisi predittiva e report automatici.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},
-    {tag:'HR · Pianificazione',ti:'Gestione dei Turni',de:'Sistema di pianificazione dipendenti con workflow di approvazione, calcolo automatico degli straordinari, integrazione buste paga e calendario mobile.',link:'#',live:false},
-    {tag:'QA · Testing',ti:'Metodologia di Testing',de:'Framework di test A/B con analisi funnel di conversione, heatmap, registrazione sessioni e report di qualità automatizzati.',link:'#',live:false}
-  ]},
+  projects:{ey:'Portfolio',ti:'Progetti in Evidenza',su:'Prodotti reali. Codice che gira in produzione.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo per autisti TVDE. Auth telefonica, Stripe Subscriptions, prova 7 giorni, dashboard in tempo reale, generazione PDF e gestione flotta.',link:'https://kmlucropro.com',live:true},{tag:'Produzione · Trasporto · Web',ti:'Voz do Condutor',de:'Sito istituzionale per professionisti del trasporto. Design responsive, SEO ottimizzato e contenuto dinamico per il mercato TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Sicurezza · Biometria',ti:'Sistema Biometrico',de:'Piattaforma di riconoscimento impronte per le forze dell\'ordine. Algoritmo di matching biunivoco e gestione della catena di custodia digitale.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro di comando analitico per il mercato Uber/Bolt. Visualizzazioni D3.js, dati in tempo reale e analisi predittiva.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Pianificazione',ti:'Gestione dei Turni',de:'Sistema di pianificazione con workflow di approvazione, calcolo straordinari e integrazione buste paga.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodologia di Testing',de:'Framework A/B con analisi funnel, heatmap, registrazione sessioni e report di qualità automatizzati.',link:'#',live:false},{tag:'PWA · IA · Salute Mentale · FHIR',ti:'Haven',de:'PWA per la salute mentale con Edge AI on-device (WASM), crittografia BYOC Zero-Knowledge, Clinical Guardrail e conformità FHIR/LPD/GDPR. Mercato svizzero.',link:'#',live:false},{tag:'SaaS · Istruzione · Svizzera · IA',ti:'SpriCH',de:'Piattaforma SaaS di apprendimento linguistico per il mercato svizzero. Gamificazione adattiva IA, curriculum LLM e conformità LPD per minori.',link:'#',live:false}]},
   process:{ey:'Come lavoro',ti:'Processo di Consegna in 5 Fasi',su:'Nessuna sorpresa. Nessuno scope creep. Metriche chiare in ogni fase.',steps:[
     {n:'01',ti:'Scoperta',du:'2-3 giorni',de:'Briefing, analisi di fattibilità tecnica, definizione scope MVP, stima delle risorse e firma del contratto.'},
     {n:'02',ti:'Design',du:'3-5 giorni',de:'Architettura informativa, wireframe, UI/UX Figma alta fedeltà, design system e approvazione cliente.'},
@@ -819,7 +785,7 @@ const T={
 };
 
 /* ── STATE ── */
-const _LOCALES=['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];const _stored=localStorage.getItem('vc-locale');const _nav=(navigator.language||'').replace('_','-');const _navMatch=_LOCALES.find(l=>_nav.startsWith(l.split('-')[0]));let locale=_stored||_navMatch||'de-CH';
+const _LOCALES=['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];const _LANG_MAP={'pt':'pt-PT','en':'en-US','fr':'fr-CH','de':'de-CH','es':'es-ES','it':'it-IT'};const _stored=localStorage.getItem('vc-locale');const _navLangs=(navigator.languages&&navigator.languages.length)  ?navigator.languages:[navigator.language||'de'];const _navMatch=(function(){  for(var i=0;i<_navLangs.length;i++){    var code=(_navLangs[i]||'').toLowerCase().split('-')[0];    if(_LANG_MAP[code])return _LANG_MAP[code];  } return null;})();let locale=_stored||_navMatch||'de-CH';
 let pricingModel='50/50';
 
 /* ── NEURAL CANVAS ── */
@@ -1028,48 +994,68 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 /* ── PWA SERVICE WORKER + A2HS ── */
 (function(){
-  // Service Worker registration
+  /* — Service Worker — */
   if('serviceWorker' in navigator){
-    window.addEventListener('load',()=>{
+    window.addEventListener('load',function(){
       navigator.serviceWorker.register('./sw.js',{scope:'./'})
-        .then(r=>console.log('[SW] Registered:',r.scope))
-        .catch(e=>console.warn('[SW] Registration failed:',e));
+        .then(function(r){console.log('[SW] Scope:',r.scope);})
+        .catch(function(e){console.warn('[SW] Failed:',e);});
     });
   }
-  // A2HS Install prompt
-  let _deferredPrompt=null;
-  const modal=document.getElementById('a2hs-modal');
-  const installBtn=document.getElementById('a2hs-install');
-  const dismissBtn=document.getElementById('a2hs-dismiss');
-  window.addEventListener('beforeinstallprompt',e=>{
+
+  /* — A2HS state — */
+  window.deferredPrompt=null;
+  var modal   = document.getElementById('a2hs-modal');
+  var installBtn = document.getElementById('a2hs-install');
+  var dismissBtn = document.getElementById('a2hs-dismiss');
+  var STORAGE_KEY = 'a2hs-dismissed';
+
+  function showModal(){
+    if(!modal||localStorage.getItem(STORAGE_KEY)) return;
+    setTimeout(function(){ modal.classList.add('a2hs-visible'); }, 3500);
+  }
+  function hideModal(){
+    if(modal) modal.classList.remove('a2hs-visible');
+  }
+
+  /* — Chrome/Android: beforeinstallprompt — */
+  window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
-    _deferredPrompt=e;
-    if(modal&&!localStorage.getItem('a2hs-dismissed')){
-      setTimeout(()=>modal.classList.add('show'),3000);
-    }
+    window.deferredPrompt = e;
+    showModal();
   });
-  if(installBtn){installBtn.addEventListener('click',async()=>{
-    if(!_deferredPrompt){return;}
-    modal.classList.remove('show');
-    await _deferredPrompt.prompt();
-    const{outcome}=await _deferredPrompt.userChoice;
-    console.log('[A2HS] User choice:',outcome);
-    _deferredPrompt=null;
-  });}
-  if(dismissBtn){dismissBtn.addEventListener('click',()=>{
-    modal.classList.remove('show');
-    localStorage.setItem('a2hs-dismissed','1');
-  });}
-  // iOS detection (no beforeinstallprompt)
-  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
-  const isStandalone=('standalone' in navigator&&navigator.standalone)||window.matchMedia('(display-mode:standalone)').matches;
-  if(isIOS&&!isStandalone&&!localStorage.getItem('a2hs-dismissed')){
-    if(modal){
-      document.getElementById('a2hs-title').textContent='Adicionar ao Ecrã Inicial';
-      document.getElementById('a2hs-desc').textContent='No Safari: toque em ⎋ → Adicionar ao Ecrã Inicial para instalar.';
-      document.getElementById('a2hs-install').style.display='none';
-      setTimeout(()=>modal.classList.add('show'),3000);
-    }
+
+  if(installBtn){
+    installBtn.addEventListener('click', async function(){
+      if(!window.deferredPrompt){ hideModal(); return; }
+      hideModal();
+      await window.deferredPrompt.prompt();
+      var choice = await window.deferredPrompt.userChoice;
+      console.log('[A2HS] Outcome:', choice.outcome);
+      window.deferredPrompt = null;
+      localStorage.setItem(STORAGE_KEY,'1');
+    });
+  }
+
+  if(dismissBtn){
+    dismissBtn.addEventListener('click', function(){
+      hideModal();
+      localStorage.setItem(STORAGE_KEY,'1');
+    });
+  }
+
+  /* — iOS Safari fallback (no beforeinstallprompt) — */
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  var isStandalone = ('standalone' in navigator && navigator.standalone)
+                  || window.matchMedia('(display-mode:standalone)').matches;
+  if(isIOS && !isStandalone){
+    var titleEl = document.getElementById('a2hs-title');
+    var descEl  = document.getElementById('a2hs-desc');
+    var iBtn    = document.getElementById('a2hs-install');
+    if(titleEl) titleEl.textContent = 'Adicionar ao Ecrã Inicial';
+    if(descEl)  descEl.textContent  = 'No Safari: toque em ⎋ Partilhar → Adicionar ao Ecrã Principal.';
+    if(iBtn)    iBtn.style.display  = 'none';
+    showModal();
   }
 })();
 

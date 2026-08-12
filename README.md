@@ -1,70 +1,189 @@
-# Eduardo Monteiro — AI-Powered Full-Stack Developer Portfolio
+# Eduardo Monteiro — AI-Powered Full-Stack Developer Portfolio (v5)
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**GitHub:** https://github.com  
-
-## Deploy Targets
-
-| Platform      | Config File      | Command / Action                              |
-|---------------|------------------|-----------------------------------------------|
-| GitHub Pages  | `CNAME`          | Push to `main`; Pages → Source: root branch  |
-| Vercel        | `vercel.json`    | `vercel --prod` or import via dashboard       |
-| Netlify       | `netlify.toml`   | Drag & drop folder or `netlify deploy --prod` |
-| Workana       | —                | Link: https://monteiro.is-a.dev               |
-| Upwork        | —                | Link: https://monteiro.is-a.dev               |
-| 99Freelas     | —                | Link: https://monteiro.is-a.dev               |
-
-## File Structure
-
-```
-/
-├── index.html          # Portfolio SPA — JS/CSS 100% inlined (GitHub Pages safe)
-├── contract.html       # MSA + SOW + UAT — JS/CSS 100% inlined
-├── assets/
-│   ├── logo.svg        # EM monogram — hexagonal neural network (purple/teal)
-│   └── favicon.svg     # EM favicon — 32×32 SVG
-├── CNAME               # monteiro.is-a.dev (GitHub Pages custom domain)
-├── .nojekyll           # Bypass Jekyll build on GitHub Pages
-├── vercel.json         # Static routing + HTTP security headers
-├── netlify.toml        # Redirects + CSP + HSTS headers
-└── _redirects          # Netlify SPA fallback rule
-```
-
-## Security Headers (All Platforms)
-
-- `Content-Security-Policy` — strict allowlist
-- `X-Frame-Options: DENY`
-- `X-Content-Type-Options: nosniff`
-- `Strict-Transport-Security` — max-age 2 years + preload
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy` — camera/mic/geo/payment blocked
-
-## i18n — 6 Markets
-
-`PT-PT` · `EN-US` · `FR-CH` · `DE-CH` · `ES-ES` · `IT-IT`  
-Locale persisted in `localStorage('vc-locale')` — shared between `index.html` and `contract.html`.
-
-## Contract (contract.html)
-
-- Payment model toggle: **50%+50% Fixed** or **T&M Hourly with Cap**
-- Full legal clauses in all 6 languages
-- UAT Checklist T01–T11 (interactive checkboxes)
-- Definition of Done (DoD) checklist
-- Annex A: SOW template (fillable)
-- Annex B: Timesheet template (fillable)
-- 4 Golden Financial Rules
-- Governing law: **Swiss law — Zurich courts**
-- Print-optimised CSS (`window.print()`)
-
-## Projects Featured
-
-1. **kmlucropro.com** — SaaS TVDE (Live)
-2. **Voz do Condutor** — vozdocondutor.com (Live)
-3. **Sistema Biométrico** — Fingerprint matching
-4. **UNIFED PROBATUM** — Analytics dashboard (Live)
-5. **Gestão de Turnos** — HR scheduling
-6. **Metodologia de Testes** — QA framework
+**Contact:** Workana · Upwork · 99Freelas  
 
 ---
-*© 2026 Eduardo Monteiro · monteiro.is-a.dev*
+
+## Estrutura de Arquivos
+
+```
+vibecoder/
+│
+├── index.html                   # SPA principal — portfólio completo
+│   ├── CSS inlined              # Zero dependências externas (system fonts)
+│   ├── JS inlined               # i18n engine (6 locales), neural canvas,
+│   │                            # scroll reveal, pricing toggle, A2HS modal,
+│   │                            # Service Worker registration
+│   └── Secções: Hero · Métricas · Serviços · Projetos (8) ·
+│                Processo · Stack · Preços · Contacto · Footer
+│
+├── contract.html                # MSA + SOW completo (B2B)
+│   ├── CSS inlined              # Print-optimised
+│   ├── JS inlined               # i18n sync com localStorage('vc-locale')
+│   └── Secções: Partes · Pagamento 50/50 ou T&M · IP ·
+│                UAT T01-T11 · DoD · 4 Regras de Ouro ·
+│                Anexo A (SOW) · Anexo B (Timesheet) · Assinaturas
+│
+├── legal.html                   # Documentação legal e compliance
+│   ├── CSS inlined
+│   ├── JS inlined               # i18n + tab switching (5 secções × 6 idiomas)
+│   └── Secções (tabs):
+│       ├── Termos de Utilização
+│       ├── Política de Privacidade (Zero-Tracking)
+│       ├── Isenção de Responsabilidade
+│       ├── RGPD / FADP (Swiss LPD focus)
+│       └── Política de Cookies (Zero-Tracking standard)
+│
+├── manifest.json                # PWA manifest (display: standalone)
+│   ├── name, short_name, description
+│   ├── start_url: ./index.html
+│   ├── background_color: #050508 · theme_color: #7B5CF0
+│   └── icons: favicon.svg (any · maskable)
+│
+├── sw.js                        # Service Worker (PWA)
+│   ├── Cache-First para assets estáticos
+│   ├── Network-First para HTML (offline fallback → index.html)
+│   ├── Cache name: em-dev-v4 (purge automático de versões anteriores)
+│   └── Precache: index, contract, legal, manifest, assets
+│
+├── assets/
+│   ├── logo.svg                 # Logo "EM" — hexagonal neural network
+│   │                            # Gradiente #7B5CF0 → #00F5A0
+│   │                            # text-anchor="middle" + dominant-baseline="central"
+│   │                            # Embedded as Base64 data URI nos HTML
+│   └── favicon.svg              # Favicon "EM" — 32×32px SVG
+│                                # Embedded as Base64 data URI nos HTML
+│
+├── secops/
+│   └── gatekeeper.js            # CI/CD integrity validator (Node.js ≥18)
+│       ├── Scans: index.html + contract.html
+│       ├── Verifica: zero deps externas não autorizadas
+│       ├── Verifica: tokens obrigatórios por ficheiro
+│       └── Uso: node secops/gatekeeper.js (exit 1 em caso de violação)
+│
+├── .github/
+│   └── workflows/
+│       └── deploy-seguro.yml    # GitHub Actions — Least Privilege OIDC
+│           ├── Trigger: push main + workflow_dispatch
+│           ├── permissions: contents:read · pages:write · id-token:write
+│           ├── concurrency: group pages, cancel-in-progress:true
+│           ├── fetch-depth: 1 (shallow clone)
+│           └── Actions: checkout@v4 · configure-pages@v4 ·
+│                        upload-pages-artifact@v3 · deploy-pages@v4
+│
+├── CNAME                        # monteiro.is-a.dev (GitHub Pages domain)
+├── .nojekyll                    # Bypass Jekyll build (GitHub Pages)
+├── _redirects                   # Netlify SPA fallback: /* /index.html 200
+│
+├── vercel.json                  # Vercel: static routing + security headers
+│   └── Headers: CSP · X-Frame-Options:DENY · X-Content-Type-Options:nosniff
+│               HSTS (2yr+preload) · Referrer-Policy · Permissions-Policy
+│
+├── netlify.toml                 # Netlify: redirects + security headers
+│   └── [Mesmos headers que vercel.json]
+│
+└── README.md                    # Este ficheiro
+```
+
+---
+
+## i18n — 6 Mercados
+
+| Código | Mercado | Fallback |
+|--------|---------|---------|
+| `de-CH` | Schweiz (Deutsch) | **Padrão do sistema** |
+| `pt-PT` | Portugal | navigator.language |
+| `en-US` | United States | navigator.language |
+| `fr-CH` | Suisse (Français) | navigator.language |
+| `es-ES` | España | navigator.language |
+| `it-IT` | Italia | navigator.language |
+
+**Prioridade de resolução:** `localStorage('vc-locale')` → `navigator.languages[]` map → `de-CH`  
+**Partilha de estado entre páginas:** `localStorage('vc-locale')` (todas as páginas sincronizadas)
+
+---
+
+## Projectos em Destaque (8)
+
+| # | Projecto | Estado | Stack |
+|---|---------|--------|-------|
+| 0 | **kmlucropro.com** | 🔴 Live | Next.js · Firebase · Stripe · React |
+| 1 | **Voz do Condutor** | 🔴 Live | HTML5 · CSS3 · JS · SEO |
+| 2 | **Sistema Biométrico** | Portfolio | Python · OpenCV · PostgreSQL · FastAPI |
+| 3 | **UNIFED PROBATUM** | 🔴 Live | D3.js · React · Python · BigQuery |
+| 4 | **Gestão de Turnos** | Portfolio | React · Node.js · Firebase · REST |
+| 5 | **Metodologia de Testes** | Portfolio | Playwright · Jest · Hotjar · CI/CD |
+| 6 | **Haven** | Portfolio | React · TypeScript · WASM · FHIR · CRDT |
+| 7 | **SpriCH** | Portfolio | Next.js · OpenAI · Firebase · Stripe |
+
+---
+
+## PWA — Add to Home Screen (A2HS)
+
+- **Chrome/Android:** `beforeinstallprompt` intercetado → modal animado após 3.5s
+- **iOS Safari:** Fallback instrutivo "Toca em ⎋ Partilhar → Adicionar ao Ecrã Principal"
+- **Estado:** `localStorage('a2hs-dismissed')` (não volta a aparecer após rejeição)
+- **Offline:** Service Worker precache → fallback `index.html`
+
+---
+
+## Segurança (Zero-Trust)
+
+| Header | Valor |
+|--------|-------|
+| CSP | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;` |
+| X-Content-Type-Options | `nosniff` |
+| Referrer-Policy | `strict-origin-when-cross-origin` |
+| X-Frame-Options | `DENY` (Vercel/Netlify headers) |
+| HSTS | `max-age=63072000; includeSubDomains; preload` |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=()` |
+
+**Zero dependências externas:** sem Google Fonts, sem CDN, sem analytics, sem tracking.  
+**Assets inline:** logo.svg e favicon.svg embebidos como Data URIs Base64.
+
+---
+
+## Deploy
+
+### GitHub Pages
+```bash
+git init && git branch -M main
+git add .
+git commit -m "feat: portfolio v5 — Eduardo Monteiro"
+git remote add origin https://github.com/SEU_USERNAME/portfolio.git
+git push -u origin main
+# Settings → Pages → Source: GitHub Actions
+```
+
+### Vercel
+```bash
+vercel --prod
+```
+
+### Netlify
+```bash
+netlify deploy --prod --dir .
+```
+
+### CI Integrity Gate
+```bash
+node secops/gatekeeper.js   # exit 0 = deploy autorizado
+```
+
+---
+
+## Contrato B2B
+
+`contract.html` implementa o **MSA + SOW** completo com:
+- Modelo **50%+50%** (Sinal Não Reembolsável + UAT 5 dias)
+- Modelo **T&M** (Taxa horária + Cap mensal + vigência máxima X meses)
+- **UAT Checklist** T01–T11 (interactiva)
+- **4 Regras de Ouro:** IP Retention · Scope Control · Hour Cap · Zurich Jurisdiction
+- **Anexo A:** SOW preenchível | **Anexo B:** Timesheet auditável
+- **Lei aplicável:** Suíça — Foro de Zurique
+
+---
+
+*© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev*
