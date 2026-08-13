@@ -33,6 +33,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          # secops/ excluded via .artifactignore
 
       - name: OIDC Deploy to Pages
         id: deployment
