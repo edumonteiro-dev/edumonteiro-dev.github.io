@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const CACHE_NAME   = 'em-dev-v4';
-const OFFLINE_URL  = './index.html';
+const CACHE_NAME   = 'em-dev-v5';
+const OFFLINE_URL  = './';
 
 const PRECACHE = [
   './',

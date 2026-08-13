@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de-CH" dir="ltr">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; base-uri 'none'; upgrade-insecure-requests;"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta charset="UTF-8"/>
@@ -535,14 +535,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <div class="social-links">
           <a class="social-link" href="mailto:edumonteiro.dev@gmail.com">
             <span class="s-icon">✉</span><span>Email</span><span class="s-val">edumonteiro.dev@gmail.com</span>
-          </a>          <a class="social-link" href="https://www.workana.com/pt/jobs?skills=web-development-1" target="_blank" rel="noopener">
-            <span class="s-icon">⬡</span><span>Workana</span><span class="s-val">Contratar via Workana</span>
           </a>
           <a class="social-link" href="https://www.upwork.com" target="_blank" rel="noopener">
             <span class="s-icon">◈</span><span>Upwork</span><span class="s-val">Contratar via Upwork</span>
-          </a>
-          <a class="social-link" href="https://www.99freelas.com.br/freelancers?q=jsp" target="_blank" rel="noopener">
-            <span class="s-icon">◉</span><span>99Freelas</span><span class="s-val">Contratar via 99Freelas</span>
           </a>
         </div>
       </div>
@@ -936,12 +931,25 @@ function initForm(){
   const f=document.getElementById('contact-form');
   if(!f)return;
   f.addEventListener('submit',async e=>{
+    // Build mailto fallback so data is never silently lost
+    const buildMailto=()=>{
+      const n=document.getElementById('f-name')?.value||'';
+      const em=document.getElementById('f-email')?.value||'';
+      const b=document.getElementById('f-budget')?.value||'';
+      const tp=document.getElementById('f-type')?.value||'';
+      const mg=document.getElementById('f-message')?.value||'';
+      const sub=encodeURIComponent('Novo Projecto — '+tp);
+      const body=encodeURIComponent(`Nome: ${n}\nEmail: ${em}\nOrçamento: ${b}\nTipo: ${tp}\n\n${mg}`);
+      return `mailto:edumonteiro.dev@gmail.com?subject=${sub}&body=${body}`;
+    };
     e.preventDefault();
     const btn=f.querySelector('[type=submit]');btn.disabled=true;btn.textContent='⟳';
     await new Promise(r=>setTimeout(r,1200));
     const msg=document.getElementById('form-success');
     if(msg){msg.textContent=T[locale].contact.ok;msg.style.display='block'}
     f.reset();btn.disabled=false;btn.textContent=T[locale].contact.send;
+    // Open mailto so message is delivered even without a backend
+    setTimeout(()=>{try{window.location.href=buildMailto();}catch(_){}},400);
   });
 }
 
@@ -1019,6 +1027,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   /* — Chrome/Android: beforeinstallprompt — */
+  /* — Prevent re-show after successful install — */
+  window.addEventListener('appinstalled',function(){
+    hideModal();
+    localStorage.setItem(STORAGE_KEY,'1');
+    window.deferredPrompt=null;
+    console.log('[A2HS] App installed.');
+  });
+
   window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
     window.deferredPrompt = e;
