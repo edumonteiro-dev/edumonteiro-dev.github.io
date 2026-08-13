@@ -16,6 +16,7 @@ const ROOT = path.resolve(__dirname, '..');
 const FILES_TO_CHECK = [
   'index.html',
   'contract.html',
+  'legal.html',
 ];
 
 // Regex: captura qualquer asset externo (src|href) apontando a http(s)://
@@ -92,6 +93,19 @@ function gate() {
       for (const token of required) {
         if (!content.includes(token)) {
           console.error(`[VIOLATION] Secção obrigatória ausente em ${file}: ${token}`);
+          violations++;
+        }
+      }
+    }
+
+    // legal.html mandatory sections
+    if (file === 'legal.html') {
+      const legalRequired = [
+        'tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies','FADP',
+      ];
+      for (const token of legalRequired) {
+        if (!content.includes(token)) {
+          console.error(`[VIOLATION] Token legal ausente em ${file}: ${token}`);
           violations++;
         }
       }
