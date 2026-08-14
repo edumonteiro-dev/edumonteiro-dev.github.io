@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de-CH" dir="ltr">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; form-action 'self' mailto:; base-uri 'none'; upgrade-insecure-requests;"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta charset="UTF-8"/>
@@ -617,6 +617,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
           <a class="social-link" href="https://www.upwork.com" target="_blank" rel="noopener">
             <span class="s-icon">◈</span><span>Upwork</span><span class="s-val">Contratar via Upwork</span>
           </a>
+          <a class="social-link" href="https://share.google/KvGYWJCUcK938Ia5A" target="_blank" rel="noopener">
+            <span class="s-icon">★</span><span>Google</span><span class="s-val">Deixe a sua avaliação</span>
+          </a>
         </div>
       </div>
       <div data-reveal data-delay="2" style="display:flex;flex-direction:column;justify-content:center;height:100%">
@@ -773,10 +776,10 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 'use strict';
 
 /* ══════════════════════════════════════════════════════════════
-   SCOPE BUILDER + FORMSPREE + TOAST + FOOTER TAGLINES
-   Formspree: replace YOUR_FORM_ID at https://formspree.io
+   SCOPE BUILDER + WEB3FORMS + TOAST + FOOTER TAGLINES
+   Web3Forms: https://api.web3forms.com/submit
 ══════════════════════════════════════════════════════════════ */
-var FORMSPREE_ENDPOINT='https://formspree.io/f/YOUR_FORM_ID';
+
 
 /* ── Scope state ── */
 var scopeState={projectType:[],features:[],budget:'',timeline:'',email:'',notes:''};
@@ -869,10 +872,12 @@ async function submitScope(e){
   scopeState.timeline=tEl?tEl.value:'Não especificado';
   if(btn)btn.disabled=true;
   if(lbl)lbl.textContent='⟳';
-  /* Build payload */
+  /* Build payload — Web3Forms */
   var payload={
-    _subject:'Novo Pedido de Orçamento — Eduardo Monteiro Dev',
-    _replyto:scopeState.email,
+    access_key:'4faa667e-9e05-4310-a4ec-59bf0d4264ee',
+    subject:'Novo Pedido de Orçamento — Eduardo Monteiro Dev',
+    from_name:'Portfólio B2B',
+    replyto:scopeState.email,
     email:scopeState.email,
     projectType:scopeState.projectType.join(', ')||'Não especificado',
     features:scopeState.features.join(', ')||'Nenhuma',
@@ -883,18 +888,19 @@ async function submitScope(e){
     sentAt:new Date().toISOString()
   };
   try{
-    var res=await fetch(FORMSPREE_ENDPOINT,{
+    var res=await fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify(payload)
     });
-    if(res.ok){
+    var data=await res.json();
+    if(data.success){
       closeScopeModal();
       var t=window.T&&window.T[locale];
       var msg=(t&&t.scope&&t.scope.successMsg)||'✓ Proposta enviada! Eduardo responde em <24h.';
       showToast(msg,'success');
     }else{
-      throw new Error('HTTP '+res.status);
+      throw new Error(data.message||'HTTP '+res.status);
     }
   }catch(err){
     console.error('[Scope]',err);
