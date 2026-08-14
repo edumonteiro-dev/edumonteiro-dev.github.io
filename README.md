@@ -2,7 +2,7 @@
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**Contact:** Workana · Upwork · 99Freelas  
+**Contact:** Email · Upwork · Google
 
 ---
 
