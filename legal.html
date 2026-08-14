@@ -277,6 +277,19 @@ document.addEventListener('DOMContentLoaded', () => {
       applyLang(locale);
     });
   });
+
+  // Auto-activate tab from URL query param: ?tab=privacy etc.
+  (function(){
+    var urlTab = new URLSearchParams(window.location.search).get('tab');
+    if(urlTab){
+      var tabMap = {
+        privacy:'privacy', terms:'terms', disclaimer:'disclaimer',
+        rgpd:'rgpd', gdpr:'rgpd', cookies:'cookies'
+      };
+      var mapped = tabMap[urlTab.toLowerCase()];
+      if(mapped) activateTab(mapped);
+    }
+  })();
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => activateTab(btn.dataset.tab));
   });

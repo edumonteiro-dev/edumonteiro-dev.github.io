@@ -5,6 +5,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta charset="UTF-8"/>
+<meta name="google-site-verification" content="NXgQN7yVnzjrSAmjrqZPS8pcB_LBqpkg09ZOdNm6t-o"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Eduardo Monteiro — AI-Powered Full-Stack Developer. MVPs em semanas. SaaS, Biometria, IA, Analytics. 6 mercados."/>
 <meta property="og:title" content="Eduardo Monteiro — AI-Powered Full-Stack Developer"/>
@@ -171,16 +172,16 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .social-link:hover{border-color:var(--border-h);background:var(--card-h)}
 .social-link .s-icon{font-size:1.1rem;width:24px;text-align:center}
 .social-link .s-val{font-family:var(--font-m);font-size:.85rem;margin-left:auto;color:var(--purple)}
-.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:36px 32px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-group{display:flex;flex-direction:column;gap:6px}
-.form-group.full{grid-column:1/-1}
-.form-group label{font-size:.8rem;color:var(--muted);font-family:var(--font-m);letter-spacing:.05em}
-.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid var(--faint);border-radius:8px;padding:12px 14px;color:var(--text);font-size:.9rem;transition:border-color .2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--purple)}
-.form-group select option{background:var(--deep)}
-.form-group textarea{resize:vertical;min-height:100px}
-.btn-submit{width:100%;margin-top:8px;padding:14px;border-radius:10px;font-family:var(--font-d);font-weight:700;font-size:1rem;background:var(--grad-cta);color:#fff;box-shadow:0 0 24px rgba(255,60,172,.2);transition:transform .2s,box-shadow .2s}
+
+
+
+
+
+
+
+
+
+
 .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(255,60,172,.35)}
 .btn-submit:disabled{opacity:.6;cursor:default;transform:none}
 #form-success{display:none;margin-top:12px;padding:12px 16px;border-radius:8px;background:rgba(0,245,160,.1);border:1px solid rgba(0,245,160,.25);color:var(--teal);font-size:.9rem;text-align:center}
@@ -229,7 +230,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   .project-card.featured{flex-direction:column}
   .project-card.featured .proj-visual{width:100%;flex:none}
   .contact-grid{grid-template-columns:1fr;gap:40px}
-  .form-grid{grid-template-columns:1fr}
+  
   .footer-inner{flex-direction:column;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){
@@ -254,6 +255,83 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 #a2hs-modal .a2hs-install:hover{opacity:.85}
 #a2hs-modal .a2hs-dismiss{padding:9px 14px;border:1px solid var(--border);background:none;color:var(--muted);border-radius:8px;font-family:monospace;font-size:.8rem;cursor:pointer;transition:color .2s}
 #a2hs-modal .a2hs-dismiss:hover{color:var(--text)}
+
+/* ── TOAST ── */
+.toast-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
+  opacity:0;pointer-events:none;transition:all .4s var(--ease);
+  background:var(--card);border:1px solid var(--teal);border-radius:10px;
+  padding:14px 22px;font-family:monospace;font-size:.82rem;color:var(--teal);
+  letter-spacing:.05em;z-index:500;box-shadow:0 8px 32px rgba(0,0,0,.6);
+  display:flex;align-items:center;gap:10px;max-width:420px;text-align:center;white-space:nowrap}
+.toast-notif.toast-error{border-color:var(--coral);color:var(--coral)}
+.toast-notif.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+
+/* ── SCOPE MODAL OVERLAY ── */
+.scope-overlay{position:fixed;inset:0;background:rgba(5,5,8,.92);backdrop-filter:blur(12px);
+  z-index:400;display:none;align-items:flex-start;justify-content:center;
+  padding:24px 16px;overflow-y:auto}
+.scope-overlay.open{display:flex}
+.scope-modal{background:var(--card);border:1px solid var(--border-h);border-radius:var(--rl);
+  width:100%;max-width:640px;padding:32px;position:relative;animation:scaleIn .35s var(--ease)}
+@keyframes scaleIn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+.scope-close{position:absolute;top:16px;right:18px;font-size:1.2rem;color:var(--muted);
+  background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .2s}
+.scope-close:hover{color:var(--text)}
+.scope-modal h2{font-family:var(--font-d);font-size:1.4rem;font-weight:700;margin-bottom:4px;
+  background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.scope-modal .scope-sub{font-size:.85rem;color:var(--muted);margin-bottom:28px}
+.scope-section{margin-bottom:22px}
+.scope-label{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;
+  letter-spacing:.12em;margin-bottom:10px;display:block}
+/* Chips */
+.chips-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.scope-chip{padding:7px 16px;border-radius:999px;border:1px solid var(--faint);
+  background:none;color:var(--muted);font-family:monospace;font-size:.78rem;
+  cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.scope-chip:hover{border-color:var(--border-h);color:var(--text)}
+.scope-chip.sel{border-color:var(--purple);background:rgba(123,92,240,.12);color:var(--purple)}
+/* Feature checkboxes */
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.feat-item{display:flex;align-items:center;gap:10px;padding:9px 14px;
+  border:1px solid var(--faint);border-radius:8px;cursor:pointer;transition:all .2s}
+.feat-item:hover{border-color:var(--border-h);background:rgba(255,255,255,.02)}
+.feat-item input[type=checkbox]{accent-color:var(--teal);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.feat-item label{font-size:.83rem;color:var(--muted);cursor:pointer;user-select:none}
+.feat-item.checked{border-color:rgba(0,245,160,.3);background:rgba(0,245,160,.04)}
+.feat-item.checked label{color:var(--text)}
+/* Radio */
+.radios-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.scope-radio-label{display:flex;align-items:center;gap:8px;padding:7px 16px;
+  border:1px solid var(--faint);border-radius:999px;cursor:pointer;transition:all .2s}
+.scope-radio-label input[type=radio]{accent-color:var(--purple);cursor:pointer}
+.scope-radio-label span{font-family:monospace;font-size:.78rem;color:var(--muted);user-select:none}
+.scope-radio-label:has(input:checked){border-color:var(--purple);background:rgba(123,92,240,.1)}
+.scope-radio-label:has(input:checked) span{color:var(--purple)}
+/* Scope form fields */
+.scope-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.scope-field label{font-family:monospace;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+.scope-field input,.scope-field textarea{background:rgba(255,255,255,.04);border:1px solid var(--faint);
+  border-radius:8px;padding:10px 14px;color:var(--text);font:inherit;font-size:.88rem;
+  outline:none;transition:border-color .2s;resize:vertical}
+.scope-field input:focus,.scope-field textarea:focus{border-color:var(--purple)}
+.scope-submit{width:100%;padding:14px;border-radius:10px;font-family:var(--font-d);font-weight:700;
+  font-size:1rem;background:var(--grad-cta);color:#fff;border:none;cursor:pointer;
+  box-shadow:0 0 24px rgba(255,60,172,.2);transition:transform .2s,box-shadow .2s;margin-top:8px}
+.scope-submit:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(255,60,172,.35)}
+.scope-submit:disabled{opacity:.6;cursor:default;transform:none}
+.scope-divider{height:1px;background:var(--border);margin:20px 0}
+/* Open scope builder button in contact section */
+.scope-open-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;
+  border-radius:12px;background:var(--grad-cta);color:#fff;font-family:var(--font-d);
+  font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;justify-content:center;
+  box-shadow:0 0 28px rgba(255,60,172,.25);transition:transform .2s,box-shadow .2s;margin-top:20px}
+.scope-open-btn:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(255,60,172,.4)}
+/* Footer tagline rotation */
+#footer-tagline{position:relative;min-height:1.4em;overflow:hidden}
+#footer-tagline span{display:block;transition:opacity .6s,transform .6s;opacity:1}
+#footer-tagline span.tl-out{opacity:0;transform:translateY(-8px)}
+#footer-tagline span.tl-in{opacity:0;transform:translateY(8px)}
+@media(max-width:640px){.features-grid{grid-template-columns:1fr}.scope-modal{padding:22px 18px}}
 </style>
 </head>
 <body>
@@ -261,7 +339,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" role="dialog" aria-live="polite">
   <p><span id="cookie-text">Este site utiliza cookies para análise. Ao continuar, aceita a nossa</span>
-    <a href="#" id="cookie-link">Política de Privacidade</a>.
+    <a href="./legal.html?tab=privacy" id="cookie-link" target="_blank" rel="noopener">Política de Privacidade</a>.
   </p>
   <div class="cookie-btns">
     <button id="cookie-accept">Aceitar</button>
@@ -318,7 +396,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       </p>
       <div class="hero-ctas" data-reveal data-delay="4">
         <a href="#projects" class="btn-primary" id="hero-cta1">Ver Portfólio</a>
-        <a href="#contact" class="btn-secondary" id="hero-cta2">Orçamento Gratuito</a>
+        <a href="#" class="btn-secondary" id="hero-cta2" onclick="openScopeModal(event)">Orçamento Gratuito</a>
       </div>
     </div>
   </div>
@@ -489,7 +567,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <ul class="tier-features" data-tier-features="0">
           <li>Site Institucional ou Infoproduto</li><li>Design Responsivo (Mobile-First)</li><li>Integração de pagamentos básica</li><li>SEO On-Page</li><li>Formulário de contacto</li><li>1 ronda de revisões</li><li>Suporte 15 dias pós-entrega</li>
         </ul>
-        <a class="btn-tier" id="tier-cta-0" href="#contact">Começar Projeto</a>
+        <a class="btn-tier" id="tier-cta-0" href="#" onclick="openScopeModal(event,'starter')">Começar Projeto</a>
       </div>
       <div class="pricing-card popular" data-reveal data-delay="2">
         <div class="popular-badge" data-tier-popular="1">Mais Popular</div>
@@ -500,7 +578,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <ul class="tier-features" data-tier-features="1">
           <li>MVP SaaS completo (2-4 semanas)</li><li>Firebase Auth + Stripe + Functions</li><li>Dashboard em tempo real</li><li>Integração IA (OpenAI/Claude)</li><li>Admin Panel</li><li>Testes automatizados CI/CD</li><li>2 rondas de revisões</li><li>Suporte 30 dias pós-entrega</li>
         </ul>
-        <a class="btn-tier" id="tier-cta-1" href="#contact">Lançar MVP</a>
+        <a class="btn-tier" id="tier-cta-1" href="#" onclick="openScopeModal(event,'pro')">Lançar MVP</a>
       </div>
       <div class="pricing-card" data-reveal data-delay="3">
         <div class="popular-badge" data-tier-popular="2" style="display:none">Popular</div>
@@ -541,20 +619,20 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
           </a>
         </div>
       </div>
-      <div data-reveal data-delay="2">
-        <form id="contact-form" class="contact-form" novalidate>
-          <div class="form-grid">
-            <div class="form-group"><label for="f-name">Nome</label><input type="text" id="f-name" name="name" placeholder="Nome Completo" required autocomplete="name"/></div>
-            <div class="form-group"><label for="f-email">Email</label><input type="email" id="f-email" name="email" placeholder="Email Profissional" required autocomplete="email"/></div>
-            <div class="form-group"><label for="f-budget">Orçamento</label><select id="f-budget" name="budget"><option value="">Orçamento Estimado</option></select></div>
-            <div class="form-group"><label for="f-type">Tipo</label><select id="f-type" name="type"><option value="">Tipo de Projecto</option></select></div>
-            <div class="form-group full"><label for="f-message">Mensagem</label><textarea id="f-message" name="message" placeholder="Descreva o seu projecto..." rows="4" required></textarea></div>
-          </div>
-          <button type="submit" class="btn-submit" id="f-send">Enviar Mensagem</button>
-          <div id="form-success" role="status"></div>
-        </form>
+      <div data-reveal data-delay="2" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <div class="clause highlight" style="border-radius:var(--rl);padding:28px 24px">
+          <p class="eyebrow" id="scope-card-ey">Construtor de Orçamento</p>
+          <h3 style="font-family:var(--font-d);font-size:1.2rem;font-weight:700;margin-bottom:8px" id="scope-card-t">Inicia o teu projecto em 2 minutos</h3>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:4px" id="scope-card-d">Seleciona as funcionalidades, define o orçamento e envia a tua proposta. Resposta em menos de 24h.</p>
+          <ul style="font-size:.82rem;color:var(--muted);padding-left:0;list-style:none;margin:14px 0;display:flex;flex-direction:column;gap:6px">
+            <li>✓ <span id="scope-f1">Tipo de projecto + funcionalidades</span></li>
+            <li>✓ <span id="scope-f2">Orçamento e prazo pretendido</span></li>
+            <li>✓ <span id="scope-f3">Envio directo para Eduardo Monteiro</span></li>
+          </ul>
+          <button class="scope-open-btn" onclick="openScopeModal(event)" id="scope-open-main">⊕ Construir Orçamento Interactivo</button>
+        </div>
       </div>
-    </div>
+      </div>
   </div>
 </section>
 
@@ -574,7 +652,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       <div class="footer-social">        <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email">✉</a>
       </div>
     </div>
-    <p class="footer-tagline" id="footer-tagline" style="margin-top:24px">Construindo o futuro, uma linha de código de cada vez.</p>
+    <p class="footer-tagline" id="footer-tagline" style="margin-top:24px"><span>Transformando ideias em produtos digitais de alta performance.</span></p>
     <p class="footer-legal" id="footer-legal">© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev</p>
   </div>
 </footer>
@@ -598,8 +676,338 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   </div>
 </div>
 
+<!-- ── SCOPE BUILDER MODAL ── -->
+<div class="scope-overlay" id="scope-overlay" role="dialog" aria-modal="true" aria-labelledby="scope-title">
+  <div class="scope-modal">
+    <button class="scope-close" id="scope-close" aria-label="Close">✕</button>
+    <h2 id="scope-title">Construtor de Orçamento B2B</h2>
+    <p class="scope-sub" id="scope-subtitle">Seleciona as opções e recebe uma proposta personalizada em &lt;24h.</p>
+
+    <!-- SECTION 1: Project Type -->
+    <div class="scope-section">
+      <span class="scope-label" id="sc-type-lbl">Tipo de Projecto</span>
+      <div class="chips-wrap" id="sc-type-chips">
+        <button class="scope-chip" data-val="saas" onclick="toggleChip(this,'projectType')">SaaS / MVP</button>
+        <button class="scope-chip" data-val="pwa" onclick="toggleChip(this,'projectType')">PWA Mobile</button>
+        <button class="scope-chip" data-val="ai" onclick="toggleChip(this,'projectType')">Integração IA / LLMs</button>
+        <button class="scope-chip" data-val="security" onclick="toggleChip(this,'projectType')">Segurança &amp; RGPD/FADP</button>
+        <button class="scope-chip" data-val="other" onclick="toggleChip(this,'projectType')">Outro</button>
+      </div>
+    </div>
+
+    <div class="scope-divider"></div>
+
+    <!-- SECTION 2: Features -->
+    <div class="scope-section">
+      <span class="scope-label" id="sc-feat-lbl">Funcionalidades Necessárias</span>
+      <div class="features-grid" id="sc-feat-grid">
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="i18n" id="fc0"/><label for="fc0">Multi-idioma (i18n)</label>
+        </div>
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="auth" id="fc1"/><label for="fc1">Autenticação de Utilizadores</label>
+        </div>
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="stripe" id="fc2"/><label for="fc2">Pagamentos / Stripe</label>
+        </div>
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="analytics" id="fc3"/><label for="fc3">Dashboard de Analytics</label>
+        </div>
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="ai_rag" id="fc4"/><label for="fc4">Chatbots / RAG com IA</label>
+        </div>
+        <div class="feat-item" onclick="toggleFeat(this)">
+          <input type="checkbox" value="pwa_offline" id="fc5"/><label for="fc5">Funcionalidades Offline (PWA)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="scope-divider"></div>
+
+    <!-- SECTION 3: Budget -->
+    <div class="scope-section">
+      <span class="scope-label" id="sc-budget-lbl">Orçamento Estimado</span>
+      <div class="radios-wrap">
+        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="lt1k"/><span id="sc-b0">&lt; 1.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="1k3k"/><span id="sc-b1">1.000€–3.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="3k6k"/><span id="sc-b2">3.000€–6.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="6kplus"/><span id="sc-b3">6.000€+</span></label>
+      </div>
+    </div>
+
+    <div class="scope-divider"></div>
+
+    <!-- SECTION 4: Timeline -->
+    <div class="scope-section">
+      <span class="scope-label" id="sc-time-lbl">Prazo Pretendido</span>
+      <div class="radios-wrap">
+        <label class="scope-radio-label"><input type="radio" name="sc-time" value="urgent"/><span id="sc-t0">Urgente (&lt; 2 semanas)</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-time" value="1m"/><span id="sc-t1">1 Mês</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-time" value="2_3m"/><span id="sc-t2">2–3 Meses</span></label>
+        <label class="scope-radio-label"><input type="radio" name="sc-time" value="flex"/><span id="sc-t3">Flexível</span></label>
+      </div>
+    </div>
+
+    <div class="scope-divider"></div>
+
+    <!-- SECTION 5: Contact -->
+    <div class="scope-field">
+      <label for="sc-email" id="sc-email-lbl">Email de Contacto *</label>
+      <input type="email" id="sc-email" placeholder="o.seu@email.com" required autocomplete="email"/>
+    </div>
+    <div class="scope-field">
+      <label for="sc-notes" id="sc-notes-lbl">Notas Adicionais (opcional)</label>
+      <textarea id="sc-notes" rows="3" placeholder="Contexto adicional, URL de referência, stack preferida..."></textarea>
+    </div>
+
+    <button class="scope-submit" id="sc-submit" onclick="submitScope(event)">
+      ⊕ <span id="sc-submit-lbl">Enviar Proposta</span>
+    </button>
+  </div>
+</div>
+
+<!-- ── TOAST NOTIFICATION ── -->
+<div class="toast-notif" id="toast-notif" role="status" aria-live="polite"></div>
+
 <script>
 'use strict';
+
+/* ══════════════════════════════════════════════════════════════
+   SCOPE BUILDER + FORMSPREE + TOAST + FOOTER TAGLINES
+   Formspree: replace YOUR_FORM_ID at https://formspree.io
+══════════════════════════════════════════════════════════════ */
+var FORMSPREE_ENDPOINT='https://formspree.io/f/YOUR_FORM_ID';
+
+/* ── Scope state ── */
+var scopeState={projectType:[],features:[],budget:'',timeline:'',email:'',notes:''};
+var TIER_PRESETS={starter:['saas'],pro:['saas','ai']};
+
+function openScopeModal(e,tier){
+  if(e){e.preventDefault();}
+  var ov=document.getElementById('scope-overlay');
+  if(!ov)return;
+  /* Reset */
+  scopeState={projectType:[],features:[],budget:'',timeline:'',email:'',notes:''};
+  document.querySelectorAll('.scope-chip').forEach(function(c){c.classList.remove('sel');});
+  document.querySelectorAll('.feat-item').forEach(function(i){
+    i.classList.remove('checked');
+    var cb=i.querySelector('input[type=checkbox]');
+    if(cb)cb.checked=false;
+  });
+  document.querySelectorAll('input[name="sc-budget"]').forEach(function(r){r.checked=false;});
+  document.querySelectorAll('input[name="sc-time"]').forEach(function(r){r.checked=false;});
+  var eEl=document.getElementById('sc-email');
+  var nEl=document.getElementById('sc-notes');
+  if(eEl)eEl.value='';
+  if(nEl)nEl.value='';
+  /* Tier preselect */
+  if(tier&&TIER_PRESETS[tier]){
+    TIER_PRESETS[tier].forEach(function(val){
+      var chip=document.querySelector('.scope-chip[data-val="'+val+'"]');
+      if(chip){chip.classList.add('sel');scopeState.projectType.push(val);}
+    });
+  }
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+  if(eEl)setTimeout(function(){eEl.focus();},350);
+}
+
+function closeScopeModal(){
+  var ov=document.getElementById('scope-overlay');
+  if(ov)ov.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function toggleChip(el,stateKey){
+  var val=el.dataset.val;
+  var arr=scopeState[stateKey];
+  if(el.classList.contains('sel')){
+    el.classList.remove('sel');
+    var i=arr.indexOf(val);
+    if(i>-1)arr.splice(i,1);
+  }else{
+    el.classList.add('sel');
+    arr.push(val);
+  }
+}
+
+function toggleFeat(el){
+  var cb=el.querySelector('input[type=checkbox]');
+  if(!cb)return;
+  cb.checked=!cb.checked;
+  el.classList.toggle('checked',cb.checked);
+  var val=cb.value;
+  if(cb.checked){
+    if(scopeState.features.indexOf(val)===-1)scopeState.features.push(val);
+  }else{
+    scopeState.features=scopeState.features.filter(function(v){return v!==val;});
+  }
+}
+
+async function submitScope(e){
+  if(e)e.preventDefault();
+  var emailEl=document.getElementById('sc-email');
+  var notesEl=document.getElementById('sc-notes');
+  var btn=document.getElementById('sc-submit');
+  var lbl=document.getElementById('sc-submit-lbl');
+  scopeState.email=emailEl?emailEl.value.trim():'';
+  scopeState.notes=notesEl?notesEl.value.trim():'';
+  /* Validate */
+  if(!scopeState.email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(scopeState.email)){
+    showToast('⚠ Email inválido. Por favor verifique.','error');
+    if(emailEl)emailEl.focus();
+    return;
+  }
+  if(scopeState.projectType.length===0){
+    showToast('⚠ Selecione pelo menos um tipo de projecto.','error');
+    return;
+  }
+  /* Radio values */
+  var bEl=document.querySelector('input[name="sc-budget"]:checked');
+  var tEl=document.querySelector('input[name="sc-time"]:checked');
+  scopeState.budget=bEl?bEl.value:'Não especificado';
+  scopeState.timeline=tEl?tEl.value:'Não especificado';
+  if(btn)btn.disabled=true;
+  if(lbl)lbl.textContent='⟳';
+  /* Build payload */
+  var payload={
+    _subject:'Novo Pedido de Orçamento — Eduardo Monteiro Dev',
+    _replyto:scopeState.email,
+    email:scopeState.email,
+    projectType:scopeState.projectType.join(', ')||'Não especificado',
+    features:scopeState.features.join(', ')||'Nenhuma',
+    budget:scopeState.budget,
+    timeline:scopeState.timeline,
+    notes:scopeState.notes||'—',
+    locale:localStorage.getItem('vc-locale')||'de-CH',
+    sentAt:new Date().toISOString()
+  };
+  try{
+    var res=await fetch(FORMSPREE_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(res.ok){
+      closeScopeModal();
+      var t=window.T&&window.T[locale];
+      var msg=(t&&t.scope&&t.scope.successMsg)||'✓ Proposta enviada! Eduardo responde em <24h.';
+      showToast(msg,'success');
+    }else{
+      throw new Error('HTTP '+res.status);
+    }
+  }catch(err){
+    console.error('[Scope]',err);
+    showToast('✗ Erro no envio. Contacte edumonteiro.dev@gmail.com','error');
+  }finally{
+    if(btn)btn.disabled=false;
+    if(lbl){
+      var t2=window.T&&window.T[locale];
+      lbl.textContent=(t2&&t2.scope&&t2.scope.submit)||'Enviar Proposta';
+    }
+  }
+}
+
+function showToast(msg,type){
+  type=type||'success';
+  var el=document.getElementById('toast-notif');
+  if(!el)return;
+  el.innerHTML=msg;
+  el.className='toast-notif'+(type==='error'?' toast-error':'');
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t=setTimeout(function(){el.classList.remove('show');},5500);
+}
+
+/* ── Footer tagline rotation ── */
+var TAGLINES={
+  'pt-PT':[
+    'Transformando ideias em produtos digitais de alta performance.',
+    'Engenharia de software rápida, segura e à prova de futuro.',
+    'Código limpo, arquitetura robusta e execução ágil.'
+  ],
+  'en-US':[
+    'Transforming ideas into high-performance digital products.',
+    'Fast, secure, and future-proof software engineering.',
+    'Clean code, robust architecture, agile execution.'
+  ],
+  'fr-CH':[
+    'Transformer les idées en produits numériques haute performance.',
+    "Ingénierie logicielle rapide, sécurisée et prête pour l'avenir.",
+    'Code propre, architecture robuste, exécution agile.'
+  ],
+  'de-CH':[
+    'Ideen in hochleistungsfähige digitale Produkte verwandeln.',
+    'Schnelle, sichere und zukunftssichere Softwareentwicklung.',
+    'Sauberer Code, robuste Architektur, agile Umsetzung.'
+  ],
+  'es-ES':[
+    'Transformando ideas en productos digitales de alto rendimiento.',
+    'Ingeniería de software rápida, segura y a prueba de futuro.',
+    'Código limpio, arquitectura robusta y ejecución ágil.'
+  ],
+  'it-IT':[
+    'Trasformare le idee in prodotti digitali ad alte prestazioni.',
+    'Ingegneria software veloce, sicura e a prova di futuro.',
+    'Codice pulito, architettura robusta ed esecuzione agile.'
+  ]
+};
+var _taglineIdx=0;
+
+function initTaglineRotation(){
+  var el=document.getElementById('footer-tagline');
+  if(!el)return;
+  var lines=TAGLINES[locale]||TAGLINES['de-CH'];
+  el.innerHTML='<span>'+lines[0]+'</span>';
+  setInterval(function(){
+    var lines=TAGLINES[locale]||TAGLINES['de-CH'];
+    _taglineIdx=(_taglineIdx+1)%lines.length;
+    var cur=el.querySelector('span');
+    if(cur)cur.classList.add('tl-out');
+    setTimeout(function(){
+      el.innerHTML='<span class="tl-in">'+lines[_taglineIdx]+'</span>';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          var next=el.querySelector('span');
+          if(next)next.classList.remove('tl-in');
+        });
+      });
+    },620);
+  },4200);
+}
+
+/* ── Scope Builder i18n apply ── */
+function applyScopeI18n(t){
+  var s=t.scope;
+  if(!s)return;
+  function si(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
+  si('scope-title',   s.title);    si('scope-subtitle',s.subtitle);
+  si('sc-type-lbl',   s.typeLabel);  si('sc-feat-lbl',  s.featLabel);
+  si('sc-budget-lbl', s.budgetLabel);si('sc-time-lbl',  s.timeLabel);
+  si('sc-email-lbl',  s.emailLabel); si('sc-notes-lbl', s.notesLabel);
+  si('sc-submit-lbl', s.submit);
+  si('scope-card-ey', s.cardEy);    si('scope-card-t',  s.cardTitle);
+  si('scope-card-d',  s.cardDesc);
+  si('scope-f1',      s.feat1);     si('scope-f2',      s.feat2);
+  si('scope-f3',      s.feat3);
+  var ob=document.getElementById('scope-open-main');
+  if(ob)ob.innerHTML=s.openBtn;
+  /* Budget labels */
+  if(s.budgets){['sc-b0','sc-b1','sc-b2','sc-b3'].forEach(function(id,i){si(id,s.budgets[i]||'');});}
+  /* Timeline labels */
+  if(s.timelines){['sc-t0','sc-t1','sc-t2','sc-t3'].forEach(function(id,i){si(id,s.timelines[i]||'');});}
+}
+
+/* ── Scope modal close events ── */
+function initScopeEvents(){
+  var closeBtn=document.getElementById('scope-close');
+  if(closeBtn)closeBtn.addEventListener('click',closeScopeModal);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeScopeModal();});
+  var ov=document.getElementById('scope-overlay');
+  if(ov)ov.addEventListener('click',function(e){if(e.target===ov)closeScopeModal();});
+}
+
+/* Make T globally accessible for submitScope locale lookup */
 
 /* ── TRANSLATIONS ─────────────────────────────────── */
 const T={
@@ -630,7 +1038,7 @@ const T={
   ]},
   contact:{ey:'Vamos trabalhar juntos',ti:'Iniciar Projecto',su:'Descreva o seu projecto. Eduardo Monteiro responde em menos de 24 horas.',soc:'Ou contacte directamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','A definir'],types:['SaaS / MVP','Infoproduto / E-commerce','Sistema Personalizado','IA / Analytics','Manutenção','Outro'],send:'Enviar Mensagem',ok:'✓ Mensagem enviada. Eduardo responderá em menos de 24 horas.'},
   footer:{tl:'Construindo o futuro, uma linha de código de cada vez.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Início','Serviços','Projetos','Preços','Contrato']},
-  cookie:{text:'Este site utiliza cookies para análise. Ao continuar, aceita a nossa',link:'Política de Privacidade',accept:'Aceitar',decline:'Recusar'}
+  cookie:{text:'Este site utiliza cookies para análise. Ao continuar, aceita a nossa',link:'Política de Privacidade',accept:'Aceitar',decline:'Recusar'},scope:{typeLabel:'Tipo de Projecto',featLabel:'Funcionalidades Necessárias',budgetLabel:'Orçamento Estimado',timeLabel:'Prazo Pretendido',emailLabel:'Email de Contacto *',notesLabel:'Notas Adicionais (opcional)',submit:'Enviar Proposta',title:'Construtor de Orçamento B2B',subtitle:'Seleciona as opções e recebe uma proposta personalizada em <24h.',cardEy:'Construtor de Orçamento',cardTitle:'Inicia o teu projecto em 2 minutos',cardDesc:'Seleciona funcionalidades, define orçamento e envia. Resposta em <24h.',feat1:'Tipo de projecto + funcionalidades',feat2:'Orçamento e prazo pretendido',feat3:'Envio directo para Eduardo Monteiro',openBtn:'⊕ Construir Orçamento Interactivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 semanas)','1 Mês','2–3 Meses','Flexível']}
 },
 'en-US':{
   nav:{home:'Home',services:'Services',projects:'Projects',process:'Process',pricing:'Pricing',contract:'Contract',contact:'Contact',legal:'Legal'},
@@ -659,7 +1067,7 @@ const T={
   ]},
   contact:{ey:"Let's work together",ti:'Start a Project',su:'Describe your project. Eduardo Monteiro responds in under 24 hours.',soc:'Or contact directly:',budgets:['< $1,000','$1,000–$3,000','$3,000–$6,000','$6,000+','To be defined'],types:['SaaS / MVP','Digital Product / E-commerce','Custom System','AI / Analytics','Maintenance','Other'],send:'Send Message',ok:'✓ Message sent. Eduardo will reply within 24 hours.'},
   footer:{tl:'Building the future, one line of code at a time.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Home','Services','Projects','Pricing','Contract']},
-  cookie:{text:'This site uses cookies for analytics. By continuing, you accept our',link:'Privacy Policy',accept:'Accept',decline:'Decline'}
+  cookie:{text:'This site uses cookies for analytics. By continuing, you accept our',link:'Privacy Policy',accept:'Accept',decline:'Decline'},scope:{typeLabel:'Project Type',featLabel:'Required Features',budgetLabel:'Estimated Budget',timeLabel:'Desired Timeline',emailLabel:'Contact Email *',notesLabel:'Additional Notes (optional)',submit:'Send Proposal',title:'B2B Scope Builder',subtitle:'Select your options and receive a personalised proposal in <24h.',cardEy:'Scope Builder',cardTitle:'Start your project in 2 minutes',cardDesc:'Select features, set budget and submit. Reply in <24h.',feat1:'Project type + features',feat2:'Budget and desired timeline',feat3:'Direct submission to Eduardo Monteiro',openBtn:'⊕ Build Interactive Estimate',budgets:['< €1,000','€1,000–€3,000','€3,000–€6,000','€6,000+'],timelines:['Urgent (< 2 weeks)','1 Month','2–3 Months','Flexible']}
 },
 'fr-CH':{
   nav:{home:'Accueil',services:'Services',projects:'Projets',process:'Processus',pricing:'Tarifs',contract:'Contrat',contact:'Contact',legal:'Légal'},
@@ -688,7 +1096,7 @@ const T={
   ]},
   contact:{ey:'Travaillons ensemble',ti:'Démarrer un Projet',su:'Décrivez votre projet. Eduardo Monteiro répond en moins de 24 heures.',soc:'Ou contactez directement:',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF','À définir'],types:['SaaS / MVP','Produit Numérique / E-commerce','Système Personnalisé','IA / Analytics','Maintenance','Autre'],send:'Envoyer Message',ok:'✓ Message envoyé. Eduardo répondra dans les 24 heures.'},
   footer:{tl:'Construire le futur, une ligne de code à la fois.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Accueil','Services','Projets','Tarifs','Contrat']},
-  cookie:{text:"Ce site utilise des cookies d'analyse. En continuant, vous acceptez notre",link:'Politique de Confidentialité',accept:'Accepter',decline:'Refuser'}
+  cookie:{text:"Ce site utilise des cookies d'analyse. En continuant, vous acceptez notre",link:'Politique de Confidentialité',accept:'Accepter',decline:'Refuser'},scope:{typeLabel:'Type de Projet',featLabel:'Fonctionnalités Requises',budgetLabel:'Budget Estimé',timeLabel:'Délai Souhaité',emailLabel:'Email de Contact *',notesLabel:'Notes Supplémentaires (optionnel)',submit:'Envoyer la Proposition',title:'Configurateur de Projet B2B',subtitle:'Sélectionnez vos options et recevez une proposition en <24h.',cardEy:'Configurateur de Projet',cardTitle:'Lancez votre projet en 2 minutes',cardDesc:'Sélectionnez fonctionnalités, définissez le budget et envoyez. Réponse en <24h.',feat1:'Type de projet + fonctionnalités',feat2:'Budget et délai souhaité',feat3:'Envoi direct à Eduardo Monteiro',openBtn:'⊕ Configurer Votre Budget',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF'],timelines:['Urgent (< 2 semaines)','1 Mois','2–3 Mois','Flexible']}
 },
 'de-CH':{
   nav:{home:'Start',services:'Leistungen',projects:'Projekte',process:'Prozess',pricing:'Preise',contract:'Vertrag',contact:'Kontakt',legal:'Rechtliches'},
@@ -717,7 +1125,7 @@ const T={
   ]},
   contact:{ey:'Lassen Sie uns zusammenarbeiten',ti:'Projekt Starten',su:'Beschreiben Sie Ihr Projekt. Eduardo Monteiro antwortet innerhalb von 24 Stunden.',soc:'Oder direkt kontaktieren:',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF','Noch zu definieren'],types:['SaaS / MVP','Digitales Produkt / E-Commerce','Massgeschneidertes System','KI / Analytics','Wartung','Sonstiges'],send:'Nachricht Senden',ok:'✓ Nachricht gesendet. Eduardo antwortet innerhalb von 24 Stunden.'},
   footer:{tl:'Die Zukunft bauen, eine Zeile Code nach der anderen.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Start','Leistungen','Projekte','Preise','Vertrag']},
-  cookie:{text:'Diese Website verwendet Analyse-Cookies. Durch Fortfahren akzeptieren Sie unsere',link:'Datenschutzrichtlinie',accept:'Akzeptieren',decline:'Ablehnen'}
+  cookie:{text:'Diese Website verwendet Analyse-Cookies. Durch Fortfahren akzeptieren Sie unsere',link:'Datenschutzrichtlinie',accept:'Akzeptieren',decline:'Ablehnen'},scope:{typeLabel:'Projekttyp',featLabel:'Benötigte Funktionen',budgetLabel:'Geschätztes Budget',timeLabel:'Gewünschter Zeitplan',emailLabel:'Kontakt-E-Mail *',notesLabel:'Zusätzliche Hinweise (optional)',submit:'Angebot Senden',title:'B2B Projekt-Konfigurator',subtitle:'Wählen Sie Ihre Optionen und erhalten Sie ein Angebot in <24h.',cardEy:'Projekt-Konfigurator',cardTitle:'Starten Sie Ihr Projekt in 2 Minuten',cardDesc:'Funktionen auswählen, Budget festlegen, absenden. Antwort in <24h.',feat1:'Projekttyp + Funktionen',feat2:'Budget und gewünschter Zeitplan',feat3:'Direktversand an Eduardo Monteiro',openBtn:'⊕ Budget Interaktiv Konfigurieren',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF'],timelines:['Dringend (< 2 Wochen)','1 Monat','2–3 Monate','Flexibel']}
 },
 'es-ES':{
   nav:{home:'Inicio',services:'Servicios',projects:'Proyectos',process:'Proceso',pricing:'Precios',contract:'Contrato',contact:'Contacto',legal:'Legal'},
@@ -746,7 +1154,7 @@ const T={
   ]},
   contact:{ey:'Trabajemos juntos',ti:'Iniciar Proyecto',su:'Describe tu proyecto. Eduardo Monteiro responde en menos de 24 horas.',soc:'O contacte directamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','Por definir'],types:['SaaS / MVP','Producto Digital / E-commerce','Sistema Personalizado','IA / Analytics','Mantenimiento','Otro'],send:'Enviar Mensaje',ok:'✓ Mensaje enviado. Eduardo responderá en menos de 24 horas.'},
   footer:{tl:'Construyendo el futuro, una línea de código a la vez.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Inicio','Servicios','Proyectos','Precios','Contrato']},
-  cookie:{text:'Este sitio usa cookies de análisis. Al continuar, acepta nuestra',link:'Política de Privacidad',accept:'Aceptar',decline:'Rechazar'}
+  cookie:{text:'Este sitio usa cookies de análisis. Al continuar, acepta nuestra',link:'Política de Privacidad',accept:'Aceptar',decline:'Rechazar'},scope:{typeLabel:'Tipo de Proyecto',featLabel:'Funcionalidades Necesarias',budgetLabel:'Presupuesto Estimado',timeLabel:'Plazo Deseado',emailLabel:'Email de Contacto *',notesLabel:'Notas Adicionales (opcional)',submit:'Enviar Propuesta',title:'Constructor de Presupuesto B2B',subtitle:'Selecciona tus opciones y recibe una propuesta personalizada en <24h.',cardEy:'Constructor de Presupuesto',cardTitle:'Inicia tu proyecto en 2 minutos',cardDesc:'Selecciona funcionalidades, define presupuesto y envía. Respuesta en <24h.',feat1:'Tipo de proyecto + funcionalidades',feat2:'Presupuesto y plazo deseado',feat3:'Envío directo a Eduardo Monteiro',openBtn:'⊕ Construir Presupuesto Interactivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 semanas)','1 Mes','2–3 Meses','Flexible']}
 },
 'it-IT':{
   nav:{home:'Home',services:'Servizi',projects:'Progetti',process:'Processo',pricing:'Prezzi',contract:'Contratto',contact:'Contatto',legal:'Legale'},
@@ -775,9 +1183,10 @@ const T={
   ]},
   contact:{ey:'Lavoriamo insieme',ti:'Avviare un Progetto',su:"Descrivi il tuo progetto. Eduardo Monteiro risponde entro 24 ore.",soc:'O contatta direttamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','Da definire'],types:['SaaS / MVP','Prodotto Digitale / E-commerce','Sistema Personalizzato','IA / Analytics','Manutenzione','Altro'],send:'Invia Messaggio',ok:'✓ Messaggio inviato. Eduardo risponderà entro 24 ore.'},
   footer:{tl:'Costruire il futuro, una riga di codice alla volta.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Home','Servizi','Progetti','Prezzi','Contratto']},
-  cookie:{text:'Questo sito usa cookie analitici. Continuando, accetti la nostra',link:'Informativa sulla Privacy',accept:'Accetta',decline:'Rifiuta'}
+  cookie:{text:'Questo sito usa cookie analitici. Continuando, accetti la nostra',link:'Informativa sulla Privacy',accept:'Accetta',decline:'Rifiuta'},scope:{typeLabel:'Tipo di Progetto',featLabel:'Funzionalità Richieste',budgetLabel:'Budget Stimato',timeLabel:'Tempistica Desiderata',emailLabel:'Email di Contatto *',notesLabel:'Note Aggiuntive (opzionale)',submit:'Invia Proposta',title:'Configuratore di Progetto B2B',subtitle:'Seleziona le opzioni e ricevi una proposta personalizzata in <24h.',cardEy:'Configuratore di Progetto',cardTitle:'Avvia il tuo progetto in 2 minuti',cardDesc:'Seleziona funzionalità, imposta il budget e invia. Risposta in <24h.',feat1:'Tipo di progetto + funzionalità',feat2:'Budget e tempistica desiderata',feat3:'Invio diretto a Eduardo Monteiro',openBtn:'⊕ Configura Budget Interattivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 settimane)','1 Mese','2–3 Mesi','Flessibile']}
 }
-};
+}
+window.T=T;;
 
 /* ── STATE ── */
 const _LOCALES=['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];const _LANG_MAP={'pt':'pt-PT','en':'en-US','fr':'fr-CH','de':'de-CH','es':'es-ES','it':'it-IT'};const _stored=localStorage.getItem('vc-locale');const _navLangs=(navigator.languages&&navigator.languages.length)  ?navigator.languages:[navigator.language||'de'];const _navMatch=(function(){  for(var i=0;i<_navLangs.length;i++){    var code=(_navLangs[i]||'').toLowerCase().split('-')[0];    if(_LANG_MAP[code])return _LANG_MAP[code];  } return null;})();let locale=_stored||_navMatch||'de-CH';
@@ -876,6 +1285,8 @@ function applyT(loc){
   si('cookie-text',t.cookie.text);si('cookie-link',t.cookie.link);si('cookie-accept',t.cookie.accept);si('cookie-decline',t.cookie.decline);
   // Lang buttons
   document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===loc));
+  if(typeof applyScopeI18n==='function')applyScopeI18n(t);
+  _taglineIdx=0;
 }
 
 function updatePrice(i,tr,model,pr){
@@ -928,29 +1339,7 @@ function initNav(){
 
 /* ── CONTACT FORM ── */
 function initForm(){
-  const f=document.getElementById('contact-form');
-  if(!f)return;
-  f.addEventListener('submit',async e=>{
-    // Build mailto fallback so data is never silently lost
-    const buildMailto=()=>{
-      const n=document.getElementById('f-name')?.value||'';
-      const em=document.getElementById('f-email')?.value||'';
-      const b=document.getElementById('f-budget')?.value||'';
-      const tp=document.getElementById('f-type')?.value||'';
-      const mg=document.getElementById('f-message')?.value||'';
-      const sub=encodeURIComponent('Novo Projecto — '+tp);
-      const body=encodeURIComponent(`Nome: ${n}\nEmail: ${em}\nOrçamento: ${b}\nTipo: ${tp}\n\n${mg}`);
-      return `mailto:edumonteiro.dev@gmail.com?subject=${sub}&body=${body}`;
-    };
-    e.preventDefault();
-    const btn=f.querySelector('[type=submit]');btn.disabled=true;btn.textContent='⟳';
-    await new Promise(r=>setTimeout(r,1200));
-    const msg=document.getElementById('form-success');
-    if(msg){msg.textContent=T[locale].contact.ok;msg.style.display='block'}
-    f.reset();btn.disabled=false;btn.textContent=T[locale].contact.send;
-    // Open mailto so message is delivered even without a backend
-    setTimeout(()=>{try{window.location.href=buildMailto();}catch(_){}},400);
-  });
+  /* Scope Builder modal handles contact — Legacy form removed */
 }
 
 /* ── COOKIE BANNER ── */
@@ -998,6 +1387,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   initTilt();
   initLang();
   initHeader();
+  if(typeof initTaglineRotation==='function')initTaglineRotation();
+  if(typeof initScopeEvents==='function')initScopeEvents();
 });
 
 /* ── PWA SERVICE WORKER + A2HS ── */

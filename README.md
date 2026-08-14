@@ -187,3 +187,37 @@ node secops/gatekeeper.js   # exit 0 = deploy autorizado
 ---
 
 *© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev*
+
+---
+
+## Google Search Console — Verificação de Domínio
+
+### Método 1: Registo DNS TXT (Recomendado para `monteiro.is-a.dev`)
+
+Adicionar no painel de DNS do `is-a.dev` (ficheiro JSON do teu subdomínio):
+
+```json
+{
+  "record": {
+    "CNAME": "SEU_USERNAME.github.io",
+    "TXT": "google-site-verification=41rGYePmqlc_MYFSnobndRDGndOqhp7N4TC6N8wjnpI"
+  }
+}
+```
+
+### Método 2: Meta Tag HTML (já implementada em `index.html`)
+
+```html
+<meta name="google-site-verification" content="NXgQN7yVnzjrSAmjrqZPS8pcB_LBqpkg09ZOdNm6t-o"/>
+```
+
+Esta meta tag está **já injectada** em `index.html` — não é necessária nenhuma acção adicional no código.
+
+### Passos de Verificação
+
+1. Acede a [Google Search Console](https://search.google.com/search-console)
+2. Adiciona a propriedade `https://monteiro.is-a.dev`
+3. Escolhe **Registo DNS** ou **Meta Tag** como método de verificação
+4. O DNS TXT propaga em 5–60 minutos
+5. Clica **Verificar** no Search Console
+
