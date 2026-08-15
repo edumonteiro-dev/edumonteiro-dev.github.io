@@ -222,6 +222,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   #nav-menu a{font-size:1.2rem;padding:12px 16px}
   #burger{display:flex}
   .lang-switcher{display:none}
+  /* ── MOBILE LANG BAR inside burger menu ── */
+  #nav-menu .mobile-lang-bar{display:flex;gap:6px;flex-wrap:wrap;padding:12px 0 4px;border-top:1px solid rgba(123,92,240,.2);margin-top:8px}
+  #nav-menu .mobile-lang-bar .lang-btn{font-size:.85rem;padding:6px 14px;min-height:38px;-webkit-tap-highlight-color:transparent}
   .hero-title{font-size:clamp(2.2rem,8vw,3.5rem)}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
   .metric-item{border-right:none;border-bottom:1px solid var(--border)}
@@ -366,6 +369,16 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <li><a href="./contract.html" data-nav="contract" target="_blank">Contrato</a>
         <li><a href="./legal.html" data-nav="legal" target="_blank">Legal</a></li></li>
         <li><a href="#contact" data-nav="contact">Contacto</a></li>
+        <li style="list-style:none">
+          <div class="mobile-lang-bar" role="group" aria-label="Language selector">
+            <button class="lang-btn" data-lang="pt-PT">PT</button>
+            <button class="lang-btn" data-lang="en-US">EN</button>
+            <button class="lang-btn" data-lang="fr-CH">FR</button>
+            <button class="lang-btn" data-lang="de-CH">DE</button>
+            <button class="lang-btn" data-lang="es-ES">ES</button>
+            <button class="lang-btn" data-lang="it-IT">IT</button>
+          </div>
+        </li>
       </ul>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button class="lang-btn active" data-lang="pt-PT">PT</button>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-CH" dir="ltr">
+<html lang="pt-PT" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -12,15 +12,17 @@
 :root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding:0 0 64px}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding:0 0 64px;overflow-x:hidden}
 a{color:var(--purple)}
 h1,h2,h3{font-family:'Courier New',monospace}
 .doc-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:16px 0;position:sticky;top:0;z-index:50}
 .header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.hdr-title{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
-.lang-btn,.tab-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.06em}
+.hdr-title{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1;min-width:120px}
+/* ── LANG-BAR: extracted from inline style, mobile-safe ── */
+.lang-bar{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.lang-btn,.tab-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.06em;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .lang-btn.active,.tab-btn.active{border-color:var(--purple);color:var(--purple);background:rgba(123,92,240,.1)}
-.back-link{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:all .2s}
+.back-link{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:all .2s;white-space:nowrap}
 .back-link:hover{color:var(--purple);border-color:var(--purple)}
 .container{max-width:900px;margin:0 auto;padding:0 24px}
 .page-title{padding:28px 0 0;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -40,7 +42,19 @@ h1,h2,h3{font-family:'Courier New',monospace}
 .clause.warning{border-color:var(--coral);background:rgba(255,60,172,.03)}
 .badge{display:inline-block;font-family:monospace;font-size:.65rem;padding:2px 8px;border-radius:999px;border:1px solid var(--teal);color:var(--teal);letter-spacing:.08em;margin-bottom:10px}
 .sep{height:1px;background:linear-gradient(90deg,transparent,var(--border-h),transparent);margin:28px 0}
-@media(max-width:640px){.tabs-nav{gap:4px}.tab-btn{font-size:.65rem;padding:3px 7px}}
+/* ── MOBILE FIXES ── */
+@media(max-width:640px){
+  .header-inner{padding:10px 16px;gap:8px}
+  .hdr-title{font-size:.78rem;flex:none;width:100%}
+  .lang-bar{width:100%;justify-content:flex-start}
+  .lang-btn{font-size:.68rem;padding:5px 9px;min-height:32px}
+  .back-link{font-size:.7rem}
+  .tabs-nav{gap:4px}
+  .tab-btn{font-size:.62rem;padding:4px 7px;min-height:32px}
+  .page-title{padding-top:20px}
+  .page-sub{font-size:.68rem;word-break:break-word}
+  .clause{padding:14px 14px}
+}
 @media print{body{background:#fff;color:#000}.clause{border:1px solid #ccc;background:#fafafa}.clause p,.clause li{color:#333}}
 </style>
 </head>
@@ -49,7 +63,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
 <div class="doc-header">
   <div class="header-inner">
     <span class="hdr-title" id="hdr-t">Documentação Legal</span>
-    <div style="display:flex;gap:4px;flex-wrap:wrap">
+    <div class="lang-bar" role="group" aria-label="Language selector">
       <button class="lang-btn active" data-lang="pt-PT">PT</button>
       <button class="lang-btn" data-lang="en-US">EN</button>
       <button class="lang-btn" data-lang="fr-CH">FR</button>
@@ -62,8 +76,8 @@ h1,h2,h3{font-family:'Courier New',monospace}
 </div>
 
 <div class="container">
-  <p class="page-title" id="page-title">Documentação Legal & Compliance</p>
-  <p class="page-sub" id="page-sub">Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Lei Aplicável: Suíça (LPD/FADP) + RGPD/GDPR</p>
+  <p class="page-title" id="page-title">Documentação Legal &amp; Compliance</p>
+  <p class="page-sub" id="page-sub">Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Lei Aplicável: Suíça (FADP/LPD) + RGPD/GDPR</p>
 
   <div class="tabs-nav" id="tabs-nav">
     <button class="tab-btn active" data-tab="terms" id="tab-terms">Termos de Utilização</button>
@@ -73,7 +87,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
     <button class="tab-btn" data-tab="cookies" id="tab-cookies">Política de Cookies</button>
   </div>
 
-  <!-- ── TERMS ─────────────────────────────── -->
+  <!-- ── TERMS ─────────────────────────────────────────────────── -->
   <div class="tab-panel active" id="panel-terms">
     <div class="legal-section">
       <p class="section-eyebrow" id="s-terms-ey">Cláusula 1</p>
@@ -101,13 +115,13 @@ h1,h2,h3{font-family:'Courier New',monospace}
     </div>
   </div>
 
-  <!-- ── PRIVACY ────────────────────────────── -->
+  <!-- ── PRIVACY ────────────────────────────────────────────────── -->
   <div class="tab-panel" id="panel-privacy">
     <div class="legal-section">
       <p class="section-eyebrow" id="s-priv-ey">Cláusula 2</p>
       <h2 class="section-title" id="s-priv-t">POLÍTICA DE PRIVACIDADE</h2>
       <div class="clause highlight">
-        <span class="badge">Zero-Tracking · Zero-Cookies · FADP/LPD · RGPD</span>
+        <span class="badge" id="priv-badge">Zero-Tracking · Zero-Cookies · FADP/LPD · RGPD</span>
         <h4 id="p1-h">Dados Recolhidos</h4>
         <p id="p1-p">Este website <strong>não recolhe, processa, armazena nem transmite</strong> quaisquer dados pessoais a servidores externos. Não existem cookies de rastreamento, pixels de análise, scripts de terceiros ou formulários que transmitam dados para servidores remotos. O único estado persistido é a preferência de idioma (<code>localStorage('vc-locale')</code>) e a preferência de instalação (<code>localStorage('a2hs-dismissed')</code>), armazenados exclusivamente no dispositivo do utilizador.</p>
       </div>
@@ -115,7 +129,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
         <h4 id="p2-h">localStorage — Dados no Dispositivo</h4>
         <ul id="p2-list">
           <li><code>vc-locale</code> — Preferência de idioma (ex: "pt-PT"). Nunca transmitido.</li>
-          <li><code>vc-cookie</code> — Preferência de consentimento de cookies (0 ou 1).</li>
+          <li><code>vc-cookie</code> — Preferência de consentimento do banner (0 ou 1).</li>
           <li><code>a2hs-dismissed</code> — Preferência de instalação PWA. Nunca transmitido.</li>
         </ul>
       </div>
@@ -132,12 +146,12 @@ h1,h2,h3{font-family:'Courier New',monospace}
           <li><strong>Portabilidade</strong> — Direito a receber dados em formato estruturado.</li>
           <li><strong>Oposição</strong> — Direito a opor-se ao tratamento para fins de marketing.</li>
         </ul>
-        <p style="margin-top:10px;font-size:.82rem;color:var(--muted)">Para exercer estes direitos: <strong>edumonteiro.dev@gmail.com</strong></p>
+        <p id="p4-note" style="margin-top:10px;font-size:.82rem;color:var(--muted)">Para exercer estes direitos: <strong>edumonteiro.dev@gmail.com</strong></p>
       </div>
     </div>
   </div>
 
-  <!-- ── DISCLAIMER ─────────────────────────── -->
+  <!-- ── DISCLAIMER ─────────────────────────────────────────────── -->
   <div class="tab-panel" id="panel-disclaimer">
     <div class="legal-section">
       <p class="section-eyebrow" id="s-disc-ey">Cláusula 3</p>
@@ -152,7 +166,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
       </div>
       <div class="clause">
         <h4 id="d3-h">Links Externos</h4>
-        <p id="d3-p">Os links para websites externos (LinkedIn, GitHub, , Upwork, , kmlucropro.com, vozdocondutor.com) são fornecidos por conveniência. Eduardo Monteiro não tem controlo sobre esses websites e não é responsável pelo seu conteúdo, disponibilidade ou práticas de privacidade.</p>
+        <p id="d3-p">Os links para websites externos (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) são fornecidos por conveniência. Eduardo Monteiro não tem controlo sobre esses websites e não é responsável pelo seu conteúdo, disponibilidade ou práticas de privacidade.</p>
       </div>
       <div class="clause">
         <h4 id="d4-h">Disponibilidade do Serviço</h4>
@@ -161,13 +175,13 @@ h1,h2,h3{font-family:'Courier New',monospace}
     </div>
   </div>
 
-  <!-- ── RGPD/FADP ──────────────────────────── -->
+  <!-- ── RGPD / FADP ────────────────────────────────────────────── -->
   <div class="tab-panel" id="panel-rgpd">
     <div class="legal-section">
       <p class="section-eyebrow" id="s-rgpd-ey">Cláusula 4</p>
       <h2 class="section-title" id="s-rgpd-t">RGPD / FADP — CONFORMIDADE SUÍÇA E EUROPEIA</h2>
       <div class="clause highlight">
-        <span class="badge">FADP (LPD) · RGPD Art.13 · nDSG · Switzerland Primary</span>
+        <span class="badge" id="rgpd-badge">FADP (LPD) · RGPD Art.13 · nDSG · Switzerland Primary</span>
         <h4 id="r1-h">Base Legal e Responsável pelo Tratamento</h4>
         <p id="r1-p">O responsável pelo tratamento de dados é <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). A base legal para qualquer eventual tratamento de dados pessoais (exclusivamente via contacto por email) é o <strong>interesse legítimo</strong> (Art. 6(1)(f) RGPD / Art. 31 LPD) e o <strong>consentimento livre e informado</strong> do titular.</p>
       </div>
@@ -195,13 +209,13 @@ h1,h2,h3{font-family:'Courier New',monospace}
     </div>
   </div>
 
-  <!-- ── COOKIES ────────────────────────────── -->
+  <!-- ── COOKIES ─────────────────────────────────────────────────── -->
   <div class="tab-panel" id="panel-cookies">
     <div class="legal-section">
       <p class="section-eyebrow" id="s-cook-ey">Cláusula 5</p>
       <h2 class="section-title" id="s-cook-t">POLÍTICA DE COOKIES — PADRÃO ZERO-TRACKING</h2>
       <div class="clause highlight">
-        <span class="badge">Zero Cookies de Terceiros · Zero Analytics · Zero Rastreamento</span>
+        <span class="badge" id="cook-badge">Zero Cookies de Terceiros · Zero Analytics · Zero Rastreamento</span>
         <h4 id="c1-h">Declaração de Zero-Tracking</h4>
         <p id="c1-p">Este website opera segundo um padrão de <strong>Zero-Tracking</strong>. Não são utilizados quaisquer cookies de rastreamento, cookies de sessão de terceiros, pixels de análise (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), scripts de marketing ou tecnologias de fingerprinting. O website não rastreia o comportamento de navegação do utilizador.</p>
       </div>
@@ -213,7 +227,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
           <li><strong>vc-cookie</strong> — Decisão do utilizador sobre o banner informativo. Base legal: consentimento.</li>
           <li><strong>a2hs-dismissed</strong> — Decisão sobre o modal de instalação PWA. Base legal: interesse legítimo.</li>
         </ul>
-        <p style="margin-top:10px;font-size:.82rem;color:var(--muted)">Estes dados são <strong>puramente locais</strong>: residem no dispositivo do utilizador, nunca são transmitidos, e podem ser apagados a qualquer momento limpando os dados do browser.</p>
+        <p id="c2-note" style="margin-top:10px;font-size:.82rem;color:var(--muted)">Estes dados são <strong>puramente locais</strong>: residem no dispositivo do utilizador, nunca são transmitidos, e podem ser apagados a qualquer momento limpando os dados do browser.</p>
       </div>
       <div class="clause">
         <h4 id="c3-h">Cookies de Infraestrutura (GitHub Pages)</h4>
@@ -235,41 +249,387 @@ h1,h2,h3{font-family:'Courier New',monospace}
 <script>
 'use strict';
 
-// ── i18n sync with portfolio ───────────────────────────────────
-let locale = localStorage.getItem('vc-locale') || 'pt-PT';
-
+/* ── i18n dictionary — 6 locales × 5 legal clauses ────────────── */
 const L = {
-  'pt-PT':{ hdr:'Documentação Legal',back:'← Portfólio',title:'Documentação Legal & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Lei Aplicável: Suíça (FADP/LPD) + RGPD/GDPR',tabs:['Termos de Utilização','Política de Privacidade','Isenção de Responsabilidade','RGPD / FADP','Política de Cookies'] },
-  'en-US':{ hdr:'Legal Documentation',back:'← Portfolio',title:'Legal Documentation & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Governing Law: Switzerland (FADP/LPD) + GDPR',tabs:['Terms of Use','Privacy Policy','Disclaimer','GDPR / FADP','Cookie Policy'] },
-  'fr-CH':{ hdr:'Documentation Juridique',back:'← Portfolio',title:'Documentation Juridique & Conformité',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Droit applicable: Suisse (LPD/FADP) + RGPD',tabs:['Conditions d\'Utilisation','Politique de Confidentialité','Clause de Non-Responsabilité','RGPD / LPD','Politique de Cookies'] },
-  'de-CH':{ hdr:'Rechtliche Dokumentation',back:'← Portfolio',title:'Rechtliche Dokumentation & Compliance',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Anwendbares Recht: Schweiz (DSG/FADP) + DSGVO',tabs:['Nutzungsbedingungen','Datenschutzerklärung','Haftungsausschluss','DSGVO / DSG','Cookie-Richtlinie'] },
-  'es-ES':{ hdr:'Documentación Legal',back:'← Portafolio',title:'Documentación Legal & Cumplimiento',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Ley aplicable: Suiza (FADP/LPD) + RGPD',tabs:['Términos de Uso','Política de Privacidad','Descargo de Responsabilidad','RGPD / FADP','Política de Cookies'] },
-  'it-IT':{ hdr:'Documentazione Legale',back:'← Portfolio',title:'Documentazione Legale & Conformità',sub:'Eduardo Monteiro Dev · monteiro.is-a.dev · Legge applicabile: Svizzera (LPD/FADP) + GDPR',tabs:['Termini di Utilizzo','Informativa sulla Privacy','Limitazione di Responsabilità','GDPR / LPD','Informativa sui Cookie'] },
+  'pt-PT':{
+    hdr:`Documentação Legal`,back:`← Portfólio`,
+    title:`Documentação Legal & Compliance`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Lei Aplicável: Suíça (FADP/LPD) + RGPD/GDPR`,
+    tabs:[`Termos de Utilização`,`Política de Privacidade`,`Isenção de Responsabilidade`,`RGPD / FADP`,`Política de Cookies`],
+    c:{
+      termsEy:`Cláusula 1`,termsT:`TERMOS DE UTILIZAÇÃO`,
+      t1h:`Âmbito e Aceitação`,t1p:`O acesso e utilização deste portfólio digital (<strong>monteiro.is-a.dev</strong>) e dos seus sub-recursos (contract.html, legal.html) implica a aceitação integral dos presentes Termos. O portfólio é uma plataforma de apresentação profissional B2B do prestador de serviços Eduardo Monteiro, desenvolvedor full-stack com IA, registado para fins de actividade independente.`,
+      t2h:`Propriedade Intelectual`,t2p:`Todo o conteúdo deste website — incluindo código-fonte, design, textos, logótipo e arquitectura — é propriedade exclusiva de Eduardo Monteiro e está protegido pelas leis de propriedade intelectual aplicáveis. É proibida a reprodução, cópia ou utilização comercial sem autorização escrita prévia.`,
+      t3h:`Limitações de Uso`,t3l:[`Proibida a utilização para fins ilegais, fraudulentos ou que violem direitos de terceiros.`,
+          `Proibido o scraping automatizado ou extracção massiva de dados sem consentimento.`,
+          `Proibida a engenharia inversa ou descompilação do código inlined.`],
+      t4h:`Modificações e Disponibilidade`,t4p:`O prestador reserva-se o direito de modificar, suspender ou descontinuar qualquer parte do portfólio sem aviso prévio. O portfólio pode estar temporariamente indisponível por razões de manutenção ou força maior.`,
+      privEy:`Cláusula 2`,privT:`POLÍTICA DE PRIVACIDADE`,privBadge:`Zero-Tracking · Zero-Cookies · FADP/LPD · RGPD`,
+      p1h:`Dados Recolhidos`,p1p:`Este website <strong>não recolhe, processa, armazena nem transmite</strong> quaisquer dados pessoais a servidores externos. Não existem cookies de rastreamento, pixels de análise, scripts de terceiros ou formulários que transmitam dados para servidores remotos. O único estado persistido é a preferência de idioma (<code>localStorage('vc-locale')</code>) e a preferência de instalação (<code>localStorage('a2hs-dismissed')</code>), armazenados exclusivamente no dispositivo do utilizador.`,
+      p2h:`localStorage — Dados no Dispositivo`,p2l:[`<code>vc-locale</code> — Preferência de idioma (ex: "pt-PT"). Nunca transmitido.`,
+          `<code>vc-cookie</code> — Preferência de consentimento do banner (0 ou 1).`,
+          `<code>a2hs-dismissed</code> — Preferência de instalação PWA. Nunca transmitido.`],
+      p3h:`Contacto por Email`,p3p:`Se nos contactar via email (edumonteiro.dev@gmail.com), os dados fornecidos (nome, email, mensagem) serão utilizados exclusivamente para responder ao pedido e não serão partilhados com terceiros, nem utilizados para fins comerciais não solicitados.`,
+      p4h:`Direitos do Titular dos Dados (RGPD Art. 15-22 / FADP)`,p4l:[`<strong>Acesso</strong> — Direito a saber quais os dados processados.`,
+          `<strong>Rectificação</strong> — Direito a corrigir dados incorrectos.`,
+          `<strong>Eliminação</strong> — Direito ao apagamento ("direito ao esquecimento").`,
+          `<strong>Portabilidade</strong> — Direito a receber dados em formato estruturado.`,
+          `<strong>Oposição</strong> — Direito a opor-se ao tratamento para fins de marketing.`],p4n:`Para exercer estes direitos: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Cláusula 3`,discT:`ISENÇÃO DE RESPONSABILIDADE`,
+      d1h:`Natureza do Portfólio`,d1p:`Este portfólio tem carácter estritamente informativo e de apresentação profissional. As informações, métricas e descrições de projectos apresentadas são fornecidas de boa-fé e sem garantia de exactidão absoluta. Os projectos apresentados correspondem a trabalho real executado, podendo algumas funcionalidades terem sido desenvolvidas em contextos de NDA (Acordo de Não Divulgação).`,
+      d2h:`Limitação de Responsabilidade`,d2p:`Eduardo Monteiro não se responsabiliza por qualquer dano directo, indirecto, incidental ou consequente resultante do acesso, utilização ou incapacidade de utilização deste website. A responsabilidade total é limitada ao máximo permitido pela lei aplicável.`,
+      d3h:`Links Externos`,d3p:`Os links para websites externos (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) são fornecidos por conveniência. Eduardo Monteiro não tem controlo sobre esses websites e não é responsável pelo seu conteúdo, disponibilidade ou práticas de privacidade.`,
+      d4h:`Disponibilidade do Serviço`,d4p:`O website é disponibilizado "tal como está" sem qualquer garantia de disponibilidade contínua, ausência de erros ou adequação a um fim específico.`,
+      rgpdEy:`Cláusula 4`,rgpdT:`RGPD / FADP — CONFORMIDADE SUÍÇA E EUROPEIA`,rgpdBadge:`FADP (LPD) · RGPD Art.13 · nDSG · Suíça Primária`,
+      r1h:`Base Legal e Responsável pelo Tratamento`,r1p:`O responsável pelo tratamento de dados é <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). A base legal para qualquer eventual tratamento de dados pessoais (exclusivamente via contacto por email) é o <strong>interesse legítimo</strong> (Art. 6(1)(f) RGPD / Art. 31 LPD) e o <strong>consentimento livre e informado</strong> do titular.`,
+      r2h:`Conformidade com a LPD Suíça (FADP / nDSG)`,r2l:[`A nova Lei Federal sobre Protecção de Dados (nLPD, em vigor desde 1 Set. 2023) é o quadro de referência primário para clientes suíços.`,
+          `Não existe transferência de dados para países terceiros sem adequação ou salvaguardas equivalentes.`,
+          `Não existe tomada de decisão automatizada nem criação de perfis (profiling).`,
+          `Não existe Encarregado de Protecção de Dados (DPO) obrigatório neste contexto (microempresa / actividade individual).`],
+      r3h:`Transferências Internacionais de Dados`,r3p:`Este website não efectua transferências internacionais de dados pessoais. O GitHub Pages (infra-estrutura de hosting) processa metadados de acesso (IPs) nos termos da sua própria política de privacidade (Microsoft/GitHub GDPR DPA). O utilizador é encorajado a consultar a <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">política de privacidade do GitHub</a>.`,
+      r4h:`Adenda de Processamento de Dados (DPA)`,r4p:`Para projectos B2B que envolvam o processamento de dados pessoais de clientes finais, Eduardo Monteiro disponibiliza um Acordo de Processamento de Dados (DPA) personalizado, adaptado à jurisdição do cliente (RGPD/FADP). Contacte: edumonteiro.dev@gmail.com.`,
+      r5h:`Autoridade de Supervisão`,r5p:`Em caso de litígio sobre protecção de dados não resolvido directamente com o responsável, o titular pode apresentar queixa junto da autoridade competente: <strong>PFPDT</strong> (Preposé Fédéral à la Protection des Données, Suíça) ou a autoridade nacional de protecção de dados do seu país de residência.`,
+      cookEy:`Cláusula 5`,cookT:`POLÍTICA DE COOKIES — PADRÃO ZERO-TRACKING`,cookBadge:`Zero Cookies de Terceiros · Zero Analytics · Zero Rastreamento`,
+      c1h:`Declaração de Zero-Tracking`,c1p:`Este website opera segundo um padrão de <strong>Zero-Tracking</strong>. Não são utilizados quaisquer cookies de rastreamento, cookies de sessão de terceiros, pixels de análise (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), scripts de marketing ou tecnologias de fingerprinting. O website não rastreia o comportamento de navegação do utilizador.`,
+      c2h:`localStorage — Armazenamento Local Funcional`,c2p:`Tecnicamente, este website utiliza <code>localStorage</code> (armazenamento local do browser) — não cookies HTTP — para persistir preferências funcionais estritamente necessárias:`,c2l:[`<strong>vc-locale</strong> — Idioma seleccionado pelo utilizador. Base legal: interesse legítimo / funcionamento essencial.`,
+          `<strong>vc-cookie</strong> — Decisão do utilizador sobre o banner informativo. Base legal: consentimento.`,
+          `<strong>a2hs-dismissed</strong> — Decisão sobre o modal de instalação PWA. Base legal: interesse legítimo.`],c2n:`Estes dados são <strong>puramente locais</strong>: residem no dispositivo do utilizador, nunca são transmitidos, e podem ser apagados a qualquer momento limpando os dados do browser.`,
+      c3h:`Cookies de Infraestrutura (GitHub Pages)`,c3p:`O hosting via GitHub Pages pode definir cookies técnicos de infra-estrutura da Microsoft/GitHub, fora do controlo do responsável deste website. Consulte a política de privacidade do GitHub para detalhes. Não são cookies de rastreamento de comportamento.`,
+      c4h:`Gestão e Eliminação`,c4p:`O utilizador pode eliminar todos os dados de localStorage a qualquer momento: <strong>Definições do Browser → Privacidade → Limpar dados de navegação → Dados de sites</strong>. Após eliminação, as preferências regressam ao estado inicial na próxima visita.`,
+      c5h:`Ausência de Consentimento para Rastreamento`,c5p:`Dado que não existem cookies de rastreamento ou análise, não é necessário obter consentimento adicional para a sua colocação (conforme Directiva ePrivacy e RGPD). O banner informativo apresentado é uma medida de transparência voluntária, não uma exigência legal neste contexto específico.`,
+    }
+  },
+  'en-US':{
+    hdr:`Legal Documentation`,back:`← Portfolio`,
+    title:`Legal Documentation & Compliance`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Governing Law: Switzerland (FADP/nFADP) + GDPR`,
+    tabs:[`Terms of Use`,`Privacy Policy`,`Disclaimer`,`GDPR / FADP`,`Cookie Policy`],
+    c:{
+      termsEy:`Clause 1`,termsT:`TERMS OF USE`,
+      t1h:`Scope and Acceptance`,t1p:`Accessing and using this digital portfolio (<strong>monteiro.is-a.dev</strong>) and its sub-resources (contract.html, legal.html) constitutes full acceptance of these Terms. This portfolio is a B2B professional presentation platform operated by Eduardo Monteiro, AI-powered full-stack developer, acting as an independent contractor.`,
+      t2h:`Intellectual Property`,t2p:`All content on this website — including source code, design, text, logo, and architecture — is the exclusive property of Eduardo Monteiro and is protected under applicable intellectual property laws. Reproduction, copying, or commercial use without prior written authorisation is strictly prohibited.`,
+      t3h:`Use Restrictions`,t3l:[`Use for illegal, fraudulent, or third-party rights-infringing purposes is prohibited.`,
+          `Automated scraping or mass data extraction without consent is prohibited.`,
+          `Reverse engineering or decompilation of inlined code is prohibited.`],
+      t4h:`Modifications and Availability`,t4p:`The provider reserves the right to modify, suspend, or discontinue any part of the portfolio without prior notice. The portfolio may be temporarily unavailable due to maintenance or force majeure.`,
+      privEy:`Clause 2`,privT:`PRIVACY POLICY`,privBadge:`Zero-Tracking · Zero-Cookies · FADP · GDPR`,
+      p1h:`Data Collected`,p1p:`This website <strong>does not collect, process, store, or transmit</strong> any personal data to external servers. There are no tracking cookies, analytics pixels, third-party scripts, or forms that transmit data to remote servers. The only persisted state is the language preference (<code>localStorage('vc-locale')</code>) and the install preference (<code>localStorage('a2hs-dismissed')</code>), stored exclusively on the user's device.`,
+      p2h:`localStorage — On-Device Data`,p2l:[`<code>vc-locale</code> — Language preference (e.g. "en-US"). Never transmitted.`,
+          `<code>vc-cookie</code> — Cookie banner consent preference (0 or 1).`,
+          `<code>a2hs-dismissed</code> — PWA install preference. Never transmitted.`],
+      p3h:`Email Contact`,p3p:`If you contact us via email (edumonteiro.dev@gmail.com), the data provided (name, email, message) will be used solely to respond to your request and will not be shared with third parties or used for unsolicited commercial purposes.`,
+      p4h:`Data Subject Rights (GDPR Art. 15–22 / FADP)`,p4l:[`<strong>Access</strong> — Right to know what data is being processed.`,
+          `<strong>Rectification</strong> — Right to correct inaccurate data.`,
+          `<strong>Erasure</strong> — Right to erasure ("right to be forgotten").`,
+          `<strong>Portability</strong> — Right to receive data in a structured format.`,
+          `<strong>Objection</strong> — Right to object to processing for marketing purposes.`],p4n:`To exercise these rights: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Clause 3`,discT:`DISCLAIMER`,
+      d1h:`Nature of the Portfolio`,d1p:`This portfolio is strictly informational and for professional presentation purposes. The information, metrics, and project descriptions presented are provided in good faith without any guarantee of absolute accuracy. The projects shown represent real completed work; some features may have been developed under NDA (Non-Disclosure Agreement) constraints.`,
+      d2h:`Limitation of Liability`,d2p:`Eduardo Monteiro shall not be liable for any direct, indirect, incidental, or consequential damages arising from accessing, using, or being unable to use this website. Total liability is limited to the maximum extent permitted by applicable law.`,
+      d3h:`External Links`,d3p:`Links to external websites (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) are provided for convenience only. Eduardo Monteiro has no control over those websites and is not responsible for their content, availability, or privacy practices.`,
+      d4h:`Service Availability`,d4p:`The website is provided "as is" without any warranty of continuous availability, absence of errors, or fitness for a particular purpose.`,
+      rgpdEy:`Clause 4`,rgpdT:`GDPR / FADP — SWISS AND EUROPEAN COMPLIANCE`,rgpdBadge:`FADP (nFADP) · GDPR Art.13 · DSG · Switzerland Primary`,
+      r1h:`Legal Basis and Data Controller`,r1p:`The data controller is <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). The legal basis for any potential processing of personal data (exclusively via email contact) is <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR / Art. 31 FADP) and the <strong>free and informed consent</strong> of the data subject.`,
+      r2h:`Swiss FADP Compliance (revFADP / DSG)`,r2l:[`The revised Federal Act on Data Protection (revFADP, in force since 1 Sep. 2023) is the primary reference framework for Swiss clients.`,
+          `No data transfers to third countries without adequacy decisions or equivalent safeguards.`,
+          `No automated decision-making or profiling is performed.`,
+          `No Data Protection Officer (DPO) is required in this context (micro-enterprise / sole trader).`],
+      r3h:`International Data Transfers`,r3p:`This website does not perform international transfers of personal data. GitHub Pages (hosting infrastructure) processes access metadata (IPs) under its own privacy policy (Microsoft/GitHub GDPR DPA). Users are encouraged to consult the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.`,
+      r4h:`Data Processing Addendum (DPA)`,r4p:`For B2B projects involving the processing of end-client personal data, Eduardo Monteiro provides a customised Data Processing Addendum (DPA), adapted to the client's jurisdiction (GDPR/FADP). Contact: edumonteiro.dev@gmail.com.`,
+      r5h:`Supervisory Authority`,r5p:`In the event of a data protection dispute not resolved directly with the controller, the data subject may lodge a complaint with the competent authority: <strong>FDPIC</strong> (Federal Data Protection and Information Commissioner, Switzerland) or the national data protection authority of their country of residence.`,
+      cookEy:`Clause 5`,cookT:`COOKIE POLICY — ZERO-TRACKING STANDARD`,cookBadge:`Zero Third-Party Cookies · Zero Analytics · Zero Tracking`,
+      c1h:`Zero-Tracking Declaration`,c1p:`This website operates under a <strong>Zero-Tracking</strong> standard. No tracking cookies, third-party session cookies, analytics pixels (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), marketing scripts, or fingerprinting technologies are used. The website does not track user browsing behaviour.`,
+      c2h:`localStorage — Functional Local Storage`,c2p:`Technically, this website uses <code>localStorage</code> (browser local storage) — not HTTP cookies — to persist strictly necessary functional preferences:`,c2l:[`<strong>vc-locale</strong> — Language selected by the user. Legal basis: legitimate interest / essential functionality.`,
+          `<strong>vc-cookie</strong> — User's decision on the informational banner. Legal basis: consent.`,
+          `<strong>a2hs-dismissed</strong> — Decision on the PWA install modal. Legal basis: legitimate interest.`],c2n:`These data are <strong>purely local</strong>: they reside on the user's device, are never transmitted, and can be deleted at any time by clearing browser data.`,
+      c3h:`Infrastructure Cookies (GitHub Pages)`,c3p:`Hosting via GitHub Pages may set technical infrastructure cookies by Microsoft/GitHub, outside the control of the website owner. Please consult GitHub's privacy policy for details. These are not behavioural tracking cookies.`,
+      c4h:`Management and Deletion`,c4p:`The user may delete all localStorage data at any time: <strong>Browser Settings → Privacy → Clear Browsing Data → Site Data</strong>. After deletion, preferences revert to their initial state on the next visit.`,
+      c5h:`No Tracking Consent Required`,c5p:`Since there are no tracking or analytics cookies, no additional consent is required for their placement (per ePrivacy Directive and GDPR). The informational banner displayed is a voluntary transparency measure, not a legal requirement in this specific context.`,
+    }
+  },
+  'fr-CH':{
+    hdr:`Documentation Juridique`,back:`← Portfolio`,
+    title:`Documentation Juridique & Conformité`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Droit applicable: Suisse (LPD/nLPD) + RGPD`,
+    tabs:[`Conditions d'Utilisation`,`Politique de Confidentialité`,`Clause de Non-Responsabilité`,`RGPD / LPD`,`Politique de Cookies`],
+    c:{
+      termsEy:`Clause 1`,termsT:`CONDITIONS D'UTILISATION`,
+      t1h:`Champ d'application et acceptation`,t1p:`L'accès et l'utilisation de ce portfolio numérique (<strong>monteiro.is-a.dev</strong>) et de ses sous-ressources (contract.html, legal.html) impliquent l'acceptation intégrale des présentes Conditions. Ce portfolio est une plateforme de présentation professionnelle B2B exploitée par Eduardo Monteiro, développeur full-stack IA, exerçant en qualité de prestataire indépendant.`,
+      t2h:`Propriété intellectuelle`,t2p:`L'ensemble du contenu de ce site web — incluant le code source, le design, les textes, le logo et l'architecture — est la propriété exclusive d'Eduardo Monteiro et est protégé par les lois applicables en matière de propriété intellectuelle. Toute reproduction, copie ou utilisation commerciale sans autorisation écrite préalable est strictement interdite.`,
+      t3h:`Restrictions d'utilisation`,t3l:[`L'utilisation à des fins illégales, frauduleuses ou portant atteinte aux droits de tiers est interdite.`,
+          `Le scraping automatisé ou l'extraction massive de données sans consentement est interdit.`,
+          `L'ingénierie inverse ou la décompilation du code intégré est interdite.`],
+      t4h:`Modifications et disponibilité`,t4p:`Le prestataire se réserve le droit de modifier, suspendre ou interrompre toute partie du portfolio sans préavis. Le portfolio peut être temporairement indisponible pour des raisons de maintenance ou de force majeure.`,
+      privEy:`Clause 2`,privT:`POLITIQUE DE CONFIDENTIALITÉ`,privBadge:`Zéro Tracking · Zéro Cookies · LPD/nLPD · RGPD`,
+      p1h:`Données collectées`,p1p:`Ce site web <strong>ne collecte, ne traite, ne stocke ni ne transmet</strong> aucune donnée personnelle vers des serveurs externes. Il n'existe aucun cookie de suivi, pixel d'analyse, script tiers ou formulaire transmettant des données à des serveurs distants. Le seul état persisté est la préférence de langue (<code>localStorage('vc-locale')</code>) et la préférence d'installation (<code>localStorage('a2hs-dismissed')</code>), stockés exclusivement sur l'appareil de l'utilisateur.`,
+      p2h:`localStorage — Données sur l'appareil`,p2l:[`<code>vc-locale</code> — Préférence de langue (ex: "fr-CH"). Jamais transmise.`,
+          `<code>vc-cookie</code> — Préférence de consentement à la bannière (0 ou 1).`,
+          `<code>a2hs-dismissed</code> — Préférence d'installation PWA. Jamais transmise.`],
+      p3h:`Contact par e-mail`,p3p:`Si vous nous contactez par e-mail (edumonteiro.dev@gmail.com), les données fournies (nom, e-mail, message) seront utilisées exclusivement pour répondre à votre demande et ne seront pas partagées avec des tiers ni utilisées à des fins commerciales non sollicitées.`,
+      p4h:`Droits des personnes concernées (RGPD Art. 15–22 / LPD)`,p4l:[`<strong>Accès</strong> — Droit de savoir quelles données sont traitées.`,
+          `<strong>Rectification</strong> — Droit de corriger des données inexactes.`,
+          `<strong>Effacement</strong> — Droit à l'effacement (« droit à l'oubli »).`,
+          `<strong>Portabilité</strong> — Droit de recevoir les données dans un format structuré.`,
+          `<strong>Opposition</strong> — Droit de s'opposer au traitement à des fins de marketing.`],p4n:`Pour exercer ces droits: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Clause 3`,discT:`CLAUSE DE NON-RESPONSABILITÉ`,
+      d1h:`Nature du portfolio`,d1p:`Ce portfolio a un caractère strictement informatif et de présentation professionnelle. Les informations, métriques et descriptions de projets présentées sont fournies de bonne foi, sans garantie d'exactitude absolue. Les projets présentés correspondent à des travaux réels exécutés ; certaines fonctionnalités peuvent avoir été développées dans le cadre d'accords de confidentialité (NDA).`,
+      d2h:`Limitation de responsabilité`,d2p:`Eduardo Monteiro ne saurait être tenu responsable de tout dommage direct, indirect, accessoire ou consécutif résultant de l'accès, de l'utilisation ou de l'impossibilité d'utiliser ce site web. La responsabilité totale est limitée dans la mesure maximale permise par la loi applicable.`,
+      d3h:`Liens externes`,d3p:`Les liens vers des sites web externes (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) sont fournis par convenance. Eduardo Monteiro n'a aucun contrôle sur ces sites et n'est pas responsable de leur contenu, disponibilité ou pratiques de confidentialité.`,
+      d4h:`Disponibilité du service`,d4p:`Le site web est fourni « tel quel » sans aucune garantie de disponibilité continue, d'absence d'erreurs ou d'adéquation à un usage particulier.`,
+      rgpdEy:`Clause 4`,rgpdT:`RGPD / LPD — CONFORMITÉ SUISSE ET EUROPÉENNE`,rgpdBadge:`LPD (nLPD) · RGPD Art.13 · nDSG · Suisse Primaire`,
+      r1h:`Base légale et responsable du traitement`,r1p:`Le responsable du traitement est <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). La base légale pour tout traitement éventuel de données personnelles (exclusivement via contact par e-mail) est l'<strong>intérêt légitime</strong> (Art. 6(1)(f) RGPD / Art. 31 LPD) et le <strong>consentement libre et éclairé</strong> de la personne concernée.`,
+      r2h:`Conformité avec la LPD suisse (nLPD / FADP)`,r2l:[`La nouvelle Loi fédérale sur la protection des données (nLPD, en vigueur depuis le 1er sept. 2023) constitue le cadre de référence primaire pour les clients suisses.`,
+          `Aucun transfert de données vers des pays tiers sans décision d'adéquation ou garanties équivalentes.`,
+          `Aucune prise de décision automatisée ni création de profils (profilage) n'est effectuée.`,
+          `Aucun délégué à la protection des données (DPD) n'est requis dans ce contexte (micro-entreprise / activité individuelle).`],
+      r3h:`Transferts internationaux de données`,r3p:`Ce site web n'effectue aucun transfert international de données personnelles. GitHub Pages (infrastructure d'hébergement) traite des métadonnées d'accès (adresses IP) conformément à sa propre politique de confidentialité (Microsoft/GitHub GDPR DPA). Les utilisateurs sont invités à consulter la <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">politique de confidentialité de GitHub</a>.`,
+      r4h:`Accord de traitement des données (ATD)`,r4p:`Pour les projets B2B impliquant le traitement de données personnelles de clients finaux, Eduardo Monteiro met à disposition un Accord de traitement des données (ATD) personnalisé, adapté à la juridiction du client (RGPD/LPD). Contact: edumonteiro.dev@gmail.com.`,
+      r5h:`Autorité de surveillance`,r5p:`En cas de litige relatif à la protection des données non résolu directement avec le responsable du traitement, la personne concernée peut déposer une plainte auprès de l'autorité compétente: <strong>PFPDT</strong> (Préposé fédéral à la protection des données et à la transparence, Suisse) ou l'autorité nationale de protection des données de son pays de résidence.`,
+      cookEy:`Clause 5`,cookT:`POLITIQUE DE COOKIES — STANDARD ZÉRO TRACKING`,cookBadge:`Zéro Cookies Tiers · Zéro Analytics · Zéro Suivi`,
+      c1h:`Déclaration Zéro Tracking`,c1p:`Ce site web fonctionne selon un standard <strong>Zéro Tracking</strong>. Aucun cookie de suivi, cookie de session tiers, pixel d'analyse (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), script marketing ou technologie de fingerprinting n'est utilisé. Le site ne suit pas le comportement de navigation de l'utilisateur.`,
+      c2h:`localStorage — Stockage local fonctionnel`,c2p:`Techniquement, ce site utilise <code>localStorage</code> (stockage local du navigateur) — et non des cookies HTTP — pour conserver des préférences fonctionnelles strictement nécessaires:`,c2l:[`<strong>vc-locale</strong> — Langue sélectionnée par l'utilisateur. Base légale: intérêt légitime / fonctionnement essentiel.`,
+          `<strong>vc-cookie</strong> — Décision de l'utilisateur sur la bannière informative. Base légale: consentement.`,
+          `<strong>a2hs-dismissed</strong> — Décision sur le modal d'installation PWA. Base légale: intérêt légitime.`],c2n:`Ces données sont <strong>purement locales</strong>: elles résident sur l'appareil de l'utilisateur, ne sont jamais transmises et peuvent être supprimées à tout moment en effaçant les données du navigateur.`,
+      c3h:`Cookies d'infrastructure (GitHub Pages)`,c3p:`L'hébergement via GitHub Pages peut définir des cookies techniques d'infrastructure par Microsoft/GitHub, hors du contrôle du responsable de ce site web. Veuillez consulter la politique de confidentialité de GitHub pour plus de détails. Il ne s'agit pas de cookies de suivi comportemental.`,
+      c4h:`Gestion et suppression`,c4p:`L'utilisateur peut supprimer toutes les données localStorage à tout moment: <strong>Paramètres du navigateur → Confidentialité → Effacer les données de navigation → Données des sites</strong>. Après suppression, les préférences reviennent à l'état initial lors de la prochaine visite.`,
+      c5h:`Absence de consentement pour le suivi`,c5p:`Étant donné qu'il n'existe aucun cookie de suivi ou d'analyse, aucun consentement supplémentaire n'est requis pour leur placement (conformément à la Directive ePrivacy et au RGPD). La bannière informative affichée est une mesure de transparence volontaire, et non une obligation légale dans ce contexte spécifique.`,
+    }
+  },
+  'de-CH':{
+    hdr:`Rechtliche Dokumentation`,back:`← Portfolio`,
+    title:`Rechtliche Dokumentation & Compliance`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Anwendbares Recht: Schweiz (DSG/nDSG) + DSGVO`,
+    tabs:[`Nutzungsbedingungen`,`Datenschutzerklärung`,`Haftungsausschluss`,`DSGVO / DSG`,`Cookie-Richtlinie`],
+    c:{
+      termsEy:`Klausel 1`,termsT:`NUTZUNGSBEDINGUNGEN`,
+      t1h:`Anwendungsbereich und Akzeptanz`,t1p:`Der Zugriff auf und die Nutzung dieses digitalen Portfolios (<strong>monteiro.is-a.dev</strong>) und seiner Unterressourcen (contract.html, legal.html) setzt die vollständige Akzeptanz dieser Nutzungsbedingungen voraus. Das Portfolio ist eine professionelle B2B-Präsentationsplattform von Eduardo Monteiro, KI-gestützter Full-Stack-Entwickler, der als unabhängiger Auftragnehmer tätig ist.`,
+      t2h:`Geistiges Eigentum`,t2p:`Sämtliche Inhalte dieser Website — einschliesslich Quellcode, Design, Texte, Logo und Architektur — sind ausschliessliches Eigentum von Eduardo Monteiro und durch das anwendbare Immaterialgüterrecht geschützt. Die Vervielfältigung, Kopie oder kommerzielle Nutzung ohne vorherige schriftliche Genehmigung ist streng verboten.`,
+      t3h:`Nutzungsbeschränkungen`,t3l:[`Die Nutzung für illegale, betrügerische oder die Rechte Dritter verletzende Zwecke ist verboten.`,
+          `Automatisiertes Scraping oder massenhafte Datenextraktion ohne Einwilligung ist verboten.`,
+          `Reverse Engineering oder Dekompilierung des eingebetteten Codes ist verboten.`],
+      t4h:`Änderungen und Verfügbarkeit`,t4p:`Der Anbieter behält sich das Recht vor, Teile des Portfolios ohne vorherige Ankündigung zu ändern, auszusetzen oder einzustellen. Das Portfolio kann aus Wartungsgründen oder aufgrund höherer Gewalt vorübergehend nicht verfügbar sein.`,
+      privEy:`Klausel 2`,privT:`DATENSCHUTZERKLÄRUNG`,privBadge:`Zero-Tracking · Zero-Cookies · DSG/nDSG · DSGVO`,
+      p1h:`Erhobene Daten`,p1p:`Diese Website <strong>erhebt, verarbeitet, speichert oder überträgt</strong> keinerlei personenbezogene Daten an externe Server. Es gibt keine Tracking-Cookies, Analyse-Pixel, Drittanbieter-Skripte oder Formulare, die Daten an Remote-Server übermitteln. Der einzige persistierte Zustand ist die Sprachpräferenz (<code>localStorage('vc-locale')</code>) und die Installationspräferenz (<code>localStorage('a2hs-dismissed')</code>), die ausschliesslich auf dem Gerät des Nutzers gespeichert werden.`,
+      p2h:`localStorage — Geräteseitige Daten`,p2l:[`<code>vc-locale</code> — Sprachpräferenz (z.B. "de-CH"). Wird nie übertragen.`,
+          `<code>vc-cookie</code> — Cookie-Bannerpräferenz (0 oder 1).`,
+          `<code>a2hs-dismissed</code> — PWA-Installationspräferenz. Wird nie übertragen.`],
+      p3h:`Kontakt per E-Mail`,p3p:`Wenn Sie uns per E-Mail kontaktieren (edumonteiro.dev@gmail.com), werden die bereitgestellten Daten (Name, E-Mail, Nachricht) ausschliesslich zur Beantwortung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben oder für unaufgeforderte kommerzielle Zwecke verwendet.`,
+      p4h:`Rechte betroffener Personen (DSGVO Art. 15–22 / DSG)`,p4l:[`<strong>Auskunft</strong> — Recht zu erfahren, welche Daten verarbeitet werden.`,
+          `<strong>Berichtigung</strong> — Recht auf Korrektur unrichtiger Daten.`,
+          `<strong>Löschung</strong> — Recht auf Löschung («Recht auf Vergessenwerden»).`,
+          `<strong>Datenübertragbarkeit</strong> — Recht, Daten in einem strukturierten Format zu erhalten.`,
+          `<strong>Widerspruch</strong> — Recht, der Verarbeitung zu Marketingzwecken zu widersprechen.`],p4n:`Zur Ausübung dieser Rechte: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Klausel 3`,discT:`HAFTUNGSAUSSCHLUSS`,
+      d1h:`Charakter des Portfolios`,d1p:`Dieses Portfolio dient ausschliesslich zur Information und professionellen Präsentation. Die dargestellten Informationen, Kennzahlen und Projektbeschreibungen werden in gutem Glauben ohne Gewähr für absolute Richtigkeit bereitgestellt. Die aufgeführten Projekte entsprechen tatsächlich ausgeführten Arbeiten; einige Funktionen können unter NDA-Bedingungen (Geheimhaltungsvereinbarung) entwickelt worden sein.`,
+      d2h:`Haftungsbeschränkung`,d2p:`Eduardo Monteiro haftet nicht für direkte, indirekte, beiläufige oder Folgeschäden, die aus dem Zugriff auf, der Nutzung oder der Nichtnutzbarkeit dieser Website entstehen. Die Gesamthaftung ist auf das nach anwendbarem Recht maximal zulässige Mass beschränkt.`,
+      d3h:`Externe Links`,d3p:`Links zu externen Websites (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) werden zur Vereinfachung bereitgestellt. Eduardo Monteiro hat keine Kontrolle über diese Websites und übernimmt keine Verantwortung für deren Inhalte, Verfügbarkeit oder Datenschutzpraktiken.`,
+      d4h:`Dienstverfügbarkeit`,d4p:`Die Website wird «so wie sie ist» ohne Gewähr für kontinuierliche Verfügbarkeit, Fehlerfreiheit oder Eignung für einen bestimmten Zweck bereitgestellt.`,
+      rgpdEy:`Klausel 4`,rgpdT:`DSGVO / DSG — SCHWEIZERISCHE UND EUROPÄISCHE COMPLIANCE`,rgpdBadge:`DSG (nDSG) · DSGVO Art.13 · FADP · Schweiz Primär`,
+      r1h:`Rechtsgrundlage und Verantwortlicher`,r1p:`Der Verantwortliche für die Datenverarbeitung ist <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). Die Rechtsgrundlage für jede allfällige Verarbeitung personenbezogener Daten (ausschliesslich über E-Mail-Kontakt) ist das <strong>berechtigte Interesse</strong> (Art. 6 Abs. 1 lit. f DSGVO / Art. 31 DSG) und die <strong>freie und informierte Einwilligung</strong> der betroffenen Person.`,
+      r2h:`Konformität mit dem Schweizer DSG (nDSG / FADP)`,r2l:[`Das revidierte Bundesgesetz über den Datenschutz (revDSG, in Kraft seit 1. Sept. 2023) bildet den primären Referenzrahmen für Schweizer Kunden.`,
+          `Keine Übermittlung von Daten in Drittländer ohne Angemessenheitsbeschluss oder gleichwertige Garantien.`,
+          `Es erfolgt keine automatisierte Entscheidungsfindung oder Profilerstellung (Profiling).`,
+          `Kein Datenschutzbeauftragter (DSB) ist in diesem Zusammenhang erforderlich (Kleinstunternehmen / Einzelperson).`],
+      r3h:`Internationale Datentransfers`,r3p:`Diese Website führt keine internationalen Übermittlungen personenbezogener Daten durch. GitHub Pages (Hosting-Infrastruktur) verarbeitet Zugriffsmetadaten (IP-Adressen) im Rahmen seiner eigenen Datenschutzrichtlinie (Microsoft/GitHub DSGVO DPA). Nutzer werden gebeten, die <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzrichtlinie von GitHub</a> zu konsultieren.`,
+      r4h:`Datenverarbeitungsvertrag (DVV)`,r4p:`Für B2B-Projekte, bei denen personenbezogene Daten von Endkunden verarbeitet werden, stellt Eduardo Monteiro einen massgeschneiderten Datenverarbeitungsvertrag (DVV) bereit, angepasst an die Jurisdiktion des Auftraggebers (DSGVO/DSG). Kontakt: edumonteiro.dev@gmail.com.`,
+      r5h:`Aufsichtsbehörde`,r5p:`Bei einem Datenschutzstreit, der nicht direkt mit dem Verantwortlichen gelöst werden kann, kann die betroffene Person Beschwerde bei der zuständigen Behörde einreichen: <strong>EDÖB</strong> (Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter, Schweiz) oder der nationalen Datenschutzbehörde des Wohnsitzlandes.`,
+      cookEy:`Klausel 5`,cookT:`COOKIE-RICHTLINIE — ZERO-TRACKING-STANDARD`,cookBadge:`Zero Drittanbieter-Cookies · Zero Analytics · Zero Tracking`,
+      c1h:`Zero-Tracking-Erklärung`,c1p:`Diese Website operiert nach einem <strong>Zero-Tracking</strong>-Standard. Es werden keine Tracking-Cookies, Drittanbieter-Session-Cookies, Analyse-Pixel (Google Analytics, Facebook Pixel, LinkedIn Insight usw.), Marketing-Skripte oder Fingerprinting-Technologien eingesetzt. Die Website verfolgt das Surfverhalten der Nutzer nicht.`,
+      c2h:`localStorage — Funktionaler lokaler Speicher`,c2p:`Technisch verwendet diese Website <code>localStorage</code> (lokaler Browser-Speicher) — keine HTTP-Cookies — zur Speicherung streng notwendiger funktionaler Präferenzen:`,c2l:[`<strong>vc-locale</strong> — Vom Nutzer gewählte Sprache. Rechtsgrundlage: berechtigtes Interesse / wesentliche Funktionalität.`,
+          `<strong>vc-cookie</strong> — Entscheidung des Nutzers über das Informationsbanner. Rechtsgrundlage: Einwilligung.`,
+          `<strong>a2hs-dismissed</strong> — Entscheidung über das PWA-Installationsmodal. Rechtsgrundlage: berechtigtes Interesse.`],c2n:`Diese Daten sind <strong>rein lokal</strong>: Sie verbleiben auf dem Gerät des Nutzers, werden niemals übertragen und können jederzeit durch das Löschen der Browser-Daten entfernt werden.`,
+      c3h:`Infrastruktur-Cookies (GitHub Pages)`,c3p:`Das Hosting über GitHub Pages kann technische Infrastruktur-Cookies von Microsoft/GitHub setzen, die ausserhalb der Kontrolle des Website-Betreibers liegen. Bitte konsultieren Sie die Datenschutzrichtlinie von GitHub für Details. Es handelt sich nicht um Verhaltens-Tracking-Cookies.`,
+      c4h:`Verwaltung und Löschung`,c4p:`Nutzer können alle localStorage-Daten jederzeit löschen: <strong>Browsereinstellungen → Datenschutz → Browserdaten löschen → Website-Daten</strong>. Nach der Löschung kehren die Präferenzen beim nächsten Besuch in den Ausgangszustand zurück.`,
+      c5h:`Kein Tracking-Einverständnis erforderlich`,c5p:`Da keine Tracking- oder Analyse-Cookies vorhanden sind, ist keine zusätzliche Einwilligung für deren Platzierung erforderlich (gemäss ePrivacy-Richtlinie und DSGVO). Das angezeigte Informationsbanner ist eine freiwillige Transparenzmaßnahme und keine gesetzliche Pflicht in diesem spezifischen Kontext.`,
+    }
+  },
+  'es-ES':{
+    hdr:`Documentación Legal`,back:`← Portafolio`,
+    title:`Documentación Legal & Cumplimiento`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Ley aplicable: Suiza (FADP/LPD) + RGPD`,
+    tabs:[`Términos de Uso`,`Política de Privacidad`,`Descargo de Responsabilidad`,`RGPD / FADP`,`Política de Cookies`],
+    c:{
+      termsEy:`Cláusula 1`,termsT:`TÉRMINOS DE USO`,
+      t1h:`Ámbito y Aceptación`,t1p:`El acceso y uso de este portafolio digital (<strong>monteiro.is-a.dev</strong>) y sus sub-recursos (contract.html, legal.html) implica la aceptación íntegra de los presentes Términos. El portafolio es una plataforma de presentación profesional B2B operada por Eduardo Monteiro, desarrollador full-stack con IA, registrado como profesional independiente.`,
+      t2h:`Propiedad Intelectual`,t2p:`Todo el contenido de este sitio web — incluyendo código fuente, diseño, textos, logotipo y arquitectura — es propiedad exclusiva de Eduardo Monteiro y está protegido por las leyes de propiedad intelectual aplicables. Se prohíbe su reproducción, copia o uso comercial sin autorización escrita previa.`,
+      t3h:`Restricciones de Uso`,t3l:[`Se prohíbe el uso para fines ilegales, fraudulentos o que vulneren derechos de terceros.`,
+          `Se prohíbe el scraping automatizado o extracción masiva de datos sin consentimiento.`,
+          `Se prohíbe la ingeniería inversa o descompilación del código integrado.`],
+      t4h:`Modificaciones y Disponibilidad`,t4p:`El prestador se reserva el derecho de modificar, suspender o interrumpir cualquier parte del portafolio sin previo aviso. El portafolio puede estar temporalmente no disponible por razones de mantenimiento o fuerza mayor.`,
+      privEy:`Cláusula 2`,privT:`POLÍTICA DE PRIVACIDAD`,privBadge:`Cero Seguimiento · Cero Cookies · FADP · RGPD`,
+      p1h:`Datos Recopilados`,p1p:`Este sitio web <strong>no recopila, procesa, almacena ni transmite</strong> datos personales a servidores externos. No existen cookies de seguimiento, píxeles de análisis, scripts de terceros ni formularios que transmitan datos a servidores remotos. El único estado persistido es la preferencia de idioma (<code>localStorage('vc-locale')</code>) y la preferencia de instalación (<code>localStorage('a2hs-dismissed')</code>), almacenados exclusivamente en el dispositivo del usuario.`,
+      p2h:`localStorage — Datos en el Dispositivo`,p2l:[`<code>vc-locale</code> — Preferencia de idioma (ej: "es-ES"). Nunca transmitida.`,
+          `<code>vc-cookie</code> — Preferencia de consentimiento del banner (0 o 1).`,
+          `<code>a2hs-dismissed</code> — Preferencia de instalación PWA. Nunca transmitida.`],
+      p3h:`Contacto por Correo Electrónico`,p3p:`Si nos contacta por correo electrónico (edumonteiro.dev@gmail.com), los datos proporcionados (nombre, correo, mensaje) se utilizarán exclusivamente para responder a su solicitud y no serán compartidos con terceros ni utilizados con fines comerciales no solicitados.`,
+      p4h:`Derechos del Interesado (RGPD Art. 15–22 / FADP)`,p4l:[`<strong>Acceso</strong> — Derecho a conocer qué datos se están procesando.`,
+          `<strong>Rectificación</strong> — Derecho a corregir datos inexactos.`,
+          `<strong>Supresión</strong> — Derecho al borrado («derecho al olvido»).`,
+          `<strong>Portabilidad</strong> — Derecho a recibir los datos en formato estructurado.`,
+          `<strong>Oposición</strong> — Derecho a oponerse al tratamiento con fines de marketing.`],p4n:`Para ejercer estos derechos: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Cláusula 3`,discT:`DESCARGO DE RESPONSABILIDAD`,
+      d1h:`Naturaleza del Portafolio`,d1p:`Este portafolio tiene carácter estrictamente informativo y de presentación profesional. La información, métricas y descripciones de proyectos se proporcionan de buena fe sin garantía de exactitud absoluta. Los proyectos presentados corresponden a trabajo real ejecutado; algunas funcionalidades pueden haberse desarrollado bajo acuerdos de confidencialidad (NDA).`,
+      d2h:`Limitación de Responsabilidad`,d2p:`Eduardo Monteiro no será responsable de ningún daño directo, indirecto, incidental o consecuente derivado del acceso, uso o imposibilidad de uso de este sitio web. La responsabilidad total queda limitada al máximo permitido por la legislación aplicable.`,
+      d3h:`Enlace Externos`,d3p:`Los enlaces a sitios web externos (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) se proporcionan por conveniencia. Eduardo Monteiro no tiene control sobre dichos sitios y no se hace responsable de su contenido, disponibilidad o prácticas de privacidad.`,
+      d4h:`Disponibilidad del Servicio`,d4p:`El sitio web se proporciona «tal cual» sin ninguna garantía de disponibilidad continua, ausencia de errores o idoneidad para un fin concreto.`,
+      rgpdEy:`Cláusula 4`,rgpdT:`RGPD / FADP — CUMPLIMIENTO SUIZO Y EUROPEO`,rgpdBadge:`FADP (LPD) · RGPD Art.13 · nDSG · Suiza Primario`,
+      r1h:`Base Legal y Responsable del Tratamiento`,r1p:`El responsable del tratamiento es <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). La base legal para cualquier posible tratamiento de datos personales (exclusivamente a través de contacto por correo electrónico) es el <strong>interés legítimo</strong> (Art. 6(1)(f) RGPD / Art. 31 FADP) y el <strong>consentimiento libre e informado</strong> del interesado.`,
+      r2h:`Conformidad con la FADP suiza (nFADP / DSG)`,r2l:[`La Ley Federal revisada sobre Protección de Datos (nFADP, en vigor desde el 1 de sept. de 2023) es el marco de referencia primario para los clientes suizos.`,
+          `No existe transferencia de datos a terceros países sin decisión de adecuación o salvaguardas equivalentes.`,
+          `No se realiza toma de decisiones automatizada ni elaboración de perfiles (profiling).`,
+          `No se requiere Delegado de Protección de Datos (DPD) en este contexto (microempresa / actividad individual).`],
+      r3h:`Transferencias Internacionales de Datos`,r3p:`Este sitio web no realiza transferencias internacionales de datos personales. GitHub Pages (infraestructura de hosting) procesa metadatos de acceso (IPs) conforme a su propia política de privacidad (Microsoft/GitHub GDPR DPA). Se invita al usuario a consultar la <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">política de privacidad de GitHub</a>.`,
+      r4h:`Adenda de Tratamiento de Datos (DPA)`,r4p:`Para proyectos B2B que impliquen el tratamiento de datos personales de clientes finales, Eduardo Monteiro facilita una Adenda de Tratamiento de Datos (DPA) personalizada, adaptada a la jurisdicción del cliente (RGPD/FADP). Contacto: edumonteiro.dev@gmail.com.`,
+      r5h:`Autoridad de Control`,r5p:`En caso de litigio sobre protección de datos no resuelto directamente con el responsable, el interesado puede presentar reclamación ante la autoridad competente: <strong>PFPDT</strong> (Comisionado Federal de Protección de Datos, Suiza) o la autoridad nacional de protección de datos de su país de residencia.`,
+      cookEy:`Cláusula 5`,cookT:`POLÍTICA DE COOKIES — ESTÁNDAR CERO SEGUIMIENTO`,cookBadge:`Cero Cookies de Terceros · Cero Analytics · Cero Rastreo`,
+      c1h:`Declaración de Cero Seguimiento`,c1p:`Este sitio web opera bajo un estándar de <strong>Cero Seguimiento</strong>. No se utilizan cookies de seguimiento, cookies de sesión de terceros, píxeles de análisis (Google Analytics, Facebook Pixel, LinkedIn Insight, etc.), scripts de marketing ni tecnologías de fingerprinting. El sitio no rastrea el comportamiento de navegación del usuario.`,
+      c2h:`localStorage — Almacenamiento Local Funcional`,c2p:`Técnicamente, este sitio web utiliza <code>localStorage</code> (almacenamiento local del navegador) — no cookies HTTP — para persistir preferencias funcionales estrictamente necesarias:`,c2l:[`<strong>vc-locale</strong> — Idioma seleccionado por el usuario. Base legal: interés legítimo / funcionamiento esencial.`,
+          `<strong>vc-cookie</strong> — Decisión del usuario sobre el banner informativo. Base legal: consentimiento.`,
+          `<strong>a2hs-dismissed</strong> — Decisión sobre el modal de instalación PWA. Base legal: interés legítimo.`],c2n:`Estos datos son <strong>puramente locales</strong>: residen en el dispositivo del usuario, nunca se transmiten y pueden eliminarse en cualquier momento borrando los datos del navegador.`,
+      c3h:`Cookies de Infraestructura (GitHub Pages)`,c3p:`El hosting a través de GitHub Pages puede definir cookies técnicas de infraestructura de Microsoft/GitHub, fuera del control del responsable de este sitio web. Consulte la política de privacidad de GitHub para más detalles. No son cookies de seguimiento de comportamiento.`,
+      c4h:`Gestión y Eliminación`,c4p:`El usuario puede eliminar todos los datos de localStorage en cualquier momento: <strong>Configuración del navegador → Privacidad → Borrar datos de navegación → Datos de sitios</strong>. Tras la eliminación, las preferencias vuelven al estado inicial en la próxima visita.`,
+      c5h:`Ausencia de Consentimiento para el Seguimiento`,c5p:`Dado que no existen cookies de seguimiento o análisis, no se requiere consentimiento adicional para su colocación (conforme a la Directiva ePrivacy y al RGPD). El banner informativo mostrado es una medida de transparencia voluntaria, no una exigencia legal en este contexto específico.`,
+    }
+  },
+  'it-IT':{
+    hdr:`Documentazione Legale`,back:`← Portfolio`,
+    title:`Documentazione Legale & Conformità`,
+    sub:`Eduardo Monteiro Dev · monteiro.is-a.dev · edumonteiro.dev@gmail.com · Legge applicabile: Svizzera (LPD/nLPD) + GDPR`,
+    tabs:[`Termini di Utilizzo`,`Informativa sulla Privacy`,`Limitazione di Responsabilità`,`GDPR / LPD`,`Informativa sui Cookie`],
+    c:{
+      termsEy:`Clausola 1`,termsT:`TERMINI DI UTILIZZO`,
+      t1h:`Ambito e Accettazione`,t1p:`L'accesso e l'utilizzo di questo portfolio digitale (<strong>monteiro.is-a.dev</strong>) e delle sue sotto-risorse (contract.html, legal.html) implica l'integrale accettazione dei presenti Termini. Il portfolio è una piattaforma di presentazione professionale B2B gestita da Eduardo Monteiro, sviluppatore full-stack con IA, operante come libero professionista.`,
+      t2h:`Proprietà Intellettuale`,t2p:`Tutti i contenuti di questo sito web — inclusi codice sorgente, design, testi, logo e architettura — sono proprietà esclusiva di Eduardo Monteiro e sono tutelati dalle leggi applicabili in materia di proprietà intellettuale. È vietata la riproduzione, copia o utilizzo commerciale senza previa autorizzazione scritta.`,
+      t3h:`Restrizioni d'Uso`,t3l:[`È vietato l'utilizzo per scopi illegali, fraudolenti o che violino i diritti di terzi.`,
+          `È vietato lo scraping automatizzato o l'estrazione massiva di dati senza consenso.`,
+          `È vietata l'ingegneria inversa o decompilazione del codice incorporato.`],
+      t4h:`Modifiche e Disponibilità`,t4p:`Il fornitore si riserva il diritto di modificare, sospendere o interrompere qualsiasi parte del portfolio senza preavviso. Il portfolio potrebbe essere temporaneamente non disponibile per motivi di manutenzione o forza maggiore.`,
+      privEy:`Clausola 2`,privT:`INFORMATIVA SULLA PRIVACY`,privBadge:`Zero Tracciamento · Zero Cookie · LPD/nLPD · GDPR`,
+      p1h:`Dati Raccolti`,p1p:`Questo sito web <strong>non raccoglie, elabora, archivia né trasmette</strong> dati personali a server esterni. Non esistono cookie di tracciamento, pixel di analisi, script di terze parti o moduli che trasmettono dati a server remoti. L'unico stato persistito è la preferenza di lingua (<code>localStorage('vc-locale')</code>) e la preferenza di installazione (<code>localStorage('a2hs-dismissed')</code>), memorizzati esclusivamente sul dispositivo dell'utente.`,
+      p2h:`localStorage — Dati sul Dispositivo`,p2l:[`<code>vc-locale</code> — Preferenza linguistica (es: "it-IT"). Non viene mai trasmessa.`,
+          `<code>vc-cookie</code> — Preferenza di consenso al banner (0 o 1).`,
+          `<code>a2hs-dismissed</code> — Preferenza di installazione PWA. Non viene mai trasmessa.`],
+      p3h:`Contatto via E-mail`,p3p:`Se ci contatta via e-mail (edumonteiro.dev@gmail.com), i dati forniti (nome, e-mail, messaggio) saranno utilizzati esclusivamente per rispondere alla sua richiesta e non saranno condivisi con terzi né utilizzati per scopi commerciali non richiesti.`,
+      p4h:`Diritti dell'Interessato (GDPR Art. 15–22 / LPD)`,p4l:[`<strong>Accesso</strong> — Diritto di sapere quali dati vengono elaborati.`,
+          `<strong>Rettifica</strong> — Diritto di correggere dati inesatti.`,
+          `<strong>Cancellazione</strong> — Diritto alla cancellazione («diritto all'oblio»).`,
+          `<strong>Portabilità</strong> — Diritto di ricevere i dati in formato strutturato.`,
+          `<strong>Opposizione</strong> — Diritto di opporsi al trattamento a fini di marketing.`],p4n:`Per esercitare questi diritti: <strong>edumonteiro.dev@gmail.com</strong>`,
+      discEy:`Clausola 3`,discT:`LIMITAZIONE DI RESPONSABILITÀ`,
+      d1h:`Natura del Portfolio`,d1p:`Questo portfolio ha carattere strettamente informativo e di presentazione professionale. Le informazioni, le metriche e le descrizioni dei progetti presentate sono fornite in buona fede senza garanzia di assoluta accuratezza. I progetti presentati corrispondono a lavori realmente eseguiti; alcune funzionalità potrebbero essere state sviluppate nell'ambito di accordi di riservatezza (NDA).`,
+      d2h:`Limitazione di Responsabilità`,d2p:`Eduardo Monteiro non sarà responsabile per eventuali danni diretti, indiretti, incidentali o consequenziali derivanti dall'accesso, dall'utilizzo o dall'impossibilità di utilizzo di questo sito web. La responsabilità totale è limitata al massimo consentito dalla legge applicabile.`,
+      d3h:`Link Esterni`,d3p:`I link a siti web esterni (LinkedIn, GitHub, Upwork, kmlucropro.com, vozdocondutor.com) sono forniti per comodità. Eduardo Monteiro non ha alcun controllo su tali siti e non è responsabile del loro contenuto, disponibilità o pratiche di privacy.`,
+      d4h:`Disponibilità del Servizio`,d4p:`Il sito web è fornito «così com'è» senza alcuna garanzia di disponibilità continua, assenza di errori o idoneità a uno scopo specifico.`,
+      rgpdEy:`Clausola 4`,rgpdT:`GDPR / LPD — CONFORMITÀ SVIZZERA ED EUROPEA`,rgpdBadge:`LPD (nLPD) · GDPR Art.13 · nDSG · Svizzera Primaria`,
+      r1h:`Base Giuridica e Titolare del Trattamento`,r1p:`Il titolare del trattamento è <strong>Eduardo Monteiro</strong> (edumonteiro.dev@gmail.com). La base giuridica per qualsiasi eventuale trattamento di dati personali (esclusivamente tramite contatto via e-mail) è il <strong>legittimo interesse</strong> (Art. 6(1)(f) GDPR / Art. 31 LPD) e il <strong>consenso libero e informato</strong> dell'interessato.`,
+      r2h:`Conformità con la LPD svizzera (nLPD / FADP)`,r2l:[`La nuova Legge federale sulla protezione dei dati (nLPD, in vigore dall'1 sett. 2023) è il quadro di riferimento primario per i clienti svizzeri.`,
+          `Nessun trasferimento di dati verso paesi terzi senza decisioni di adeguatezza o garanzie equivalenti.`,
+          `Non viene effettuata alcuna decisione automatizzata né profilazione (profiling).`,
+          `Nessun Responsabile della Protezione dei Dati (RPD) è richiesto in questo contesto (microimpresa / attività individuale).`],
+      r3h:`Trasferimenti Internazionali di Dati`,r3p:`Questo sito web non effettua trasferimenti internazionali di dati personali. GitHub Pages (infrastruttura di hosting) elabora metadati di accesso (IP) ai sensi della propria informativa sulla privacy (Microsoft/GitHub GDPR DPA). Si invita l'utente a consultare l'<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">informativa sulla privacy di GitHub</a>.`,
+      r4h:`Accordo sul Trattamento dei Dati (DPA)`,r4p:`Per progetti B2B che comportano il trattamento di dati personali di clienti finali, Eduardo Monteiro fornisce un Accordo sul Trattamento dei Dati (DPA) personalizzato, adattato alla giurisdizione del cliente (GDPR/LPD). Contatto: edumonteiro.dev@gmail.com.`,
+      r5h:`Autorità di Controllo`,r5p:`In caso di controversia sulla protezione dei dati non risolta direttamente con il titolare, l'interessato può presentare reclamo all'autorità competente: <strong>IFPDT</strong> (Incaricato federale della protezione dei dati e della trasparenza, Svizzera) o all'autorità nazionale di protezione dei dati del proprio paese di residenza.`,
+      cookEy:`Clausola 5`,cookT:`INFORMATIVA SUI COOKIE — STANDARD ZERO TRACCIAMENTO`,cookBadge:`Zero Cookie di Terze Parti · Zero Analytics · Zero Tracciamento`,
+      c1h:`Dichiarazione di Zero Tracciamento`,c1p:`Questo sito web opera secondo uno standard di <strong>Zero Tracciamento</strong>. Non vengono utilizzati cookie di tracciamento, cookie di sessione di terze parti, pixel di analisi (Google Analytics, Facebook Pixel, LinkedIn Insight, ecc.), script di marketing o tecnologie di fingerprinting. Il sito non traccia il comportamento di navigazione dell'utente.`,
+      c2h:`localStorage — Archiviazione Locale Funzionale`,c2p:`Tecnicamente, questo sito web utilizza <code>localStorage</code> (archiviazione locale del browser) — non cookie HTTP — per mantenere preferenze funzionali strettamente necessarie:`,c2l:[`<strong>vc-locale</strong> — Lingua selezionata dall'utente. Base giuridica: legittimo interesse / funzionamento essenziale.`,
+          `<strong>vc-cookie</strong> — Decisione dell'utente sul banner informativo. Base giuridica: consenso.`,
+          `<strong>a2hs-dismissed</strong> — Decisione sul modal di installazione PWA. Base giuridica: legittimo interesse.`],c2n:`Questi dati sono <strong>puramente locali</strong>: risiedono sul dispositivo dell'utente, non vengono mai trasmessi e possono essere eliminati in qualsiasi momento cancellando i dati del browser.`,
+      c3h:`Cookie di Infrastruttura (GitHub Pages)`,c3p:`L'hosting tramite GitHub Pages può impostare cookie tecnici di infrastruttura di Microsoft/GitHub, al di fuori del controllo del responsabile di questo sito web. Si prega di consultare l'informativa sulla privacy di GitHub per i dettagli. Non si tratta di cookie di tracciamento comportamentale.`,
+      c4h:`Gestione ed Eliminazione`,c4p:`L'utente può eliminare tutti i dati localStorage in qualsiasi momento: <strong>Impostazioni del browser → Privacy → Cancella dati di navigazione → Dati dei siti</strong>. Dopo l'eliminazione, le preferenze tornano allo stato iniziale alla visita successiva.`,
+      c5h:`Assenza di Consenso per il Tracciamento`,c5p:`Poiché non esistono cookie di tracciamento o analisi, non è necessario ottenere consenso aggiuntivo per il loro posizionamento (ai sensi della Direttiva ePrivacy e del GDPR). Il banner informativo visualizzato è una misura volontaria di trasparenza, non un obbligo legale in questo specifico contesto.`,
+    }
+  }
 };
 
+/* ── DOM helpers ─────────────────────────────────────────────────── */
+const $  = (id) => document.getElementById(id);
+const si = (id, v) => { const e=$(id); if(e) e.textContent = v; };
+const sh = (id, v) => { const e=$(id); if(e) e.innerHTML   = v; };
+const sl = (id, items) => { const e=$(id); if(e) e.innerHTML = items.map(i=>`<li>${i}</li>`).join(''); };
+
+/* ── Apply locale to all DOM nodes ──────────────────────────────── */
 function applyLang(loc) {
   const t = L[loc] || L['pt-PT'];
+  const c = t.c;
+
   document.documentElement.lang = loc;
   document.title = t.title + ' — Eduardo Monteiro Dev';
-  const si = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = v; };
-  si('hdr-t', t.hdr);
+
+  /* Header & navigation */
+  si('hdr-t',    t.hdr);
   si('back-lbl', t.back);
   si('page-title', t.title);
-  si('page-sub', t.sub);
-  const tabBtns = ['tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies'];
-  tabBtns.forEach((id, i) => si(id, t.tabs[i]));
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === loc));
+  si('page-sub',   t.sub);
+
+  /* Tab labels */
+  const tabIds = ['tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies'];
+  tabIds.forEach((id, i) => si(id, t.tabs[i]));
+
+  /* Active lang button */
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === loc)
+  );
+
+  /* ── Terms ──────────────────────────────────────────────────── */
+  si('s-terms-ey', c.termsEy); si('s-terms-t', c.termsT);
+  si('t1-h', c.t1h); sh('t1-p', c.t1p);
+  si('t2-h', c.t2h); sh('t2-p', c.t2p);
+  si('t3-h', c.t3h); sl('t3-list', c.t3l);
+  si('t4-h', c.t4h); sh('t4-p', c.t4p);
+
+  /* ── Privacy ────────────────────────────────────────────────── */
+  si('s-priv-ey', c.privEy); si('s-priv-t', c.privT);
+  si('priv-badge', c.privBadge);
+  si('p1-h', c.p1h); sh('p1-p', c.p1p);
+  si('p2-h', c.p2h); sl('p2-list', c.p2l);
+  si('p3-h', c.p3h); sh('p3-p', c.p3p);
+  si('p4-h', c.p4h); sl('p4-list', c.p4l);
+  sh('p4-note', c.p4n);
+
+  /* ── Disclaimer ─────────────────────────────────────────────── */
+  si('s-disc-ey', c.discEy); si('s-disc-t', c.discT);
+  si('d1-h', c.d1h); sh('d1-p', c.d1p);
+  si('d2-h', c.d2h); sh('d2-p', c.d2p);
+  si('d3-h', c.d3h); sh('d3-p', c.d3p);
+  si('d4-h', c.d4h); sh('d4-p', c.d4p);
+
+  /* ── RGPD / FADP ────────────────────────────────────────────── */
+  si('s-rgpd-ey', c.rgpdEy); si('s-rgpd-t', c.rgpdT);
+  si('rgpd-badge', c.rgpdBadge);
+  si('r1-h', c.r1h); sh('r1-p', c.r1p);
+  si('r2-h', c.r2h); sl('r2-list', c.r2l);
+  si('r3-h', c.r3h); sh('r3-p', c.r3p);
+  si('r4-h', c.r4h); sh('r4-p', c.r4p);
+  si('r5-h', c.r5h); sh('r5-p', c.r5p);
+
+  /* ── Cookies ────────────────────────────────────────────────── */
+  si('s-cook-ey', c.cookEy); si('s-cook-t', c.cookT);
+  si('cook-badge', c.cookBadge);
+  si('c1-h', c.c1h); sh('c1-p', c.c1p);
+  si('c2-h', c.c2h); sh('c2-p', c.c2p);
+  sl('c2-list', c.c2l); sh('c2-note', c.c2n);
+  si('c3-h', c.c3h); sh('c3-p', c.c3p);
+  si('c4-h', c.c4h); sh('c4-p', c.c4p);
+  si('c5-h', c.c5h); sh('c5-p', c.c5p);
 }
 
-// ── Tab switching ──────────────────────────────────────────────
+/* ── Tab switching ──────────────────────────────────────────────── */
 function activateTab(tabId) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tabId));
+  document.querySelectorAll('.tab-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.tab === tabId)
+  );
+  document.querySelectorAll('.tab-panel').forEach(p =>
+    p.classList.toggle('active', p.id === 'panel-' + tabId)
+  );
 }
 
-// ── Events ─────────────────────────────────────────────────────
+/* ── Bootstrap ──────────────────────────────────────────────────── */
+let locale = localStorage.getItem('vc-locale') || 'pt-PT';
+
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(locale);
+
+  /* Language buttons */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       locale = btn.dataset.lang;
@@ -278,21 +638,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Auto-activate tab from URL query param: ?tab=privacy etc.
-  (function(){
-    var urlTab = new URLSearchParams(window.location.search).get('tab');
-    if(urlTab){
-      var tabMap = {
-        privacy:'privacy', terms:'terms', disclaimer:'disclaimer',
-        rgpd:'rgpd', gdpr:'rgpd', cookies:'cookies'
-      };
-      var mapped = tabMap[urlTab.toLowerCase()];
-      if(mapped) activateTab(mapped);
-    }
-  })();
+  /* Tab buttons */
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => activateTab(btn.dataset.tab));
   });
+
+  /* Auto-activate tab from URL: ?tab=privacy, ?tab=rgpd, etc. */
+  (function () {
+    const urlTab = new URLSearchParams(window.location.search).get('tab');
+    if (urlTab) {
+      const tabMap = {
+        privacy:'privacy', terms:'terms', disclaimer:'disclaimer',
+        rgpd:'rgpd', gdpr:'rgpd', dsgvo:'rgpd', lgpd:'rgpd',
+        cookies:'cookies', cookie:'cookies'
+      };
+      const mapped = tabMap[urlTab.toLowerCase()];
+      if (mapped) activateTab(mapped);
+    }
+  })();
 });
 </script>
 </body>

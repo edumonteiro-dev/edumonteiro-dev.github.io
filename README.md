@@ -2,7 +2,7 @@
 
 **Live:** https://monteiro.is-a.dev  
 **Email:** edumonteiro.dev@gmail.com  
-**Contact:** Email · Upwork · Google
+**Contact:** Workana · Upwork · 99Freelas  
 
 ---
 
@@ -221,3 +221,21 @@ Esta meta tag está **já injectada** em `index.html` — não é necessária ne
 4. O DNS TXT propaga em 5–60 minutos
 5. Clica **Verificar** no Search Console
 
+
+---
+## v8 — Changelog
+
+### legal.html — i18n Multilingual Legal Engine
+- Full 6-locale legal documentation: pt-PT, en-US, fr-CH, de-CH, es-ES, it-IT
+- 5 clauses × 6 locales: Terms, Privacy, Disclaimer, GDPR/FADP, Cookie Policy
+- Dynamic DOM injection via `vc-locale` localStorage key (non-breaking)
+- `.lang-bar` CSS class replaces inline style — mobile-safe
+- Swiss legal lexicon: FADP/LPD/nDSG (primary) + GDPR/RGPD overlay
+- 69 translatable DOM IDs + `id="priv-badge"`, `id="rgpd-badge"`, `id="cook-badge"`, `id="p4-note"`, `id="c2-note"` added
+- `?tab=privacy|terms|disclaimer|rgpd|cookies|gdpr` URL param support
+
+### index.html — Mobile Language Bar Fix
+- Root cause: `.lang-switcher{display:none}` @media ≤768px with no mobile fallback
+- Fix: 6 `.lang-btn` injected inside `#nav-menu` as `.mobile-lang-bar`
+- `[data-lang]` event delegation already covers new buttons — zero JS changes
+- Desktop behaviour unchanged
