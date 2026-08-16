@@ -19,11 +19,11 @@ const FILES_TO_CHECK = [
   'legal.html',
 ];
 
-// Regex: captura qualquer asset externo (src|href) apontando a http(s)://
-// Exclui: links de conteúdo (kmlucropro, vozdocondutor, linkedin, github, workana, upwork, 99freelas)
+// Allowlist: domínios externos permitidos em links de conteúdo
 const ALLOWLIST = [
   'kmlucropro.com', 'vozdocondutor.com', 'vdcpt.github.io',
   'linkedin.com', 'github.com', 'workana.com', 'upwork.com', '99freelas.com',
+  'share.google', 'api.web3forms.com',
 ];
 const EXT_ASSET_RE = /<(?:script|link|img|iframe)[^>]+(?:src|href)=["'](https?:\/\/[^"']+)["']/gi;
 
@@ -53,8 +53,9 @@ function gate() {
 
     console.log(`[SEC-CHECK] ${file}  ${buf.length.toLocaleString()}B  sha256=${digest}`);
 
-    // Scan for external assets
+    // Scan for unauthorized external assets
     let match;
+    EXT_ASSET_RE.lastIndex = 0;
     while ((match = EXT_ASSET_RE.exec(content)) !== null) {
       const url = match[1];
       if (!isAllowed(url)) {
@@ -68,9 +69,15 @@ function gate() {
       const required = [
         'id="services"', 'id="pricing"', 'id="contact"',
         'id="projects"', 'id="process"',
-        'initCanvas', 'const T={',
+        'function applyLocale',   // i18n engine (was: const T={)
+        'neural-canvas',          // canvas animation (was: initCanvas)
+        'function openScopeModal',
+        'async function submitScope',
+        'api.web3forms.com',
         'Eduardo Monteiro', 'monteiro.is-a.dev',
         'edumonteiro.dev@gmail.com',
+        'serviceWorker',          // PWA SW registration
+        'manifest.json',
       ];
       for (const token of required) {
         if (!content.includes(token)) {
