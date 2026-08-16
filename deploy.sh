@@ -8,9 +8,9 @@ set -euo pipefail
 # Requires   : git >= 2.30, authenticated remote (SSH key or HTTPS token)
 # ─────────────────────────────────────────────────────────────────────────────
 
-RELEASE_VERSION="v11.0.0"
+RELEASE_VERSION="v11.0.1"
 RELEASE_BRANCH="main"
-COMMIT_MESSAGE="build(release): Vibecoder v11.0.0 - Compliance LPD/GDPR, SW v7"
+COMMIT_MESSAGE="fix(blog): restore vc-locale state sync across pages — Vibecoder v11.0.1"
 REMOTE="origin"
 
 # ── 0. Pre-flight checks ─────────────────────────────────────────────────────
@@ -58,7 +58,7 @@ fi
 # ── 3. Apply annotated tag ───────────────────────────────────────────────────
 git tag \
   --annotate "${RELEASE_VERSION}" \
-  --message "Release ${RELEASE_VERSION}: Compliance LPD/GDPR, SW em-dev-v7, Privacy/Terms/Cookies pages, Gatekeeper fix, CSP hardening."
+  --message "Hotfix ${RELEASE_VERSION}: blog.html i18n state sync — vc-locale localStorage read, 6-locale BLOG_I18N engine, FOUC eliminated."
 
 echo "[OK] Tag applied: ${RELEASE_VERSION}"
 

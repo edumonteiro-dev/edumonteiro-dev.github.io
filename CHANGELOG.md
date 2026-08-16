@@ -6,6 +6,53 @@
 
 ---
 
+## [v11.0.1] — 2026-08-16 · Hotfix: Blog i18n State Sync
+
+### Sumário Executivo
+
+Hotfix crítico à v11.0.0. A versão anterior continha um bug de perda de estado transversal de idioma: ao navegar de `index.html` (com locale alterado) para `blog.html`, a shell da página renderizava sempre em `pt-PT` independentemente da preferência persistida. A v11.0.0 é considerada tecnicamente comprometida para utilizadores internacionais.
+
+Resultado da pipeline: `[SEC-PASS] — 0 violações. Deployment autorizado.`
+
+---
+
+### FIXED
+
+#### `blog.html` · 24,544 B · sha256=`b37f62d0d1d954aeb9318357a07cecc083ba812e05d15fbe1138efadb7d8f299`
+
+**Bug:** `blog.html` declarava `<html lang="pt-PT">` estático e não continha qualquer lógica de leitura de `localStorage`. O valor `vc-locale` persistido pelo `index.html` era ignorado na totalidade — a shell do blog renderizava sempre em Português independentemente do idioma seleccionado pelo utilizador.
+
+**Correcção:** Introdução do motor `applyBlogLocale()` — leitura síncrona de `localStorage.getItem('vc-locale')` no fecho do `<body>` (sem `DOMContentLoaded`, eliminando FOUC).
+
+**Cobertura de idiomas — 6 locales completos, espelhando o Design System do `index.html`:**
+
+| Locale | Elementos traduzidos |
+|---|---|
+| `pt-PT` | eyebrow, título, subtítulo, topics-label, 10× wip-badge, cs-title, cs-desc, cs-cta, mailto body, back-link |
+| `en-US` | idem |
+| `fr-CH` | idem |
+| `de-CH` | idem |
+| `es-ES` | idem |
+| `it-IT` | idem |
+
+**Conteúdo editorial protegido (intocável):** os títulos e descrições dos 10 artigos em DE-CH (#03), FR-CH (#04), IT-CH (#05) e EN (#06) não foram alterados — são conteúdo editorial multilingue nativo, não shell da página.
+
+**Fallback:** `BLOG_I18N['pt-PT']` activado quando `vc-locale` é `null` (primeiro acesso sem preferência persistida).
+
+**`document.documentElement.lang`** actualizado dinamicamente por locale para conformidade semântica HTML5 e acessibilidade WCAG 2.1.
+
+---
+
+### INTEGRITY — Artefacto Modificado (v11.0.1 vs v11.0.0)
+
+| Ficheiro | v11.0.0 SHA-256 | v11.0.1 SHA-256 |
+|---|---|---|
+| `blog.html` | `29c7cce1f6d0db1abedb5df8582669d6c42959870d7308f95a2446a617f34b4c` | `b37f62d0d1d954aeb9318357a07cecc083ba812e05d15fbe1138efadb7d8f299` |
+
+Todos os outros artefactos permanecem com os checksums da v11.0.0.
+
+---
+
 ## [v11.0.0] — 2026-08-16 · Release: Production
 
 ### Sumário Executivo
