@@ -1,18 +1,24 @@
 /**
- * EM Dev — Service Worker (PWA Static Cache)
+ * EM Dev — Service Worker v7 (PWA Static Cache)
  * Strategy: Cache-First for static assets, Network-First for HTML.
  * Zero external dependencies. No analytics. No tracking.
  */
 'use strict';
 
-const CACHE_NAME   = 'em-dev-v5';
-const OFFLINE_URL  = './';
+const CACHE_NAME  = 'em-dev-v7';
+const OFFLINE_URL = './';
 
 const PRECACHE = [
   './',
   './index.html',
+  './blog.html',
   './contract.html',
   './legal.html',
+  './mvp-scope.html',
+  './proposta.html',
+  './privacy.html',
+  './terms.html',
+  './cookies.html',
   './manifest.json',
   './assets/logo.svg',
   './assets/favicon.svg',

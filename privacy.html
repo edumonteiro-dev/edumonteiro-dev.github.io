@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#050508"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="EM Dev"/>
+<link rel="manifest" href="./manifest.json"/>
+<title>Política de Privacidade — Eduardo Monteiro Dev</title>
+<meta name="description" content="Política de Privacidade e Conformidade RGPD/FADP — Eduardo Monteiro Dev · monteiro.is-a.dev"/>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--text:#E8E8FF;--muted:#8888AA;--faint:#3A3A52;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.75;padding:2rem 1.5rem;max-width:800px;margin:0 auto;-webkit-font-smoothing:antialiased}
+a{color:var(--purple);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--teal)}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;border-bottom:1px solid var(--border);padding-bottom:1rem}
+h2{font-size:1rem;font-weight:700;color:var(--teal);font-family:'Cascadia Code','JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;margin-top:2rem;margin-bottom:.75rem}
+p{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:.75rem}
+strong{color:var(--text);font-weight:600}
+section{margin-top:1.5rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px}
+section:hover{border-color:var(--border-h)}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:2rem;border:1px solid var(--border);padding:.5rem 1rem;border-radius:8px;font-size:.82rem;font-family:monospace;color:var(--muted);transition:all .2s}
+.back-link:hover{border-color:var(--purple);color:var(--purple);text-decoration:none;background:rgba(123,92,240,.06)}
+.meta{font-family:monospace;font-size:.72rem;color:var(--faint);letter-spacing:.06em;margin-bottom:1.5rem}
+.dpo-box{margin-top:1rem;padding:.75rem 1rem;background:rgba(0,245,160,.05);border:1px solid rgba(0,245,160,.2);border-radius:8px;font-family:monospace;font-size:.78rem;color:var(--teal)}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem}
+footer a{color:var(--muted);transition:color .2s}
+footer a:hover{color:var(--purple);text-decoration:none}
+</style>
+</head>
+<body>
+
+<a href="./index.html" class="back-link">← Portfolio</a>
+
+<h1>Política de Privacidade</h1>
+<p class="meta">Vigência: 16 de Agosto de 2026 · Lei aplicável: RGPD (UE 2016/679) + FADP/LPD (Suíça) · monteiro.is-a.dev</p>
+
+<section>
+  <h2>1. Minimização de Dados</h2>
+  <p>Esta infraestrutura opera sob arquitectura <strong>Zero Trust</strong> e total adesão ao RGPD (UE) e FADP/LPD (Suíça). Apenas recolhemos os metadados técnicos estritamente necessários para o funcionamento offline (PWA) e os dados submetidos voluntariamente nos formulários de contacto via Web3Forms para estabelecer comunicações B2B.</p>
+  <p>Não existem cookies de rastreio, publicidade ou analítica de terceiros. O único armazenamento local utilizado é o <code>localStorage</code> para preferência de idioma (<code>vc-locale</code>) e consentimento de cookie (<code>vc-cookie-choice</code>) — ambos purguéis a qualquer momento.</p>
+</section>
+
+<section>
+  <h2>2. Tratamento e Segurança</h2>
+  <p>Todo o tráfego é forçado a <strong>HTTPS via HSTS</strong> (max-age 2 anos + preload). O CSP (Content Security Policy) bloqueia activamente exfiltrações não autorizadas. Nenhum dado pessoal é transferido para fora do contexto da comunicação B2B iniciada pelo próprio utilizador.</p>
+  <p>A aplicação PWA utiliza a <strong>Cache API do Service Worker</strong> exclusivamente para disponibilidade offline dos ficheiros estáticos — sem qualquer dado pessoal em cache.</p>
+</section>
+
+<section>
+  <h2>3. Direitos dos Titulares (RGPD Art. 15–22 / FADP)</h2>
+  <p>Como utilizador ou entidade detém os seguintes direitos, exercíveis sem custo:</p>
+  <p><strong>Acesso · Rectificação · Eliminação ("direito ao esquecimento") · Limitação do tratamento · Portabilidade · Oposição</strong></p>
+  <p>Qualquer pedido formalizado será processado tecnicamente e legalmente no prazo de <strong>48 horas</strong>. Em caso de violação de dados, notificação à autoridade competente no prazo máximo de 72 horas (conforme Art. 33 RGPD).</p>
+  <div class="dpo-box">Encarregado da Protecção de Dados (DPO): <strong>edumonteiro.dev@gmail.com</strong></div>
+</section>
+
+<section>
+  <h2>4. Transferências Internacionais</h2>
+  <p>Os dados submetidos via Web3Forms são processados nos termos das suas políticas de privacidade (UE/EEA). Não existem outras transferências de dados para países terceiros. O presente site é servido via Vercel/Netlify com CDN Edge — as políticas de adequação de dados da UE aplicam-se.</p>
+</section>
+
+<section>
+  <h2>5. Contacto e Autoridade de Supervisão</h2>
+  <p>Para exercício de direitos ou reclamações: <strong>edumonteiro.dev@gmail.com</strong></p>
+  <p>Autoridade competente (UE): <a href="https://www.cnpd.pt" target="_blank" rel="noopener">CNPD — Comissão Nacional de Protecção de Dados</a></p>
+  <p>Autoridade competente (CH): <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">PFPDT/EDÖB — Préposé fédéral à la protection des données</a></p>
+</section>
+
+<footer>
+  <a href="./index.html">Portfolio</a>
+  <a href="./terms.html">Termos de Utilização</a>
+  <a href="./cookies.html">Cookies</a>
+  <a href="./legal.html">Compliance Completo</a>
+  <a href="./contract.html">Contrato B2B</a>
+</footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});
+  });
+}
+</script>
+</body>
+</html>

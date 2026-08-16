@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Proposta Comercial — Eduardo Monteiro Dev</title>
+<style>
+/* ════════════════════════════════════════════════
+   SCREEN STYLES
+════════════════════════════════════════════════ */
+:root{
+  --bg:#050508;--deep:#0A0A0F;--card:#0E0E16;
+  --border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.5);
+  --purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;
+  --text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;
+  --grad:linear-gradient(135deg,#7B5CF0,#00F5A0);
+  --font-m:'Courier New',monospace;--font-s:Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-s);line-height:1.75;padding-bottom:80px}
+
+/* ── SCREEN HEADER ── */
+.screen-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:14px 0;position:sticky;top:0;z-index:50}
+.screen-header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sh-logo{font-family:var(--font-m);font-size:.82rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
+.btn-print{padding:6px 18px;border-radius:7px;border:1px solid var(--teal);background:rgba(0,245,160,.08);color:var(--teal);font-family:var(--font-m);font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.06em}
+.btn-print:hover{background:rgba(0,245,160,.15)}
+.btn-back{font-family:var(--font-m);font-size:.72rem;color:var(--muted);padding:6px 14px;border:1px solid var(--border);border-radius:7px;text-decoration:none;transition:all .2s}
+.btn-back:hover{border-color:var(--purple);color:var(--purple)}
+
+/* ── DOCUMENT WRAPPER ── */
+.doc{max-width:900px;margin:0 auto;padding:40px 24px}
+
+/* ── DOC HEADER ── */
+.doc-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:28px;border-bottom:2px solid var(--border-h);margin-bottom:36px;gap:20px;flex-wrap:wrap}
+.doc-brand{display:flex;flex-direction:column;gap:4px}
+.doc-brand-name{font-family:var(--font-m);font-size:1.1rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.04em}
+.doc-brand-sub{font-family:var(--font-m);font-size:.68rem;color:var(--muted);letter-spacing:.08em}
+.doc-brand-contact{font-family:var(--font-m);font-size:.7rem;color:var(--purple);margin-top:8px}
+.doc-meta{text-align:right}
+.doc-type{font-family:var(--font-m);font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px}
+.doc-num{font-family:var(--font-m);font-size:1.6rem;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.doc-date{font-family:var(--font-m);font-size:.7rem;color:var(--muted);margin-top:4px}
+.doc-valid{font-family:var(--font-m);font-size:.65rem;color:var(--faint);margin-top:2px}
+
+/* ── SECTION HEADER ── */
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-n{font-family:var(--font-m);font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;padding:2px 8px;border:1px solid var(--border-h);border-radius:4px}
+.section-title{font-family:var(--font-m);font-size:1rem;font-weight:700;color:var(--text)}
+
+/* ── BLOCKS ── */
+.block{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 22px 18px;margin-bottom:20px}
+.block.accent{border-color:rgba(0,245,160,.35);background:rgba(0,245,160,.02)}
+.block.highlight{border-color:rgba(123,92,240,.45);background:rgba(123,92,240,.03)}
+.block.recommended{border-color:var(--teal);background:rgba(0,245,160,.04);position:relative}
+.block.recommended::before{content:'RECOMENDADO';position:absolute;top:-10px;left:20px;font-family:var(--font-m);font-size:.6rem;background:var(--teal);color:#000;padding:2px 10px;border-radius:999px;font-weight:700;letter-spacing:.1em}
+.block-title{font-family:var(--font-m);font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:.04em}
+.block p{font-size:.88rem;color:var(--muted);line-height:1.75}
+.block p + p{margin-top:8px}
+
+/* ── OBJECTIVES GRID ── */
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.obj-item{background:var(--deep);border:1px solid var(--border);border-radius:8px;padding:14px 14px 10px}
+.obj-icon{font-size:1.2rem;margin-bottom:6px}
+.obj-label{font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.obj-val{font-family:var(--font-m);font-size:.8rem;color:var(--text);font-weight:600}
+.obj-desc{font-size:.75rem;color:var(--muted);margin-top:2px}
+
+/* ── SCOPE TABLE ── */
+.scope-table{width:100%;border-collapse:collapse}
+.scope-table th{font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;border-bottom:1px solid var(--border);text-align:left}
+.scope-table td{padding:9px 12px;border-bottom:1px solid rgba(42,42,58,.8);font-size:.83rem;color:var(--muted);vertical-align:top}
+.scope-table td:first-child{font-family:var(--font-m);color:var(--text);font-size:.78rem;white-space:nowrap;width:140px}
+.scope-table td .badge-inline{font-family:var(--font-m);font-size:.6rem;padding:1px 6px;border-radius:4px;border:1px solid var(--border);color:var(--purple);margin-left:6px;white-space:nowrap}
+.scope-table tr:last-child td{border-bottom:none}
+
+/* ── TECH STACK ── */
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stack-col{}
+.stack-col-label{font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.stack-item{font-family:var(--font-m);font-size:.75rem;color:var(--muted);padding:3px 0;display:flex;align-items:center;gap:6px}
+.stack-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:16px;position:relative}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
+.tl-num{width:32px;height:32px;border-radius:50%;border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:.72rem;color:var(--purple);font-weight:700;background:var(--card);flex-shrink:0}
+.tl-line{width:2px;background:var(--faint);flex:1;min-height:20px}
+.tl-item:last-child .tl-line{display:none}
+.tl-content{padding:2px 0 24px;flex:1}
+.tl-title{font-family:var(--font-m);font-size:.82rem;color:var(--text);font-weight:700}
+.tl-dur{font-family:var(--font-m);font-size:.65rem;color:var(--teal);letter-spacing:.08em;margin:3px 0}
+.tl-desc{font-size:.82rem;color:var(--muted);line-height:1.65}
+.tl-deliverables{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tl-tag{font-family:var(--font-m);font-size:.6rem;padding:2px 7px;border-radius:4px;border:1px solid var(--border);color:var(--muted)}
+
+/* ── PRICING ── */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 20px;position:relative}
+.price-card.rec{border-color:var(--teal)}
+.price-rec-badge{position:absolute;top:-10px;right:16px;font-family:var(--font-m);font-size:.58rem;background:var(--teal);color:#000;padding:2px 10px;border-radius:999px;font-weight:700;letter-spacing:.1em}
+.price-tier{font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px}
+.price-name{font-family:var(--font-m);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.price-val{font-family:var(--font-m);font-size:1.8rem;font-weight:700;color:var(--teal);line-height:1;margin:10px 0 4px}
+.price-unit{font-family:var(--font-m);font-size:.7rem;color:var(--muted)}
+.price-divider{height:1px;background:var(--border);margin:14px 0}
+.price-feat{font-family:var(--font-m);font-size:.72rem;color:var(--muted);padding:3px 0;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.price-feat span:first-child{color:var(--teal);flex-shrink:0}
+.price-note{font-family:var(--font-m);font-size:.65rem;color:var(--faint);margin-top:12px}
+.price-payment{font-family:var(--font-m);font-size:.7rem;color:var(--purple);margin-top:8px;padding:6px 10px;border:1px solid var(--border-h);border-radius:6px;text-align:center}
+
+/* ── TERMS SUMMARY ── */
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.terms-item{padding:10px 14px;border:1px solid var(--border);border-radius:8px}
+.terms-label{font-family:var(--font-m);font-size:.62rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+.terms-val{font-family:var(--font-m);font-size:.78rem;color:var(--text)}
+
+/* ── SIGNATURE ── */
+.sig-block{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.sig-col{border-top:1px solid var(--border);padding-top:14px}
+.sig-label{font-family:var(--font-m);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+.sig-line{border-bottom:1px solid var(--border);margin-bottom:6px;height:30px}
+.sig-name{font-family:var(--font-m);font-size:.72rem;color:var(--text)}
+.sig-role{font-family:var(--font-m);font-size:.62rem;color:var(--muted)}
+
+/* ── DOC FOOTER ── */
+.doc-footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.doc-footer-left{font-family:var(--font-m);font-size:.65rem;color:var(--faint);line-height:1.6}
+.doc-footer-right{font-family:var(--font-m);font-size:.65rem;color:var(--faint);text-align:right}
+
+/* ── SECTION SPACER ── */
+.section-block{margin-bottom:36px}
+.sep{height:1px;background:linear-gradient(90deg,transparent,var(--border-h),transparent);margin:28px 0}
+
+/* ════════════════════════════════════════════════
+   PRINT STYLES — A4 optimised
+════════════════════════════════════════════════ */
+@media print{
+  @page{size:A4 portrait;margin:18mm 16mm 16mm 16mm}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+
+  .screen-header,.btn-print,.btn-back{display:none!important}
+  body{background:#fff!important;color:#111!important;font-size:10pt;padding-bottom:0}
+  .doc{max-width:100%;padding:0;margin:0}
+
+  :root{
+    --bg:#fff;--deep:#f8f8f8;--card:#f5f5f5;
+    --border:rgba(0,0,0,.15);--border-h:rgba(80,40,180,.3);
+    --purple:#5B3CC4;--teal:#007A50;--coral:#B0005E;
+    --text:#111;--muted:#444;--faint:#888;--grad:linear-gradient(135deg,#5B3CC4,#007A50)
+  }
+
+  .doc-brand-name{-webkit-text-fill-color:#5B3CC4!important;background:none!important;color:#5B3CC4!important}
+  .price-val{color:#007A50!important}
+  .block{page-break-inside:avoid;border:1px solid rgba(0,0,0,.15)!important}
+  .price-grid,.stack-grid,.obj-grid,.sig-block,.terms-grid{page-break-inside:avoid}
+  .tl-item{page-break-inside:avoid}
+  .section-block{page-break-inside:avoid}
+
+  .price-card.rec::after{content:'✓ RECOMENDADO';position:absolute;top:-10px;right:12px;font-size:7pt;background:#007A50;color:#fff;padding:2px 8px;border-radius:999px;font-weight:700}
+  .price-rec-badge{display:none}
+
+  h1,h2,h3,.section-title,.doc-num{color:#111!important}
+  .block p,.tl-desc,.price-feat,.terms-val,.obj-desc,.stack-item{color:#333!important}
+  .section-n,.tl-dur,.price-tier,.stack-col-label,.terms-label,.sig-label,.obj-label{color:#5B3CC4!important}
+
+  .tl-num{border-color:#5B3CC4!important;color:#5B3CC4!important;background:#f0ecff!important}
+  .tl-line{background:#ddd!important}
+  .stack-dot{background:#007A50!important}
+
+  /* Prevent orphan headers */
+  h2,h3,.section-header{page-break-after:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN-ONLY HEADER -->
+<div class="screen-header">
+  <div class="screen-header-inner">
+    <span class="sh-logo">◈ Proposta Comercial</span>
+    <button class="btn-print" onclick="window.print()">⎙ Imprimir / PDF</button>
+    <a href="./index.html" class="btn-back">← Portfolio</a>
+  </div>
+</div>
+
+<div class="doc">
+
+  <!-- ══ DOCUMENT HEADER ══════════════════════════════════════ -->
+  <div class="doc-header">
+    <div class="doc-brand">
+      <span class="doc-brand-name">◈ Eduardo Monteiro Dev</span>
+      <span class="doc-brand-sub">AI-Powered Full-Stack Developer · B2B Contractor</span>
+      <div class="doc-brand-contact">
+        edumonteiro.dev@gmail.com · monteiro.is-a.dev<br/>
+        Lei Aplicável: Suíça (FADP/LPD) · NIF/NIPC disponível a pedido
+      </div>
+    </div>
+    <div class="doc-meta">
+      <p class="doc-type">Proposta Comercial</p>
+      <p class="doc-num" id="prop-num">PROP-2026-001</p>
+      <p class="doc-date" id="prop-date">Data: <span id="today-date"></span></p>
+      <p class="doc-valid">Válida por 30 dias a partir da data de emissão</p>
+    </div>
+  </div>
+
+  <!-- ── EDITABLE CLIENT INFO BLOCK ── -->
+  <div class="section-block">
+    <div class="block accent">
+      <div class="block-title">▸ DESTINATÁRIO</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <p style="font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Empresa / Cliente</p>
+          <p contenteditable="true" style="font-family:var(--font-m);font-size:.9rem;color:var(--text);border-bottom:1px dashed var(--border);padding-bottom:4px;outline:none;min-width:200px" id="client-name">[Nome da Empresa]</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Contacto</p>
+          <p contenteditable="true" style="font-family:var(--font-m);font-size:.9rem;color:var(--text);border-bottom:1px dashed var(--border);padding-bottom:4px;outline:none" id="client-contact">[Nome · email@empresa.com]</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Projecto</p>
+          <p contenteditable="true" style="font-family:var(--font-m);font-size:.9rem;color:var(--text);border-bottom:1px dashed var(--border);padding-bottom:4px;outline:none" id="proj-name">[Nome do Projecto / MVP]</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-m);font-size:.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">País / Jurisdição</p>
+          <p contenteditable="true" style="font-family:var(--font-m);font-size:.9rem;color:var(--text);border-bottom:1px dashed var(--border);padding-bottom:4px;outline:none">[Suíça / Portugal / UE]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 1. ALINHAMENTO ESTRATÉGICO ═══════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">01</span>
+      <h2 class="section-title">Alinhamento Estratégico &amp; Objectivos</h2>
+    </div>
+    <div class="block accent">
+      <p>Esta proposta cobre o desenvolvimento de um produto digital B2B de alta performance, com foco em três vectores estratégicos não-negociáveis: <strong style="color:var(--text)">velocidade de lançamento</strong>, <strong style="color:var(--text)">escalabilidade horizontal</strong> e <strong style="color:var(--text)">segurança enterprise-grade</strong>. O objectivo é entregar valor real ao mercado no menor tempo possível, sem sacrificar a qualidade arquitectural.</p>
+      <p style="margin-top:10px">A abordagem é orientada para fundadores e equipas não-técnicas que precisam de validar uma ideia de negócio com um MVP funcional e de qualidade de produção — breaking down complexity, communicating with clarity.</p>
+    </div>
+    <div class="obj-grid">
+      <div class="obj-item">
+        <div class="obj-icon">⚡</div>
+        <div class="obj-label">Velocidade</div>
+        <div class="obj-val">MVP em 3–5 semanas</div>
+        <div class="obj-desc">Do contrato ao lançamento em produção</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-icon">⬡</div>
+        <div class="obj-label">Escalabilidade</div>
+        <div class="obj-val">Horizontal &amp; Vertical</div>
+        <div class="obj-desc">Arquitectura cloud-native preparada para crescer</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-icon">◈</div>
+        <div class="obj-label">Segurança</div>
+        <div class="obj-val">OWASP Top 10 · FADP/RGPD</div>
+        <div class="obj-desc">Zero-Trust, TLS 1.3, auditoria imutável</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 2. ESCOPO ════════════════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">02</span>
+      <h2 class="section-title">Escopo do Projecto</h2>
+    </div>
+    <div class="block">
+      <table class="scope-table">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Descrição &amp; Deliverables</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Módulo IA<span class="badge-inline">OpenAI / Claude</span></td>
+            <td>Integração com API OpenAI (GPT-4o) e/ou Anthropic Claude API. Pipeline RAG com embeddings, vector store e context injection. Anti-hallucination guardrails. Geração de documentos e relatórios com IA. Streaming de respostas em tempo real.</td>
+          </tr>
+          <tr>
+            <td>Dashboard<span class="badge-inline">D3.js</span></td>
+            <td>Dashboard analítico interactivo com visualizações D3.js: gráficos de linha, barras, mapas de calor e KPIs em tempo real. Exportação para PDF/Excel. Filtros dinâmicos e drill-down por período. Layout responsivo mobile-first.</td>
+          </tr>
+          <tr>
+            <td>Pagamentos<span class="badge-inline">Stripe</span></td>
+            <td>Integração Stripe completa: Checkout Session, Stripe Elements (UI embebida), gestão de Subscriptions, Webhook handler com validação de assinatura criptográfica (HMAC), portal do cliente e gestão de facturas automáticas.</td>
+          </tr>
+          <tr>
+            <td>Autenticação<span class="badge-inline">Firebase / JWT</span></td>
+            <td>Sistema de autenticação multi-provider: email/password, Google OAuth, autenticação por número de telemóvel (OTP SMS). RBAC (Role-Based Access Control) com níveis Admin / User / Guest. Sessões JWT seguras com refresh automático.</td>
+          </tr>
+          <tr>
+            <td>Admin Panel</td>
+            <td>Painel de administração protegido por RBAC. Gestão de utilizadores, visualização de métricas de uso, logs de auditoria imutáveis, gestão de conteúdo e configuração de planos/preços.</td>
+          </tr>
+          <tr>
+            <td>Legal &amp; Compliance<span class="badge-inline">FADP/RGPD</span></td>
+            <td>Documentação legal completa (Termos de Uso, Política de Privacidade, DPA, Política de Cookies). Banner de consentimento funcional. Conformidade com FADP suíça (primária) e RGPD europeu. Zero-tracking por padrão.</td>
+          </tr>
+          <tr>
+            <td>CI/CD &amp; DevOps<span class="badge-inline">GitHub Actions</span></td>
+            <td>Pipeline CI/CD com testes automáticos (Jest + Playwright), análise estática de segurança (SAST), deploy automático para Vercel/Cloud Run. Rollback instantâneo. Monitorização de uptime e alertas.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 3. STACK TECNOLÓGICA ══════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">03</span>
+      <h2 class="section-title">Stack Tecnológica</h2>
+    </div>
+    <div class="block">
+      <div class="stack-grid">
+        <div class="stack-col">
+          <div class="stack-col-label">Front-End</div>
+          <div class="stack-item"><span class="stack-dot"></span>React.js / Next.js 15</div>
+          <div class="stack-item"><span class="stack-dot"></span>TypeScript (strict mode)</div>
+          <div class="stack-item"><span class="stack-dot"></span>Tailwind CSS</div>
+          <div class="stack-item"><span class="stack-dot"></span>D3.js (visualizações)</div>
+          <div class="stack-item"><span class="stack-dot"></span>PWA (Service Worker)</div>
+          <div class="stack-item"><span class="stack-dot"></span>i18n (6 locales)</div>
+        </div>
+        <div class="stack-col">
+          <div class="stack-col-label">Back-End &amp; Base de Dados</div>
+          <div class="stack-item"><span class="stack-dot"></span>Node.js / FastAPI (Python)</div>
+          <div class="stack-item"><span class="stack-dot"></span>Firebase (Auth + RTDB + Functions)</div>
+          <div class="stack-item"><span class="stack-dot"></span>PostgreSQL (dados relacionais)</div>
+          <div class="stack-item"><span class="stack-dot"></span>BigQuery (analytics)</div>
+          <div class="stack-item"><span class="stack-dot"></span>OpenAI API / Claude API</div>
+          <div class="stack-item"><span class="stack-dot"></span>Stripe API (pagamentos)</div>
+        </div>
+        <div class="stack-col">
+          <div class="stack-col-label">Infra &amp; DevOps</div>
+          <div class="stack-item"><span class="stack-dot"></span>Vercel (deploy serverless)</div>
+          <div class="stack-item"><span class="stack-dot"></span>Docker (containerização)</div>
+          <div class="stack-item"><span class="stack-dot"></span>GitHub Actions (CI/CD)</div>
+          <div class="stack-item"><span class="stack-dot"></span>Playwright + Jest (QA)</div>
+          <div class="stack-item"><span class="stack-dot"></span>TLS 1.3 + HSTS</div>
+          <div class="stack-item"><span class="stack-dot"></span>Secrets Vault (env seguro)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 4. CRONOGRAMA ════════════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">04</span>
+      <h2 class="section-title">Cronograma — 5 Fases</h2>
+    </div>
+    <div class="block">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">01</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">Discovery &amp; Briefing</div>
+            <div class="tl-dur">⏱ 2–3 dias úteis</div>
+            <div class="tl-desc">Reunião de kickoff (videochamada). Análise de viabilidade técnica. Definição rigorosa do MVP scope. Identificação de riscos e dependências. Estimativa final de recursos. Assinatura de contrato e NDA (se aplicável).</div>
+            <div class="tl-deliverables">
+              <span class="tl-tag">Documento de Requisitos</span>
+              <span class="tl-tag">MVP Scope Final</span>
+              <span class="tl-tag">Contrato Assinado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">02</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">Design &amp; Arquitectura</div>
+            <div class="tl-dur">⏱ 3–5 dias úteis</div>
+            <div class="tl-desc">Arquitectura de informação e user flows. Wireframes de alta fidelidade (Figma). Design System: tipografia, paleta de cores, componentes. Diagrama de arquitectura técnica (infra + DB + API). Aprovação formal do cliente antes do desenvolvimento.</div>
+            <div class="tl-deliverables">
+              <span class="tl-tag">Figma UI/UX</span>
+              <span class="tl-tag">Design System</span>
+              <span class="tl-tag">Diagrama de Arquitectura</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">03</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">Desenvolvimento Iterativo</div>
+            <div class="tl-dur">⏱ 2–4 semanas</div>
+            <div class="tl-desc">Setup do repositório GitHub com CI/CD. Desenvolvimento iterativo em sprints de 3-4 dias. Integrações progressivas (Firebase → Stripe → IA → Dashboard). Testes unitários em paralelo. Code review e PRs documentados. Acesso a ambiente de staging para validação contínua do cliente.</div>
+            <div class="tl-deliverables">
+              <span class="tl-tag">Código fonte (GitHub)</span>
+              <span class="tl-tag">Ambiente Staging</span>
+              <span class="tl-tag">Testes Unitários</span>
+              <span class="tl-tag">CI/CD Pipeline</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">04</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">QA &amp; Testes de Aceitação</div>
+            <div class="tl-dur">⏱ 3–5 dias úteis</div>
+            <div class="tl-desc">UAT (User Acceptance Testing) com o cliente. Testes cross-browser e cross-device (iOS / Android / Desktop). Análise de performance Lighthouse (meta: 90+ em todas as categorias). Scan de vulnerabilidades OWASP Top 10. Acessibilidade WCAG 2.1 (nível AA). Auditoria de segurança final e correcção de findings críticos.</div>
+            <div class="tl-deliverables">
+              <span class="tl-tag">Relatório Lighthouse</span>
+              <span class="tl-tag">Relatório OWASP</span>
+              <span class="tl-tag">Sign-off UAT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">05</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">Lançamento &amp; Handover</div>
+            <div class="tl-dur">⏱ Dia 0 → Suporte pós-lançamento</div>
+            <div class="tl-desc">Deploy em produção (Vercel / cloud da preferência do cliente). Configuração de domínio, DNS e certificados SSL/TLS. Monitorização activa nas primeiras 24-48 horas. Handover completo: documentação técnica, acesso a todos os repositórios e credenciais. Período de suporte pós-lançamento incluído (ver plano).</div>
+            <div class="tl-deliverables">
+              <span class="tl-tag">Produto em Produção</span>
+              <span class="tl-tag">Documentação Técnica</span>
+              <span class="tl-tag">Acesso Repositório</span>
+              <span class="tl-tag">Suporte Incluído</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 5. INVESTIMENTO ══════════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">05</span>
+      <h2 class="section-title">Investimento</h2>
+    </div>
+    <div class="price-grid">
+
+      <!-- STARTER -->
+      <div class="price-card">
+        <div class="price-tier">Opção A</div>
+        <div class="price-name">Starter</div>
+        <div class="price-val">1.500€</div>
+        <div class="price-unit">preço fixo · tudo incluído</div>
+        <div class="price-payment">Modelo: 50% início · 50% entrega</div>
+        <div class="price-divider"></div>
+        <div class="price-feat"><span>✓</span>MVP funcional de escopo reduzido</div>
+        <div class="price-feat"><span>✓</span>Design responsivo Mobile-First</div>
+        <div class="price-feat"><span>✓</span>Autenticação de utilizadores</div>
+        <div class="price-feat"><span>✓</span>Integração básica de pagamentos</div>
+        <div class="price-feat"><span>✓</span>Deploy em produção (Vercel)</div>
+        <div class="price-feat"><span>✓</span>Documentação legal FADP/RGPD</div>
+        <div class="price-feat"><span>✓</span>15 dias de suporte pós-entrega</div>
+        <div class="price-note">Ideal para: validação de conceito, landing page com funcionalidades base</div>
+      </div>
+
+      <!-- PRO — RECOMMENDED -->
+      <div class="price-card rec">
+        <div class="price-rec-badge">RECOMENDADO</div>
+        <div class="price-tier">Opção B</div>
+        <div class="price-name">Pro</div>
+        <div class="price-val">4.500€</div>
+        <div class="price-unit">preço fixo · tudo incluído</div>
+        <div class="price-payment">Modelo: 50% início · 50% entrega</div>
+        <div class="price-divider"></div>
+        <div class="price-feat"><span>✓</span>MVP SaaS completo (2–4 semanas)</div>
+        <div class="price-feat"><span>✓</span>Módulo IA integrado (OpenAI / Claude)</div>
+        <div class="price-feat"><span>✓</span>Dashboard D3.js em tempo real</div>
+        <div class="price-feat"><span>✓</span>Stripe Subscriptions + Webhooks</div>
+        <div class="price-feat"><span>✓</span>Firebase Auth + Admin Panel RBAC</div>
+        <div class="price-feat"><span>✓</span>CI/CD Pipeline + testes automáticos</div>
+        <div class="price-feat"><span>✓</span>Compliance FADP/RGPD completo</div>
+        <div class="price-feat"><span>✓</span>30 dias de suporte pós-entrega</div>
+        <div class="price-note">Ideal para: SaaS B2B, plataformas com IA, produtos com subscrição mensal</div>
+      </div>
+
+    </div>
+
+    <div class="block" style="margin-top:16px">
+      <div class="block-title">▸ MANUTENÇÃO MENSAL (OPCIONAL)</div>
+      <p>Após o período de suporte incluído, é possível contratar um plano de manutenção recorrente: actualizações de segurança (Firebase, Stripe, dependências), monitorização 24/7, 2h de ajustes mensais incluídas. <strong style="color:var(--text)">50€–150€/mês</strong> dependendo da complexidade da plataforma.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 6. TERMOS COMERCIAIS ══════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">06</span>
+      <h2 class="section-title">Termos Comerciais Resumidos</h2>
+    </div>
+    <div class="block">
+      <div class="terms-grid">
+        <div class="terms-item">
+          <div class="terms-label">Modelo de Pagamento</div>
+          <div class="terms-val">50% no início · 50% na entrega final</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Método de Pagamento</div>
+          <div class="terms-val">Transferência bancária SEPA / Wise</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Propriedade Intelectual</div>
+          <div class="terms-val">100% transferida ao cliente após pagamento integral</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Revisões Incluídas</div>
+          <div class="terms-val">Starter: 1 ronda · Pro: 2 rondas</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Lei Aplicável</div>
+          <div class="terms-val">Suíça (OR / CO) — jurisdição adaptável</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Confidencialidade</div>
+          <div class="terms-val">NDA disponível mediante pedido</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Código Fonte</div>
+          <div class="terms-val">Repositório GitHub privado · acesso imediato</div>
+        </div>
+        <div class="terms-item">
+          <div class="terms-label">Garantia</div>
+          <div class="terms-val">Bugs críticos corrigidos gratuitamente em 30 dias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ 7. ASSINATURAS ════════════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-n">07</span>
+      <h2 class="section-title">Aceitação &amp; Assinatura</h2>
+    </div>
+    <div class="block highlight">
+      <p style="margin-bottom:18px">Ao assinar este documento, ambas as partes confirmam a aceitação dos termos desta proposta e comprometem-se a cumprir as obrigações nela descritas. A assinatura desta proposta não substitui o Contrato de Prestação de Serviços completo, que será enviado separadamente.</p>
+      <div class="sig-block">
+        <div class="sig-col">
+          <div class="sig-label">Prestador de Serviços</div>
+          <div class="sig-line"></div>
+          <div class="sig-name">Eduardo Monteiro</div>
+          <div class="sig-role">AI-Powered Full-Stack Developer · edumonteiro.dev@gmail.com</div>
+          <div style="margin-top:10px;font-family:var(--font-m);font-size:.65rem;color:var(--faint)">Data: ________________</div>
+        </div>
+        <div class="sig-col">
+          <div class="sig-label">Cliente / Empresa</div>
+          <div class="sig-line"></div>
+          <div class="sig-name" contenteditable="true" style="outline:none">[Nome &amp; Cargo]</div>
+          <div class="sig-role" contenteditable="true" style="outline:none">[Empresa · email@empresa.com]</div>
+          <div style="margin-top:10px;font-family:var(--font-m);font-size:.65rem;color:var(--faint)">Data: ________________</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DOCUMENT FOOTER ══════════════════════════════════════ -->
+  <div class="doc-footer">
+    <div class="doc-footer-left">
+      Eduardo Monteiro Dev · edumonteiro.dev@gmail.com · monteiro.is-a.dev<br/>
+      FADP/LPD Compliant · Dados tratados conforme política de privacidade em monteiro.is-a.dev/legal.html
+    </div>
+    <div class="doc-footer-right">
+      <span id="footer-prop-num">PROP-2026-001</span> · Pág. 1/1<br/>
+      Confidencial — Não reproduzir sem autorização
+    </div>
+  </div>
+
+</div><!-- /doc -->
+
+<script>
+'use strict';
+// Set today's date
+var d = new Date();
+var months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+var dateStr = d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+document.getElementById('today-date').textContent = dateStr;
+
+// Generate proposal number
+var propNum = 'PROP-' + d.getFullYear() + '-' + String(Math.floor(Math.random()*900)+100);
+document.getElementById('prop-num').textContent = propNum;
+document.getElementById('footer-prop-num').textContent = propNum;
+</script>
+<footer style="text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);margin-top:4rem;font-size:.85rem;opacity:.8;font-family:system-ui,sans-serif;">
+  <a href="./privacy.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Privacidade</a> &bull;
+  <a href="./terms.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Termos B2B</a> &bull;
+  <a href="./cookies.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Gestão de Cookies</a>
+</footer>
+</body>
+</html>

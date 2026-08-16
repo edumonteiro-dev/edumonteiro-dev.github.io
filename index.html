@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="de-CH" dir="ltr">
+<html lang="pt-PT" dir="ltr">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; form-action 'self' mailto:; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta charset="UTF-8"/>
 <meta name="google-site-verification" content="NXgQN7yVnzjrSAmjrqZPS8pcB_LBqpkg09ZOdNm6t-o"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Eduardo Monteiro — AI-Powered Full-Stack Developer. MVPs em semanas. SaaS, Biometria, IA, Analytics. 6 mercados."/>
-<meta property="og:title" content="Eduardo Monteiro — AI-Powered Full-Stack Developer"/>
-<meta property="og:description" content="MVPs em semanas. Código limpo. Arquitectura preparada para escalar."/>
+<meta name="description" content="Eduardo Monteiro — Desenvolvedor Full-Stack IA especializado em MVPs SaaS (3-5 semanas), integração OpenAI/Stripe, conformidade FADP/RGPD e plataformas escaláveis B2B para fundadores não-técnicos."/>
+<meta property="og:title" content="Eduardo Monteiro | MVP SaaS em Semanas — Full-Stack Developer IA"/>
+<meta property="og:description" content="Valido a sua ideia de negócio e lanço o MVP em 3-5 semanas — sem burocracia, sem complexidade técnica. Especialista FADP/RGPD para mercado suíço."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://monteiro.is-a.dev"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Eduardo Monteiro | MVP SaaS em Semanas — Full-Stack Developer IA"/>
+<meta name="twitter:description" content="Valido a sua ideia e lanço o MVP em 3-5 semanas. Especialista OpenAI, Stripe, FADP/RGPD."/>
 <link rel="manifest" href="./manifest.json"/>
 <meta name="theme-color" content="#7B5CF0"/>
 <meta name="mobile-web-app-capable" content="yes"/>
@@ -20,7 +23,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="EM Dev"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImZnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuOCIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMEEwQTBGIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyIDI3LDguNSAyNywyMS41IDE2LDI4IDUsMjEuNSA1LDguNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNmZykiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPHRleHQgeD0iOC41IiB5PSIyMCIgZm9udC1mYW1pbHk9IidTcGFjZSBHcm90ZXNrJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIxMSIgZmlsbD0idXJsKCNmZykiIGZpbHRlcj0idXJsKCNnZikiPkVNPC90ZXh0Pgo8L3N2Zz4K"/>
-<title>Eduardo Monteiro — AI-Powered Full-Stack Developer</title>
+<title>Eduardo Monteiro | Desenvolvedor Full-Stack IA &amp; Criação de MVPs</title>
 <style>
 :root{
   --void:#050508;--deep:#0A0A0F;--card:#0E0E16;--card-h:#13131E;
@@ -56,6 +59,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 [data-reveal][data-delay="1"]{transition-delay:.1s}[data-reveal][data-delay="2"]{transition-delay:.2s}
 [data-reveal][data-delay="3"]{transition-delay:.3s}[data-reveal][data-delay="4"]{transition-delay:.4s}
 [data-reveal][data-delay="5"]{transition-delay:.5s}
+
 /* HEADER */
 #header{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .4s,padding .3s}
 #header.scrolled{background:rgba(5,5,8,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:10px 0}
@@ -63,6 +67,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .nav-logo{display:flex;align-items:center;flex-shrink:0}.nav-logo img{height:44px}
 #nav-menu{display:flex;align-items:center;gap:4px;margin-left:auto;flex-wrap:wrap}
 #nav-menu a{font-family:var(--font-d);font-size:.875rem;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:8px;transition:color .2s,background .2s}
+#nav-menu .mobile-lang-bar{display:none}
 #nav-menu a:hover{color:var(--text);background:rgba(255,255,255,.05)}
 .lang-switcher{display:flex;gap:4px;margin-left:8px;padding-left:12px;border-left:1px solid var(--faint)}
 .lang-btn{font-size:.8rem;font-family:var(--font-m);font-weight:500;color:var(--muted);padding:4px 8px;border-radius:6px;border:1px solid transparent;transition:all .2s;letter-spacing:.05em}
@@ -70,8 +75,9 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .lang-btn.active{color:var(--purple);border-color:var(--purple);background:rgba(123,92,240,.1)}
 #burger{display:none;flex-direction:column;gap:5px;margin-left:auto;padding:8px}
 #burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+
 /* HERO */
-#hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:100px}
+#hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:60px}
 #neural-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
 .hero-content{position:relative;z-index:2;max-width:800px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;padding:6px 14px;border:1px solid rgba(0,245,160,.25);border-radius:999px;background:rgba(0,245,160,.05)}
@@ -92,6 +98,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--font-m);font-size:.7rem;letter-spacing:.1em;color:var(--muted);animation:bounce 2s infinite;z-index:2}
 .hero-scroll::after{content:'↓';font-size:1rem}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
 /* METRICS */
 #metrics{padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(123,92,240,.03)}
 .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -99,6 +106,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .metric-item:last-child{border-right:none}
 .metric-value{font-family:var(--font-d);font-size:clamp(2rem,4vw,3rem);font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
 .metric-label{font-size:.85rem;color:var(--muted);letter-spacing:.02em}
+
 /* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
 .service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:32px 28px;transition:border-color .3s,background .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
@@ -109,6 +117,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .svc-tag{font-family:var(--font-m);font-size:.7rem;letter-spacing:.1em;color:var(--purple);text-transform:uppercase;margin-bottom:8px}
 .svc-title{font-family:var(--font-d);font-size:1.15rem;font-weight:600;margin-bottom:10px}
 .svc-desc{font-size:.9rem;color:var(--muted);line-height:1.65}
+
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:36px 32px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s,box-shadow .3s,transform .3s;transform-style:preserve-3d}
@@ -126,6 +135,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .proj-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-d);font-size:.85rem;font-weight:600;color:var(--purple);margin-top:4px;transition:color .2s,gap .2s}
 .proj-link::after{content:'→'}
 .proj-link:hover{color:var(--teal);gap:10px}
+
 /* PROCESS */
 #process{background:rgba(0,245,160,.015)}
 .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:64px;position:relative}
@@ -135,6 +145,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .step-title{font-family:var(--font-d);font-weight:700;font-size:1rem}
 .step-duration{font-family:var(--font-m);font-size:.7rem;color:var(--teal);letter-spacing:.1em}
 .step-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
 /* STACK TICKER */
 #stack{overflow:hidden;padding:48px 0}
 .stack-track{display:flex;gap:0;width:max-content;animation:scroll-track 30s linear infinite}
@@ -142,6 +153,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 @keyframes scroll-track{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .stack-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;margin:8px;border:1px solid var(--border);border-radius:999px;background:var(--card);font-family:var(--font-m);font-size:.8rem;color:var(--muted);white-space:nowrap;transition:border-color .2s,color .2s}
 .stack-badge:hover{border-color:var(--purple);color:var(--text)}
+
 /* PRICING */
 .pricing-controls{display:flex;align-items:center;justify-content:center;gap:8px;margin:48px 0 56px}
 .pricing-toggle-btn{padding:10px 24px;border-radius:999px;border:1px solid var(--border);color:var(--muted);font-family:var(--font-d);font-weight:500;font-size:.9rem;transition:all .25s}
@@ -164,6 +176,7 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .popular .btn-tier{display:block;text-align:center;text-decoration:none;background:var(--grad-cta);color:#fff;border-color:transparent}
 .popular .btn-tier:hover{opacity:.9}
 .maintenance-note{margin-top:40px;padding:16px 24px;border:1px solid var(--border);border-radius:var(--r);font-family:var(--font-m);font-size:.78rem;color:var(--muted);text-align:center;background:rgba(0,245,160,.03)}
+
 /* CONTACT */
 #contact{background:rgba(255,60,172,.02)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start;margin-top:56px}
@@ -172,19 +185,10 @@ body::before{content:'';position:fixed;inset:0;background:var(--grad-aurora);poi
 .social-link:hover{border-color:var(--border-h);background:var(--card-h)}
 .social-link .s-icon{font-size:1.1rem;width:24px;text-align:center}
 .social-link .s-val{font-family:var(--font-m);font-size:.85rem;margin-left:auto;color:var(--purple)}
-
-
-
-
-
-
-
-
-
-
 .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(255,60,172,.35)}
 .btn-submit:disabled{opacity:.6;cursor:default;transform:none}
 #form-success{display:none;margin-top:12px;padding:12px 16px;border-radius:8px;background:rgba(0,245,160,.1);border:1px solid rgba(0,245,160,.25);color:var(--teal);font-size:.9rem;text-align:center}
+
 /* FOOTER */
 footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--deep)}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -196,6 +200,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .footer-social{display:flex;gap:12px}
 .footer-social a{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:border-color .2s,background .2s}
 .footer-social a:hover{border-color:var(--purple);background:rgba(123,92,240,.1)}
+
 /* COOKIE */
 #cookie-banner{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:640px;width:calc(100% - 32px);background:var(--card);border:1px solid var(--border-h);border-radius:var(--rl);padding:20px 24px;gap:16px;align-items:center;flex-wrap:wrap;z-index:200;box-shadow:0 8px 48px rgba(0,0,0,.7);backdrop-filter:blur(20px)}
 #cookie-banner p{font-size:.875rem;color:var(--muted);flex:1}
@@ -206,6 +211,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 #cookie-decline{border:1px solid var(--border);color:var(--muted)}
 #cookie-decline:hover{color:var(--text)}
 .section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-h),transparent)}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:repeat(2,1fr)}
@@ -222,7 +228,6 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   #nav-menu a{font-size:1.2rem;padding:12px 16px}
   #burger{display:flex}
   .lang-switcher{display:none}
-  /* ── MOBILE LANG BAR inside burger menu ── */
   #nav-menu .mobile-lang-bar{display:flex;gap:6px;flex-wrap:wrap;padding:12px 0 4px;border-top:1px solid rgba(123,92,240,.2);margin-top:8px}
   #nav-menu .mobile-lang-bar .lang-btn{font-size:.85rem;padding:6px 14px;min-height:38px;-webkit-tap-highlight-color:transparent}
   .hero-title{font-size:clamp(2.2rem,8vw,3.5rem)}
@@ -233,7 +238,6 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   .project-card.featured{flex-direction:column}
   .project-card.featured .proj-visual{width:100%;flex:none}
   .contact-grid{grid-template-columns:1fr;gap:40px}
-  
   .footer-inner{flex-direction:column;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){
@@ -241,7 +245,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   #neural-canvas{display:none}
 }
 
-/* ── A2HS INSTALL MODAL ── */
+/* A2HS INSTALL MODAL */
 #a2hs-modal{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
   width:calc(100% - 32px);max-width:420px;background:var(--card);
   border:1px solid var(--border-h);border-radius:var(--rl);padding:20px 22px;
@@ -259,7 +263,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 #a2hs-modal .a2hs-dismiss{padding:9px 14px;border:1px solid var(--border);background:none;color:var(--muted);border-radius:8px;font-family:monospace;font-size:.8rem;cursor:pointer;transition:color .2s}
 #a2hs-modal .a2hs-dismiss:hover{color:var(--text)}
 
-/* ── TOAST ── */
+/* TOAST */
 .toast-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
   opacity:0;pointer-events:none;transition:all .4s var(--ease);
   background:var(--card);border:1px solid var(--teal);border-radius:10px;
@@ -269,7 +273,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .toast-notif.toast-error{border-color:var(--coral);color:var(--coral)}
 .toast-notif.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
 
-/* ── SCOPE MODAL OVERLAY ── */
+/* SCOPE MODAL OVERLAY */
 .scope-overlay{position:fixed;inset:0;background:rgba(5,5,8,.92);backdrop-filter:blur(12px);
   z-index:400;display:none;align-items:flex-start;justify-content:center;
   padding:24px 16px;overflow-y:auto}
@@ -286,14 +290,12 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .scope-section{margin-bottom:22px}
 .scope-label{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;
   letter-spacing:.12em;margin-bottom:10px;display:block}
-/* Chips */
 .chips-wrap{display:flex;flex-wrap:wrap;gap:8px}
 .scope-chip{padding:7px 16px;border-radius:999px;border:1px solid var(--faint);
   background:none;color:var(--muted);font-family:monospace;font-size:.78rem;
   cursor:pointer;transition:all .2s;letter-spacing:.04em}
 .scope-chip:hover{border-color:var(--border-h);color:var(--text)}
 .scope-chip.sel{border-color:var(--purple);background:rgba(123,92,240,.12);color:var(--purple)}
-/* Feature checkboxes */
 .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .feat-item{display:flex;align-items:center;gap:10px;padding:9px 14px;
   border:1px solid var(--faint);border-radius:8px;cursor:pointer;transition:all .2s}
@@ -302,7 +304,6 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .feat-item label{font-size:.83rem;color:var(--muted);cursor:pointer;user-select:none}
 .feat-item.checked{border-color:rgba(0,245,160,.3);background:rgba(0,245,160,.04)}
 .feat-item.checked label{color:var(--text)}
-/* Radio */
 .radios-wrap{display:flex;flex-wrap:wrap;gap:8px}
 .scope-radio-label{display:flex;align-items:center;gap:8px;padding:7px 16px;
   border:1px solid var(--faint);border-radius:999px;cursor:pointer;transition:all .2s}
@@ -310,7 +311,6 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .scope-radio-label span{font-family:monospace;font-size:.78rem;color:var(--muted);user-select:none}
 .scope-radio-label:has(input:checked){border-color:var(--purple);background:rgba(123,92,240,.1)}
 .scope-radio-label:has(input:checked) span{color:var(--purple)}
-/* Scope form fields */
 .scope-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .scope-field label{font-family:monospace;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
 .scope-field input,.scope-field textarea{background:rgba(255,255,255,.04);border:1px solid var(--faint);
@@ -323,18 +323,40 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 .scope-submit:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(255,60,172,.35)}
 .scope-submit:disabled{opacity:.6;cursor:default;transform:none}
 .scope-divider{height:1px;background:var(--border);margin:20px 0}
-/* Open scope builder button in contact section */
 .scope-open-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;
   border-radius:12px;background:var(--grad-cta);color:#fff;font-family:var(--font-d);
   font-weight:700;font-size:1.05rem;border:none;cursor:pointer;width:100%;justify-content:center;
   box-shadow:0 0 28px rgba(255,60,172,.25);transition:transform .2s,box-shadow .2s;margin-top:20px}
 .scope-open-btn:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(255,60,172,.4)}
-/* Footer tagline rotation */
+
+/* FOOTER TAGLINE ROTATION */
 #footer-tagline{position:relative;min-height:1.4em;overflow:hidden}
 #footer-tagline span{display:block;transition:opacity .6s,transform .6s;opacity:1}
 #footer-tagline span.tl-out{opacity:0;transform:translateY(-8px)}
 #footer-tagline span.tl-in{opacity:0;transform:translateY(8px)}
 @media(max-width:640px){.features-grid{grid-template-columns:1fr}.scope-modal{padding:22px 18px}}
+
+/* NEON APPROVAL METRICS */
+@keyframes neon-pulse{0%,100%{text-shadow:0 0 4px #00F5A0,0 0 10px #00F5A0;opacity:1}50%{text-shadow:0 0 12px #00F5A0,0 0 24px #00F5A0,0 0 40px rgba(0,245,160,.4);opacity:.85}}
+.proj-metric{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.proj-metric-val{font-family:monospace;font-size:1.05rem;font-weight:700;color:#00F5A0;animation:neon-pulse 2.4s ease-in-out infinite;letter-spacing:.04em}
+.proj-metric-lbl{font-family:monospace;font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.proj-metric-dot{width:6px;height:6px;border-radius:50%;background:#00F5A0;animation:neon-pulse 2.4s ease-in-out infinite}
+
+/* BLOG BANNER */
+#blog-banner{background:linear-gradient(90deg,rgba(123,92,240,.08),rgba(0,245,160,.08));border-bottom:1px solid rgba(0,245,160,.15);padding:10px 0;text-align:center;position:relative;z-index:40;margin-top:76px}
+.blog-banner-inner{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;max-width:900px;margin:0 auto;padding:0 24px}
+.blog-new-badge{font-family:monospace;font-size:.6rem;background:var(--teal);color:#000;padding:2px 7px;border-radius:999px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0}
+.btn-blog{display:inline-flex;align-items:center;gap:8px;font-family:monospace;font-size:.88rem;font-weight:600;color:var(--teal);border:1px solid rgba(0,245,160,.4);padding:5px 16px;border-radius:8px;text-decoration:none;transition:all .2s;background:rgba(0,245,160,.06);white-space:nowrap}
+.btn-blog:hover{background:rgba(0,245,160,.14);border-color:var(--teal);box-shadow:0 0 12px rgba(0,245,160,.2)}
+.blog-separator{color:var(--faint);font-size:.75rem}
+#blog-banner-sub{font-family:monospace;font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+@media(max-width:560px){#blog-banner-sub{display:none}}
+@media(max-width:768px){#blog-banner{margin-top:70px}}
+
+/* PROJ-APP-LINK */
+.proj-app-link{display:inline-flex;align-items:center;gap:5px;font-family:monospace;font-size:.72rem;color:var(--purple);border:1px solid rgba(123,92,240,.3);padding:3px 10px;border-radius:6px;text-decoration:none;margin-top:6px;transition:all .2s}
+.proj-app-link:hover{border-color:var(--purple);background:rgba(123,92,240,.08)}
 </style>
 </head>
 <body>
@@ -355,7 +377,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   <div class="container">
     <nav class="nav-inner" role="navigation">
       <a href="#" class="nav-logo" aria-label="Eduardo Monteiro — Home">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIzMCIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjExIiBmaWxsPSJ1cmwoI2dtKSIgZmlsdGVyPSJ1cmwoI2dmKSI+RU08L3RleHQ+CiAgPCEtLSBXb3JkbWFyayAtLT4KICA8dGV4dCB4PSI2MiIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNFOEU4RkYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5WaWJlPC90ZXh0PgogIDx0ZXh0IHg9IjEwMSIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjMwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9InVybCgjZ20pIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q29kZXI8L3RleHQ+CiAgPHRleHQgeD0iNjIiIHk9IjQyIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJyxtb25vc3BhY2UiIGZvbnQtd2VpZ2h0PSI0MDAiCiAgICBmb250LXNpemU9IjcuNSIgZmlsbD0iIzdCNUNGMCIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RURVQVJETyBNT05URUlSTyDCtyBERVY8L3RleHQ+CjxzdHlsZT5AbWVkaWEobWluLXdpZHRoOjEwMjRweCl7dGV4dHt0ZXh0LWFuY2hvcjptaWRkbGU7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbH19PC9zdHlsZT48L3N2Zz4K" alt="Eduardo Monteiro Dev" width="160" height="44"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjMwLDQgNTAsMTUgNTAsMzcgMzAsNDggMTAsMzcgMTAsMTUiCiAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsdGVyPSJ1cmwoI2dmKSIvPgogIDxjaXJjbGUgY3g9IjMwIiBjeT0iNCIgIHI9IjIiIGZpbGw9IiM3QjVDRjAiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iMTUiIHI9IjIiIGZpbGw9IiM3QjVDRjAiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzciIHI9IjIiIGZpbGw9IiMwMEY1QTAiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjMwIiBjeT0iNDgiIHI9IjIiIGZpbGw9IiMwMEY1QTAiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMzciIHI9IjIiIGZpbGw9IiMwMEY1QTAiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTUiIHI9IjIiIGZpbGw9IiM3QjVDRjAiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjMwIiBjeT0iMjYiIHI9IjIuNSIgZmlsbD0idXJsKCNnbSkiLz4KICA8bGluZSB4MT0iMzAiIHkxPSI0IiAgeDI9IjMwIiB5Mj0iMjYiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjUiLz4KICA8bGluZSB4MT0iMTAiIHkxPSIxNSIgeDI9IjMwIiB5Mj0iMjYiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjUiLz4KICA8bGluZSB4MT0iNTAiIHkxPSIzNyIgeDI9IjMwIiB5Mj0iMjYiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjUiLz4KICA8bGluZSB4MT0iMzAiIHkxPSI0OCIgeDI9IjMwIiB5Mj0iMjYiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjUiLz4KICA8dGV4dCB4PSIzMCIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjExIiBmaWxsPSJ1cmwoI2dtKSIgZmlsdGVyPSJ1cmwoI2dmKSI+RU08L3RleHQ+CiAgPHRleHQgeD0iNjIiIHk9IjI4IiBmb250LWZhbWlseT0iJ1NwYWNlIEdyb3Rlc2snLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICBmb250LXNpemU9IjE4IiBmaWxsPSIjRThFOEZGIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+VmliZTwvdGV4dD4KICA8dGV4dCB4PSIxMDEiIHk9IjI4IiBmb250LWZhbWlseT0iJ1NwYWNlIEdyb3Rlc2snLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSIzMDAiCiAgICBmb250LXNpemU9IjE4IiBmaWxsPSJ1cmwoI2dtKSIgbGV0dGVyLXNwYWNpbmc9Ii0wLjUiPkNvZGVyPC90ZXh0PgogIDx0ZXh0IHg9IjYyIiB5PSI0MiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubyAnLG1vbm9zcGFjZSIgZm9udC13ZWlnaHQ9IjQwMCIKICAgIGZvbnQtc2l6ZT0iNy41IiBmaWxsPSIjN0I1Q0YwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FRFVBUERPIE1PTlRFSVJPIMK3IERFVjwvdGV4dD4KPC9zdmc+" alt="Eduardo Monteiro Dev" width="160" height="44"/>
       </a>
       <button id="burger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -366,8 +388,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <li><a href="#projects" data-nav="projects">Projetos</a></li>
         <li><a href="#process" data-nav="process">Processo</a></li>
         <li><a href="#pricing" data-nav="pricing">Preços</a></li>
-        <li><a href="./contract.html" data-nav="contract" target="_blank">Contrato</a>
-        <li><a href="./legal.html" data-nav="legal" target="_blank">Legal</a></li></li>
+        <li><a href="./blog.html" data-nav="blog" id="nav-blog-link">Blog</a></li>
+        <li><a href="./contract.html" data-nav="contract" target="_blank">Contrato</a></li>
+        <li><a href="./legal.html" data-nav="legal" target="_blank">Legal</a></li>
         <li><a href="#contact" data-nav="contact">Contacto</a></li>
         <li style="list-style:none">
           <div class="mobile-lang-bar" role="group" aria-label="Language selector">
@@ -392,12 +415,24 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   </div>
 </header>
 
+<!-- BLOG BANNER -->
+<div id="blog-banner" role="complementary" aria-label="Blog">
+  <div class="blog-banner-inner">
+    <span class="blog-new-badge" id="blog-badge-new">NOVO</span>
+    <a href="./blog.html" class="btn-blog" id="blog-btn">
+      <span>✍</span><span id="blog-btn-label">Blog</span><span style="font-size:.75rem;opacity:.7">→</span>
+    </a>
+    <span class="blog-separator">·</span>
+    <span id="blog-banner-sub">Insights sobre SaaS, IA, Desenvolvimento MVP &amp; Compliance FADP/RGPD</span>
+  </div>
+</div>
+
 <!-- HERO -->
 <section id="hero" aria-label="Hero">
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-eyebrow" id="hero-eyebrow" data-reveal>Desenvolvedor Full-Stack com IA</div>
+      <div class="hero-eyebrow" id="hero-eyebrow" data-reveal>Desenvolvimento MVP · IA · FADP/RGPD</div>
       <h1 class="hero-title" data-reveal data-delay="1">
         <span id="hero-title1">MVPs em</span>
         <span class="line-2" id="hero-title2">Semanas.</span>
@@ -405,7 +440,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       </h1>
       <div class="hero-typing" data-reveal data-delay="2"><span id="typewriter">SaaS Platforms</span></div>
       <p class="hero-subtitle" id="hero-subtitle" data-reveal data-delay="3">
-        Construo produtos digitais escaláveis com IA — do conceito ao lançamento, com código limpo e arquitectura preparada para crescer.
+        Valido a sua ideia de negócio e lanço o MVP em 3–5 semanas — sem burocracia, sem complexidade técnica, com código production-ready para fundadores não-técnicos.
       </p>
       <div class="hero-ctas" data-reveal data-delay="4">
         <a href="#projects" class="btn-primary" id="hero-cta1">Ver Portfólio</a>
@@ -434,15 +469,15 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   <div class="container">
     <div class="text-center" data-reveal>
       <p class="eyebrow" id="services-eyebrow">O que construo</p>
-      <h2 class="section-title" id="services-title">Serviços de Desenvolvimento</h2>
+      <h2 class="section-title" id="services-title">Desenvolvimento de Plataformas SaaS com IA</h2>
       <p class="section-subtitle" id="services-subtitle">Cada projeto é tratado como um produto de startup: velocidade, qualidade e escalabilidade em simultâneo.</p>
     </div>
     <div class="services-grid">
       <div class="service-card" data-reveal data-delay="1"><span class="svc-icon" id="svc-icon-0">⬡</span><p class="svc-tag" id="svc-tag-0">MVP · 3-5 semanas</p><h3 class="svc-title" id="svc-title-0">Desenvolvimento SaaS</h3><p class="svc-desc" id="svc-desc-0">Plataformas SaaS completas com autenticação, pagamentos Stripe, dashboards e subscrições. Firebase ou PostgreSQL.</p></div>
-      <div class="service-card" data-reveal data-delay="2"><span class="svc-icon" id="svc-icon-1">◈</span><p class="svc-tag" id="svc-tag-1">Produto Digital</p><h3 class="svc-title" id="svc-title-1">Infoprodutos & E-commerce</h3><p class="svc-desc" id="svc-desc-1">Lojas digitais, flipbooks, cursos online e sistemas de membros com checkout integrado e entrega automática.</p></div>
+      <div class="service-card" data-reveal data-delay="2"><span class="svc-icon" id="svc-icon-1">◈</span><p class="svc-tag" id="svc-tag-1">Produto Digital</p><h3 class="svc-title" id="svc-title-1">Infoprodutos &amp; E-commerce</h3><p class="svc-desc" id="svc-desc-1">Lojas digitais, flipbooks, cursos online e sistemas de membros com checkout integrado e entrega automática.</p></div>
       <div class="service-card" data-reveal data-delay="3"><span class="svc-icon" id="svc-icon-2">◉</span><p class="svc-tag" id="svc-tag-2">IA · LLM · RAG</p><h3 class="svc-title" id="svc-title-2">Integração com IA</h3><p class="svc-desc" id="svc-desc-2">APIs OpenAI/Anthropic, embeddings, RAG, agentes multi-tarefa e sistemas de geração de documentos com IA.</p></div>
       <div class="service-card" data-reveal data-delay="1"><span class="svc-icon" id="svc-icon-3">◈</span><p class="svc-tag" id="svc-tag-3">Sistema Crítico</p><h3 class="svc-title" id="svc-title-3">Sistemas Personalizados</h3><p class="svc-desc" id="svc-desc-3">Sistemas biométricos, gestão de frotas, controlo financeiro e aplicações de missão crítica com audit trail completo.</p></div>
-      <div class="service-card" data-reveal data-delay="2"><span class="svc-icon" id="svc-icon-4">⬡</span><p class="svc-tag" id="svc-tag-4">Análise & BI</p><h3 class="svc-title" id="svc-title-4">Dashboards & Analytics</h3><p class="svc-desc" id="svc-desc-4">Visualizações D3.js interactivas, relatórios em tempo real, dashboards de performance e exportação PDF/Excel.</p></div>
+      <div class="service-card" data-reveal data-delay="2"><span class="svc-icon" id="svc-icon-4">⬡</span><p class="svc-tag" id="svc-tag-4">Análise &amp; BI</p><h3 class="svc-title" id="svc-title-4">Dashboards &amp; Analytics</h3><p class="svc-desc" id="svc-desc-4">Visualizações D3.js interactivas, relatórios em tempo real, dashboards de performance e exportação PDF/Excel.</p></div>
       <div class="service-card" data-reveal data-delay="3"><span class="svc-icon" id="svc-icon-5">◉</span><p class="svc-tag" id="svc-tag-5">50€–150€/mês</p><h3 class="svc-title" id="svc-title-5">Manutenção Contínua</h3><p class="svc-desc" id="svc-desc-5">Atualizações de segurança, monitorização 24/7 e 2h mensais de ajustes incluídas.</p></div>
     </div>
   </div>
@@ -461,16 +496,19 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       <!-- 0: kmlucropro — FEATURED -->
       <div class="project-card featured" data-reveal data-delay="1">
         <div class="proj-content">
+          <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-0">98%</span><span class="proj-metric-lbl" id="proj-rate-lbl-0">Aprovação B2B</span></div>
           <p class="proj-tag" id="proj-tag-0">SaaS · TVDE · IA</p>
           <h3 class="proj-title" id="proj-title-0">kmlucropro.com</h3>
           <p class="proj-desc" id="proj-desc-0">Ecossistema SaaS completo para motoristas TVDE. Auth por telemóvel, Stripe Subscriptions, trial de 7 dias, dashboard em tempo real, geração de PDF e sistema de frotas.</p>
           <div class="proj-tech"><span class="tech-badge">Next.js</span><span class="tech-badge">Firebase</span><span class="tech-badge">Stripe</span><span class="tech-badge">React</span></div>
           <a class="proj-link" data-proj-link="0" href="https://kmlucropro.com" target="_blank" rel="noopener">Ver ao Vivo</a>
+          <a class="proj-app-link" href="https://app.kmlucropro.com/" target="_blank" rel="noopener">◈ app.kmlucropro.com →</a>
         </div>
         <div class="proj-visual" aria-hidden="true">◈ LIVE SaaS<br/>kmlucropro.com</div>
       </div>
-      <!-- 1: Voz do Condutor — LIVE PRODUCTION -->
+      <!-- 1: Voz do Condutor -->
       <div class="project-card live-badge" data-reveal data-delay="1">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-1">100%</span><span class="proj-metric-lbl" id="proj-rate-lbl-1">SLA Cumprido</span></div>
         <p class="proj-tag" id="proj-tag-1">Produção · Transporte · Web</p>
         <h3 class="proj-title" id="proj-title-1">Voz do Condutor</h3>
         <p class="proj-desc" id="proj-desc-1">Site institucional e plataforma informativa para profissionais do transporte. Projeto em produção com conteúdo dinâmico, design responsivo e SEO optimizado para o mercado TVDE.</p>
@@ -479,14 +517,15 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       </div>
       <!-- 2: Sistema Biométrico -->
       <div class="project-card" data-reveal data-delay="2">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-2">99%</span><span class="proj-metric-lbl" id="proj-rate-lbl-2">Precisão Biunívoca</span></div>
         <p class="proj-tag" id="proj-tag-2">Segurança · Biometria</p>
         <h3 class="proj-title" id="proj-title-2">Sistema Biométrico</h3>
         <p class="proj-desc" id="proj-desc-2">Plataforma de reconhecimento de impressões digitais para uso policial. Algoritmo de matching biunívoco, cross-referencing de base de dados e gestão de cadeia de custódia digital.</p>
         <div class="proj-tech"><span class="tech-badge">Python</span><span class="tech-badge">OpenCV</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">FastAPI</span></div>
-        <a class="proj-link" data-proj-link="2" href="#" style="display:none">Ver Projecto</a>
       </div>
       <!-- 3: UNIFED PROBATUM -->
       <div class="project-card" data-reveal data-delay="3">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-3">100%</span><span class="proj-metric-lbl" id="proj-rate-lbl-3">Adoção Analítica</span></div>
         <p class="proj-tag" id="proj-tag-3">Analytics · TVDE</p>
         <h3 class="proj-title" id="proj-title-3">UNIFED PROBATUM</h3>
         <p class="proj-desc" id="proj-desc-3">Centro de comando de análise para o mercado Uber/Bolt. Visualizações D3.js, dados em tempo real, análise preditiva e relatórios automáticos em PDF.</p>
@@ -495,35 +534,35 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       </div>
       <!-- 4: Gestão de Turnos -->
       <div class="project-card" data-reveal data-delay="4">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-4">97%</span><span class="proj-metric-lbl" id="proj-rate-lbl-4">Aprovação Cliente</span></div>
         <p class="proj-tag" id="proj-tag-4">RH · Scheduling</p>
         <h3 class="proj-title" id="proj-title-4">Gestão de Turnos</h3>
         <p class="proj-desc" id="proj-desc-4">Sistema de agendamento de colaboradores com workflows de aprovação, cálculo automático de horas extra, integração com payroll e calendário mobile.</p>
         <div class="proj-tech"><span class="tech-badge">React</span><span class="tech-badge">Node.js</span><span class="tech-badge">Firebase</span><span class="tech-badge">REST API</span></div>
-        <a class="proj-link" data-proj-link="4" href="#" style="display:none">Ver Projecto</a>
       </div>
       <!-- 5: Metodologia de Testes -->
       <div class="project-card" data-reveal data-delay="5">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-5">98%</span><span class="proj-metric-lbl" id="proj-rate-lbl-5">Aprovação QA</span></div>
         <p class="proj-tag" id="proj-tag-5">QA · Testing</p>
         <h3 class="proj-title" id="proj-title-5">Metodologia de Testes</h3>
         <p class="proj-desc" id="proj-desc-5">Framework de testes A/B com análise de funil de conversão, heatmaps, session recording e relatórios automáticos de qualidade com CI/CD integrado.</p>
         <div class="proj-tech"><span class="tech-badge">Playwright</span><span class="tech-badge">Jest</span><span class="tech-badge">Hotjar</span><span class="tech-badge">GitHub Actions</span></div>
-        <a class="proj-link" data-proj-link="5" href="#" style="display:none">Ver Projecto</a>
       </div>
       <!-- 6: Haven — AI Mental Health PWA -->
       <div class="project-card live-badge" data-reveal data-delay="1">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-6">100%</span><span class="proj-metric-lbl" id="proj-rate-lbl-6">Compliance Suíça</span></div>
         <p class="proj-tag" id="proj-tag-6">PWA · AI · Mental Health · FHIR</p>
         <h3 class="proj-title" id="proj-title-6">Haven</h3>
         <p class="proj-desc" id="proj-desc-6">Aplicação PWA de saúde mental com IA Edge on-device (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail anti-hallucination, CRDT offline-first e conformidade FHIR/FADP/RGPD. Mercado suíço primário.</p>
         <div class="proj-tech"><span class="tech-badge">React</span><span class="tech-badge">TypeScript</span><span class="tech-badge">WASM/AI</span><span class="tech-badge">FHIR</span><span class="tech-badge">CRDT</span><span class="tech-badge">PWA</span></div>
-        <a class="proj-link" data-proj-link="6" href="#" style="display:none">Ver Projecto</a>
       </div>
       <!-- 7: SpriCH — Swiss Language Learning -->
       <div class="project-card" data-reveal data-delay="2">
+        <div class="proj-metric"><span class="proj-metric-dot"></span><span class="proj-metric-val" id="proj-rate-7">96%</span><span class="proj-metric-lbl" id="proj-rate-lbl-7">Aprovação B2B</span></div>
         <p class="proj-tag" id="proj-tag-7">SaaS · Educação · Suíça · IA</p>
         <h3 class="proj-title" id="proj-title-7">SpriCH</h3>
         <p class="proj-desc" id="proj-desc-7">Plataforma SaaS de aprendizagem de idiomas para o mercado suíço (DE-CH, FR-CH, IT-CH). Gamificação adaptativa com IA, curriculum gerado por LLM e conformidade FADP para dados de menores.</p>
         <div class="proj-tech"><span class="tech-badge">Next.js</span><span class="tech-badge">OpenAI API</span><span class="tech-badge">Firebase</span><span class="tech-badge">Stripe</span><span class="tech-badge">FADP</span></div>
-        <a class="proj-link" data-proj-link="7" href="#" style="display:none">Ver Projecto</a>
       </div>
     </div>
   </div>
@@ -542,7 +581,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       <div class="step-item" data-reveal data-delay="1"><div class="step-number" id="step-n-0">01</div><div><h3 class="step-title" id="step-title-0">Discovery</h3><p class="step-duration" id="step-dur-0">2-3 dias</p><p class="step-desc" id="step-desc-0">Briefing, análise de viabilidade técnica, definição de MVP scope, estimativa de recursos e assinatura de contrato.</p></div></div>
       <div class="step-item" data-reveal data-delay="2"><div class="step-number" id="step-n-1">02</div><div><h3 class="step-title" id="step-title-1">Design</h3><p class="step-duration" id="step-dur-1">3-5 dias</p><p class="step-desc" id="step-desc-1">Arquitectura de informação, wireframes, UI/UX Figma de alta fidelidade, design system e aprovação do cliente.</p></div></div>
       <div class="step-item" data-reveal data-delay="3"><div class="step-number" id="step-n-2">03</div><div><h3 class="step-title" id="step-title-2">Desenvolvimento</h3><p class="step-duration" id="step-dur-2">2-4 sem.</p><p class="step-desc" id="step-desc-2">Setup do repositório, desenvolvimento iterativo com CI/CD, integrações (Firebase, Stripe, IA), testes unitários e code review.</p></div></div>
-      <div class="step-item" data-reveal data-delay="4"><div class="step-number" id="step-n-3">04</div><div><h3 class="step-title" id="step-title-3">QA & Testes</h3><p class="step-duration" id="step-dur-3">3-5 dias</p><p class="step-desc" id="step-desc-3">UAT, cross-browser, performance Lighthouse, scan de vulnerabilidades OWASP e acessibilidade WCAG 2.1.</p></div></div>
+      <div class="step-item" data-reveal data-delay="4"><div class="step-number" id="step-n-3">04</div><div><h3 class="step-title" id="step-title-3">QA &amp; Testes</h3><p class="step-duration" id="step-dur-3">3-5 dias</p><p class="step-desc" id="step-desc-3">UAT, cross-browser, performance Lighthouse, scan de vulnerabilidades OWASP e acessibilidade WCAG 2.1.</p></div></div>
       <div class="step-item" data-reveal data-delay="5"><div class="step-number" id="step-n-4">05</div><div><h3 class="step-title" id="step-title-4">Lançamento</h3><p class="step-duration" id="step-dur-4">Dia 0+</p><p class="step-desc" id="step-desc-4">Deploy em produção, configuração DNS/SSL, monitorização 24h, handover de documentação e suporte pós-lançamento.</p></div></div>
     </div>
   </div>
@@ -574,7 +613,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       <div class="pricing-card" data-reveal data-delay="1">
         <div class="popular-badge" data-tier-popular="0" style="display:none">Popular</div>
         <p class="tier-name" id="tier-name-0">Starter</p>
-        <p class="tier-tag" id="tier-tag-0">Sites & Infoprodutos</p>
+        <p class="tier-tag" id="tier-tag-0">Sites &amp; Infoprodutos</p>
         <p class="tier-price" data-tier-price="0">800€–1.750€</p>
         <p class="tier-unit" data-tier-unit="0">preço fixo</p>
         <ul class="tier-features" data-tier-features="0">
@@ -585,7 +624,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
       <div class="pricing-card popular" data-reveal data-delay="2">
         <div class="popular-badge" data-tier-popular="1">Mais Popular</div>
         <p class="tier-name" id="tier-name-1">Pro</p>
-        <p class="tier-tag" id="tier-tag-1">SaaS & Sistemas</p>
+        <p class="tier-tag" id="tier-tag-1">SaaS &amp; Sistemas</p>
         <p class="tier-price" data-tier-price="1">3.000€–5.500€</p>
         <p class="tier-unit" data-tier-unit="1">preço fixo</p>
         <ul class="tier-features" data-tier-features="1">
@@ -636,7 +675,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         </div>
       </div>
       <div data-reveal data-delay="2" style="display:flex;flex-direction:column;justify-content:center;height:100%">
-        <div class="clause highlight" style="border-radius:var(--rl);padding:28px 24px">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:28px 24px">
           <p class="eyebrow" id="scope-card-ey">Construtor de Orçamento</p>
           <h3 style="font-family:var(--font-d);font-size:1.2rem;font-weight:700;margin-bottom:8px" id="scope-card-t">Inicia o teu projecto em 2 minutos</h3>
           <p style="font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:4px" id="scope-card-d">Seleciona as funcionalidades, define o orçamento e envia a tua proposta. Resposta em menos de 24h.</p>
@@ -648,7 +687,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
           <button class="scope-open-btn" onclick="openScopeModal(event)" id="scope-open-main">⊕ Construir Orçamento Interactivo</button>
         </div>
       </div>
-      </div>
+    </div>
   </div>
 </section>
 
@@ -656,117 +695,95 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <a href="#" class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWR1YXJkbyBNb250ZWlybyBEZXYgTG9nbyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdCNUNGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEY1QTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJnZiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuNSIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEhleGFnb25hbCBtYXJrIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzAsNCA1MCwxNSA1MCwzNyAzMCw0OCAxMCwzNyAxMCwxNSIKICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnbSkiIHN0cm9rZS13aWR0aD0iMS41IiBmaWx0ZXI9InVybCgjZ2YpIi8+CiAgPCEtLSBOZXVyYWwgbm9kZXMgLS0+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0IiAgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSI0OCIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIzNyIgcj0iMiIgZmlsbD0iIzAwRjVBMCIgb3BhY2l0eT0iMC45Ii8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxNSIgcj0iMiIgZmlsbD0iIzdCNUNGMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iMi41IiBmaWxsPSJ1cmwoI2dtKSIvPgogIDwhLS0gSW50ZXJuYWwgY29ubmVjdGlvbnMgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNCIgIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTUiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMzciIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjMwIiB5MT0iNDgiIHgyPSIzMCIgeTI9IjI2IiBzdHJva2U9InVybCgjZ20pIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSBFTSBtb25vZ3JhbSAtLT4KICA8dGV4dCB4PSIzMCIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjExIiBmaWxsPSJ1cmwoI2dtKSIgZmlsdGVyPSJ1cmwoI2dmKSI+RU08L3RleHQ+CiAgPCEtLSBXb3JkbWFyayAtLT4KICA8dGV4dCB4PSI2MiIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNFOEU4RkYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5WaWJlPC90ZXh0PgogIDx0ZXh0IHg9IjEwMSIgeT0iMjgiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjMwMCIKICAgIGZvbnQtc2l6ZT0iMTgiIGZpbGw9InVybCgjZ20pIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q29kZXI8L3RleHQ+CiAgPHRleHQgeD0iNjIiIHk9IjQyIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJyxtb25vc3BhY2UiIGZvbnQtd2VpZ2h0PSI0MDAiCiAgICBmb250LXNpemU9IjcuNSIgZmlsbD0iIzdCNUNGMCIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RURVQVJETyBNT05URUlSTyDCtyBERVY8L3RleHQ+CjxzdHlsZT5AbWVkaWEobWluLXdpZHRoOjEwMjRweCl7dGV4dHt0ZXh0LWFuY2hvcjptaWRkbGU7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbH19PC9zdHlsZT48L3N2Zz4K" alt="Eduardo Monteiro Dev" width="130" height="36"/></a>
-      <nav class="footer-links">
-        <a href="#hero" data-footer-link>Início</a>
-        <a href="#services" data-footer-link>Serviços</a>
-        <a href="#projects" data-footer-link>Projetos</a>
-        <a href="#pricing" data-footer-link>Preços</a>
-        <a href="./contract.html" data-footer-link target="_blank">Contrato</a>
-        <a href="./legal.html" data-footer-link target="_blank">Legal</a>
+      <div>
+        <div id="footer-tagline" class="footer-tagline"><span>Vibe Coder · Eduardo Monteiro · Dev Full-Stack com IA</span></div>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="./terms.html">Termos B2B</a>
+        <a href="./privacy.html">Privacidade</a>
+        <a href="./cookies.html">Cookies</a>
+        <a href="./legal.html?tab=gdpr">RGPD</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./contract.html" target="_blank">Contrato</a>
       </nav>
-      <div class="footer-social">        <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email">✉</a>
+      <div class="footer-social">
+        <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email" title="Email">✉</a>
+        <a href="https://www.upwork.com" target="_blank" rel="noopener" aria-label="Upwork" title="Upwork">◈</a>
+        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">⌥</a>
       </div>
     </div>
-    <p class="footer-tagline" id="footer-tagline" style="margin-top:24px"><span>Transformando ideias em produtos digitais de alta performance.</span></p>
     <p class="footer-legal" id="footer-legal">© 2026 Vibe Coder | Eduardo Monteiro | Dev Full-Stack com IA | monteiro.is-a.dev</p>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT — INLINED (neural canvas + i18n + all interactions)
-     Inlined for maximum GitHub Pages compatibility with
-     custom domains (monteiro.is-a.dev) before full HTTPS propagation.
-═══════════════════════════════════════════════ -->
-
 <!-- A2HS INSTALL MODAL -->
-<div id="a2hs-modal" role="dialog" aria-label="Install App">
-  <div class="a2hs-icon">⬡</div>
+<div id="a2hs-modal" role="dialog" aria-modal="true" aria-label="Instalar aplicação">
+  <span class="a2hs-icon">📲</span>
   <div class="a2hs-text">
-    <p class="a2hs-title" id="a2hs-title">Instalar Aplicação</p>
-    <p class="a2hs-desc" id="a2hs-desc">Adicione ao ecrã inicial para acesso rápido, offline e sem browser.</p>
+    <div class="a2hs-title" id="a2hs-title">Instalar App</div>
+    <div class="a2hs-desc" id="a2hs-desc">Adiciona ao ecrã inicial para acesso rápido.</div>
   </div>
   <div class="a2hs-btns">
-    <button class="a2hs-install" id="a2hs-install">⊕ Instalar</button>
-    <button class="a2hs-dismiss" id="a2hs-dismiss">✕</button>
+    <button class="a2hs-install" id="a2hs-install">Instalar</button>
+    <button class="a2hs-dismiss" id="a2hs-dismiss">Agora não</button>
   </div>
 </div>
 
-<!-- ── SCOPE BUILDER MODAL ── -->
+<!-- SCOPE BUILDER MODAL -->
 <div class="scope-overlay" id="scope-overlay" role="dialog" aria-modal="true" aria-labelledby="scope-title">
   <div class="scope-modal">
-    <button class="scope-close" id="scope-close" aria-label="Close">✕</button>
+    <button class="scope-close" id="scope-close" onclick="closeScopeModal()" aria-label="Fechar">✕</button>
     <h2 id="scope-title">Construtor de Orçamento B2B</h2>
     <p class="scope-sub" id="scope-subtitle">Seleciona as opções e recebe uma proposta personalizada em &lt;24h.</p>
 
-    <!-- SECTION 1: Project Type -->
     <div class="scope-section">
       <span class="scope-label" id="sc-type-lbl">Tipo de Projecto</span>
       <div class="chips-wrap" id="sc-type-chips">
         <button class="scope-chip" data-val="saas" onclick="toggleChip(this,'projectType')">SaaS / MVP</button>
         <button class="scope-chip" data-val="pwa" onclick="toggleChip(this,'projectType')">PWA Mobile</button>
         <button class="scope-chip" data-val="ai" onclick="toggleChip(this,'projectType')">Integração IA / LLMs</button>
-        <button class="scope-chip" data-val="security" onclick="toggleChip(this,'projectType')">Segurança &amp; RGPD/FADP</button>
-        <button class="scope-chip" data-val="other" onclick="toggleChip(this,'projectType')">Outro</button>
+        <button class="scope-chip" data-val="ecommerce" onclick="toggleChip(this,'projectType')">E-commerce / Infoproduto</button>
+        <button class="scope-chip" data-val="dashboard" onclick="toggleChip(this,'projectType')">Dashboard / Analytics</button>
+        <button class="scope-chip" data-val="enterprise" onclick="toggleChip(this,'projectType')">Sistema Empresarial</button>
       </div>
     </div>
 
-    <div class="scope-divider"></div>
-
-    <!-- SECTION 2: Features -->
     <div class="scope-section">
-      <span class="scope-label" id="sc-feat-lbl">Funcionalidades Necessárias</span>
-      <div class="features-grid" id="sc-feat-grid">
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="i18n" id="fc0"/><label for="fc0">Multi-idioma (i18n)</label>
-        </div>
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="auth" id="fc1"/><label for="fc1">Autenticação de Utilizadores</label>
-        </div>
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="stripe" id="fc2"/><label for="fc2">Pagamentos / Stripe</label>
-        </div>
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="analytics" id="fc3"/><label for="fc3">Dashboard de Analytics</label>
-        </div>
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="ai_rag" id="fc4"/><label for="fc4">Chatbots / RAG com IA</label>
-        </div>
-        <div class="feat-item" onclick="toggleFeat(this)">
-          <input type="checkbox" value="pwa_offline" id="fc5"/><label for="fc5">Funcionalidades Offline (PWA)</label>
-        </div>
+      <span class="scope-label" id="sc-feat-lbl">Funcionalidades Desejadas</span>
+      <div class="features-grid" id="sc-features">
+        <label class="feat-item"><input type="checkbox" value="auth" onchange="toggleFeat(this)"/><label>Autenticação / Login</label></label>
+        <label class="feat-item"><input type="checkbox" value="stripe" onchange="toggleFeat(this)"/><label>Pagamentos Stripe</label></label>
+        <label class="feat-item"><input type="checkbox" value="ai_integration" onchange="toggleFeat(this)"/><label>Integração IA (OpenAI/Claude)</label></label>
+        <label class="feat-item"><input type="checkbox" value="dashboard" onchange="toggleFeat(this)"/><label>Dashboard em tempo real</label></label>
+        <label class="feat-item"><input type="checkbox" value="pdf" onchange="toggleFeat(this)"/><label>Geração de PDF</label></label>
+        <label class="feat-item"><input type="checkbox" value="mobile" onchange="toggleFeat(this)"/><label>Mobile / PWA</label></label>
+        <label class="feat-item"><input type="checkbox" value="admin" onchange="toggleFeat(this)"/><label>Painel de Administração</label></label>
+        <label class="feat-item"><input type="checkbox" value="gdpr" onchange="toggleFeat(this)"/><label>Conformidade RGPD/FADP</label></label>
       </div>
     </div>
 
-    <div class="scope-divider"></div>
-
-    <!-- SECTION 3: Budget -->
     <div class="scope-section">
-      <span class="scope-label" id="sc-budget-lbl">Orçamento Estimado</span>
-      <div class="radios-wrap">
-        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="lt1k"/><span id="sc-b0">&lt; 1.000€</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="1k3k"/><span id="sc-b1">1.000€–3.000€</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="3k6k"/><span id="sc-b2">3.000€–6.000€</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-budget" value="6kplus"/><span id="sc-b3">6.000€+</span></label>
+      <span class="scope-label" id="sc-budget-lbl">Orçamento Aproximado</span>
+      <div class="radios-wrap" id="sc-budget-chips">
+        <label class="scope-radio-label"><input type="radio" name="budget" value="lt1k"/><span>&lt; 1.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="budget" value="1k3k"/><span>1.000€ – 3.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="budget" value="3k6k"/><span>3.000€ – 6.000€</span></label>
+        <label class="scope-radio-label"><input type="radio" name="budget" value="gt6k"/><span>&gt; 6.000€</span></label>
       </div>
     </div>
 
-    <div class="scope-divider"></div>
-
-    <!-- SECTION 4: Timeline -->
     <div class="scope-section">
-      <span class="scope-label" id="sc-time-lbl">Prazo Pretendido</span>
-      <div class="radios-wrap">
-        <label class="scope-radio-label"><input type="radio" name="sc-time" value="urgent"/><span id="sc-t0">Urgente (&lt; 2 semanas)</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-time" value="1m"/><span id="sc-t1">1 Mês</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-time" value="2_3m"/><span id="sc-t2">2–3 Meses</span></label>
-        <label class="scope-radio-label"><input type="radio" name="sc-time" value="flex"/><span id="sc-t3">Flexível</span></label>
+      <span class="scope-label" id="sc-timeline-lbl">Prazo Desejado</span>
+      <div class="radios-wrap" id="sc-timeline-chips">
+        <label class="scope-radio-label"><input type="radio" name="timeline" value="asap"/><span>ASAP</span></label>
+        <label class="scope-radio-label"><input type="radio" name="timeline" value="1m"/><span>1 mês</span></label>
+        <label class="scope-radio-label"><input type="radio" name="timeline" value="3m"/><span>1–3 meses</span></label>
+        <label class="scope-radio-label"><input type="radio" name="timeline" value="flexible"/><span>Flexível</span></label>
       </div>
     </div>
 
     <div class="scope-divider"></div>
 
-    <!-- SECTION 5: Contact -->
     <div class="scope-field">
       <label for="sc-email" id="sc-email-lbl">Email de Contacto *</label>
       <input type="email" id="sc-email" placeholder="o.seu@email.com" required autocomplete="email"/>
@@ -782,729 +799,732 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
   </div>
 </div>
 
-<!-- ── TOAST NOTIFICATION ── -->
+<!-- TOAST NOTIFICATION -->
 <div class="toast-notif" id="toast-notif" role="status" aria-live="polite"></div>
+
+<!-- COOKIE BANNER (display toggled by JS) is above; banner is already in DOM -->
 
 <script>
 'use strict';
 
-/* ══════════════════════════════════════════════════════════════
-   SCOPE BUILDER + WEB3FORMS + TOAST + FOOTER TAGLINES
-   Web3Forms: https://api.web3forms.com/submit
-══════════════════════════════════════════════════════════════ */
+/* ── STATE ── */
+var scopeState = { projectType: [], features: [], budget: '', timeline: '', email: '', notes: '' };
+var deferredInstallPrompt = null;
+var currentLocale = localStorage.getItem('vc-locale') || 'pt-PT';
 
-
-/* ── Scope state ── */
-var scopeState={projectType:[],features:[],budget:'',timeline:'',email:'',notes:''};
-var TIER_PRESETS={starter:['saas'],pro:['saas','ai']};
-
-function openScopeModal(e,tier){
-  if(e){e.preventDefault();}
-  var ov=document.getElementById('scope-overlay');
-  if(!ov)return;
-  /* Reset */
-  scopeState={projectType:[],features:[],budget:'',timeline:'',email:'',notes:''};
-  document.querySelectorAll('.scope-chip').forEach(function(c){c.classList.remove('sel');});
-  document.querySelectorAll('.feat-item').forEach(function(i){
-    i.classList.remove('checked');
-    var cb=i.querySelector('input[type=checkbox]');
-    if(cb)cb.checked=false;
-  });
-  document.querySelectorAll('input[name="sc-budget"]').forEach(function(r){r.checked=false;});
-  document.querySelectorAll('input[name="sc-time"]').forEach(function(r){r.checked=false;});
-  var eEl=document.getElementById('sc-email');
-  var nEl=document.getElementById('sc-notes');
-  if(eEl)eEl.value='';
-  if(nEl)nEl.value='';
-  /* Tier preselect */
-  if(tier&&TIER_PRESETS[tier]){
-    TIER_PRESETS[tier].forEach(function(val){
-      var chip=document.querySelector('.scope-chip[data-val="'+val+'"]');
-      if(chip){chip.classList.add('sel');scopeState.projectType.push(val);}
-    });
+/* ── I18N STRINGS ── */
+var i18n = {
+  'pt-PT': {
+    heroEyebrow:'Desenvolvimento MVP · IA · FADP/RGPD',
+    heroTitle1:'MVPs em', heroTitle2:'Semanas.', heroTitle3:'Não em Meses.',
+    heroSubtitle:'Valido a sua ideia de negócio e lanço o MVP em 3–5 semanas — sem burocracia, sem complexidade técnica, com código production-ready para fundadores não-técnicos.',
+    heroCta1:'Ver Portfólio', heroCta2:'Orçamento Gratuito',
+    servicesEyebrow:'O que construo', servicesTitle:'Desenvolvimento de Plataformas SaaS com IA',
+    servicesSubtitle:'Cada projeto é tratado como um produto de startup: velocidade, qualidade e escalabilidade em simultâneo.',
+    projectsEyebrow:'Portfólio', projectsTitle:'Projetos em Destaque', projectsSubtitle:'Produtos reais. Código que funciona em produção.',
+    processEyebrow:'Como trabalho', processTitle:'Processo de Entrega em 5 Passos', processSubtitle:'Sem surpresas. Sem scope creep. Com métricas claras em cada fase.',
+    pricingEyebrow:'Investimento', pricingTitle:'Preços Transparentes', pricingSubtitle:'Dois modelos de pagamento. Sem custos ocultos.',
+    contactEyebrow:'Vamos trabalhar juntos', contactTitle:'Iniciar Projecto',
+    contactSubtitle:'Descreva o seu projecto. Eduardo Monteiro responde em menos de 24 horas com uma análise inicial.',
+    contactSocial:'Ou contacte directamente:',
+    scopeCardEy:'Construtor de Orçamento', scopeCardT:'Inicia o teu projecto em 2 minutos',
+    scopeCardD:'Seleciona as funcionalidades, define o orçamento e envia a tua proposta. Resposta em menos de 24h.',
+    scopeF1:'Tipo de projecto + funcionalidades', scopeF2:'Orçamento e prazo pretendido', scopeF3:'Envio directo para Eduardo Monteiro',
+    scopeOpenMain:'⊕ Construir Orçamento Interactivo',
+    typewriterPhrases:['SaaS Platforms','AI Integrations','MVP em 3-5 Semanas','FADP/RGPD Compliant','Stripe Payments','Firebase + Next.js'],
+    cookieText:'Este site utiliza cookies para análise. Ao continuar, aceita a nossa',
+    cookieLink:'Política de Privacidade',
+    blogBadgeNew:'NOVO', blogBtnLabel:'Blog',
+    blogBannerSub:'Insights sobre SaaS, IA, Desenvolvimento MVP & Compliance FADP/RGPD',
+    a2hsTitle:'Instalar App', a2hsDesc:'Adiciona ao ecrã inicial para acesso rápido.',
+    a2hsInstall:'Instalar', a2hsDismiss:'Agora não',
+    scopeTitle:'Construtor de Orçamento B2B',
+    scopeSubtitle:'Seleciona as opções e recebe uma proposta personalizada em <24h.',
+    metricLabel0:'Anos no Mercado', metricLabel1:'Projetos Entregues', metricLabel2:'Países Servidos', metricLabel3:'Taxa de Satisfação',
+    stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Desenvolvimento', stepTitle3:'QA & Testes', stepTitle4:'Lançamento',
+    stepDur0:'2-3 dias', stepDur1:'3-5 dias', stepDur2:'2-4 sem.', stepDur3:'3-5 dias', stepDur4:'Dia 0+',
+    maintenanceText:'Manutenção Mensal: 50€–150€/mês · Firebase updates · Patches de segurança · 2h de ajustes incluídas',
+    toggle50:'50% + 50%', toggleHr:'Por Hora',
+    tierName0:'Starter', tierTag0:'Sites & Infoprodutos', tierCta0:'Começar Projeto',
+    tierName1:'Pro', tierTag1:'SaaS & Sistemas', tierCta1:'Lançar MVP',
+    tierName2:'Enterprise', tierTag2:'Ecossistemas Complexos', tierCta2:'Contactar Directo',
+    navHome:'Início', navServices:'Serviços', navProjects:'Projetos', navProcess:'Processo',
+    navPricing:'Preços', navBlog:'Blog', navContract:'Contrato', navLegal:'Legal', navContact:'Contacto',
+    projRateLbl0:'Aprovação B2B', projRateLbl1:'SLA Cumprido', projRateLbl2:'Precisão Biunívoca',
+    projRateLbl3:'Adoção Analítica', projRateLbl4:'Aprovação Cliente', projRateLbl5:'Aprovação QA',
+    projRateLbl6:'Compliance Suíça', projRateLbl7:'Aprovação B2B',
+    scTypeLbl:'Tipo de Projecto', scFeatLbl:'Funcionalidades Desejadas',
+    scBudgetLbl:'Orçamento Aproximado', scTimelineLbl:'Prazo Desejado',
+    scEmailLbl:'Email de Contacto *', scNotesLbl:'Notas Adicionais (opcional)',
+    scSubmitLbl:'Enviar Proposta'
+  },
+  'en-US': {
+    heroEyebrow:'MVP Development · AI · FADP/GDPR',
+    heroTitle1:'MVPs in', heroTitle2:'Weeks.', heroTitle3:'Not Months.',
+    heroSubtitle:'I validate your business idea and launch the MVP in 3–5 weeks — no bureaucracy, no technical complexity, with production-ready code for non-technical founders.',
+    heroCta1:'View Portfolio', heroCta2:'Free Quote',
+    servicesEyebrow:'What I build', servicesTitle:'AI-Powered SaaS Platform Development',
+    servicesSubtitle:'Every project is treated like a startup product: speed, quality and scalability simultaneously.',
+    projectsEyebrow:'Portfolio', projectsTitle:'Featured Projects', projectsSubtitle:'Real products. Code that works in production.',
+    processEyebrow:'How I work', processTitle:'5-Step Delivery Process', processSubtitle:'No surprises. No scope creep. Clear metrics at every phase.',
+    pricingEyebrow:'Investment', pricingTitle:'Transparent Pricing', pricingSubtitle:'Two payment models. No hidden costs.',
+    contactEyebrow:"Let's work together", contactTitle:'Start a Project',
+    contactSubtitle:'Describe your project. Eduardo Monteiro responds in less than 24 hours with an initial analysis.',
+    contactSocial:'Or contact directly:',
+    scopeCardEy:'Quote Builder', scopeCardT:'Start your project in 2 minutes',
+    scopeCardD:'Select features, define budget and send your proposal. Reply in less than 24h.',
+    scopeF1:'Project type + features', scopeF2:'Budget and desired timeline', scopeF3:'Direct submission to Eduardo Monteiro',
+    scopeOpenMain:'⊕ Build Interactive Quote',
+    typewriterPhrases:['SaaS Platforms','AI Integrations','MVP in 3-5 Weeks','FADP/GDPR Compliant','Stripe Payments','Firebase + Next.js'],
+    cookieText:'This site uses cookies for analytics. By continuing, you accept our',
+    cookieLink:'Privacy Policy',
+    blogBadgeNew:'NEW', blogBtnLabel:'Blog',
+    blogBannerSub:'Insights on SaaS, AI, MVP Development & FADP/GDPR Compliance',
+    a2hsTitle:'Install App', a2hsDesc:'Add to home screen for quick access.',
+    a2hsInstall:'Install', a2hsDismiss:'Not now',
+    scopeTitle:'B2B Quote Builder',
+    scopeSubtitle:'Select options and receive a personalised proposal in <24h.',
+    metricLabel0:'Years in Market', metricLabel1:'Projects Delivered', metricLabel2:'Countries Served', metricLabel3:'Satisfaction Rate',
+    stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Development', stepTitle3:'QA & Testing', stepTitle4:'Launch',
+    stepDur0:'2-3 days', stepDur1:'3-5 days', stepDur2:'2-4 wks', stepDur3:'3-5 days', stepDur4:'Day 0+',
+    maintenanceText:'Monthly Maintenance: 50€–150€/mo · Firebase updates · Security patches · 2h adjustments included',
+    toggle50:'50% + 50%', toggleHr:'Hourly',
+    tierName0:'Starter', tierTag0:'Sites & Infoproducts', tierCta0:'Start Project',
+    tierName1:'Pro', tierTag1:'SaaS & Systems', tierCta1:'Launch MVP',
+    tierName2:'Enterprise', tierTag2:'Complex Ecosystems', tierCta2:'Contact Directly',
+    navHome:'Home', navServices:'Services', navProjects:'Projects', navProcess:'Process',
+    navPricing:'Pricing', navBlog:'Blog', navContract:'Contract', navLegal:'Legal', navContact:'Contact',
+    projRateLbl0:'B2B Approval', projRateLbl1:'SLA Met', projRateLbl2:'Biometric Accuracy',
+    projRateLbl3:'Analytics Adoption', projRateLbl4:'Client Approval', projRateLbl5:'QA Approval',
+    projRateLbl6:'Swiss Compliance', projRateLbl7:'B2B Approval',
+    scTypeLbl:'Project Type', scFeatLbl:'Desired Features',
+    scBudgetLbl:'Approximate Budget', scTimelineLbl:'Desired Timeline',
+    scEmailLbl:'Contact Email *', scNotesLbl:'Additional Notes (optional)',
+    scSubmitLbl:'Send Proposal'
+  },
+  'fr-CH': {
+    heroEyebrow:'Développement MVP · IA · FADP/RGPD',
+    heroTitle1:'MVPs en', heroTitle2:'Semaines.', heroTitle3:'Pas en Mois.',
+    heroSubtitle:"Je valide votre idée commerciale et lance le MVP en 3–5 semaines — sans bureaucratie, sans complexité technique.",
+    heroCta1:'Voir Portfolio', heroCta2:'Devis Gratuit',
+    servicesEyebrow:'Ce que je construis', servicesTitle:'Développement SaaS avec IA',
+    servicesSubtitle:'Chaque projet est traité comme un produit de startup.',
+    projectsEyebrow:'Portfolio', projectsTitle:'Projets Phares', projectsSubtitle:'Produits réels. Code qui fonctionne en production.',
+    processEyebrow:'Comment je travaille', processTitle:'Processus en 5 Étapes', processSubtitle:'Sans surprises. Sans dérive de périmètre.',
+    pricingEyebrow:'Investissement', pricingTitle:'Tarification Transparente', pricingSubtitle:'Deux modèles de paiement. Pas de frais cachés.',
+    contactEyebrow:'Travaillons ensemble', contactTitle:'Démarrer un Projet',
+    contactSubtitle:'Décrivez votre projet. Réponse en moins de 24h.',
+    contactSocial:'Ou contactez directement:',
+    scopeCardEy:'Devis Interactif', scopeCardT:'Démarrez votre projet en 2 minutes',
+    scopeCardD:'Sélectionnez les fonctionnalités et envoyez votre proposition. Réponse en <24h.',
+    scopeF1:'Type de projet + fonctionnalités', scopeF2:'Budget et délai souhaité', scopeF3:'Envoi direct à Eduardo Monteiro',
+    scopeOpenMain:'⊕ Construire un Devis',
+    typewriterPhrases:['Plateformes SaaS','Intégrations IA','MVP en 3-5 Semaines','Conforme FADP/RGPD','Paiements Stripe','Firebase + Next.js'],
+    cookieText:"Ce site utilise des cookies d'analyse. En continuant, vous acceptez notre",
+    cookieLink:'Politique de Confidentialité',
+    blogBadgeNew:'NOUVEAU', blogBtnLabel:'Blog',
+    blogBannerSub:'Insights sur SaaS, IA, Développement MVP & Conformité FADP/RGPD',
+    a2hsTitle:"Installer l'App", a2hsDesc:"Ajouter à l'écran d'accueil.",
+    a2hsInstall:'Installer', a2hsDismiss:'Plus tard',
+    scopeTitle:'Devis B2B',
+    scopeSubtitle:'Sélectionnez les options et recevez une proposition en <24h.',
+    metricLabel0:'Ans sur le Marché', metricLabel1:'Projets Livrés', metricLabel2:'Pays Servis', metricLabel3:'Taux de Satisfaction',
+    stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Développement', stepTitle3:'QA & Tests', stepTitle4:'Lancement',
+    stepDur0:'2-3 jours', stepDur1:'3-5 jours', stepDur2:'2-4 sem.', stepDur3:'3-5 jours', stepDur4:'Jour 0+',
+    maintenanceText:'Maintenance Mensuelle: 50€–150€/mois · Mises à jour · Patches sécurité · 2h incluses',
+    toggle50:'50% + 50%', toggleHr:'Par Heure',
+    tierName0:'Starter', tierTag0:'Sites & Infoproduits', tierCta0:'Démarrer Projet',
+    tierName1:'Pro', tierTag1:'SaaS & Systèmes', tierCta1:'Lancer MVP',
+    tierName2:'Enterprise', tierTag2:'Écosystèmes Complexes', tierCta2:'Contact Direct',
+    navHome:'Accueil', navServices:'Services', navProjects:'Projets', navProcess:'Processus',
+    navPricing:'Tarifs', navBlog:'Blog', navContract:'Contrat', navLegal:'Légal', navContact:'Contact',
+    projRateLbl0:'Approbation B2B', projRateLbl1:'SLA Respecté', projRateLbl2:'Précision Biométrique',
+    projRateLbl3:'Adoption Analytique', projRateLbl4:'Approbation Client', projRateLbl5:'Approbation QA',
+    projRateLbl6:'Conformité Suisse', projRateLbl7:'Approbation B2B',
+    scTypeLbl:'Type de Projet', scFeatLbl:'Fonctionnalités Souhaitées',
+    scBudgetLbl:'Budget Approximatif', scTimelineLbl:'Délai Souhaité',
+    scEmailLbl:'Email de Contact *', scNotesLbl:'Notes Supplémentaires (optionnel)',
+    scSubmitLbl:'Envoyer la Proposition'
+  },
+  'de-CH': {
+    heroEyebrow:'MVP-Entwicklung · KI · FADP/DSGVO',
+    heroTitle1:'MVPs in', heroTitle2:'Wochen.', heroTitle3:'Nicht in Monaten.',
+    heroSubtitle:'Ich validiere Ihre Geschäftsidee und starte das MVP in 3–5 Wochen — ohne Bürokratie, ohne technische Komplexität.',
+    heroCta1:'Portfolio ansehen', heroCta2:'Kostenloses Angebot',
+    servicesEyebrow:'Was ich baue', servicesTitle:'KI-gestützte SaaS-Plattformentwicklung',
+    servicesSubtitle:'Jedes Projekt wird wie ein Startup-Produkt behandelt.',
+    projectsEyebrow:'Portfolio', projectsTitle:'Ausgewählte Projekte', projectsSubtitle:'Echte Produkte. Code der in Produktion funktioniert.',
+    processEyebrow:'Wie ich arbeite', processTitle:'5-Schritte Lieferprozess', processSubtitle:'Keine Überraschungen. Kein Scope Creep.',
+    pricingEyebrow:'Investition', pricingTitle:'Transparente Preise', pricingSubtitle:'Zwei Zahlungsmodelle. Keine versteckten Kosten.',
+    contactEyebrow:'Arbeiten wir zusammen', contactTitle:'Projekt starten',
+    contactSubtitle:'Beschreiben Sie Ihr Projekt. Antwort in weniger als 24 Stunden.',
+    contactSocial:'Oder direkt kontaktieren:',
+    scopeCardEy:'Angebotsrechner', scopeCardT:'Starten Sie Ihr Projekt in 2 Minuten',
+    scopeCardD:'Funktionen auswählen, Budget definieren und Vorschlag senden. Antwort in <24h.',
+    scopeF1:'Projekttyp + Funktionen', scopeF2:'Budget und gewünschter Zeitplan', scopeF3:'Direktversand an Eduardo Monteiro',
+    scopeOpenMain:'⊕ Interaktives Angebot erstellen',
+    typewriterPhrases:['SaaS-Plattformen','KI-Integrationen','MVP in 3-5 Wochen','FADP/DSGVO-konform','Stripe-Zahlungen','Firebase + Next.js'],
+    cookieText:'Diese Website verwendet Cookies für Analysen. Durch Weitersurfen akzeptieren Sie unsere',
+    cookieLink:'Datenschutzrichtlinie',
+    blogBadgeNew:'NEU', blogBtnLabel:'Blog',
+    blogBannerSub:'Einblicke zu SaaS, KI, MVP-Entwicklung & FADP/DSGVO-Compliance',
+    a2hsTitle:'App installieren', a2hsDesc:'Zum Startbildschirm hinzufügen.',
+    a2hsInstall:'Installieren', a2hsDismiss:'Später',
+    scopeTitle:'B2B-Angebotskonfigurator',
+    scopeSubtitle:'Optionen auswählen und ein personalisiertes Angebot in <24h erhalten.',
+    metricLabel0:'Jahre am Markt', metricLabel1:'Gelieferte Projekte', metricLabel2:'Bediente Länder', metricLabel3:'Zufriedenheitsrate',
+    stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Entwicklung', stepTitle3:'QA & Tests', stepTitle4:'Launch',
+    stepDur0:'2-3 Tage', stepDur1:'3-5 Tage', stepDur2:'2-4 Wo.', stepDur3:'3-5 Tage', stepDur4:'Tag 0+',
+    maintenanceText:'Monatliche Wartung: 50€–150€/Monat · Updates · Sicherheits-Patches · 2h inklusive',
+    toggle50:'50% + 50%', toggleHr:'Stündlich',
+    tierName0:'Starter', tierTag0:'Websites & Infoprodukte', tierCta0:'Projekt starten',
+    tierName1:'Pro', tierTag1:'SaaS & Systeme', tierCta1:'MVP starten',
+    tierName2:'Enterprise', tierTag2:'Komplexe Ökosysteme', tierCta2:'Direkt kontaktieren',
+    navHome:'Startseite', navServices:'Leistungen', navProjects:'Projekte', navProcess:'Prozess',
+    navPricing:'Preise', navBlog:'Blog', navContract:'Vertrag', navLegal:'Rechtliches', navContact:'Kontakt',
+    projRateLbl0:'B2B-Genehmigung', projRateLbl1:'SLA eingehalten', projRateLbl2:'Biometrische Genauigkeit',
+    projRateLbl3:'Analytik-Akzeptanz', projRateLbl4:'Kundengenehmigung', projRateLbl5:'QA-Genehmigung',
+    projRateLbl6:'Schweizer Compliance', projRateLbl7:'B2B-Genehmigung',
+    scTypeLbl:'Projekttyp', scFeatLbl:'Gewünschte Funktionen',
+    scBudgetLbl:'Ungefähres Budget', scTimelineLbl:'Gewünschter Zeitplan',
+    scEmailLbl:'Kontakt-E-Mail *', scNotesLbl:'Zusätzliche Hinweise (optional)',
+    scSubmitLbl:'Vorschlag senden'
+  },
+  'es-ES': {
+    heroEyebrow:'Desarrollo MVP · IA · FADP/RGPD',
+    heroTitle1:'MVPs en', heroTitle2:'Semanas.', heroTitle3:'No en Meses.',
+    heroSubtitle:'Valido tu idea de negocio y lanzo el MVP en 3–5 semanas — sin burocracia, sin complejidad técnica.',
+    heroCta1:'Ver Portfolio', heroCta2:'Presupuesto Gratis',
+    servicesEyebrow:'Lo que construyo', servicesTitle:'Desarrollo de Plataformas SaaS con IA',
+    servicesSubtitle:'Cada proyecto se trata como un producto startup.',
+    projectsEyebrow:'Portfolio', projectsTitle:'Proyectos Destacados', projectsSubtitle:'Productos reales. Código que funciona en producción.',
+    processEyebrow:'Cómo trabajo', processTitle:'Proceso de Entrega en 5 Pasos', processSubtitle:'Sin sorpresas. Sin scope creep.',
+    pricingEyebrow:'Inversión', pricingTitle:'Precios Transparentes', pricingSubtitle:'Dos modelos de pago. Sin costes ocultos.',
+    contactEyebrow:'Trabajemos juntos', contactTitle:'Iniciar Proyecto',
+    contactSubtitle:'Describe tu proyecto. Eduardo Monteiro responde en menos de 24 horas.',
+    contactSocial:'O contacta directamente:',
+    scopeCardEy:'Constructor de Presupuesto', scopeCardT:'Inicia tu proyecto en 2 minutos',
+    scopeCardD:'Selecciona funcionalidades, define presupuesto y envía tu propuesta.',
+    scopeF1:'Tipo de proyecto + funcionalidades', scopeF2:'Presupuesto y plazo deseado', scopeF3:'Envío directo a Eduardo Monteiro',
+    scopeOpenMain:'⊕ Construir Presupuesto Interactivo',
+    typewriterPhrases:['Plataformas SaaS','Integraciones IA','MVP en 3-5 Semanas','Conforme FADP/RGPD','Pagos Stripe','Firebase + Next.js'],
+    cookieText:'Este sitio usa cookies de análisis. Al continuar, aceptas nuestra',
+    cookieLink:'Política de Privacidad',
+    blogBadgeNew:'NUEVO', blogBtnLabel:'Blog',
+    blogBannerSub:'Insights sobre SaaS, IA, Desarrollo MVP y Cumplimiento FADP/RGPD',
+    a2hsTitle:'Instalar App', a2hsDesc:'Añadir a pantalla de inicio.',
+    a2hsInstall:'Instalar', a2hsDismiss:'Ahora no',
+    scopeTitle:'Constructor de Presupuesto B2B',
+    scopeSubtitle:'Selecciona opciones y recibe una propuesta personalizada en <24h.',
+    metricLabel0:'Años en el Mercado', metricLabel1:'Proyectos Entregados', metricLabel2:'Países Atendidos', metricLabel3:'Tasa de Satisfacción',
+    stepTitle0:'Discovery', stepTitle1:'Diseño', stepTitle2:'Desarrollo', stepTitle3:'QA & Pruebas', stepTitle4:'Lanzamiento',
+    stepDur0:'2-3 días', stepDur1:'3-5 días', stepDur2:'2-4 sem.', stepDur3:'3-5 días', stepDur4:'Día 0+',
+    maintenanceText:'Mantenimiento Mensual: 50€–150€/mes · Actualizaciones · Parches seguridad · 2h incluidas',
+    toggle50:'50% + 50%', toggleHr:'Por Hora',
+    tierName0:'Starter', tierTag0:'Sitios e Infoproductos', tierCta0:'Iniciar Proyecto',
+    tierName1:'Pro', tierTag1:'SaaS y Sistemas', tierCta1:'Lanzar MVP',
+    tierName2:'Enterprise', tierTag2:'Ecosistemas Complejos', tierCta2:'Contacto Directo',
+    navHome:'Inicio', navServices:'Servicios', navProjects:'Proyectos', navProcess:'Proceso',
+    navPricing:'Precios', navBlog:'Blog', navContract:'Contrato', navLegal:'Legal', navContact:'Contacto',
+    projRateLbl0:'Aprobación B2B', projRateLbl1:'SLA Cumplido', projRateLbl2:'Precisión Biométrica',
+    projRateLbl3:'Adopción Analítica', projRateLbl4:'Aprobación Cliente', projRateLbl5:'Aprobación QA',
+    projRateLbl6:'Compliance Suiza', projRateLbl7:'Aprobación B2B',
+    scTypeLbl:'Tipo de Proyecto', scFeatLbl:'Funcionalidades Deseadas',
+    scBudgetLbl:'Presupuesto Aproximado', scTimelineLbl:'Plazo Deseado',
+    scEmailLbl:'Email de Contacto *', scNotesLbl:'Notas Adicionales (opcional)',
+    scSubmitLbl:'Enviar Propuesta'
+  },
+  'it-IT': {
+    heroEyebrow:'Sviluppo MVP · IA · FADP/GDPR',
+    heroTitle1:'MVP in', heroTitle2:'Settimane.', heroTitle3:'Non in Mesi.',
+    heroSubtitle:"Valido la tua idea imprenditoriale e lancio l'MVP in 3–5 settimane — senza burocrazia, senza complessità tecnica.",
+    heroCta1:'Vedi Portfolio', heroCta2:'Preventivo Gratuito',
+    servicesEyebrow:'Cosa costruisco', servicesTitle:'Sviluppo Piattaforme SaaS con IA',
+    servicesSubtitle:'Ogni progetto è trattato come un prodotto startup.',
+    projectsEyebrow:'Portfolio', projectsTitle:'Progetti in Evidenza', projectsSubtitle:'Prodotti reali. Codice che funziona in produzione.',
+    processEyebrow:'Come lavoro', processTitle:'Processo di Consegna in 5 Fasi', processSubtitle:'Nessuna sorpresa. Nessun scope creep.',
+    pricingEyebrow:'Investimento', pricingTitle:'Prezzi Trasparenti', pricingSubtitle:'Due modelli di pagamento. Nessun costo nascosto.',
+    contactEyebrow:'Lavoriamo insieme', contactTitle:'Avviare un Progetto',
+    contactSubtitle:'Descrivi il tuo progetto. Eduardo Monteiro risponde in meno di 24 ore.',
+    contactSocial:'O contatta direttamente:',
+    scopeCardEy:'Preventivo Interattivo', scopeCardT:'Avvia il tuo progetto in 2 minuti',
+    scopeCardD:'Seleziona funzionalità, definisci budget e invia la proposta. Risposta in <24h.',
+    scopeF1:'Tipo di progetto + funzionalità', scopeF2:'Budget e tempistica desiderata', scopeF3:'Invio diretto a Eduardo Monteiro',
+    scopeOpenMain:'⊕ Costruire Preventivo Interattivo',
+    typewriterPhrases:['Piattaforme SaaS','Integrazioni IA','MVP in 3-5 Settimane','Conforme FADP/GDPR','Pagamenti Stripe','Firebase + Next.js'],
+    cookieText:"Questo sito usa cookie di analisi. Continuando, accetti la nostra",
+    cookieLink:'Informativa sulla Privacy',
+    blogBadgeNew:'NUOVO', blogBtnLabel:'Blog',
+    blogBannerSub:'Insights su SaaS, IA, Sviluppo MVP e Conformità FADP/GDPR',
+    a2hsTitle:"Installa l'App", a2hsDesc:'Aggiungi alla schermata home.',
+    a2hsInstall:'Installa', a2hsDismiss:'Non ora',
+    scopeTitle:'Configuratore Preventivo B2B',
+    scopeSubtitle:'Seleziona le opzioni e ricevi una proposta personalizzata in <24h.',
+    metricLabel0:'Anni sul Mercato', metricLabel1:'Progetti Consegnati', metricLabel2:'Paesi Serviti', metricLabel3:'Tasso di Soddisfazione',
+    stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Sviluppo', stepTitle3:'QA & Test', stepTitle4:'Lancio',
+    stepDur0:'2-3 giorni', stepDur1:'3-5 giorni', stepDur2:'2-4 sett.', stepDur3:'3-5 giorni', stepDur4:'Giorno 0+',
+    maintenanceText:'Manutenzione Mensile: 50€–150€/mese · Aggiornamenti · Patch sicurezza · 2h incluse',
+    toggle50:'50% + 50%', toggleHr:'Orario',
+    tierName0:'Starter', tierTag0:'Siti & Infoprodotti', tierCta0:'Avvia Progetto',
+    tierName1:'Pro', tierTag1:'SaaS & Sistemi', tierCta1:'Lancia MVP',
+    tierName2:'Enterprise', tierTag2:'Ecosistemi Complessi', tierCta2:'Contatto Diretto',
+    navHome:'Home', navServices:'Servizi', navProjects:'Progetti', navProcess:'Processo',
+    navPricing:'Prezzi', navBlog:'Blog', navContract:'Contratto', navLegal:'Legale', navContact:'Contatto',
+    projRateLbl0:'Approvazione B2B', projRateLbl1:'SLA Rispettato', projRateLbl2:'Precisione Biometrica',
+    projRateLbl3:'Adozione Analitica', projRateLbl4:'Approvazione Cliente', projRateLbl5:'Approvazione QA',
+    projRateLbl6:'Conformità Svizzera', projRateLbl7:'Approvazione B2B',
+    scTypeLbl:'Tipo di Progetto', scFeatLbl:'Funzionalità Desiderate',
+    scBudgetLbl:'Budget Approssimativo', scTimelineLbl:'Tempistica Desiderata',
+    scEmailLbl:'Email di Contatto *', scNotesLbl:'Note Aggiuntive (opzionale)',
+    scSubmitLbl:'Invia Proposta'
   }
+};
+
+/* ── APPLY I18N ── */
+function applyLocale(locale) {
+  var t = i18n[locale] || i18n['pt-PT'];
+  currentLocale = locale;
+  localStorage.setItem('vc-locale', locale);
+  document.documentElement.lang = locale;
+
+  function setText(id, val) { var el = document.getElementById(id); if(el && val !== undefined) el.textContent = val; }
+  function setHTML(id, val) { var el = document.getElementById(id); if(el && val !== undefined) el.innerHTML = val; }
+
+  setText('hero-eyebrow', t.heroEyebrow);
+  setText('hero-title1', t.heroTitle1);
+  setText('hero-title2', t.heroTitle2);
+  setText('hero-title3', t.heroTitle3);
+  setText('hero-subtitle', t.heroSubtitle);
+  setText('hero-cta1', t.heroCta1);
+  setText('hero-cta2', t.heroCta2);
+  setText('services-eyebrow', t.servicesEyebrow);
+  setText('services-title', t.servicesTitle);
+  setText('services-subtitle', t.servicesSubtitle);
+  setText('projects-eyebrow', t.projectsEyebrow);
+  setText('projects-title', t.projectsTitle);
+  setText('projects-subtitle', t.projectsSubtitle);
+  setText('process-eyebrow', t.processEyebrow);
+  setText('process-title', t.processTitle);
+  setText('process-subtitle', t.processSubtitle);
+  setText('pricing-eyebrow', t.pricingEyebrow);
+  setText('pricing-title', t.pricingTitle);
+  setText('pricing-subtitle', t.pricingSubtitle);
+  setText('contact-eyebrow', t.contactEyebrow);
+  setText('contact-title', t.contactTitle);
+  setText('contact-subtitle', t.contactSubtitle);
+  setText('contact-social', t.contactSocial);
+  setText('scope-card-ey', t.scopeCardEy);
+  setText('scope-card-t', t.scopeCardT);
+  setText('scope-card-d', t.scopeCardD);
+  setText('scope-f1', t.scopeF1);
+  setText('scope-f2', t.scopeF2);
+  setText('scope-f3', t.scopeF3);
+  setText('scope-open-main', t.scopeOpenMain);
+  setText('cookie-text', t.cookieText);
+  setText('cookie-link', t.cookieLink);
+  setText('blog-badge-new', t.blogBadgeNew);
+  setText('blog-btn-label', t.blogBtnLabel);
+  setText('blog-banner-sub', t.blogBannerSub);
+  setText('a2hs-title', t.a2hsTitle);
+  setText('a2hs-desc', t.a2hsDesc);
+  setText('a2hs-install', t.a2hsInstall);
+  setText('a2hs-dismiss', t.a2hsDismiss);
+  setText('scope-title', t.scopeTitle);
+  setHTML('scope-subtitle', t.scopeSubtitle);
+  setText('metric-label-0', t.metricLabel0);
+  setText('metric-label-1', t.metricLabel1);
+  setText('metric-label-2', t.metricLabel2);
+  setText('metric-label-3', t.metricLabel3);
+  setText('step-title-0', t.stepTitle0);
+  setText('step-title-1', t.stepTitle1);
+  setText('step-title-2', t.stepTitle2);
+  setText('step-title-3', t.stepTitle3);
+  setText('step-title-4', t.stepTitle4);
+  setText('step-dur-0', t.stepDur0);
+  setText('step-dur-1', t.stepDur1);
+  setText('step-dur-2', t.stepDur2);
+  setText('step-dur-3', t.stepDur3);
+  setText('step-dur-4', t.stepDur4);
+  setText('maintenance-text', t.maintenanceText);
+  setText('toggle-50', t.toggle50);
+  setText('toggle-hr', t.toggleHr);
+  setText('tier-name-0', t.tierName0); setText('tier-tag-0', t.tierTag0); setText('tier-cta-0', t.tierCta0);
+  setText('tier-name-1', t.tierName1); setText('tier-tag-1', t.tierTag1); setText('tier-cta-1', t.tierCta1);
+  setText('tier-name-2', t.tierName2); setText('tier-tag-2', t.tierTag2); setText('tier-cta-2', t.tierCta2);
+
+  var navKeys = ['home','services','projects','process','pricing','blog','contract','legal','contact'];
+  var navVals = [t.navHome, t.navServices, t.navProjects, t.navProcess, t.navPricing, t.navBlog, t.navContract, t.navLegal, t.navContact];
+  document.querySelectorAll('[data-nav]').forEach(function(el){
+    var idx = navKeys.indexOf(el.getAttribute('data-nav'));
+    if(idx > -1) el.textContent = navVals[idx];
+  });
+
+  for(var i = 0; i < 8; i++) {
+    var k = 'projRateLbl'+i;
+    setText('proj-rate-lbl-'+i, t[k] || '');
+  }
+
+  setText('sc-type-lbl', t.scTypeLbl);
+  setText('sc-feat-lbl', t.scFeatLbl);
+  setText('sc-budget-lbl', t.scBudgetLbl);
+  setText('sc-timeline-lbl', t.scTimelineLbl);
+  setText('sc-email-lbl', t.scEmailLbl);
+  setText('sc-notes-lbl', t.scNotesLbl);
+  setText('sc-submit-lbl', t.scSubmitLbl);
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === locale);
+  });
+
+  if(t.typewriterPhrases) startTypewriter(t.typewriterPhrases);
+}
+
+/* ── LANG BUTTONS ── */
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    applyLocale(btn.getAttribute('data-lang'));
+  });
+});
+
+/* ── TYPEWRITER ── */
+var typewriterPhrases = ['SaaS Platforms','AI Integrations','MVP em 3-5 Semanas','FADP/RGPD Compliant','Stripe Payments','Firebase + Next.js'];
+var twIdx = 0, twCharIdx = 0, twDeleting = false, twTimer = null;
+
+function startTypewriter(phrases) {
+  typewriterPhrases = phrases || typewriterPhrases;
+  twIdx = 0; twCharIdx = 0; twDeleting = false;
+  clearTimeout(twTimer);
+  typeLoop();
+}
+
+function typeLoop() {
+  var el = document.getElementById('typewriter');
+  if(!el) return;
+  var phrase = typewriterPhrases[twIdx % typewriterPhrases.length];
+  if(twDeleting) {
+    twCharIdx--;
+    el.textContent = phrase.substring(0, twCharIdx);
+    if(twCharIdx === 0) { twDeleting = false; twIdx++; twTimer = setTimeout(typeLoop, 500); return; }
+    twTimer = setTimeout(typeLoop, 40);
+  } else {
+    twCharIdx++;
+    el.textContent = phrase.substring(0, twCharIdx);
+    if(twCharIdx === phrase.length) { twDeleting = true; twTimer = setTimeout(typeLoop, 2000); return; }
+    twTimer = setTimeout(typeLoop, 80);
+  }
+}
+
+/* ── NEURAL CANVAS ── */
+(function(){
+  var canvas = document.getElementById('neural-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var nodes = [], W, H, RAF;
+  var NODE_COUNT = 40;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function initNodes(){
+    nodes = [];
+    for(var i = 0; i < NODE_COUNT; i++){
+      nodes.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4,
+        r: 1.5 + Math.random()*2
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    for(var i = 0; i < nodes.length; i++){
+      var a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if(a.x < 0||a.x > W) a.vx *= -1;
+      if(a.y < 0||a.y > H) a.vy *= -1;
+      for(var j = i+1; j < nodes.length; j++){
+        var b = nodes[j];
+        var dx = a.x - b.x, dy = a.y - b.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 120){
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(123,92,240,'+(1-dist/120)*.15+')';
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+      ctx.beginPath();
+      ctx.arc(a.x, a.y, a.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(123,92,240,.5)';
+      ctx.fill();
+    }
+    RAF = requestAnimationFrame(draw);
+  }
+
+  resize();
+  initNodes();
+  draw();
+  window.addEventListener('resize', function(){ resize(); initNodes(); });
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) { cancelAnimationFrame(RAF); canvas.style.display='none'; }
+})();
+
+/* ── SCROLL REVEAL ── */
+(function(){
+  var els = document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+  }, {threshold:0.12});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── HEADER SCROLL ── */
+window.addEventListener('scroll', function(){
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ── BURGER MENU ── */
+(function(){
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('nav-menu');
+  if(!burger||!menu) return;
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
+  });
+})();
+
+/* ── PRICING TOGGLE ── */
+(function(){
+  var prices50 = ['800€–1.750€','3.000€–5.500€','5.000€–8.000€+'];
+  var pricesHr = ['55€–80€/h','60€–85€/h','65€–90€/h'];
+  var units50 = ['preço fixo','preço fixo','preço fixo'];
+  var unitsHr = ['por hora','por hora','por hora'];
+
+  document.querySelectorAll('.pricing-toggle-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.pricing-toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var isHr = btn.getAttribute('data-model') === 'hourly';
+      for(var i = 0; i < 3; i++){
+        var pEl = document.querySelector('[data-tier-price="'+i+'"]');
+        var uEl = document.querySelector('[data-tier-unit="'+i+'"]');
+        if(pEl) pEl.textContent = isHr ? pricesHr[i] : prices50[i];
+        if(uEl) uEl.textContent = isHr ? unitsHr[i] : units50[i];
+      }
+    });
+  });
+})();
+
+/* ── COOKIE BANNER ── */
+(function(){
+  var banner = document.getElementById('cookie-banner');
+  if(!banner) return;
+  if(!localStorage.getItem('vc-cookie-choice')){
+    banner.style.display = 'flex';
+  }
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('vc-cookie-choice','accepted');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('vc-cookie-choice','declined');
+    banner.style.display = 'none';
+  });
+})();
+
+/* ── SCOPE MODAL ── */
+function openScopeModal(e, tier) {
+  if(e) e.preventDefault();
+  var ov = document.getElementById('scope-overlay');
+  if(!ov) return;
+  scopeState = { projectType: [], features: [], budget: '', timeline: '', email: '', notes: '' };
+  document.querySelectorAll('.scope-chip').forEach(function(c){ c.classList.remove('sel'); });
+  document.querySelectorAll('#sc-features input[type=checkbox]').forEach(function(cb){ cb.checked = false; cb.closest('.feat-item').classList.remove('checked'); });
+  document.querySelectorAll('input[name=budget], input[name=timeline]').forEach(function(r){ r.checked = false; });
+  var eEl = document.getElementById('sc-email');
+  var nEl = document.getElementById('sc-notes');
+  if(eEl) eEl.value = '';
+  if(nEl) nEl.value = '';
+  if(tier === 'starter') { var chip = document.querySelector('[data-val="ecommerce"]'); if(chip) { chip.classList.add('sel'); scopeState.projectType.push('ecommerce'); } }
+  if(tier === 'pro') { var chip2 = document.querySelector('[data-val="saas"]'); if(chip2) { chip2.classList.add('sel'); scopeState.projectType.push('saas'); } }
   ov.classList.add('open');
-  document.body.style.overflow='hidden';
-  if(eEl)setTimeout(function(){eEl.focus();},350);
+  document.body.style.overflow = 'hidden';
+  if(eEl) setTimeout(function(){ eEl.focus(); }, 350);
 }
 
-function closeScopeModal(){
-  var ov=document.getElementById('scope-overlay');
-  if(ov)ov.classList.remove('open');
-  document.body.style.overflow='';
+function closeScopeModal() {
+  var ov = document.getElementById('scope-overlay');
+  if(ov) ov.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-function toggleChip(el,stateKey){
-  var val=el.dataset.val;
-  var arr=scopeState[stateKey];
+document.getElementById('scope-overlay').addEventListener('click', function(e){
+  if(e.target === this) closeScopeModal();
+});
+
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeScopeModal(); });
+
+function toggleChip(el, stateKey) {
+  var val = el.dataset.val;
+  var arr = scopeState[stateKey];
   if(el.classList.contains('sel')){
     el.classList.remove('sel');
-    var i=arr.indexOf(val);
-    if(i>-1)arr.splice(i,1);
-  }else{
+    var i = arr.indexOf(val);
+    if(i > -1) arr.splice(i, 1);
+  } else {
     el.classList.add('sel');
     arr.push(val);
   }
 }
 
-function toggleFeat(el){
-  var cb=el.querySelector('input[type=checkbox]');
-  if(!cb)return;
-  cb.checked=!cb.checked;
-  el.classList.toggle('checked',cb.checked);
-  var val=cb.value;
+function toggleFeat(cb) {
+  var val = cb.value;
+  var item = cb.closest('.feat-item');
   if(cb.checked){
-    if(scopeState.features.indexOf(val)===-1)scopeState.features.push(val);
-  }else{
-    scopeState.features=scopeState.features.filter(function(v){return v!==val;});
+    item.classList.add('checked');
+    scopeState.features.push(val);
+  } else {
+    item.classList.remove('checked');
+    var i = scopeState.features.indexOf(val);
+    if(i > -1) scopeState.features.splice(i, 1);
   }
 }
 
-async function submitScope(e){
-  if(e)e.preventDefault();
-  var emailEl=document.getElementById('sc-email');
-  var notesEl=document.getElementById('sc-notes');
-  var btn=document.getElementById('sc-submit');
-  var lbl=document.getElementById('sc-submit-lbl');
-  scopeState.email=emailEl?emailEl.value.trim():'';
-  scopeState.notes=notesEl?notesEl.value.trim():'';
-  /* Validate */
-  if(!scopeState.email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(scopeState.email)){
-    showToast('⚠ Email inválido. Por favor verifique.','error');
-    if(emailEl)emailEl.focus();
+/* ── TOAST ── */
+function showToast(msg, type) {
+  var toast = document.getElementById('toast-notif');
+  if(!toast) return;
+  toast.textContent = msg;
+  toast.className = 'toast-notif show' + (type === 'error' ? ' toast-error' : '');
+  setTimeout(function() { toast.classList.remove('show'); }, 3500);
+}
+
+/* ── SCOPE SUBMIT ── */
+async function submitScope(e) {
+  if(e) e.preventDefault();
+  var emailEl = document.getElementById('sc-email');
+  var notesEl = document.getElementById('sc-notes');
+  var btn = document.getElementById('sc-submit');
+  var lbl = document.getElementById('sc-submit-lbl');
+  var t = i18n[currentLocale] || i18n['pt-PT'];
+
+  scopeState.email = emailEl ? emailEl.value.trim() : '';
+  scopeState.notes = notesEl ? notesEl.value.trim() : '';
+  scopeState.budget = (document.querySelector('input[name=budget]:checked') || {}).value || '';
+  scopeState.timeline = (document.querySelector('input[name=timeline]:checked') || {}).value || '';
+
+  if(!scopeState.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(scopeState.email)){
+    showToast('⚠ Email inválido. Por favor verifique.', 'error');
+    if(emailEl) emailEl.focus();
     return;
   }
-  if(scopeState.projectType.length===0){
-    showToast('⚠ Selecione pelo menos um tipo de projecto.','error');
+  if(scopeState.projectType.length === 0){
+    showToast('⚠ Selecione pelo menos um tipo de projecto.', 'error');
     return;
   }
-  /* Radio values */
-  var bEl=document.querySelector('input[name="sc-budget"]:checked');
-  var tEl=document.querySelector('input[name="sc-time"]:checked');
-  scopeState.budget=bEl?bEl.value:'Não especificado';
-  scopeState.timeline=tEl?tEl.value:'Não especificado';
-  if(btn)btn.disabled=true;
-  if(lbl)lbl.textContent='⟳';
-  /* Build payload — Web3Forms */
-  var payload={
-    access_key:'4faa667e-9e05-4310-a4ec-59bf0d4264ee',
-    subject:'Novo Pedido de Orçamento — Eduardo Monteiro Dev',
-    from_name:'Portfólio B2B',
-    replyto:scopeState.email,
-    email:scopeState.email,
-    projectType:scopeState.projectType.join(', ')||'Não especificado',
-    features:scopeState.features.join(', ')||'Nenhuma',
-    budget:scopeState.budget,
-    timeline:scopeState.timeline,
-    notes:scopeState.notes||'—',
-    locale:localStorage.getItem('vc-locale')||'de-CH',
-    sentAt:new Date().toISOString()
-  };
-  try{
-    var res=await fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)
-    });
-    var data=await res.json();
+
+  try {
+    if(btn) { btn.disabled = true; if(lbl) lbl.textContent = 'A Enviar...'; }
+    var formData = new FormData();
+    formData.append('access_key', 'SUBSTITUIR_PELA_CHAVE_WEB3FORMS'); /* web3forms.com/dashboard */
+    formData.append('subject', 'Novo Pedido de Orçamento (Scope Builder) — monteiro.is-a.dev');
+    formData.append('email', scopeState.email);
+    formData.append('from_name', 'Scope Builder — monteiro.is-a.dev');
+    formData.append('message', JSON.stringify(scopeState, null, 2));
+    var response = await fetch('https://api.web3forms.com/submit', { method:'POST', body:formData });
+    var data = await response.json();
     if(data.success){
-      closeScopeModal();
-      var t=window.T&&window.T[locale];
-      var msg=(t&&t.scope&&t.scope.successMsg)||'✓ Proposta enviada! Eduardo responde em <24h.';
-      showToast(msg,'success');
-    }else{
-      throw new Error(data.message||'HTTP '+res.status);
+      showToast('✓ Proposta enviada com sucesso.', 'success');
+      setTimeout(closeScopeModal, 2000);
+    } else {
+      showToast('⚠ Erro ao enviar a proposta. Tente novamente.', 'error');
     }
-  }catch(err){
-    console.error('[Scope]',err);
-    showToast('✗ Erro no envio. Contacte edumonteiro.dev@gmail.com','error');
-  }finally{
-    if(btn)btn.disabled=false;
-    if(lbl){
-      var t2=window.T&&window.T[locale];
-      lbl.textContent=(t2&&t2.scope&&t2.scope.submit)||'Enviar Proposta';
-    }
+  } catch(err) {
+    showToast('⚠ Falha na rede. Verifique a ligação.', 'error');
+  } finally {
+    if(btn) { btn.disabled = false; if(lbl) lbl.textContent = t.scSubmitLbl || 'Enviar Proposta'; }
   }
 }
 
-function showToast(msg,type){
-  type=type||'success';
-  var el=document.getElementById('toast-notif');
-  if(!el)return;
-  el.innerHTML=msg;
-  el.className='toast-notif'+(type==='error'?' toast-error':'');
-  el.classList.add('show');
-  clearTimeout(el._t);
-  el._t=setTimeout(function(){el.classList.remove('show');},5500);
-}
-
-/* ── Footer tagline rotation ── */
-var TAGLINES={
-  'pt-PT':[
-    'Transformando ideias em produtos digitais de alta performance.',
-    'Engenharia de software rápida, segura e à prova de futuro.',
-    'Código limpo, arquitetura robusta e execução ágil.'
-  ],
-  'en-US':[
-    'Transforming ideas into high-performance digital products.',
-    'Fast, secure, and future-proof software engineering.',
-    'Clean code, robust architecture, agile execution.'
-  ],
-  'fr-CH':[
-    'Transformer les idées en produits numériques haute performance.',
-    "Ingénierie logicielle rapide, sécurisée et prête pour l'avenir.",
-    'Code propre, architecture robuste, exécution agile.'
-  ],
-  'de-CH':[
-    'Ideen in hochleistungsfähige digitale Produkte verwandeln.',
-    'Schnelle, sichere und zukunftssichere Softwareentwicklung.',
-    'Sauberer Code, robuste Architektur, agile Umsetzung.'
-  ],
-  'es-ES':[
-    'Transformando ideas en productos digitales de alto rendimiento.',
-    'Ingeniería de software rápida, segura y a prueba de futuro.',
-    'Código limpio, arquitectura robusta y ejecución ágil.'
-  ],
-  'it-IT':[
-    'Trasformare le idee in prodotti digitali ad alte prestazioni.',
-    'Ingegneria software veloce, sicura e a prova di futuro.',
-    'Codice pulito, architettura robusta ed esecuzione agile.'
-  ]
-};
-var _taglineIdx=0;
-
-function initTaglineRotation(){
-  var el=document.getElementById('footer-tagline');
-  if(!el)return;
-  var lines=TAGLINES[locale]||TAGLINES['de-CH'];
-  el.innerHTML='<span>'+lines[0]+'</span>';
-  setInterval(function(){
-    var lines=TAGLINES[locale]||TAGLINES['de-CH'];
-    _taglineIdx=(_taglineIdx+1)%lines.length;
-    var cur=el.querySelector('span');
-    if(cur)cur.classList.add('tl-out');
-    setTimeout(function(){
-      el.innerHTML='<span class="tl-in">'+lines[_taglineIdx]+'</span>';
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          var next=el.querySelector('span');
-          if(next)next.classList.remove('tl-in');
-        });
-      });
-    },620);
-  },4200);
-}
-
-/* ── Scope Builder i18n apply ── */
-function applyScopeI18n(t){
-  var s=t.scope;
-  if(!s)return;
-  function si(id,v){var e=document.getElementById(id);if(e&&v!==undefined)e.textContent=v;}
-  function sq(sel,v){var e=document.querySelector(sel);if(e&&v!==undefined)e.textContent=v;}
-  /* ── Labels & structural strings ── */
-  si('scope-title',   s.title);    si('scope-subtitle',s.subtitle);
-  si('sc-type-lbl',   s.typeLabel);  si('sc-feat-lbl',  s.featLabel);
-  si('sc-budget-lbl', s.budgetLabel);si('sc-time-lbl',  s.timeLabel);
-  si('sc-email-lbl',  s.emailLabel); si('sc-notes-lbl', s.notesLabel);
-  si('sc-submit-lbl', s.submit);
-  si('scope-card-ey', s.cardEy);    si('scope-card-t',  s.cardTitle);
-  si('scope-card-d',  s.cardDesc);
-  si('scope-f1',      s.feat1);     si('scope-f2',      s.feat2);
-  si('scope-f3',      s.feat3);
-  var ob=document.getElementById('scope-open-main');
-  if(ob)ob.innerHTML=s.openBtn;
-  /* ── Budget & Timeline labels ── */
-  if(s.budgets){['sc-b0','sc-b1','sc-b2','sc-b3'].forEach(function(id,i){si(id,s.budgets[i]||'');});}
-  if(s.timelines){['sc-t0','sc-t1','sc-t2','sc-t3'].forEach(function(id,i){si(id,s.timelines[i]||'');});}
-  /* ── Project type chips ── */
-  if(s.chips){
-    ['saas','pwa','ai','security','other'].forEach(function(val){
-      sq('.scope-chip[data-val="'+val+'"]',s.chips[val]);
-    });
-  }
-  /* ── Feature checkboxes ── */
-  if(s.featuresCheckboxes){
-    s.featuresCheckboxes.forEach(function(label,i){
-      sq('label[for="fc'+i+'"]',label);
-    });
-  }
-  /* ── Input placeholders ── */
-  if(s.placeholders){
-    var emailEl=document.getElementById('sc-email');
-    var notesEl=document.getElementById('sc-notes');
-    if(emailEl&&s.placeholders.email)emailEl.placeholder=s.placeholders.email;
-    if(notesEl&&s.placeholders.notes)notesEl.placeholder=s.placeholders.notes;
-  }
-}
-
-/* ── Scope modal close events ── */
-function initScopeEvents(){
-  var closeBtn=document.getElementById('scope-close');
-  if(closeBtn)closeBtn.addEventListener('click',closeScopeModal);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeScopeModal();});
-  var ov=document.getElementById('scope-overlay');
-  if(ov)ov.addEventListener('click',function(e){if(e.target===ov)closeScopeModal();});
-}
-
-/* Make T globally accessible for submitScope locale lookup */
-
-/* ── TRANSLATIONS ─────────────────────────────────── */
-const T={
-'pt-PT':{
-  nav:{home:'Início',services:'Serviços',projects:'Projetos',process:'Processo',pricing:'Preços',contract:'Contrato',contact:'Contacto',legal:'Legal'},
-  hero:{eyebrow:'Desenvolvedor Full-Stack com IA',t1:'MVPs em',t2:'Semanas.',t3:'Não em Meses.',sub:'Construo produtos digitais escaláveis com IA — do conceito ao lançamento, com código limpo e arquitectura preparada para crescer.',cta1:'Ver Portfólio',cta2:'Orçamento Gratuito',typing:['SaaS Platforms','Biometric Systems','AI Integrations','Analytics Dashboards','Payment Systems']},
-  metrics:[{v:'10+',l:'Anos no Mercado'},{v:'50+',l:'Projetos Entregues'},{v:'15+',l:'Países Servidos'},{v:'100%',l:'Taxa de Satisfação'}],
-  services:{ey:'O que construo',ti:'Serviços de Desenvolvimento',su:'Cada projeto é tratado como um produto de startup: velocidade, qualidade e escalabilidade em simultâneo.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 semanas',ti:'Desenvolvimento SaaS',de:'Plataformas SaaS completas com autenticação, pagamentos Stripe, dashboards e subscrições. Firebase ou PostgreSQL.'},
-    {ic:'◈',tag:'Produto Digital',ti:'Infoprodutos & E-commerce',de:'Lojas digitais, flipbooks, cursos online e sistemas de membros com checkout integrado e entrega automática.'},
-    {ic:'◉',tag:'IA · LLM · RAG',ti:'Integração com IA',de:'APIs OpenAI/Anthropic, embeddings, RAG, agentes multi-tarefa e sistemas de geração de documentos com IA.'},
-    {ic:'◈',tag:'Sistema Crítico',ti:'Sistemas Personalizados',de:'Sistemas biométricos, gestão de frotas, controlo financeiro e aplicações de missão crítica com audit trail completo.'},
-    {ic:'⬡',tag:'Análise & BI',ti:'Dashboards & Analytics',de:'Visualizações D3.js interactivas, relatórios em tempo real, dashboards de performance e exportação PDF/Excel.'},
-    {ic:'◉',tag:'50€–150€/mês',ti:'Manutenção Contínua',de:'Atualizações de segurança, monitorização 24/7 e 2h mensais de ajustes incluídas.'}
-  ]},
-  projects:{ey:'Portfólio',ti:'Projetos em Destaque',su:'Produtos reais. Código que funciona em produção.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecossistema SaaS completo para motoristas TVDE. Auth por telemóvel, Stripe Subscriptions, trial 7 dias, dashboard em tempo real, geração PDF e gestão de frotas.',link:'https://kmlucropro.com',live:true},{tag:'Produção · Transporte · Web',ti:'Voz do Condutor',de:'Site institucional para profissionais do transporte. Design responsivo, SEO optimizado e conteúdo dinâmico para o mercado TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Segurança · Biometria',ti:'Sistema Biométrico',de:'Plataforma de reconhecimento de impressões digitais para uso policial. Matching biunívoco, cross-referencing e cadeia de custódia digital.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de comando analítico para o mercado Uber/Bolt. Visualizações D3.js, dados em tempo real e análise preditiva.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RH · Scheduling',ti:'Gestão de Turnos',de:'Sistema de agendamento com workflows de aprovação, cálculo de horas extra e integração com payroll.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodologia de Testes',de:'Framework A/B com análise de funil, heatmaps, session recording e relatórios automáticos de qualidade.',link:'#',live:false},{tag:'PWA · IA · Saúde Mental · FHIR',ti:'Haven',de:'PWA de saúde mental com IA Edge on-device (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail e conformidade FHIR/FADP/RGPD. Mercado suíço.',link:'#',live:false},{tag:'SaaS · Educação · Suíça · IA',ti:'SpriCH',de:'Plataforma SaaS de aprendizagem de idiomas para o mercado suíço. Gamificação adaptativa com IA, LLM curriculum e conformidade FADP.',link:'#',live:false}]},
-  process:{ey:'Como trabalho',ti:'Processo de Entrega em 5 Passos',su:'Sem surpresas. Sem scope creep. Com métricas claras em cada fase.',steps:[
-    {n:'01',ti:'Discovery',du:'2-3 dias',de:'Briefing, análise de viabilidade técnica, definição de MVP scope, estimativa de recursos e assinatura de contrato.'},
-    {n:'02',ti:'Design',du:'3-5 dias',de:'Arquitectura de informação, wireframes, UI/UX Figma de alta fidelidade, design system e aprovação do cliente.'},
-    {n:'03',ti:'Desenvolvimento',du:'2-4 sem.',de:'Setup do repositório, desenvolvimento iterativo com CI/CD, integrações (Firebase, Stripe, IA), testes unitários e code review.'},
-    {n:'04',ti:'QA & Testes',du:'3-5 dias',de:'UAT, cross-browser, performance Lighthouse, scan de vulnerabilidades OWASP e acessibilidade WCAG 2.1.'},
-    {n:'05',ti:'Lançamento',du:'Dia 0+',de:'Deploy em produção, configuração DNS/SSL, monitorização 24h, handover de documentação e suporte pós-lançamento.'}
-  ]},
-  pricing:{ey:'Investimento',ti:'Preços Transparentes',su:'Dois modelos de pagamento. Sem custos ocultos.',t50:'50% + 50%',thr:'Por Hora',perH:'/hora',pop:'Mais Popular',maint:'Manutenção Mensal: 50€–150€/mês · Firebase updates · Patches de segurança · 2h de ajustes',tiers:[
-    {name:'Starter',pF:'800€–1.750€',pH:'35€–40€',tag:'Sites & Infoprodutos',feats:['Site Institucional ou Infoproduto','Design Responsivo (Mobile-First)','Integração de pagamentos básica','SEO On-Page','Formulário de contacto','1 ronda de revisões','Suporte 15 dias pós-entrega'],cta:'Começar Projeto'},
-    {name:'Pro',pF:'3.000€–5.500€',pH:'40€–45€',tag:'SaaS & Sistemas',popular:true,feats:['MVP SaaS completo (2-4 semanas)','Firebase Auth + Stripe + Functions','Dashboard em tempo real','Integração IA (OpenAI/Claude)','Admin Panel','Testes automatizados CI/CD','2 rondas de revisões','Suporte 30 dias pós-entrega'],cta:'Lançar MVP'},
-    {name:'Enterprise',pF:'5.000€–8.000€+',pH:'45€+',tag:'Ecossistemas Complexos',feats:['Ecossistema digital completo','Arquitectura multi-plataforma','Sistemas críticos & biometria','Integrações com APIs externas','Documentação técnica completa','Formação da equipa interna','Retainer mensal incluído 3 meses','SLA de uptime definido'],cta:'Contactar Directo'}
-  ]},
-  contact:{ey:'Vamos trabalhar juntos',ti:'Iniciar Projecto',su:'Descreva o seu projecto. Eduardo Monteiro responde em menos de 24 horas.',soc:'Ou contacte directamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','A definir'],types:['SaaS / MVP','Infoproduto / E-commerce','Sistema Personalizado','IA / Analytics','Manutenção','Outro'],send:'Enviar Mensagem',ok:'✓ Mensagem enviada. Eduardo responderá em menos de 24 horas.'},
-  footer:{tl:'Construindo o futuro, uma linha de código de cada vez.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Início','Serviços','Projetos','Preços','Contrato']},
-  cookie:{text:'Este site utiliza cookies para análise. Ao continuar, aceita a nossa',link:'Política de Privacidade',accept:'Aceitar',decline:'Recusar'},scope:{typeLabel:'Tipo de Projecto',featLabel:'Funcionalidades Necessárias',budgetLabel:'Orçamento Estimado',timeLabel:'Prazo Pretendido',emailLabel:'Email de Contacto *',notesLabel:'Notas Adicionais (opcional)',submit:'Enviar Proposta',title:'Construtor de Orçamento B2B',subtitle:'Seleciona as opções e recebe uma proposta personalizada em <24h.',cardEy:'Construtor de Orçamento',cardTitle:'Inicia o teu projecto em 2 minutos',cardDesc:'Seleciona funcionalidades, define orçamento e envia. Resposta em <24h.',feat1:'Tipo de projecto + funcionalidades',feat2:'Orçamento e prazo pretendido',feat3:'Envio directo para Eduardo Monteiro',openBtn:'⊕ Construir Orçamento Interactivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 semanas)','1 Mês','2–3 Meses','Flexível'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'Integração IA / LLMs',security:'Segurança & RGPD/FADP',other:'Outro'},featuresCheckboxes:['Multi-idioma (i18n)','Autenticação de Utilizadores','Pagamentos / Stripe','Dashboard de Analytics','Chatbots / RAG com IA','Funcionalidades Offline (PWA)'],placeholders:{email:'o.seu@email.com',notes:'Contexto adicional, URL de referência, stack preferida...'}}
-},
-'en-US':{
-  nav:{home:'Home',services:'Services',projects:'Projects',process:'Process',pricing:'Pricing',contract:'Contract',contact:'Contact',legal:'Legal'},
-  hero:{eyebrow:'AI-Powered Full-Stack Developer',t1:'MVPs in',t2:'Weeks.',t3:'Not Months.',sub:'I build scalable digital products with AI — from concept to launch, with clean code and architecture designed to grow.',cta1:'View Portfolio',cta2:'Free Quote',typing:['SaaS Platforms','Biometric Systems','AI Integrations','Analytics Dashboards','Payment Systems']},
-  metrics:[{v:'10+',l:'Years in Market'},{v:'50+',l:'Projects Delivered'},{v:'15+',l:'Countries Served'},{v:'100%',l:'Satisfaction Rate'}],
-  services:{ey:'What I build',ti:'Development Services',su:'Every project is treated like a startup product: speed, quality, and scalability simultaneously.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 weeks',ti:'SaaS Development',de:'Full SaaS platforms with auth, Stripe payments, dashboards, and subscriptions. Firebase or PostgreSQL backend.'},
-    {ic:'◈',tag:'Digital Product',ti:'Digital Products & E-commerce',de:'Digital stores, flipbooks, online courses, and membership systems with integrated checkout and automated delivery.'},
-    {ic:'◉',tag:'AI · LLM · RAG',ti:'AI Integration',de:'OpenAI/Anthropic APIs, embeddings, RAG systems, multi-task agents, and AI-powered document generation.'},
-    {ic:'◈',tag:'Mission Critical',ti:'Custom Systems',de:'Biometric systems, fleet management, financial control, and mission-critical apps with full audit trails.'},
-    {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Interactive D3.js visualizations, real-time reports, performance dashboards, and PDF/Excel exports.'},
-    {ic:'◉',tag:'$60-$180/mo',ti:'Ongoing Maintenance',de:'Security updates, Firebase/Stripe patches, 24/7 monitoring, and 2h monthly minor adjustments included.'}
-  ]},
-  projects:{ey:'Portfolio',ti:'Featured Projects',su:'Real products. Code that runs in production.',items:[{tag:'SaaS · TVDE · AI',ti:'kmlucropro.com',de:'Complete SaaS ecosystem for TVDE drivers. Phone auth, Stripe Subscriptions, 7-day trial, real-time dashboard, PDF generation and fleet management.',link:'https://kmlucropro.com',live:true},{tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Institutional website for transport professionals. Responsive design, optimised SEO and dynamic content for the TVDE market.',link:'https://vozdocondutor.com',live:true},{tag:'Security · Biometrics',ti:'Biometric System',de:'Fingerprint recognition platform for law enforcement. Biunivocal matching algorithm, database cross-referencing and digital chain of custody.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Analytics command centre for the Uber/Bolt market. D3.js visualisations, real-time data and predictive analysis.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Scheduling',ti:'Shift Management',de:'Scheduling system with approval workflows, overtime calculation and payroll integration.',link:'#',live:false},{tag:'QA · Testing',ti:'Testing Methodology',de:'A/B framework with funnel analysis, heatmaps, session recording and automated quality reports.',link:'#',live:false},{tag:'PWA · AI · Mental Health · FHIR',ti:'Haven',de:'Mental health PWA with on-device Edge AI (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail and FHIR/FADP/GDPR compliance. Swiss market.',link:'#',live:false},{tag:'SaaS · Education · Switzerland · AI',ti:'SpriCH',de:'SaaS language-learning platform for the Swiss market. Adaptive AI gamification, LLM curriculum and FADP compliance for minors.',link:'#',live:false}]},
-  process:{ey:'How I work',ti:'5-Step Delivery Process',su:'No surprises. No scope creep. Clear metrics at every phase.',steps:[
-    {n:'01',ti:'Discovery',du:'2-3 days',de:'Briefing, technical feasibility analysis, MVP scope definition, resource estimation, and contract signing.'},
-    {n:'02',ti:'Design',du:'3-5 days',de:'Information architecture, wireframes, high-fidelity Figma UI/UX, design system, and client approval.'},
-    {n:'03',ti:'Development',du:'2-4 wks',de:'Repository setup, iterative development with CI/CD, integrations (Firebase, Stripe, AI), unit tests, and code review.'},
-    {n:'04',ti:'QA & Testing',du:'3-5 days',de:'UAT, cross-browser testing, Lighthouse performance, OWASP vulnerability scan, WCAG 2.1 accessibility.'},
-    {n:'05',ti:'Launch',du:'Day 0+',de:'Production deployment, DNS/SSL config, 24h monitoring, documentation handover, and post-launch support.'}
-  ]},
-  pricing:{ey:'Investment',ti:'Transparent Pricing',su:'Two payment models. Zero hidden fees.',t50:'50% + 50%',thr:'Hourly',perH:'/hr',pop:'Most Popular',maint:'Monthly Maintenance: $60–$180/mo · Firebase updates · Security patches · 2h adjustments',tiers:[
-    {name:'Starter',pF:'$850–$1,900',pH:'$40–$45',tag:'Websites & Digital Products',feats:['Corporate website or digital product','Responsive design (Mobile-First)','Basic payment integration','On-Page SEO','Contact form','1 revision round','15-day post-delivery support'],cta:'Start Project'},
-    {name:'Pro',pF:'$3,200–$6,000',pH:'$45–$55',tag:'SaaS & Systems',popular:true,feats:['Complete SaaS MVP (2-4 weeks)','Firebase Auth + Stripe + Functions','Real-time dashboard','AI integration (OpenAI/Claude)','Admin Panel','Automated testing (CI/CD)','2 revision rounds','30-day post-delivery support'],cta:'Launch MVP'},
-    {name:'Enterprise',pF:'$5,500–$8,800+',pH:'$55+',tag:'Complex Ecosystems',feats:['Complete digital ecosystem','Multi-platform architecture','Critical systems & biometrics','External API integrations','Complete technical documentation','Internal team training','3-month retainer included','Defined uptime SLA'],cta:'Contact Directly'}
-  ]},
-  contact:{ey:"Let's work together",ti:'Start a Project',su:'Describe your project. Eduardo Monteiro responds in under 24 hours.',soc:'Or contact directly:',budgets:['< $1,000','$1,000–$3,000','$3,000–$6,000','$6,000+','To be defined'],types:['SaaS / MVP','Digital Product / E-commerce','Custom System','AI / Analytics','Maintenance','Other'],send:'Send Message',ok:'✓ Message sent. Eduardo will reply within 24 hours.'},
-  footer:{tl:'Building the future, one line of code at a time.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Home','Services','Projects','Pricing','Contract']},
-  cookie:{text:'This site uses cookies for analytics. By continuing, you accept our',link:'Privacy Policy',accept:'Accept',decline:'Decline'},scope:{typeLabel:'Project Type',featLabel:'Required Features',budgetLabel:'Estimated Budget',timeLabel:'Desired Timeline',emailLabel:'Contact Email *',notesLabel:'Additional Notes (optional)',submit:'Send Proposal',title:'B2B Scope Builder',subtitle:'Select your options and receive a personalised proposal in <24h.',cardEy:'Scope Builder',cardTitle:'Start your project in 2 minutes',cardDesc:'Select features, set budget and submit. Reply in <24h.',feat1:'Project type + features',feat2:'Budget and desired timeline',feat3:'Direct submission to Eduardo Monteiro',openBtn:'⊕ Build Interactive Estimate',budgets:['< €1,000','€1,000–€3,000','€3,000–€6,000','€6,000+'],timelines:['Urgent (< 2 weeks)','1 Month','2–3 Months','Flexible'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'AI / LLM Integration',security:'Security & GDPR/FADP',other:'Other'},featuresCheckboxes:['Multi-language (i18n)','User Authentication','Payments / Stripe','Analytics Dashboard','Chatbots / RAG with AI','Offline Features (PWA)'],placeholders:{email:'your@email.com',notes:'Additional context, reference URL, preferred stack...'}}
-},
-'fr-CH':{
-  nav:{home:'Accueil',services:'Services',projects:'Projets',process:'Processus',pricing:'Tarifs',contract:'Contrat',contact:'Contact',legal:'Légal'},
-  hero:{eyebrow:'Développeur Full-Stack IA',t1:'MVP en',t2:'Semaines.',t3:'Pas en Mois.',sub:"Je construis des produits numériques évolutifs avec l'IA — du concept au lancement, avec un code propre et une architecture prête à grandir.",cta1:'Voir le Portfolio',cta2:'Devis Gratuit',typing:['Plateformes SaaS','Systèmes Biométriques','Intégrations IA','Tableaux de Bord','Systèmes de Paiement']},
-  metrics:[{v:'10+',l:'Ans sur le Marché'},{v:'50+',l:'Projets Livrés'},{v:'15+',l:'Pays Servis'},{v:'100%',l:'Taux de Satisfaction'}],
-  services:{ey:'Ce que je construis',ti:'Services de Développement',su:'Chaque projet est traité comme un produit startup : vitesse, qualité et évolutivité simultanément.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 semaines',ti:'Développement SaaS',de:'Plateformes SaaS complètes avec auth, paiements Stripe, tableaux de bord et abonnements. Backend Firebase ou PostgreSQL.'},
-    {ic:'◈',tag:'Produit Numérique',ti:'Produits Numériques & E-commerce',de:"Boutiques numériques, flipbooks, cours en ligne et systèmes de membres avec checkout intégré et livraison automatique."},
-    {ic:'◉',tag:'IA · LLM · RAG',ti:'Intégration IA',de:"APIs OpenAI/Anthropic, embeddings, systèmes RAG, agents multi-tâches et génération de documents par IA."},
-    {ic:'◈',tag:'Mission Critique',ti:'Systèmes Personnalisés',de:"Systèmes biométriques, gestion de flotte, contrôle financier et applications critiques avec pistes d'audit complètes."},
-    {ic:'⬡',tag:'Analytics & BI',ti:'Tableaux de Bord & Analytics',de:'Visualisations D3.js interactives, rapports en temps réel, tableaux de performance et exports PDF/Excel.'},
-    {ic:'◉',tag:'80-250CHF/mois',ti:'Maintenance Continue',de:"Mises à jour de sécurité, patches Firebase/Stripe, monitoring 24/7 et 2h d'ajustements mensuels inclus."}
-  ]},
-  projects:{ey:'Portfolio',ti:'Projets en Vedette',su:'Vrais produits. Code qui tourne en production.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Écosystème SaaS complet pour chauffeurs TVDE. Auth téléphonique, Stripe Subscriptions, essai 7 jours, tableau de bord temps réel et gestion de flotte.',link:'https://kmlucropro.com',live:true},{tag:'Production · Transport · Web',ti:'Voz do Condutor',de:'Site institutionnel pour les professionnels du transport. Design responsive, SEO optimisé et contenu dynamique pour le marché TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Sécurité · Biométrie',ti:'Système Biométrique',de:'Plateforme de reconnaissance d\'empreintes pour usage policier. Algorithme de correspondance biunivoque et gestion de chaîne de garde numérique.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centre de commande analytique pour le marché Uber/Bolt. Visualisations D3.js, données temps réel et analyse prédictive.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RH · Planification',ti:'Gestion des Quarts',de:'Système de planification avec workflows d\'approbation, calcul des heures supplémentaires et intégration paie.',link:'#',live:false},{tag:'QA · Tests',ti:'Méthodologie de Tests',de:'Framework A/B avec analyse d\'entonnoir, heatmaps, enregistrement de session et rapports qualité automatisés.',link:'#',live:false},{tag:'PWA · IA · Santé Mentale · FHIR',ti:'Haven',de:'PWA de santé mentale avec IA Edge on-device (WASM), chiffrement BYOC Zero-Knowledge, Guardrail clinique et conformité FHIR/LPD/RGPD. Marché suisse.',link:'#',live:false},{tag:'SaaS · Éducation · Suisse · IA',ti:'SpriCH',de:'Plateforme SaaS d\'apprentissage des langues pour le marché suisse. Gamification adaptative IA, curriculum LLM et conformité LPD.',link:'#',live:false}]},
-  process:{ey:'Comment je travaille',ti:'Processus de Livraison en 5 Étapes',su:'Aucune surprise. Aucun dérapage de périmètre. Des métriques claires à chaque phase.',steps:[
-    {n:'01',ti:'Découverte',du:'2-3 jours',de:"Briefing, analyse de faisabilité technique, définition du périmètre MVP, estimation des ressources et signature du contrat."},
-    {n:'02',ti:'Design',du:'3-5 jours',de:"Architecture de l'information, wireframes, UI/UX Figma haute fidélité, design system et validation client."},
-    {n:'03',ti:'Développement',du:'2-4 sem.',de:'Configuration du dépôt, développement itératif avec CI/CD, intégrations (Firebase, Stripe, IA), tests unitaires et revue de code.'},
-    {n:'04',ti:'QA & Tests',du:'3-5 jours',de:'UAT, tests cross-browser, performance Lighthouse, scan OWASP, accessibilité WCAG 2.1.'},
-    {n:'05',ti:'Lancement',du:'J+0',de:'Déploiement en production, configuration DNS/SSL, monitoring 24h, remise de documentation et support post-lancement.'}
-  ]},
-  pricing:{ey:'Investissement',ti:'Tarifs Transparents',su:'Deux modèles de paiement. Zéro frais cachés.',t50:'50% + 50%',thr:'Horaire',perH:'/h',pop:'Plus Populaire',maint:'Maintenance Mensuelle: 80–250 CHF/mois · Mises à jour Firebase · Patches sécurité · 2h ajustements',tiers:[
-    {name:'Starter',pF:'950–2.100 CHF',pH:'70–75 CHF',tag:'Sites & Produits Numériques',feats:['Site institutionnel ou produit numérique','Design responsive (Mobile-First)','Intégration paiement basique','SEO On-Page','Formulaire de contact','1 round de révisions','Support 15 jours post-livraison'],cta:'Démarrer Projet'},
-    {name:'Pro',pF:'3.500–6.500 CHF',pH:'75–85 CHF',tag:'SaaS & Systèmes',popular:true,feats:['MVP SaaS complet (2-4 semaines)',"Firebase Auth + Stripe + Functions",'Dashboard temps réel','Intégration IA (OpenAI/Claude)',"Panneau d'administration",'Tests automatisés (CI/CD)','2 rounds de révisions','Support 30 jours post-livraison'],cta:'Lancer MVP'},
-    {name:'Enterprise',pF:'6.000–9.500 CHF+',pH:'85+ CHF',tag:'Écosystèmes Complexes',feats:['Écosystème numérique complet','Architecture multi-plateforme','Systèmes critiques & biométrie','Intégrations APIs externes','Documentation technique complète','Formation équipe interne','Retainer 3 mois inclus','SLA de disponibilité défini'],cta:'Contact Direct'}
-  ]},
-  contact:{ey:'Travaillons ensemble',ti:'Démarrer un Projet',su:'Décrivez votre projet. Eduardo Monteiro répond en moins de 24 heures.',soc:'Ou contactez directement:',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF','À définir'],types:['SaaS / MVP','Produit Numérique / E-commerce','Système Personnalisé','IA / Analytics','Maintenance','Autre'],send:'Envoyer Message',ok:'✓ Message envoyé. Eduardo répondra dans les 24 heures.'},
-  footer:{tl:'Construire le futur, une ligne de code à la fois.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Accueil','Services','Projets','Tarifs','Contrat']},
-  cookie:{text:"Ce site utilise des cookies d'analyse. En continuant, vous acceptez notre",link:'Politique de Confidentialité',accept:'Accepter',decline:'Refuser'},scope:{typeLabel:'Type de Projet',featLabel:'Fonctionnalités Requises',budgetLabel:'Budget Estimé',timeLabel:'Délai Souhaité',emailLabel:'Email de Contact *',notesLabel:'Notes Supplémentaires (optionnel)',submit:'Envoyer la Proposition',title:'Configurateur de Projet B2B',subtitle:'Sélectionnez vos options et recevez une proposition en <24h.',cardEy:'Configurateur de Projet',cardTitle:'Lancez votre projet en 2 minutes',cardDesc:'Sélectionnez fonctionnalités, définissez le budget et envoyez. Réponse en <24h.',feat1:'Type de projet + fonctionnalités',feat2:'Budget et délai souhaité',feat3:'Envoi direct à Eduardo Monteiro',openBtn:'⊕ Configurer Votre Budget',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF'],timelines:['Urgent (< 2 semaines)','1 Mois','2–3 Mois','Flexible'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'Intégration IA / LLM',security:'Sécurité & RGPD/LPD',other:'Autre'},featuresCheckboxes:['Multilinguisme (i18n)','Authentification Utilisateurs','Paiements / Stripe','Tableau de Bord Analytique','Chatbots / RAG avec IA','Fonctionnalités Hors Ligne (PWA)'],placeholders:{email:'votre@email.com',notes:'Contexte additionnel, URL de référence, stack souhaitée...'}}
-},
-'de-CH':{
-  nav:{home:'Start',services:'Leistungen',projects:'Projekte',process:'Prozess',pricing:'Preise',contract:'Vertrag',contact:'Kontakt',legal:'Rechtliches'},
-  hero:{eyebrow:'KI-gestützter Full-Stack-Entwickler',t1:'MVPs in',t2:'Wochen.',t3:'Nicht Monaten.',sub:'Ich baue skalierbare digitale Produkte mit KI — vom Konzept bis zum Launch, mit sauberem Code und skalierbarer Architektur.',cta1:'Portfolio Ansehen',cta2:'Kostenloses Angebot',typing:['SaaS-Plattformen','Biometrische Systeme','KI-Integrationen','Analytics-Dashboards','Zahlungssysteme']},
-  metrics:[{v:'10+',l:'Jahre am Markt'},{v:'50+',l:'Gelieferte Projekte'},{v:'15+',l:'Bediente Länder'},{v:'100%',l:'Zufriedenheitsrate'}],
-  services:{ey:'Was ich baue',ti:'Entwicklungsleistungen',su:'Jedes Projekt wird wie ein Startup-Produkt behandelt: Geschwindigkeit, Qualität und Skalierbarkeit gleichzeitig.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 Wochen',ti:'SaaS-Entwicklung',de:'Vollständige SaaS-Plattformen mit Auth, Stripe-Zahlungen, Dashboards und Abonnements. Firebase oder PostgreSQL.'},
-    {ic:'◈',tag:'Digitales Produkt',ti:'Digitale Produkte & E-Commerce',de:'Digitale Läden, Flipbooks, Online-Kurse und Mitgliedersysteme mit integriertem Checkout und automatischer Lieferung.'},
-    {ic:'◉',tag:'KI · LLM · RAG',ti:'KI-Integration',de:'OpenAI/Anthropic-APIs, Embeddings, RAG-Systeme, Multi-Task-Agenten und KI-gestützte Dokumentengenerierung.'},
-    {ic:'◈',tag:'Unternehmenskritisch',ti:'Massgeschneiderte Systeme',de:'Biometrische Systeme, Flottenmanagement, Finanzkontrolle und unternehmenskritische Apps mit vollständigen Audit-Trails.'},
-    {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Interaktive D3.js-Visualisierungen, Echtzeit-Berichte, Performance-Dashboards und PDF/Excel-Exporte.'},
-    {ic:'◉',tag:'80-250CHF/Monat',ti:'Laufende Wartung',de:'Sicherheitsupdates, Firebase/Stripe-Patches, 24/7-Monitoring und 2h monatliche Kleinanpassungen inklusive.'}
-  ]},
-  projects:{ey:'Portfolio',ti:'Ausgewählte Projekte',su:'Echte Produkte. Code der in Produktion läuft.',items:[{tag:'SaaS · TVDE · KI',ti:'kmlucropro.com',de:'Vollständiges SaaS-Ökosystem für TVDE-Fahrer. Telefon-Auth, Stripe Subscriptions, 7-Tage-Test, Echtzeit-Dashboard, PDF-Generierung und Flottenmanagement.',link:'https://kmlucropro.com',live:true},{tag:'Produktion · Transport · Web',ti:'Voz do Condutor',de:'Institutionelle Website für Transportfachleute. Responsives Design, optimiertes SEO und dynamische Inhalte für den TVDE-Markt.',link:'https://vozdocondutor.com',live:true},{tag:'Sicherheit · Biometrie',ti:'Biometrisches System',de:'Fingerabdruck-Erkennungsplattform für Strafverfolgungsbehörden. Biunivokaler Matching-Algorithmus und digitales Chain-of-Custody-Management.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Analytische Kommandozentrale für den Uber/Bolt-Markt. D3.js-Visualisierungen, Echtzeitdaten und prädiktive Analyse.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Planung',ti:'Schichtverwaltung',de:'Planungssystem mit Genehmigungsworkflows, Überstundenberechnung und Lohnbuchhaltungsintegration.',link:'#',live:false},{tag:'QA · Tests',ti:'Testmethodologie',de:'A/B-Framework mit Trichteranalyse, Heatmaps, Session-Aufzeichnung und automatisierten Qualitätsberichten.',link:'#',live:false},{tag:'PWA · KI · Psychische Gesundheit · FHIR',ti:'Haven',de:'Psychische-Gesundheits-PWA mit On-Device Edge-KI (WASM), Zero-Knowledge BYOC-Verschlüsselung, Clinical Guardrail und FHIR/DSG/DSGVO-Konformität. Schweizer Markt.',link:'#',live:false},{tag:'SaaS · Bildung · Schweiz · KI',ti:'SpriCH',de:'SaaS-Sprachenlernplattform für den Schweizer Markt. Adaptive KI-Gamifizierung, LLM-Curriculum und DSG-Konformität für Minderjährige.',link:'#',live:false}]},
-  process:{ey:'Wie ich arbeite',ti:'5-Schritte-Lieferprozess',su:'Keine Überraschungen. Kein Scope Creep. Klare Metriken in jeder Phase.',steps:[
-    {n:'01',ti:'Entdeckung',du:'2-3 Tage',de:'Briefing, technische Machbarkeitsanalyse, MVP-Umfangsdefinition, Ressourcenschätzung und Vertragsunterzeichnung.'},
-    {n:'02',ti:'Design',du:'3-5 Tage',de:'Informationsarchitektur, Wireframes, High-Fidelity Figma UI/UX, Design-System und Kundengenehmigung.'},
-    {n:'03',ti:'Entwicklung',du:'2-4 Wo.',de:'Repository-Setup, iterative Entwicklung mit CI/CD, Integrationen (Firebase, Stripe, KI), Unit-Tests und Code-Review.'},
-    {n:'04',ti:'QA & Tests',du:'3-5 Tage',de:'UAT, Cross-Browser-Tests, Lighthouse-Performance, OWASP-Schwachstellenscan, WCAG 2.1 Barrierefreiheit.'},
-    {n:'05',ti:'Launch',du:'Tag 0+',de:'Produktions-Deployment, DNS/SSL-Konfiguration, 24h-Monitoring, Dokumentationsübergabe und Post-Launch-Support.'}
-  ]},
-  pricing:{ey:'Investition',ti:'Transparente Preise',su:'Zwei Zahlungsmodelle. Null versteckte Kosten.',t50:'50% + 50%',thr:'Stundensatz',perH:'/Std',pop:'Beliebteste',maint:'Monatliche Wartung: 80–250 CHF/Monat · Firebase-Updates · Sicherheits-Patches · 2h Anpassungen',tiers:[
-    {name:'Starter',pF:'950–2.100 CHF',pH:'70–75 CHF',tag:'Websites & Digitale Produkte',feats:['Unternehmenswebsite oder digitales Produkt','Responsives Design (Mobile-First)','Grundlegende Zahlungsintegration','On-Page SEO','Kontaktformular','1 Revisionsrunde','15 Tage Post-Lieferung Support'],cta:'Projekt Starten'},
-    {name:'Pro',pF:'3.500–6.500 CHF',pH:'75–85 CHF',tag:'SaaS & Systeme',popular:true,feats:['Vollständiger SaaS-MVP (2-4 Wochen)','Firebase Auth + Stripe + Functions','Echtzeit-Dashboard','KI-Integration (OpenAI/Claude)','Admin-Panel','Automatisierte Tests (CI/CD)','2 Revisionsrunden','30 Tage Post-Lieferung Support'],cta:'MVP Launchen'},
-    {name:'Enterprise',pF:'6.000–9.500 CHF+',pH:'85+ CHF',tag:'Komplexe Ökosysteme',feats:['Vollständiges digitales Ökosystem','Multi-Plattform-Architektur','Kritische Systeme & Biometrie','Externe API-Integrationen','Vollständige technische Dokumentation','Internes Team-Training','3-Monats-Retainer inklusive','Definiertes Uptime-SLA'],cta:'Direkt Kontaktieren'}
-  ]},
-  contact:{ey:'Lassen Sie uns zusammenarbeiten',ti:'Projekt Starten',su:'Beschreiben Sie Ihr Projekt. Eduardo Monteiro antwortet innerhalb von 24 Stunden.',soc:'Oder direkt kontaktieren:',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF','Noch zu definieren'],types:['SaaS / MVP','Digitales Produkt / E-Commerce','Massgeschneidertes System','KI / Analytics','Wartung','Sonstiges'],send:'Nachricht Senden',ok:'✓ Nachricht gesendet. Eduardo antwortet innerhalb von 24 Stunden.'},
-  footer:{tl:'Die Zukunft bauen, eine Zeile Code nach der anderen.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Start','Leistungen','Projekte','Preise','Vertrag']},
-  cookie:{text:'Diese Website verwendet Analyse-Cookies. Durch Fortfahren akzeptieren Sie unsere',link:'Datenschutzrichtlinie',accept:'Akzeptieren',decline:'Ablehnen'},scope:{typeLabel:'Projekttyp',featLabel:'Benötigte Funktionen',budgetLabel:'Geschätztes Budget',timeLabel:'Gewünschter Zeitplan',emailLabel:'Kontakt-E-Mail *',notesLabel:'Zusätzliche Hinweise (optional)',submit:'Angebot Senden',title:'B2B Projekt-Konfigurator',subtitle:'Wählen Sie Ihre Optionen und erhalten Sie ein Angebot in <24h.',cardEy:'Projekt-Konfigurator',cardTitle:'Starten Sie Ihr Projekt in 2 Minuten',cardDesc:'Funktionen auswählen, Budget festlegen, absenden. Antwort in <24h.',feat1:'Projekttyp + Funktionen',feat2:'Budget und gewünschter Zeitplan',feat3:'Direktversand an Eduardo Monteiro',openBtn:'⊕ Budget Interaktiv Konfigurieren',budgets:['< 1.000 CHF','1.000–3.000 CHF','3.000–6.000 CHF','6.000+ CHF'],timelines:['Dringend (< 2 Wochen)','1 Monat','2–3 Monate','Flexibel'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'KI- / LLM-Integration',security:'Sicherheit & DSGVO/DSG',other:'Sonstiges'},featuresCheckboxes:['Mehrsprachigkeit (i18n)','Benutzerauthentifizierung','Zahlungen / Stripe','Analytics-Dashboard','Chatbots / RAG mit KI','Offline-Funktionen (PWA)'],placeholders:{email:'ihre@email.com',notes:'Zusätzlicher Kontext, Referenz-URL, bevorzugter Tech-Stack...'}}
-},
-'es-ES':{
-  nav:{home:'Inicio',services:'Servicios',projects:'Proyectos',process:'Proceso',pricing:'Precios',contract:'Contrato',contact:'Contacto',legal:'Legal'},
-  hero:{eyebrow:'Desarrollador Full-Stack con IA',t1:'MVPs en',t2:'Semanas.',t3:'No en Meses.',sub:'Construyo productos digitales escalables con IA — del concepto al lanzamiento, con código limpio y arquitectura preparada para crecer.',cta1:'Ver Portafolio',cta2:'Presupuesto Gratis',typing:['Plataformas SaaS','Sistemas Biométricos','Integraciones IA','Paneles de Análisis','Sistemas de Pago']},
-  metrics:[{v:'10+',l:'Años en el Mercado'},{v:'50+',l:'Proyectos Entregados'},{v:'15+',l:'Países Atendidos'},{v:'100%',l:'Tasa de Satisfacción'}],
-  services:{ey:'Lo que construyo',ti:'Servicios de Desarrollo',su:'Cada proyecto se trata como un producto startup: velocidad, calidad y escalabilidad simultáneamente.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 semanas',ti:'Desarrollo SaaS',de:'Plataformas SaaS completas con auth, pagos Stripe, dashboards y suscripciones. Backend Firebase o PostgreSQL.'},
-    {ic:'◈',tag:'Producto Digital',ti:'Productos Digitales & E-commerce',de:'Tiendas digitales, flipbooks, cursos online y sistemas de membresía con checkout integrado y entrega automática.'},
-    {ic:'◉',tag:'IA · LLM · RAG',ti:'Integración con IA',de:'APIs OpenAI/Anthropic, embeddings, sistemas RAG, agentes multi-tarea y generación de documentos con IA.'},
-    {ic:'◈',tag:'Misión Crítica',ti:'Sistemas Personalizados',de:'Sistemas biométricos, gestión de flotas, control financiero y apps críticas con audit trails completos.'},
-    {ic:'⬡',tag:'Analytics & BI',ti:'Dashboards & Analytics',de:'Visualizaciones D3.js interactivas, informes en tiempo real, dashboards de rendimiento y exportación PDF/Excel.'},
-    {ic:'◉',tag:'55€-160€/mes',ti:'Mantenimiento Continuo',de:'Actualizaciones de seguridad, patches Firebase/Stripe, monitoreo 24/7 y 2h mensuales de ajustes incluidas.'}
-  ]},
-  projects:{ey:'Portafolio',ti:'Proyectos Destacados',su:'Productos reales. Código que funciona en producción.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo para conductores TVDE. Auth telefónica, Stripe Subscriptions, prueba 7 días, dashboard tiempo real, generación PDF y gestión de flota.',link:'https://kmlucropro.com',live:true},{tag:'Producción · Transporte · Web',ti:'Voz do Condutor',de:'Sitio institucional para profesionales del transporte. Diseño responsive, SEO optimizado y contenido dinámico para el mercado TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Seguridad · Biometría',ti:'Sistema Biométrico',de:'Plataforma de reconocimiento de huellas para uso policial. Algoritmo de coincidencia biunívoco y gestión de cadena de custodia digital.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro de mando analítico para el mercado Uber/Bolt. Visualizaciones D3.js, datos en tiempo real y análisis predictivo.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'RRHH · Planificación',ti:'Gestión de Turnos',de:'Sistema de programación con flujos de aprobación, cálculo de horas extra e integración de nómina.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodología de Testing',de:'Framework A/B con análisis de embudo, heatmaps, grabación de sesiones e informes de calidad automáticos.',link:'#',live:false},{tag:'PWA · IA · Salud Mental · FHIR',ti:'Haven',de:'PWA de salud mental con IA Edge on-device (WASM), cifrado BYOC Zero-Knowledge, Clinical Guardrail y conformidad FHIR/RGPD. Mercado suizo.',link:'#',live:false},{tag:'SaaS · Educación · Suiza · IA',ti:'SpriCH',de:'Plataforma SaaS de aprendizaje de idiomas para el mercado suizo. Gamificación adaptativa IA, curriculum LLM y conformidad FADP.',link:'#',live:false}]},
-  process:{ey:'Cómo trabajo',ti:'Proceso de Entrega en 5 Pasos',su:'Sin sorpresas. Sin scope creep. Métricas claras en cada fase.',steps:[
-    {n:'01',ti:'Descubrimiento',du:'2-3 días',de:'Briefing, análisis de viabilidad técnica, definición de alcance MVP, estimación de recursos y firma de contrato.'},
-    {n:'02',ti:'Diseño',du:'3-5 días',de:'Arquitectura de información, wireframes, UI/UX Figma de alta fidelidad, design system y aprobación del cliente.'},
-    {n:'03',ti:'Desarrollo',du:'2-4 sem.',de:'Configuración del repositorio, desarrollo iterativo con CI/CD, integraciones (Firebase, Stripe, IA), tests unitarios y revisión de código.'},
-    {n:'04',ti:'QA & Tests',du:'3-5 días',de:'UAT, pruebas cross-browser, rendimiento Lighthouse, escaneo OWASP, accesibilidad WCAG 2.1.'},
-    {n:'05',ti:'Lanzamiento',du:'Día 0+',de:'Despliegue en producción, configuración DNS/SSL, monitoreo 24h, entrega de documentación y soporte post-lanzamiento.'}
-  ]},
-  pricing:{ey:'Inversión',ti:'Precios Transparentes',su:'Dos modelos de pago. Cero costes ocultos.',t50:'50% + 50%',thr:'Por Hora',perH:'/h',pop:'Más Popular',maint:'Mantenimiento Mensual: 55€–160€/mes · Actualizaciones Firebase · Patches de seguridad · 2h ajustes',tiers:[
-    {name:'Starter',pF:'850€–1.850€',pH:'37€–42€',tag:'Webs & Productos Digitales',feats:['Web corporativa o producto digital','Diseño responsive (Mobile-First)','Integración de pagos básica','SEO On-Page','Formulario de contacto','1 ronda de revisiones','Soporte 15 días post-entrega'],cta:'Iniciar Proyecto'},
-    {name:'Pro',pF:'3.200€–5.800€',pH:'42€–48€',tag:'SaaS & Sistemas',popular:true,feats:['MVP SaaS completo (2-4 semanas)','Firebase Auth + Stripe + Functions','Dashboard en tiempo real','Integración IA (OpenAI/Claude)','Panel de administración','Tests automatizados (CI/CD)','2 rondas de revisiones','Soporte 30 días post-entrega'],cta:'Lanzar MVP'},
-    {name:'Enterprise',pF:'5.300€–8.500€+',pH:'48€+',tag:'Ecosistemas Complejos',feats:['Ecosistema digital completo','Arquitectura multi-plataforma','Sistemas críticos & biometría','Integraciones APIs externas','Documentación técnica completa','Formación del equipo interno','Retainer 3 meses incluido','SLA de uptime definido'],cta:'Contactar Directo'}
-  ]},
-  contact:{ey:'Trabajemos juntos',ti:'Iniciar Proyecto',su:'Describe tu proyecto. Eduardo Monteiro responde en menos de 24 horas.',soc:'O contacte directamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','Por definir'],types:['SaaS / MVP','Producto Digital / E-commerce','Sistema Personalizado','IA / Analytics','Mantenimiento','Otro'],send:'Enviar Mensaje',ok:'✓ Mensaje enviado. Eduardo responderá en menos de 24 horas.'},
-  footer:{tl:'Construyendo el futuro, una línea de código a la vez.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Inicio','Servicios','Proyectos','Precios','Contrato']},
-  cookie:{text:'Este sitio usa cookies de análisis. Al continuar, acepta nuestra',link:'Política de Privacidad',accept:'Aceptar',decline:'Rechazar'},scope:{typeLabel:'Tipo de Proyecto',featLabel:'Funcionalidades Necesarias',budgetLabel:'Presupuesto Estimado',timeLabel:'Plazo Deseado',emailLabel:'Email de Contacto *',notesLabel:'Notas Adicionales (opcional)',submit:'Enviar Propuesta',title:'Constructor de Presupuesto B2B',subtitle:'Selecciona tus opciones y recibe una propuesta personalizada en <24h.',cardEy:'Constructor de Presupuesto',cardTitle:'Inicia tu proyecto en 2 minutos',cardDesc:'Selecciona funcionalidades, define presupuesto y envía. Respuesta en <24h.',feat1:'Tipo de proyecto + funcionalidades',feat2:'Presupuesto y plazo deseado',feat3:'Envío directo a Eduardo Monteiro',openBtn:'⊕ Construir Presupuesto Interactivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 semanas)','1 Mes','2–3 Meses','Flexible'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'Integración IA / LLMs',security:'Seguridad & GDPR/FADP',other:'Otro'},featuresCheckboxes:['Multi-idioma (i18n)','Autenticación de Usuarios','Pagos / Stripe','Panel de Analíticas','Chatbots / RAG con IA','Funcionalidades Offline (PWA)'],placeholders:{email:'tu@email.com',notes:'Contexto adicional, URL de referencia, stack preferido...'}}
-},
-'it-IT':{
-  nav:{home:'Home',services:'Servizi',projects:'Progetti',process:'Processo',pricing:'Prezzi',contract:'Contratto',contact:'Contatto',legal:'Legale'},
-  hero:{eyebrow:'Sviluppatore Full-Stack con IA',t1:'MVP in',t2:'Settimane.',t3:'Non in Mesi.',sub:'Costruisco prodotti digitali scalabili con IA — dal concetto al lancio, con codice pulito e architettura pronta a crescere.',cta1:'Vedi Portfolio',cta2:'Preventivo Gratuito',typing:['Piattaforme SaaS','Sistemi Biometrici','Integrazioni IA','Dashboard Analitici','Sistemi di Pagamento']},
-  metrics:[{v:'10+',l:'Anni sul Mercato'},{v:'50+',l:'Progetti Consegnati'},{v:'15+',l:'Paesi Serviti'},{v:'100%',l:'Tasso di Soddisfazione'}],
-  services:{ey:'Cosa costruisco',ti:'Servizi di Sviluppo',su:'Ogni progetto viene trattato come un prodotto startup: velocità, qualità e scalabilità simultaneamente.',items:[
-    {ic:'⬡',tag:'MVP · 3-5 settimane',ti:'Sviluppo SaaS',de:'Piattaforme SaaS complete con auth, pagamenti Stripe, dashboard e abbonamenti. Backend Firebase o PostgreSQL.'},
-    {ic:'◈',tag:'Prodotto Digitale',ti:'Prodotti Digitali & E-commerce',de:'Negozi digitali, flipbook, corsi online e sistemi di membership con checkout integrato e consegna automatica.'},
-    {ic:'◉',tag:'IA · LLM · RAG',ti:'Integrazione IA',de:'API OpenAI/Anthropic, embeddings, sistemi RAG, agenti multi-task e generazione documenti con IA.'},
-    {ic:'◈',tag:'Mission Critical',ti:'Sistemi Personalizzati',de:'Sistemi biometrici, gestione flotte, controllo finanziario e app critiche con audit trail completi.'},
-    {ic:'⬡',tag:'Analytics & BI',ti:'Dashboard & Analytics',de:"Visualizzazioni D3.js interattive, report in tempo reale, dashboard di performance ed esportazione PDF/Excel."},
-    {ic:'◉',tag:'50€-150€/mese',ti:'Manutenzione Continua',de:'Aggiornamenti di sicurezza, patch Firebase/Stripe, monitoring 24/7 e 2h mensili di piccole modifiche incluse.'}
-  ]},
-  projects:{ey:'Portfolio',ti:'Progetti in Evidenza',su:'Prodotti reali. Codice che gira in produzione.',items:[{tag:'SaaS · TVDE · IA',ti:'kmlucropro.com',de:'Ecosistema SaaS completo per autisti TVDE. Auth telefonica, Stripe Subscriptions, prova 7 giorni, dashboard in tempo reale, generazione PDF e gestione flotta.',link:'https://kmlucropro.com',live:true},{tag:'Produzione · Trasporto · Web',ti:'Voz do Condutor',de:'Sito istituzionale per professionisti del trasporto. Design responsive, SEO ottimizzato e contenuto dinamico per il mercato TVDE.',link:'https://vozdocondutor.com',live:true},{tag:'Sicurezza · Biometria',ti:'Sistema Biometrico',de:'Piattaforma di riconoscimento impronte per le forze dell\'ordine. Algoritmo di matching biunivoco e gestione della catena di custodia digitale.',link:'#',live:false},{tag:'Analytics · TVDE',ti:'UNIFED PROBATUM',de:'Centro di comando analitico per il mercato Uber/Bolt. Visualizzazioni D3.js, dati in tempo reale e analisi predittiva.',link:'https://vdcpt.github.io/UNIFED_PROBATUM/',live:true},{tag:'HR · Pianificazione',ti:'Gestione dei Turni',de:'Sistema di pianificazione con workflow di approvazione, calcolo straordinari e integrazione buste paga.',link:'#',live:false},{tag:'QA · Testing',ti:'Metodologia di Testing',de:'Framework A/B con analisi funnel, heatmap, registrazione sessioni e report di qualità automatizzati.',link:'#',live:false},{tag:'PWA · IA · Salute Mentale · FHIR',ti:'Haven',de:'PWA per la salute mentale con Edge AI on-device (WASM), crittografia BYOC Zero-Knowledge, Clinical Guardrail e conformità FHIR/LPD/GDPR. Mercato svizzero.',link:'#',live:false},{tag:'SaaS · Istruzione · Svizzera · IA',ti:'SpriCH',de:'Piattaforma SaaS di apprendimento linguistico per il mercato svizzero. Gamificazione adattiva IA, curriculum LLM e conformità LPD per minori.',link:'#',live:false}]},
-  process:{ey:'Come lavoro',ti:'Processo di Consegna in 5 Fasi',su:'Nessuna sorpresa. Nessuno scope creep. Metriche chiare in ogni fase.',steps:[
-    {n:'01',ti:'Scoperta',du:'2-3 giorni',de:'Briefing, analisi di fattibilità tecnica, definizione scope MVP, stima delle risorse e firma del contratto.'},
-    {n:'02',ti:'Design',du:'3-5 giorni',de:'Architettura informativa, wireframe, UI/UX Figma alta fedeltà, design system e approvazione cliente.'},
-    {n:'03',ti:'Sviluppo',du:'2-4 sett.',de:'Setup repository, sviluppo iterativo con CI/CD, integrazioni (Firebase, Stripe, IA), test unitari e code review.'},
-    {n:'04',ti:'QA & Test',du:'3-5 giorni',de:'UAT, test cross-browser, performance Lighthouse, scansione OWASP, accessibilità WCAG 2.1.'},
-    {n:'05',ti:'Lancio',du:'Giorno 0+',de:'Deploy in produzione, configurazione DNS/SSL, monitoring 24h, consegna documentazione e supporto post-lancio.'}
-  ]},
-  pricing:{ey:'Investimento',ti:'Prezzi Trasparenti',su:'Due modelli di pagamento. Zero costi nascosti.',t50:'50% + 50%',thr:'Orario',perH:'/ora',pop:'Più Popolare',maint:'Manutenzione Mensile: 50€–150€/mese · Aggiornamenti Firebase · Patch sicurezza · 2h modifiche',tiers:[
-    {name:'Starter',pF:'850€–1.800€',pH:'36€–42€',tag:'Siti & Prodotti Digitali',feats:['Sito aziendale o prodotto digitale','Design responsive (Mobile-First)','Integrazione pagamenti base','SEO On-Page','Modulo di contatto','1 round di revisioni','Supporto 15 giorni post-consegna'],cta:'Inizia Progetto'},
-    {name:'Pro',pF:'3.100€–5.600€',pH:'42€–47€',tag:'SaaS & Sistemi',popular:true,feats:['MVP SaaS completo (2-4 settimane)','Firebase Auth + Stripe + Functions','Dashboard in tempo reale','Integrazione IA (OpenAI/Claude)','Pannello amministrativo','Test automatizzati (CI/CD)','2 round di revisioni','Supporto 30 giorni post-consegna'],cta:'Lancia MVP'},
-    {name:'Enterprise',pF:'5.200€–8.200€+',pH:'47€+',tag:'Ecosistemi Complessi',feats:['Ecosistema digitale completo','Architettura multi-piattaforma','Sistemi critici & biometria','Integrazioni API esterne','Documentazione tecnica completa','Formazione team interno','Retainer 3 mesi incluso','SLA uptime definito'],cta:'Contatto Diretto'}
-  ]},
-  contact:{ey:'Lavoriamo insieme',ti:'Avviare un Progetto',su:"Descrivi il tuo progetto. Eduardo Monteiro risponde entro 24 ore.",soc:'O contatta direttamente:',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+','Da definire'],types:['SaaS / MVP','Prodotto Digitale / E-commerce','Sistema Personalizzato','IA / Analytics','Manutenzione','Altro'],send:'Invia Messaggio',ok:'✓ Messaggio inviato. Eduardo risponderà entro 24 ore.'},
-  footer:{tl:'Costruire il futuro, una riga di codice alla volta.',leg:'Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev · © 2026',links:['Home','Servizi','Progetti','Prezzi','Contratto']},
-  cookie:{text:'Questo sito usa cookie analitici. Continuando, accetti la nostra',link:'Informativa sulla Privacy',accept:'Accetta',decline:'Rifiuta'},scope:{typeLabel:'Tipo di Progetto',featLabel:'Funzionalità Richieste',budgetLabel:'Budget Stimato',timeLabel:'Tempistica Desiderata',emailLabel:'Email di Contatto *',notesLabel:'Note Aggiuntive (opzionale)',submit:'Invia Proposta',title:'Configuratore di Progetto B2B',subtitle:'Seleziona le opzioni e ricevi una proposta personalizzata in <24h.',cardEy:'Configuratore di Progetto',cardTitle:'Avvia il tuo progetto in 2 minuti',cardDesc:'Seleziona funzionalità, imposta il budget e invia. Risposta in <24h.',feat1:'Tipo di progetto + funzionalità',feat2:'Budget e tempistica desiderata',feat3:'Invio diretto a Eduardo Monteiro',openBtn:'⊕ Configura Budget Interattivo',budgets:['< 1.000€','1.000€–3.000€','3.000€–6.000€','6.000€+'],timelines:['Urgente (< 2 settimane)','1 Mese','2–3 Mesi','Flessibile'],chips:{saas:'SaaS / MVP',pwa:'PWA Mobile',ai:'Integrazione IA / LLM',security:'Sicurezza & GDPR/LPD',other:'Altro'},featuresCheckboxes:['Multilingua (i18n)','Autenticazione Utenti','Pagamenti / Stripe','Dashboard Analitiche','Chatbot / RAG con IA','Funzionalità Offline (PWA)'],placeholders:{email:'la.tua@email.com',notes:'Contesto aggiuntivo, URL di riferimento, stack preferito...'}}
-}
-}
-window.T=T;;
-
-/* ── STATE ── */
-const _LOCALES=['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];const _LANG_MAP={'pt':'pt-PT','en':'en-US','fr':'fr-CH','de':'de-CH','es':'es-ES','it':'it-IT'};const _stored=localStorage.getItem('vc-locale');const _navLangs=(navigator.languages&&navigator.languages.length)  ?navigator.languages:[navigator.language||'de'];const _navMatch=(function(){  for(var i=0;i<_navLangs.length;i++){    var code=(_navLangs[i]||'').toLowerCase().split('-')[0];    if(_LANG_MAP[code])return _LANG_MAP[code];  } return null;})();let locale=_stored||_navMatch||'de-CH';
-let pricingModel='50/50';
-
-/* ── NEURAL CANVAS ── */
-function initCanvas(){
-  const c=document.getElementById('neural-canvas');
-  if(!c)return;
-  const ctx=c.getContext('2d');
-  let W,H,nodes=[],mouse={x:-999,y:-999};
-  const N=65,MD=145,MM=190;
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
-  function mkNodes(){nodes=[];for(let i=0;i<N;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1,col:Math.random()>.6?'#00F5A0':'#7B5CF0',p:Math.random()*Math.PI*2})}
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    nodes.forEach(n=>{
-      n.x+=n.vx;n.y+=n.vy;n.p+=.02;
-      if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;
-      const dx=mouse.x-n.x,dy=mouse.y-n.y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<MM){n.vx+=dx*.00015;n.vy+=dy*.00015}
-      n.vx*=.998;n.vy*=.998;
-    });
-    for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){
-      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<MD){const a=(1-d/MD)*.35,g=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);g.addColorStop(0,`rgba(123,92,240,${a})`);g.addColorStop(1,`rgba(0,245,160,${a})`);ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=g;ctx.lineWidth=.8;ctx.stroke()}
-    }}
-    nodes.forEach(n=>{const p=Math.sin(n.p)*.3+.7;ctx.beginPath();ctx.arc(n.x,n.y,n.r*p,0,Math.PI*2);ctx.fillStyle=n.col;ctx.globalAlpha=p*.85;ctx.fill();ctx.globalAlpha=1});
-    requestAnimationFrame(draw);
-  }
-  resize();mkNodes();draw();
-  window.addEventListener('resize',()=>{resize();mkNodes()});
-  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
-  c.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999});
-}
-
-/* ── TYPEWRITER ── */
-function initTypewriter(){
-  const el=document.getElementById('typewriter');
-  if(!el)return;
-  let idx=0,ci=0,del=false;
-  function tick(){
-    const words=T[locale].hero.typing;
-    const w=words[idx];
-    if(!del){el.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(tick,2000);return}}
-    else{el.textContent=w.slice(0,--ci);if(ci===0){del=false;idx=(idx+1)%words.length}}
-    setTimeout(tick,del?60:100);
-  }
-  tick();
-}
-
-/* ── HELPERS ── */
-function si(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
-function sp(id,v){const e=document.getElementById(id);if(e)e.placeholder=v}
-
-/* ── APPLY TRANSLATIONS ── */
-function applyT(loc){
-  const t=T[loc];if(!t)return;
-  document.documentElement.lang=loc;
-  document.title='Eduardo Monteiro — '+t.hero.eyebrow;
-  // Nav
-  Object.keys(t.nav).forEach(k=>{const e=document.querySelector(`[data-nav="${k}"]`);if(e)e.textContent=t.nav[k]});
-  // Hero
-  si('hero-eyebrow',t.hero.eyebrow);si('hero-title1',t.hero.t1);si('hero-title2',t.hero.t2);si('hero-title3',t.hero.t3);si('hero-subtitle',t.hero.sub);si('hero-cta1',t.hero.cta1);si('hero-cta2',t.hero.cta2);
-  // Metrics
-  t.metrics.forEach((m,i)=>{si(`metric-value-${i}`,m.v);si(`metric-label-${i}`,m.l)});
-  // Services
-  si('services-eyebrow',t.services.ey);si('services-title',t.services.ti);si('services-subtitle',t.services.su);
-  t.services.items.forEach((s,i)=>{si(`svc-icon-${i}`,s.ic);si(`svc-tag-${i}`,s.tag);si(`svc-title-${i}`,s.ti);si(`svc-desc-${i}`,s.de)});
-  // Projects
-  si('projects-eyebrow',t.projects.ey);si('projects-title',t.projects.ti);si('projects-subtitle',t.projects.su);
-  t.projects.items.forEach((p,i)=>{si(`proj-tag-${i}`,p.tag);si(`proj-title-${i}`,p.ti);si(`proj-desc-${i}`,p.de);const lk=document.querySelector(`[data-proj-link="${i}"]`);if(lk){lk.href=p.link;lk.style.display=p.live?'inline-flex':'none'}});
-  // Process
-  si('process-eyebrow',t.process.ey);si('process-title',t.process.ti);si('process-subtitle',t.process.su);
-  t.process.steps.forEach((s,i)=>{si(`step-n-${i}`,s.n);si(`step-title-${i}`,s.ti);si(`step-dur-${i}`,s.du);si(`step-desc-${i}`,s.de)});
-  // Pricing
-  si('pricing-eyebrow',t.pricing.ey);si('pricing-title',t.pricing.ti);si('pricing-subtitle',t.pricing.su);
-  si('toggle-50',t.pricing.t50);si('toggle-hr',t.pricing.thr);si('maintenance-text',t.pricing.maint);
-  t.pricing.tiers.forEach((tr,i)=>{
-    si(`tier-name-${i}`,tr.name);si(`tier-tag-${i}`,tr.tag);si(`tier-cta-${i}`,tr.cta);
-    updatePrice(i,tr,pricingModel,t.pricing);
-    const b=document.querySelector(`[data-tier-popular="${i}"]`);if(b)b.style.display=tr.popular?'block':'none';
-    const f=document.querySelector(`[data-tier-features="${i}"]`);if(f)f.innerHTML=tr.feats.map(x=>`<li>${x}</li>`).join('');
-  });
-  // Contact
-  si('contact-eyebrow',t.contact.ey);si('contact-title',t.contact.ti);si('contact-subtitle',t.contact.su);si('contact-social',t.contact.soc);si('f-send',t.contact.send);
-  sp('f-name',locale==='de-CH'?'Vollständiger Name':locale==='fr-CH'?'Nom Complet':locale==='es-ES'?'Nombre Completo':locale==='it-IT'?'Nome Completo':'Full Name');
-  sp('f-email',locale==='de-CH'?'Professionelle E-Mail':locale==='fr-CH'?'Email Professionnel':locale==='es-ES'?'Email Profesional':locale==='it-IT'?'Email Professionale':'Professional Email');
-  sp('f-message',t.contact.types?t.contact.types[0]+'..':'Describe your project...');
-  const bs=document.getElementById('f-budget');if(bs)bs.innerHTML=`<option value="">${locale==='pt-PT'?'Orçamento Estimado':locale==='en-US'?'Estimated Budget':locale==='fr-CH'?'Budget Estimé':locale==='de-CH'?'Geschätztes Budget':locale==='es-ES'?'Presupuesto Estimado':'Budget Stimato'}</option>`+t.contact.budgets.map(b=>`<option>${b}</option>`).join('');
-  const ts=document.getElementById('f-type');if(ts)ts.innerHTML=`<option value="">${locale==='pt-PT'?'Tipo de Projecto':locale==='en-US'?'Project Type':locale==='fr-CH'?'Type de Projet':locale==='de-CH'?'Projekttyp':locale==='es-ES'?'Tipo de Proyecto':'Tipo di Progetto'}</option>`+t.contact.types.map(tp=>`<option>${tp}</option>`).join('');
-  // Footer
-  si('footer-tagline',t.footer.tl);si('footer-legal',t.footer.leg);
-  document.querySelectorAll('[data-footer-link]').forEach((el,i)=>{if(t.footer.links[i])el.textContent=t.footer.links[i]});
-  // Cookie
-  si('cookie-text',t.cookie.text);si('cookie-link',t.cookie.link);si('cookie-accept',t.cookie.accept);si('cookie-decline',t.cookie.decline);
-  // Lang buttons
-  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===loc));
-  if(typeof applyScopeI18n==='function')applyScopeI18n(t);
-  _taglineIdx=0;
-}
-
-function updatePrice(i,tr,model,pr){
-  const pe=document.querySelector(`[data-tier-price="${i}"]`);
-  const ue=document.querySelector(`[data-tier-unit="${i}"]`);
-  if(!pe)return;
-  pe.textContent=model==='50/50'?tr.pF:tr.pH;
-  if(ue)ue.textContent=model==='50/50'?(locale==='pt-PT'?'preço fixo':locale==='en-US'?'fixed price':locale==='fr-CH'?'prix fixe':locale==='de-CH'?'Festpreis':locale==='es-ES'?'precio fijo':'prezzo fisso'):pr.perH;
-}
-
-/* ── SCROLL REVEAL ── */
-function initReveal(){
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
-}
-
-/* ── COUNTER ANIMATION ── */
-function initCounters(){
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,end=el.dataset.counter,isP=end.includes('%'),isPlus=end.includes('+'),num=parseInt(end);let s=0;const step=Math.ceil(num/40);const t=setInterval(()=>{s+=step;if(s>=num){s=num;clearInterval(t)}el.textContent=s+(isPlus?'+':'')+(isP?'%':'')},40);obs.unobserve(el)})},{threshold:.5});
-  document.querySelectorAll('[data-counter]').forEach(el=>obs.observe(el));
-}
-
-/* ── PRICING TOGGLE ── */
-function initPricing(){
-  document.querySelectorAll('.pricing-toggle-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      pricingModel=btn.dataset.model;
-      document.querySelectorAll('.pricing-toggle-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const t=T[locale];
-      t.pricing.tiers.forEach((tr,i)=>updatePrice(i,tr,pricingModel,t.pricing));
-    });
-  });
-}
-
-/* ── SMOOTH SCROLL ── */
-function initScroll(){
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{const tgt=document.querySelector(a.getAttribute('href'));if(tgt){e.preventDefault();tgt.scrollIntoView({behavior:'smooth',block:'start'})}});
-  });
-}
-
-/* ── MOBILE NAV ── */
-function initNav(){
-  const b=document.getElementById('burger'),n=document.getElementById('nav-menu');
-  if(!b||!n)return;
-  b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-  n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
-}
-
-/* ── CONTACT FORM ── */
-function initForm(){
-  /* Scope Builder modal handles contact — Legacy form removed */
-}
-
-/* ── COOKIE BANNER ── */
-function initCookie(){
-  if(localStorage.getItem('vc-cookie'))return;
-  const b=document.getElementById('cookie-banner');if(!b)return;
-  b.style.display='flex';
-  document.getElementById('cookie-accept').addEventListener('click',()=>{localStorage.setItem('vc-cookie','1');b.style.display='none'});
-  document.getElementById('cookie-decline').addEventListener('click',()=>{localStorage.setItem('vc-cookie','0');b.style.display='none'});
-}
-
-/* ── CARD TILT ── */
-function initTilt(){
-  document.querySelectorAll('.service-card,.project-card,.pricing-card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateZ(6px)`});
-    card.addEventListener('mouseleave',()=>{card.style.transform=''});
-  });
-}
-
-/* ── LANG SWITCHER ── */
-function initLang(){
-  document.querySelectorAll('[data-lang]').forEach(btn=>{
-    btn.addEventListener('click',()=>{locale=btn.dataset.lang;localStorage.setItem('vc-locale',locale);applyT(locale)});
-  });
-}
-
-/* ── STICKY HEADER ── */
-function initHeader(){
-  const h=document.getElementById('header');
-  window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>50));
-}
-
-/* ── BOOT ── */
-document.addEventListener('DOMContentLoaded',()=>{
-  applyT(locale);
-  initCanvas();
-  initTypewriter();
-  initReveal();
-  initCounters();
-  initPricing();
-  initScroll();
-  initNav();
-  initForm();
-  initCookie();
-  initTilt();
-  initLang();
-  initHeader();
-  if(typeof initTaglineRotation==='function')initTaglineRotation();
-  if(typeof initScopeEvents==='function')initScopeEvents();
-});
-
-/* ── PWA SERVICE WORKER + A2HS ── */
+/* ── A2HS PWA INSTALL ── */
 (function(){
-  /* — Service Worker — */
-  if('serviceWorker' in navigator){
-    window.addEventListener('load',function(){
-      navigator.serviceWorker.register('./sw.js',{scope:'./'})
-        .then(function(r){console.log('[SW] Scope:',r.scope);})
-        .catch(function(e){console.warn('[SW] Failed:',e);});
-    });
-  }
-
-  /* — A2HS state — */
-  window.deferredPrompt=null;
-  var modal   = document.getElementById('a2hs-modal');
+  var modal = document.getElementById('a2hs-modal');
   var installBtn = document.getElementById('a2hs-install');
   var dismissBtn = document.getElementById('a2hs-dismiss');
-  var STORAGE_KEY = 'a2hs-dismissed';
-
-  function showModal(){
-    if(!modal||localStorage.getItem(STORAGE_KEY)) return;
-    setTimeout(function(){ modal.classList.add('a2hs-visible'); }, 3500);
-  }
-  function hideModal(){
-    if(modal) modal.classList.remove('a2hs-visible');
-  }
-
-  /* — Chrome/Android: beforeinstallprompt — */
-  /* — Prevent re-show after successful install — */
-  window.addEventListener('appinstalled',function(){
-    hideModal();
-    localStorage.setItem(STORAGE_KEY,'1');
-    window.deferredPrompt=null;
-    console.log('[A2HS] App installed.');
-  });
+  if(!modal) return;
 
   window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
-    window.deferredPrompt = e;
-    showModal();
+    deferredInstallPrompt = e;
+    if(!localStorage.getItem('vc-a2hs-dismissed')){
+      setTimeout(function(){ modal.classList.add('a2hs-visible'); }, 4000);
+    }
   });
 
-  if(installBtn){
-    installBtn.addEventListener('click', async function(){
-      if(!window.deferredPrompt){ hideModal(); return; }
-      hideModal();
-      await window.deferredPrompt.prompt();
-      var choice = await window.deferredPrompt.userChoice;
-      console.log('[A2HS] Outcome:', choice.outcome);
-      window.deferredPrompt = null;
-      localStorage.setItem(STORAGE_KEY,'1');
-    });
-  }
+  if(installBtn) installBtn.addEventListener('click', function(){
+    modal.classList.remove('a2hs-visible');
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function(r){
+        if(r.outcome === 'accepted') localStorage.setItem('vc-a2hs-dismissed','1');
+        deferredInstallPrompt = null;
+      });
+    }
+  });
 
-  if(dismissBtn){
-    dismissBtn.addEventListener('click', function(){
-      hideModal();
-      localStorage.setItem(STORAGE_KEY,'1');
-    });
-  }
-
-  /* — iOS Safari fallback (no beforeinstallprompt) — */
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  var isStandalone = ('standalone' in navigator && navigator.standalone)
-                  || window.matchMedia('(display-mode:standalone)').matches;
-  if(isIOS && !isStandalone){
-    var titleEl = document.getElementById('a2hs-title');
-    var descEl  = document.getElementById('a2hs-desc');
-    var iBtn    = document.getElementById('a2hs-install');
-    if(titleEl) titleEl.textContent = 'Adicionar ao Ecrã Inicial';
-    if(descEl)  descEl.textContent  = 'No Safari: toque em ⎋ Partilhar → Adicionar ao Ecrã Principal.';
-    if(iBtn)    iBtn.style.display  = 'none';
-    showModal();
-  }
+  if(dismissBtn) dismissBtn.addEventListener('click', function(){
+    modal.classList.remove('a2hs-visible');
+    localStorage.setItem('vc-a2hs-dismissed','1');
+  });
 })();
 
+/* ── FOOTER TAGLINE ROTATION ── */
+(function(){
+  var el = document.getElementById('footer-tagline');
+  if(!el) return;
+  var lines = [
+    'Vibe Coder · Eduardo Monteiro · Dev Full-Stack com IA',
+    'monteiro.is-a.dev · Swiss B2B Contractor',
+    'FADP · RGPD · GDPR Compliant',
+    'MVPs em 3-5 Semanas · Zero Burocracia'
+  ];
+  var idx = 0;
+  setInterval(function(){
+    var span = el.querySelector('span');
+    if(!span) return;
+    span.classList.add('tl-out');
+    setTimeout(function(){
+      idx = (idx + 1) % lines.length;
+      span.textContent = lines[idx];
+      span.classList.remove('tl-out');
+      span.classList.add('tl-in');
+      setTimeout(function(){ span.classList.remove('tl-in'); }, 50);
+    }, 600);
+  }, 4000);
+})();
+
+/* ── INIT ── */
+applyLocale(currentLocale);
+
+/* ── SERVICE WORKER REGISTRATION (PWA) ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .catch(function() { /* SW registration failed silently in dev */ });
+  });
+}
 </script>
 </body>
 </html>

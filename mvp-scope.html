@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline'; connect-src https://api.web3forms.com; frame-ancestors 'none'; form-action https://api.web3forms.com; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="description" content="Gerador de Escopo MVP — Eduardo Monteiro Dev. Descreva a sua ideia e receba uma estimativa personalizada em menos de 24h."/>
+<meta property="og:title" content="Gerador de Escopo MVP | Eduardo Monteiro Dev"/>
+<meta property="og:description" content="Responda a 5 perguntas sobre o seu produto e receba um escopo inicial gratuito em menos de 24h."/>
+<title>Gerador de Escopo MVP — Eduardo Monteiro Dev</title>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;min-height:100vh;overflow-x:hidden}
+a{color:var(--purple);text-decoration:none}
+
+/* ── HEADER ── */
+.mvp-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:14px 0;position:sticky;top:0;z-index:50}
+.mvp-header-inner{max-width:780px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mvp-logo{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
+.mvp-back{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;transition:all .2s}
+.mvp-back:hover{color:var(--purple);border-color:var(--purple)}
+
+/* ── HERO ── */
+.mvp-hero{max-width:780px;margin:0 auto;padding:48px 24px 32px}
+.mvp-eyebrow{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px}
+.mvp-title{font-family:monospace;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;line-height:1.1;margin-bottom:16px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mvp-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:560px;margin-bottom:32px}
+
+/* ── PROGRESS ── */
+.progress-bar{max-width:780px;margin:0 auto 0;padding:0 24px}
+.progress-track{height:3px;background:var(--faint);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;background:var(--grad);border-radius:999px;transition:width .4s ease}
+.progress-label{font-family:monospace;font-size:.68rem;color:var(--muted);letter-spacing:.08em;display:flex;justify-content:space-between}
+
+/* ── WIZARD ── */
+.wizard{max-width:780px;margin:0 auto;padding:0 24px 80px}
+.step{display:none;animation:fadeIn .3s ease}
+.step.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px}
+.step-n{font-family:monospace;font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px}
+.step-q{font-family:monospace;font-size:1.05rem;color:var(--text);font-weight:600;margin-bottom:6px}
+.step-hint{font-size:.82rem;color:var(--muted);margin-bottom:20px}
+
+/* ── CHIPS ── */
+.chips-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{padding:7px 16px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.78rem;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.chip:hover{border-color:var(--purple);color:var(--purple)}
+.chip.selected{border-color:var(--teal);color:var(--teal);background:rgba(0,245,160,.07)}
+.chip.single.selected{border-color:var(--purple);color:var(--purple);background:rgba(123,92,240,.08)}
+
+/* ── TEXTAREA / INPUT ── */
+.scope-input{width:100%;background:var(--deep);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-family:Georgia,serif;font-size:.9rem;line-height:1.65;resize:vertical;min-height:100px;transition:border .2s;outline:none}
+.scope-input:focus{border-color:var(--purple)}
+.scope-input::placeholder{color:var(--muted)}
+.char-count{font-family:monospace;font-size:.65rem;color:var(--faint);text-align:right;margin-top:4px}
+
+/* ── RADIO GRID ── */
+.radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.radio-card{padding:12px 16px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:2px}
+.radio-card:hover{border-color:var(--purple)}
+.radio-card.selected{border-color:var(--teal);background:rgba(0,245,160,.06)}
+.radio-card input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.radio-title{font-family:monospace;font-size:.8rem;color:var(--text);font-weight:600}
+.radio-desc{font-size:.72rem;color:var(--muted)}
+
+/* ── NAVIGATION ── */
+.step-nav{display:flex;gap:10px;margin-top:20px;justify-content:space-between;align-items:center}
+.btn-prev{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--muted);font-family:monospace;font-size:.78rem;cursor:pointer;transition:all .2s}
+.btn-prev:hover{border-color:var(--purple);color:var(--purple)}
+.btn-next{padding:10px 28px;border-radius:8px;border:none;background:var(--grad);color:#000;font-family:monospace;font-size:.82rem;font-weight:700;cursor:pointer;transition:opacity .2s;letter-spacing:.04em}
+.btn-next:hover{opacity:.85}
+.btn-next:disabled{opacity:.4;cursor:not-allowed}
+
+/* ── EMAIL STEP ── */
+.email-wrap{display:flex;flex-direction:column;gap:10px}
+.scope-label{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;display:block}
+.email-input{width:100%;background:var(--deep);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:monospace;font-size:.9rem;transition:border .2s;outline:none}
+.email-input:focus{border-color:var(--purple)}
+
+/* ── RESULT / CTA ── */
+.result-card{background:var(--card);border:2px solid var(--teal);border-radius:14px;padding:32px 28px;text-align:center;animation:fadeIn .5s ease}
+.result-icon{font-size:2.5rem;margin-bottom:16px}
+.result-title{font-family:monospace;font-size:1.3rem;font-weight:700;color:var(--teal);margin-bottom:12px;line-height:1.2}
+.result-scope{background:var(--deep);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;text-align:left}
+.result-scope-item{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.result-scope-item:last-child{margin-bottom:0}
+.result-scope-item span:first-child{color:var(--teal);flex-shrink:0;font-family:monospace}
+.result-estimate{font-family:monospace;font-size:.95rem;color:var(--text);margin:16px 0 8px}
+.result-estimate strong{color:var(--purple)}
+.result-cta{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:14px 32px;border-radius:10px;background:var(--grad);color:#000;font-family:monospace;font-size:.9rem;font-weight:700;text-decoration:none;transition:opacity .2s;letter-spacing:.04em}
+.result-cta:hover{opacity:.85;color:#000}
+.result-secondary{display:block;margin-top:14px;font-family:monospace;font-size:.72rem;color:var(--muted)}
+.result-note{font-size:.78rem;color:var(--faint);margin-top:8px}
+
+/* ── TRUST BAR ── */
+.trust-bar{max-width:780px;margin:0 auto;padding:0 24px 48px;display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.trust-item{display:flex;align-items:center;gap:6px;font-family:monospace;font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.trust-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+@media(max-width:560px){
+  .mvp-hero{padding:32px 16px 24px}
+  .wizard{padding:0 16px 60px}
+  .progress-bar{padding:0 16px}
+  .step-card{padding:20px 16px}
+  .radio-grid{grid-template-columns:1fr}
+  .result-card{padding:22px 16px}
+}
+</style>
+</head>
+<body>
+
+<header class="mvp-header">
+  <div class="mvp-header-inner">
+    <span class="mvp-logo">◈ MVP Scope Generator</span>
+    <a href="./index.html" class="mvp-back">← Portfolio</a>
+  </div>
+</header>
+
+<div class="mvp-hero">
+  <p class="mvp-eyebrow">Ferramenta gratuita · Eduardo Monteiro Dev</p>
+  <h1 class="mvp-title">Gerador de Escopo MVP</h1>
+  <p class="mvp-sub">Responda a 5 perguntas sobre a sua ideia de produto. Receberá uma análise de escopo inicial e uma estimativa de tempo e custo em menos de 24 horas.</p>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:20%"></div></div>
+  <div class="progress-label"><span id="prog-step">Passo 1 de 5</span><span id="prog-pct">20%</span></div>
+</div>
+
+<div class="wizard">
+
+  <!-- ── STEP 1: Idea ── -->
+  <div class="step active" id="step-1">
+    <div class="step-card">
+      <p class="step-n">Passo 1 · Ideia</p>
+      <h2 class="step-q">Descreva a sua ideia em 2–3 frases.</h2>
+      <p class="step-hint">Foque no problema que resolve e para quem. Não precisa ser técnico.</p>
+      <textarea class="scope-input" id="s1-idea" maxlength="600" placeholder="Ex: Quero uma plataforma onde restaurantes possam gerir reservas e o cliente possa ver disponibilidade em tempo real. O problema atual é que tudo é feito por telefone..."></textarea>
+      <p class="char-count"><span id="s1-count">0</span>/600</p>
+      <div class="step-nav">
+        <span></span>
+        <button class="btn-next" id="btn-1" onclick="goStep(2)" disabled>Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Project Type ── -->
+  <div class="step" id="step-2">
+    <div class="step-card">
+      <p class="step-n">Passo 2 · Tipo de Produto</p>
+      <h2 class="step-q">Qual o tipo de produto que pretende construir?</h2>
+      <p class="step-hint">Selecione o(s) que melhor descrevem o seu produto. Pode escolher vários.</p>
+      <div class="chips-wrap" id="s2-chips">
+        <button class="chip" data-val="saas" onclick="toggleChip(this,'s2')">SaaS / Subscrição</button>
+        <button class="chip" data-val="marketplace" onclick="toggleChip(this,'s2')">Marketplace / Plataforma</button>
+        <button class="chip" data-val="pwa" onclick="toggleChip(this,'s2')">App Mobile (PWA)</button>
+        <button class="chip" data-val="ai-tool" onclick="toggleChip(this,'s2')">Ferramenta IA / LLM</button>
+        <button class="chip" data-val="dashboard" onclick="toggleChip(this,'s2')">Dashboard / Analytics</button>
+        <button class="chip" data-val="ecommerce" onclick="toggleChip(this,'s2')">E-commerce / Pagamentos</button>
+        <button class="chip" data-val="internal" onclick="toggleChip(this,'s2')">Sistema Interno (B2B)</button>
+        <button class="chip" data-val="other" onclick="toggleChip(this,'s2')">Outro</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-prev" onclick="goStep(1)">← Anterior</button>
+        <button class="btn-next" id="btn-2" onclick="goStep(3)" disabled>Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Features ── -->
+  <div class="step" id="step-3">
+    <div class="step-card">
+      <p class="step-n">Passo 3 · Funcionalidades Core</p>
+      <h2 class="step-q">Que funcionalidades são essenciais para o MVP?</h2>
+      <p class="step-hint">Selecione apenas o mínimo necessário para validar o produto. Pode adicionar mais depois.</p>
+      <div class="chips-wrap" id="s3-chips">
+        <button class="chip" data-val="auth" onclick="toggleChip(this,'s3')">Autenticação de Utilizadores</button>
+        <button class="chip" data-val="payments" onclick="toggleChip(this,'s3')">Pagamentos / Stripe</button>
+        <button class="chip" data-val="ai" onclick="toggleChip(this,'s3')">IA / Geração de Conteúdo</button>
+        <button class="chip" data-val="realtime" onclick="toggleChip(this,'s3')">Dados em Tempo Real</button>
+        <button class="chip" data-val="notifications" onclick="toggleChip(this,'s3')">Notificações / Email</button>
+        <button class="chip" data-val="analytics" onclick="toggleChip(this,'s3')">Dashboard Analytics</button>
+        <button class="chip" data-val="pdf" onclick="toggleChip(this,'s3')">Geração de PDF / Relatórios</button>
+        <button class="chip" data-val="i18n" onclick="toggleChip(this,'s3')">Multi-idioma (i18n)</button>
+        <button class="chip" data-val="admin" onclick="toggleChip(this,'s3')">Painel de Administração</button>
+        <button class="chip" data-val="api" onclick="toggleChip(this,'s3')">API / Integrações Externas</button>
+        <button class="chip" data-val="compliance" onclick="toggleChip(this,'s3')">Compliance FADP / RGPD</button>
+        <button class="chip" data-val="offline" onclick="toggleChip(this,'s3')">Funcionalidade Offline (PWA)</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-prev" onclick="goStep(2)">← Anterior</button>
+        <button class="btn-next" id="btn-3" onclick="goStep(4)" disabled>Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Budget + Timeline ── -->
+  <div class="step" id="step-4">
+    <div class="step-card">
+      <p class="step-n">Passo 4 · Investimento &amp; Prazo</p>
+      <h2 class="step-q">Orçamento e prazo pretendido para o MVP?</h2>
+      <p class="step-hint">Seja realista — é para alinhar expectativas, não para comprometer negociação.</p>
+      <span class="scope-label" style="margin-bottom:8px;display:block">Orçamento Estimado</span>
+      <div class="radio-grid" id="s4-budget" style="margin-bottom:20px">
+        <label class="radio-card" onclick="selectRadio(this,'s4-budget','budget')">
+          <input type="radio" name="budget" value="lt1k"/>
+          <span class="radio-title">&lt; 1.000€</span>
+          <span class="radio-desc">Landing page, produto simples</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-budget','budget')">
+          <input type="radio" name="budget" value="1k3k"/>
+          <span class="radio-title">1.000€ – 3.000€</span>
+          <span class="radio-desc">MVP Starter · Produto Starter</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-budget','budget')">
+          <input type="radio" name="budget" value="3k6k"/>
+          <span class="radio-title">3.000€ – 6.000€</span>
+          <span class="radio-desc">MVP SaaS completo + IA</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-budget','budget')">
+          <input type="radio" name="budget" value="6kplus"/>
+          <span class="radio-title">6.000€+</span>
+          <span class="radio-desc">Ecossistema completo · Enterprise</span>
+        </label>
+      </div>
+      <span class="scope-label" style="margin-bottom:8px;display:block">Prazo Pretendido</span>
+      <div class="radio-grid" id="s4-time">
+        <label class="radio-card" onclick="selectRadio(this,'s4-time','timeline')">
+          <input type="radio" name="timeline" value="urgent"/>
+          <span class="radio-title">Urgente · &lt; 2 semanas</span>
+          <span class="radio-desc">Produto muito simples</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-time','timeline')">
+          <input type="radio" name="timeline" value="1m"/>
+          <span class="radio-title">1 Mês</span>
+          <span class="radio-desc">MVP focado, scope controlado</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-time','timeline')">
+          <input type="radio" name="timeline" value="2_3m"/>
+          <span class="radio-title">2–3 Meses</span>
+          <span class="radio-desc">MVP robusto com integrações</span>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this,'s4-time','timeline')">
+          <input type="radio" name="timeline" value="flex"/>
+          <span class="radio-title">Flexível</span>
+          <span class="radio-desc">Qualidade > velocidade</span>
+        </label>
+      </div>
+      <div class="step-nav">
+        <button class="btn-prev" onclick="goStep(3)">← Anterior</button>
+        <button class="btn-next" id="btn-4" onclick="goStep(5)" disabled>Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Contact ── -->
+  <div class="step" id="step-5">
+    <div class="step-card">
+      <p class="step-n">Passo 5 · Contacto</p>
+      <h2 class="step-q">Onde enviamos a análise de escopo?</h2>
+      <p class="step-hint">Resposta em menos de 24 horas com análise técnica, estimativa de custo e próximos passos.</p>
+      <div class="email-wrap">
+        <div>
+          <span class="scope-label">Email Profissional *</span>
+          <input class="email-input" type="email" id="s5-email" placeholder="o.seu@empresa.com" autocomplete="email" oninput="validateEmail()"/>
+        </div>
+        <div>
+          <span class="scope-label">Nome (opcional)</span>
+          <input class="email-input" type="text" id="s5-name" placeholder="O seu nome ou empresa" autocomplete="name"/>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-prev" onclick="goStep(4)">← Anterior</button>
+        <button class="btn-next" id="btn-5" onclick="submitScope()" disabled>⊕ Gerar Escopo &amp; Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULT ── -->
+  <div class="step" id="step-result">
+    <div class="result-card">
+      <div class="result-icon">◈</div>
+      <h2 class="result-title" id="result-title">Escopo MVP Gerado</h2>
+      <div class="result-scope" id="result-scope"></div>
+      <p class="result-estimate" id="result-estimate"></p>
+      <p class="result-note" id="result-note"></p>
+      <a href="mailto:edumonteiro.dev@gmail.com" class="result-cta" id="result-cta">
+        ✉ Quer tirar este MVP do papel em 4 semanas? Fale com o Eduardo →
+      </a>
+      <span class="result-secondary">edumonteiro.dev@gmail.com · Resposta em &lt;24h</span>
+    </div>
+  </div>
+
+</div><!-- /wizard -->
+
+<div class="trust-bar">
+  <span class="trust-item"><span class="trust-dot"></span>Zero custo de análise inicial</span>
+  <span class="trust-item"><span class="trust-dot"></span>Resposta em &lt;24h</span>
+  <span class="trust-item"><span class="trust-dot"></span>Sem compromisso</span>
+  <span class="trust-item"><span class="trust-dot"></span>FADP / RGPD Compliant</span>
+  <span class="trust-item"><span class="trust-dot"></span>NDA disponível</span>
+</div>
+
+<script>
+'use strict';
+
+/* ── State ────────────────────────────────────────────────────── */
+var state = {
+  idea: '',
+  types: [],
+  features: [],
+  budget: '',
+  timeline: '',
+  email: '',
+  name: ''
+};
+
+/* ── Progress ── */
+function setProgress(step) {
+  var pct = Math.round((step / 5) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-step').textContent = 'Passo ' + step + ' de 5';
+  document.getElementById('prog-pct').textContent = pct + '%';
+}
+
+/* ── Step navigation ── */
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  var el = document.getElementById('step-' + n);
+  if (el) { el.classList.add('active'); setProgress(n); }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Chip toggle (multi-select) ── */
+function toggleChip(btn, group) {
+  btn.classList.toggle('selected');
+  var vals = [];
+  document.querySelectorAll('#' + group + '-chips .chip.selected').forEach(function(c) {
+    vals.push(c.dataset.val);
+  });
+  if (group === 's2') state.types = vals;
+  if (group === 's3') state.features = vals;
+  document.getElementById('btn-' + group.replace('s', '')).disabled = vals.length === 0;
+}
+
+/* ── Radio select ── */
+function selectRadio(card, groupId, stateKey) {
+  document.querySelectorAll('#' + groupId + ' .radio-card').forEach(function(c) {
+    c.classList.remove('selected');
+  });
+  card.classList.add('selected');
+  var radio = card.querySelector('input[type=radio]');
+  if (radio) {
+    radio.checked = true;
+    state[stateKey] = radio.value;
+  }
+  checkStep4();
+}
+
+function checkStep4() {
+  document.getElementById('btn-4').disabled = !(state.budget && state.timeline);
+}
+
+/* ── Idea textarea ── */
+document.getElementById('s1-idea').addEventListener('input', function() {
+  var v = this.value.trim();
+  state.idea = v;
+  document.getElementById('s1-count').textContent = this.value.length;
+  document.getElementById('btn-1').disabled = v.length < 20;
+});
+
+/* ── Email validation ── */
+function validateEmail() {
+  var v = document.getElementById('s5-email').value.trim();
+  state.email = v;
+  document.getElementById('btn-5').disabled = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+/* ── Scope estimation engine ── */
+function estimateScope() {
+  var feats = state.features;
+  var budget = state.budget;
+  var types = state.types;
+
+  /* Complexity score */
+  var score = feats.length;
+  if (feats.includes('ai')) score += 2;
+  if (feats.includes('payments')) score += 1;
+  if (feats.includes('realtime')) score += 2;
+  if (feats.includes('compliance')) score += 1;
+  if (types.includes('marketplace')) score += 2;
+
+  var weeks, range, tier;
+  if (score <= 3) { weeks = '2–3 semanas'; range = '1.500€–2.500€'; tier = 'Starter'; }
+  else if (score <= 6) { weeks = '3–5 semanas'; range = '3.000€–4.500€'; tier = 'Pro'; }
+  else if (score <= 9) { weeks = '5–8 semanas'; range = '4.500€–6.500€'; tier = 'Pro+'; }
+  else { weeks = '8–12 semanas'; range = '6.500€–10.000€'; tier = 'Enterprise'; }
+
+  /* Budget mismatch warning */
+  var note = '';
+  if (budget === 'lt1k' && score > 3) {
+    note = '⚠ O orçamento indicado pode ser insuficiente para o escopo selecionado. Eduardo irá sugerir uma versão reduzida viável.';
+  }
+
+  /* Scope items */
+  var scopeItems = [];
+  if (types.length) scopeItems.push({ icon: '◈', text: 'Tipo: ' + types.join(', ') });
+  if (feats.includes('auth')) scopeItems.push({ icon: '✓', text: 'Autenticação segura (Firebase Auth / JWT)' });
+  if (feats.includes('payments')) scopeItems.push({ icon: '✓', text: 'Integração Stripe (Checkout + Webhooks)' });
+  if (feats.includes('ai')) scopeItems.push({ icon: '✓', text: 'Módulo IA — OpenAI API / Claude + RAG pipeline' });
+  if (feats.includes('realtime')) scopeItems.push({ icon: '✓', text: 'Dados em tempo real (WebSockets / Firebase RTDB)' });
+  if (feats.includes('analytics')) scopeItems.push({ icon: '✓', text: 'Dashboard Analytics (D3.js / charts)' });
+  if (feats.includes('admin')) scopeItems.push({ icon: '✓', text: 'Painel Administrativo (RBAC)' });
+  if (feats.includes('pdf')) scopeItems.push({ icon: '✓', text: 'Geração de PDF automatizada' });
+  if (feats.includes('notifications')) scopeItems.push({ icon: '✓', text: 'Sistema de notificações (Email + Push)' });
+  if (feats.includes('i18n')) scopeItems.push({ icon: '✓', text: 'Multi-idioma i18n (pt-PT, en-US, fr-CH, de-CH)' });
+  if (feats.includes('compliance')) scopeItems.push({ icon: '✓', text: 'Compliance FADP/RGPD + DPA + Política de Privacidade' });
+  if (feats.includes('offline')) scopeItems.push({ icon: '✓', text: 'PWA Offline-first + Service Worker' });
+  if (feats.includes('api')) scopeItems.push({ icon: '✓', text: 'API REST / integrações externas' });
+  if (!scopeItems.length) scopeItems.push({ icon: '◈', text: 'MVP base — análise detalhada no retorno de Eduardo' });
+
+  return { weeks: weeks, range: range, tier: tier, items: scopeItems, note: note, score: score };
+}
+
+/* ── Submit ── */
+function submitScope() {
+  state.email = document.getElementById('s5-email').value.trim();
+  state.name = document.getElementById('s5-name').value.trim();
+
+  var est = estimateScope();
+
+  /* Render result */
+  var scopeHtml = est.items.map(function(it) {
+    return '<div class="result-scope-item"><span>' + it.icon + '</span><span>' + it.text + '</span></div>';
+  }).join('');
+
+  document.getElementById('result-scope').innerHTML =
+    '<div style="font-family:monospace;font-size:.68rem;color:var(--purple);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px">◈ Escopo Estimado — Tier ' + est.tier + '</div>' +
+    scopeHtml;
+
+  document.getElementById('result-estimate').innerHTML =
+    'Estimativa: <strong>' + est.range + '</strong> · Prazo: <strong>' + est.weeks + '</strong>';
+
+  if (est.note) {
+    document.getElementById('result-note').textContent = est.note;
+  }
+
+  document.getElementById('result-cta').href =
+    'mailto:edumonteiro.dev@gmail.com?subject=MVP%20Scope%20Request%20—%20' +
+    encodeURIComponent(est.tier) +
+    '&body=' + encodeURIComponent(
+      'Olá Eduardo,\n\nIdeia: ' + state.idea +
+      '\n\nTipo: ' + state.types.join(', ') +
+      '\nFuncionalidades: ' + state.features.join(', ') +
+      '\nOrçamento: ' + state.budget +
+      '\nPrazo: ' + state.timeline +
+      '\n\nEstimativa gerada: ' + est.range + ' · ' + est.weeks +
+      '\n\nNome: ' + (state.name || '—') +
+      '\nEmail: ' + state.email
+    );
+
+  /* Send to Web3Forms (non-blocking) */
+  var payload = {
+    access_key: 'a5e1d7c3-9b2f-4e8a-b3c6-2d4f8e1a7c9b',
+    subject: 'MVP Scope — ' + est.tier + ' | monteiro.is-a.dev',
+    from_name: state.name || 'MVP Scope Generator',
+    email: state.email,
+    message: 'IDEIA:\n' + state.idea +
+      '\n\nTIPO: ' + state.types.join(', ') +
+      '\nFEATURES: ' + state.features.join(', ') +
+      '\nORÇAMENTO: ' + state.budget +
+      '\nPRAZO: ' + state.timeline +
+      '\nESTIMATIVA: ' + est.range + ' / ' + est.weeks +
+      '\nSCORE: ' + est.score
+  };
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(function() { /* silent fail — result shown regardless */ });
+
+  /* Show result step */
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-result').classList.add('active');
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-step').textContent = 'Escopo Gerado ✓';
+  document.getElementById('prog-pct').textContent = '100%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+<footer style="text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);margin-top:4rem;font-size:.85rem;opacity:.8;font-family:system-ui,sans-serif;">
+  <a href="./privacy.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Privacidade</a> &bull;
+  <a href="./terms.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Termos B2B</a> &bull;
+  <a href="./cookies.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Gestão de Cookies</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta name="description" content="Blog — Eduardo Monteiro Dev. Insights sobre SaaS, IA, MVPs e Compliance FADP/RGPD para fundadores e equipas técnicas."/>
+<link rel="manifest" href="./manifest.json"/>
+<meta name="theme-color" content="#7B5CF0"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="EM Dev · Blog"/>
+<meta property="og:title" content="Blog | Eduardo Monteiro Dev — SaaS · IA · MVP · FADP"/>
+<meta property="og:description" content="Artigos técnicos B2B sobre custo de MVPs, Firebase vs PostgreSQL, integração Stripe/OpenAI e conformidade FADP para o mercado suíço."/>
+<title>Blog — Eduardo Monteiro Dev</title>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding-bottom:80px;overflow-x:hidden}
+a{color:var(--purple);text-decoration:none}
+.blog-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:14px 0;position:sticky;top:0;z-index:50}
+.blog-header-inner{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bh-logo{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
+.bh-back{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;transition:all .2s}
+.bh-back:hover{color:var(--purple);border-color:var(--purple)}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+.blog-hero{padding:48px 0 36px}
+.blog-eyebrow{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px}
+.blog-title{font-family:monospace;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:14px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.blog-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.7}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-h),transparent);margin:32px 0}
+.topics-label{font-family:monospace;font-size:.7rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:20px}
+.topics-grid{display:flex;flex-direction:column;gap:12px}
+.topic-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;transition:border-color .2s;position:relative;overflow:hidden;cursor:default}
+.topic-card:hover{border-color:var(--border-h)}
+.topic-card.featured{border-color:rgba(0,245,160,.3);background:rgba(0,245,160,.02)}
+.topic-n{font-family:monospace;font-size:.65rem;color:var(--faint);position:absolute;top:20px;right:20px;letter-spacing:.06em}
+.topic-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.topic-tag{font-family:monospace;font-size:.6rem;padding:2px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted);letter-spacing:.06em}
+.topic-tag.lang{border-color:rgba(123,92,240,.4);color:var(--purple)}
+.topic-title{font-family:monospace;font-size:.98rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:8px;padding-right:40px}
+.topic-desc{font-size:.83rem;color:var(--muted);line-height:1.7}
+.topic-meta{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:10px;border-top:1px solid var(--faint)}
+.topic-read{font-family:monospace;font-size:.65rem;color:var(--faint);letter-spacing:.06em}
+.topic-cta{font-family:monospace;font-size:.68rem;color:var(--teal);border:1px solid rgba(0,245,160,.3);padding:3px 10px;border-radius:5px;transition:all .2s;display:inline-block}
+.topic-cta:hover{background:rgba(0,245,160,.08);border-color:var(--teal)}
+.topic-wip{font-family:monospace;font-size:.6rem;color:var(--faint);padding:2px 7px;border:1px dashed var(--faint);border-radius:4px}
+.coming-soon-banner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center;margin-top:32px}
+.cs-title{font-family:monospace;font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:8px}
+.cs-desc{font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.cs-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:8px;background:var(--grad);color:#000;font-family:monospace;font-size:.78rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.cs-cta:hover{opacity:.85;color:#000}
+@media(max-width:560px){.blog-hero{padding:32px 0 24px}.topic-card{padding:16px 16px}.topic-title{font-size:.88rem}}
+</style>
+</head>
+<body>
+
+<header class="blog-header">
+  <div class="blog-header-inner">
+    <span class="bh-logo">✍ Blog — Eduardo Monteiro Dev</span>
+    <a href="./index.html" class="bh-back">← Portfolio</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="blog-hero">
+    <p class="blog-eyebrow">Insights técnicos B2B</p>
+    <h1 class="blog-title">Desenvolvimento de Produto<br/>que Converte</h1>
+    <p class="blog-sub">Artigos sobre custos reais de MVPs, integrações técnicas, compliance FADP/RGPD e decisões arquitecturais para fundadores que precisam de clareza antes de investir.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <p class="topics-label">10 Artigos Programados — Cauda Longa B2B</p>
+
+  <div class="topics-grid">
+
+    <!-- 01 -->
+    <article class="topic-card featured">
+      <span class="topic-n">#01</span>
+      <div class="topic-tags">
+        <span class="topic-tag">Custo</span>
+        <span class="topic-tag">Stripe</span>
+        <span class="topic-tag">OpenAI</span>
+        <span class="topic-tag">SaaS</span>
+      </div>
+      <h2 class="topic-title">Quanto custa integrar Stripe e OpenAI num MVP SaaS?</h2>
+      <p class="topic-desc">Análise real de custos de desenvolvimento e operação: horas de implementação, taxas de transação Stripe, custo por token OpenAI GPT-4o, infraestrutura Firebase/Vercel. Comparação entre implementação própria vs. plataformas no-code para um SaaS B2B com 100–1.000 utilizadores activos.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~8 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="topic-card featured">
+      <span class="topic-n">#02</span>
+      <div class="topic-tags">
+        <span class="topic-tag">Firebase</span>
+        <span class="topic-tag">PostgreSQL</span>
+        <span class="topic-tag">Arquitectura</span>
+        <span class="topic-tag">MVP</span>
+      </div>
+      <h2 class="topic-title">Firebase vs PostgreSQL para validar um MVP rápido — decisão técnica sem dogma</h2>
+      <p class="topic-desc">Comparação pragmática: velocidade de setup, custo operacional, limitações de queries complexas, lock-in e migração futura. Quando o Firebase ganha (prototipagem rápida, real-time, auth integrado) e quando o PostgreSQL é obrigatório (relações complexas, compliance, relatórios avançados).</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~10 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="topic-card">
+      <span class="topic-n">#03</span>
+      <div class="topic-tags">
+        <span class="topic-tag">FADP</span>
+        <span class="topic-tag">Suíça</span>
+        <span class="topic-tag">Compliance</span>
+        <span class="topic-tag lang">DE-CH</span>
+      </div>
+      <h2 class="topic-title">nDSG / FADP für SaaS-Startups — Was Gründer 2024 wissen müssen</h2>
+      <p class="topic-desc">Praktischer Leitfaden zur revidierten Schweizer Datenschutzgesetzgebung (nDSG, in Kraft seit 1. Sept. 2023) für SaaS-Gründer: Pflichten des Verantwortlichen, Datenschutzerklärung, Datenschutz durch Technikgestaltung (Privacy by Design) und wann ein Datenschutzbeauftragter erforderlich ist.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~12 min Lektüre</span>
+        <span class="topic-tag lang">DE-CH</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="topic-card">
+      <span class="topic-n">#04</span>
+      <div class="topic-tags">
+        <span class="topic-tag">FADP</span>
+        <span class="topic-tag">Suíça</span>
+        <span class="topic-tag">Compliance</span>
+        <span class="topic-tag lang">FR-CH</span>
+      </div>
+      <h2 class="topic-title">nLPD / FADP pour les startups SaaS en Suisse — Guide pratique pour fondateurs</h2>
+      <p class="topic-desc">Guide opérationnel sur la nouvelle Loi fédérale sur la protection des données (nLPD) pour les entreprises SaaS basées ou ciblant la Suisse : obligations légales, politique de confidentialité, transferts transfrontaliers et différences avec le RGPD européen.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~10 min lecture</span>
+        <span class="topic-tag lang">FR-CH</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="topic-card">
+      <span class="topic-n">#05</span>
+      <div class="topic-tags">
+        <span class="topic-tag">FADP</span>
+        <span class="topic-tag">Suíça</span>
+        <span class="topic-tag">Compliance</span>
+        <span class="topic-tag lang">IT-CH</span>
+      </div>
+      <h2 class="topic-title">nLPD / FADP per le startup SaaS in Svizzera — Guida pratica per fondatori non tecnici</h2>
+      <p class="topic-desc">Guida operativa alla nuova Legge federale sulla protezione dei dati (nLPD) per SaaS che operano o si rivolgono al mercato svizzero: obblighi del titolare del trattamento, informativa sulla privacy, Privacy by Design e differenze rispetto al GDPR europeo.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~10 min lettura</span>
+        <span class="topic-tag lang">IT-CH</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="topic-card">
+      <span class="topic-n">#06</span>
+      <div class="topic-tags">
+        <span class="topic-tag">FADP</span>
+        <span class="topic-tag">GDPR</span>
+        <span class="topic-tag">Compliance</span>
+        <span class="topic-tag lang">EN</span>
+      </div>
+      <h2 class="topic-title">FADP vs GDPR — Key differences for B2B SaaS products serving Swiss and EU markets simultaneously</h2>
+      <p class="topic-desc">Technical and legal comparison: jurisdiction primacy, data subject rights, breach notification deadlines (72h GDPR vs 72h nFADP), profiling rules, adequacy decisions, and how to architect a single SaaS that satisfies both frameworks without duplicating compliance infrastructure.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~14 min read</span>
+        <span class="topic-tag lang">EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="topic-card">
+      <span class="topic-n">#07</span>
+      <div class="topic-tags">
+        <span class="topic-tag">MVP</span>
+        <span class="topic-tag">Tempo</span>
+        <span class="topic-tag">Custo</span>
+        <span class="topic-tag">Fundadores</span>
+      </div>
+      <h2 class="topic-title">Quanto tempo demora a construir um MVP SaaS? — Estimativas reais por tipo de produto</h2>
+      <p class="topic-desc">Breakdown honesto por tipo de produto: SaaS de subscrição, marketplace B2B, ferramenta IA, plataforma com dashboard. Factores que inflacionam o prazo (scope creep, integrações terceiras, compliance) e estratégias para manter o MVP num ciclo de 3–5 semanas sem sacrificar qualidade.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~9 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="topic-card">
+      <span class="topic-n">#08</span>
+      <div class="topic-tags">
+        <span class="topic-tag">IA</span>
+        <span class="topic-tag">RAG</span>
+        <span class="topic-tag">OpenAI</span>
+        <span class="topic-tag">Produto</span>
+      </div>
+      <h2 class="topic-title">Como integrar IA num produto SaaS sem explodir o orçamento — RAG, fine-tuning ou prompts estruturados?</h2>
+      <p class="topic-desc">Comparação técnica e financeira entre as três abordagens de integração IA: prompting estruturado (mais barato, menos preciso), RAG com vector store (equilíbrio óptimo para B2B), e fine-tuning (caro, justificado apenas em casos específicos). Exemplos de custo real por 10.000 chamadas/mês.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~11 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="topic-card">
+      <span class="topic-n">#09</span>
+      <div class="topic-tags">
+        <span class="topic-tag">Stripe</span>
+        <span class="topic-tag">Subscriptions</span>
+        <span class="topic-tag">SaaS</span>
+        <span class="topic-tag">Receita</span>
+      </div>
+      <h2 class="topic-title">Stripe Subscriptions num MVP SaaS — Implementação completa em 5 passos e os erros que custam dinheiro</h2>
+      <p class="topic-desc">Guia técnico de implementação Stripe em SaaS B2B: Checkout Session vs Payment Intents, gestão de Webhooks com validação HMAC, tratamento de failed payments, dunning automático, portal do cliente e como evitar os erros mais comuns que causam perda de receita (double-charge, webhook race conditions).</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~13 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="topic-card">
+      <span class="topic-n">#10</span>
+      <div class="topic-tags">
+        <span class="topic-tag">Next.js</span>
+        <span class="topic-tag">Vercel</span>
+        <span class="topic-tag">Performance</span>
+        <span class="topic-tag">SEO</span>
+      </div>
+      <h2 class="topic-title">Next.js 15 + Vercel para SaaS B2B — Quando a stack de portfolio se torna stack de produção</h2>
+      <p class="topic-desc">Análise de quando Next.js/Vercel é a escolha certa para SaaS B2B (speed-to-market, edge functions, ISR) vs. quando é over-engineering (apps altamente interactivas, SSE intensivo, latência crítica). Benchmarks reais de cold start, custo de serverless em escala e estratégias de cache para dashboards com dados em tempo real.</p>
+      <div class="topic-meta">
+        <span class="topic-read">⏱ ~10 min leitura</span>
+        <span class="topic-tag">PT · EN</span>
+        <span class="topic-wip">Em desenvolvimento</span>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="coming-soon-banner">
+    <p class="cs-title">✍ Artigos em produção activa</p>
+    <p class="cs-desc">Quer ser notificado quando os artigos forem publicados? Envie um email e recebe os primeiros 3 artigos antes de toda a gente.</p>
+    <a href="mailto:edumonteiro.dev@gmail.com?subject=Blog%20Notification%20Request&body=Olá%20Eduardo%2C%20quero%20ser%20notificado%20quando%20o%20blog%20for%20publicado." class="cs-cta">
+      ✉ Notifique-me quando publicar →
+    </a>
+  </div>
+
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .catch(function() {});
+  });
+}
+</script>
+<footer style="text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);margin-top:4rem;font-size:.85rem;opacity:.8;font-family:system-ui,sans-serif;">
+  <a href="./privacy.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Privacidade</a> &bull;
+  <a href="./terms.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Termos B2B</a> &bull;
+  <a href="./cookies.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Gestão de Cookies</a>
+</footer>
+</body>
+</html>

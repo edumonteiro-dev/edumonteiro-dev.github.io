@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#050508"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="EM Dev"/>
+<link rel="manifest" href="./manifest.json"/>
+<title>Termos de Utilização B2B — Eduardo Monteiro Dev</title>
+<meta name="description" content="Termos e Condições B2B — Eduardo Monteiro Dev · Contratação sob lei Suíça · monteiro.is-a.dev"/>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--text:#E8E8FF;--muted:#8888AA;--faint:#3A3A52;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.75;padding:2rem 1.5rem;max-width:800px;margin:0 auto;-webkit-font-smoothing:antialiased}
+a{color:var(--purple);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--teal)}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;border-bottom:1px solid var(--border);padding-bottom:1rem}
+h2{font-size:1rem;font-weight:700;color:var(--teal);font-family:'Cascadia Code','JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;margin-top:2rem;margin-bottom:.75rem}
+p{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:.75rem}
+strong{color:var(--text);font-weight:600}
+section{margin-top:1.5rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px}
+section:hover{border-color:var(--border-h)}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:2rem;border:1px solid var(--border);padding:.5rem 1rem;border-radius:8px;font-size:.82rem;font-family:monospace;color:var(--muted);transition:all .2s}
+.back-link:hover{border-color:var(--purple);color:var(--purple);text-decoration:none;background:rgba(123,92,240,.06)}
+.meta{font-family:monospace;font-size:.72rem;color:var(--faint);letter-spacing:.06em;margin-bottom:1.5rem}
+.law-badge{display:inline-flex;align-items:center;gap:6px;margin-top:.75rem;padding:.4rem .9rem;background:rgba(123,92,240,.08);border:1px solid rgba(123,92,240,.3);border-radius:999px;font-family:monospace;font-size:.7rem;color:var(--purple);letter-spacing:.08em}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem}
+footer a{color:var(--muted);transition:color .2s}
+footer a:hover{color:var(--purple);text-decoration:none}
+</style>
+</head>
+<body>
+
+<a href="./index.html" class="back-link">← Portfolio</a>
+
+<h1>Termos de Utilização B2B</h1>
+<p class="meta">Vigência: 16 de Agosto de 2026 · Contratante: Eduardo Monteiro (Vibe Coder) · monteiro.is-a.dev</p>
+
+<section>
+  <h2>1. Acordo de Confidencialidade (NDA Implícito)</h2>
+  <p>Todo o acesso às arquitecturas, códigos-fonte demonstrados e detalhes contratuais (incluindo as páginas MVP e Propostas) fornecidos através deste portal constituem <strong>material confidencial e propriedade intelectual exclusiva de Eduardo Monteiro</strong>.</p>
+  <p>É expressamente proibida a engenharia reversa, reprodução, distribuição ou utilização comercial de qualquer conteúdo sem autorização escrita prévia. A violação deste acordo implica responsabilidade civil e criminal nos termos da lei aplicável.</p>
+</section>
+
+<section>
+  <h2>2. Prestação de Serviços B2B</h2>
+  <p>Os serviços descritos neste portfolio destinam-se exclusivamente a <strong>entidades empresariais (B2B)</strong>. A relação contratual é formalizada através do <a href="./contract.html">Contrato de Serviços</a> individual assinado por ambas as partes antes do início de qualquer trabalho.</p>
+  <p>O scope, entregáveis, prazos e valores são definidos no Anexo A (SOW — Statement of Work) de cada contrato. Qualquer alteração ao scope requer adenda escrita.</p>
+</section>
+
+<section>
+  <h2>3. Responsabilidade e SLA</h2>
+  <p>Garantimos resiliência <strong>Offline-First (PWA)</strong> no hardware do cliente para os artefactos estáticos entregues. A disponibilidade de infra-estrutura edge (Vercel/Netlify/Firebase) está sujeita aos SLAs dos respectivos fornecedores.</p>
+  <p>A responsabilidade máxima do prestador de serviços em caso de falha está limitada ao valor do contrato em vigor. Não são assumidas responsabilidades por perdas indirectas ou danos consequenciais.</p>
+</section>
+
+<section>
+  <h2>4. Propriedade Intelectual e Transferência</h2>
+  <p>O código-fonte desenvolvido sob encomenda é <strong>transferido integralmente para o cliente</strong> após liquidação total do contrato. Durante o período de desenvolvimento, todos os direitos pertencem ao prestador.</p>
+  <p>Componentes de terceiros (bibliotecas open-source) mantêm as suas licenças originais (MIT, Apache 2.0, etc.), documentadas na entrega.</p>
+</section>
+
+<section>
+  <h2>5. Jurisdição e Lei Aplicável</h2>
+  <p>Sendo um prestador B2B com contratos de padrão suíço, <strong>toda a relação contratual é regida pelo Direito Suíço</strong> (Código das Obrigações — CO/OR), com conformidade simultânea ao RGPD para clientes da UE e ao FADP para o mercado suíço.</p>
+  <p>Em caso de litígio, as partes comprometem-se a tentativa de mediação prévia. O foro competente para resolução judicial é definido no contrato individual assinado.</p>
+  <span class="law-badge">⚖ Swiss Law · CO/OR · FADP · RGPD Compliant</span>
+</section>
+
+<footer>
+  <a href="./index.html">Portfolio</a>
+  <a href="./privacy.html">Privacidade</a>
+  <a href="./cookies.html">Cookies</a>
+  <a href="./legal.html">Compliance Completo</a>
+  <a href="./contract.html">Contrato B2B</a>
+</footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-PT" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#050508"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="EM Dev"/>
+<link rel="manifest" href="./manifest.json"/>
+<title>Gestão de Cookies — Eduardo Monteiro Dev</title>
+<meta name="description" content="Política e Auditoria de Cookies PWA — Eduardo Monteiro Dev · Zero Tracking · FADP/RGPD · monteiro.is-a.dev"/>
+<style>
+:root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--danger:#ef4444;--text:#E8E8FF;--muted:#8888AA;--faint:#3A3A52;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.75;padding:2rem 1.5rem;max-width:800px;margin:0 auto;-webkit-font-smoothing:antialiased}
+a{color:var(--purple);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--teal)}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;border-bottom:1px solid var(--border);padding-bottom:1rem}
+h2{font-size:1rem;font-weight:700;color:var(--teal);font-family:'Cascadia Code','JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;margin-top:2rem;margin-bottom:.75rem}
+p{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:.75rem}
+strong{color:var(--text);font-weight:600}
+code{font-family:'Cascadia Code','JetBrains Mono',monospace;font-size:.82em;background:rgba(123,92,240,.1);padding:1px 5px;border-radius:4px;color:var(--purple)}
+section{margin-top:1.5rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px}
+section:hover{border-color:var(--border-h)}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:2rem;border:1px solid var(--border);padding:.5rem 1rem;border-radius:8px;font-size:.82rem;font-family:monospace;color:var(--muted);transition:all .2s}
+.back-link:hover{border-color:var(--purple);color:var(--purple);text-decoration:none;background:rgba(123,92,240,.06)}
+.meta{font-family:monospace;font-size:.72rem;color:var(--faint);letter-spacing:.06em;margin-bottom:1.5rem}
+.zero-badge{display:inline-flex;align-items:center;gap:6px;padding:.35rem .9rem;background:rgba(0,245,160,.06);border:1px solid rgba(0,245,160,.25);border-radius:999px;font-family:monospace;font-size:.68rem;color:var(--teal);letter-spacing:.08em;margin-bottom:1rem}
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin:1rem 0}
+th{background:rgba(123,92,240,.1);color:var(--teal);font-family:monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;text-align:left;border:1px solid var(--border)}
+td{padding:8px 12px;border:1px solid var(--border);color:var(--muted);vertical-align:top}
+td:first-child{font-family:monospace;color:var(--purple);font-weight:600;white-space:nowrap}
+tr:hover td{background:rgba(123,92,240,.03)}
+.btn-purge{display:inline-flex;align-items:center;gap:8px;margin-top:1rem;background:rgba(239,68,68,.08);color:var(--danger);border:1px solid var(--danger);padding:.75rem 1.5rem;border-radius:8px;cursor:pointer;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:.85rem;transition:all .25s}
+.btn-purge:hover{background:var(--danger);color:#fff}
+.btn-purge:disabled{opacity:.5;cursor:default}
+#audit-log{margin-top:1rem;padding:1rem;background:#000;border:1px solid var(--border);border-radius:8px;font-family:'Cascadia Code','JetBrains Mono',monospace;color:#4ade80;font-size:.78rem;line-height:1.8;display:none}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem}
+footer a{color:var(--muted);transition:color .2s}
+footer a:hover{color:var(--purple);text-decoration:none}
+</style>
+</head>
+<body>
+
+<a href="./index.html" class="back-link">← Portfolio</a>
+
+<h1>Gestão Técnica de Cookies</h1>
+<p class="meta">Vigência: 16 de Agosto de 2026 · Política: Zero Tracking · FADP/LPD (CH) + RGPD (UE) · monteiro.is-a.dev</p>
+
+<section>
+  <h2>1. Armazenamento Estrito PWA</h2>
+  <span class="zero-badge">◈ Zero Cookies de Terceiros · Zero Analytics · Zero Publicidade</span>
+  <p>Esta aplicação opera sob as directivas <strong>Privacy by Design</strong> e <strong>Privacy by Default</strong> (RGPD Art. 25). Não são utilizados cookies de publicidade, rastreio ou analítica de terceiros — em nenhuma circunstância.</p>
+  <p>Todo o armazenamento persistente consiste exclusivamente em tokens <strong>first-party</strong> vitais para o funcionamento da aplicação:</p>
+  <table>
+    <thead>
+      <tr><th>Chave</th><th>Tipo</th><th>Finalidade</th><th>Duração</th><th>Terceiros</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>vc-locale</td><td>localStorage</td><td>Preferência de idioma (i18n)</td><td>Sessão persistente</td><td>Não</td></tr>
+      <tr><td>vc-cookie-choice</td><td>localStorage</td><td>Consentimento de cookie banner</td><td>Sessão persistente</td><td>Não</td></tr>
+      <tr><td>vc-a2hs-dismissed</td><td>localStorage</td><td>Estado do prompt de instalação PWA</td><td>Sessão persistente</td><td>Não</td></tr>
+      <tr><td>Cache API (SW)</td><td>Cache Storage</td><td>Ficheiros estáticos para offline PWA</td><td>Controlado pelo SW</td><td>Não</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>2. Purga de Caches e Estado Local</h2>
+  <p>Concedemos total autonomia para destruir qualquer estado mantido no seu dispositivo, sem necessidade de requerimento legal. Utilize o comando abaixo para purgar todos os dados desta aplicação do seu browser.</p>
+  <button class="btn-purge" id="purge-cmd">⚠ Executar Purga Total (localStorage &amp; SW Cache)</button>
+  <div id="audit-log" role="log" aria-live="polite"></div>
+</section>
+
+<section>
+  <h2>3. Consentimento e Base Legal</h2>
+  <p>O armazenamento <strong>localStorage</strong> utilizado é estritamente necessário para o funcionamento técnico da aplicação (preferência de idioma, estado do UI). Não requer consentimento explícito nos termos do RGPD considerando o Recital 47 e a Directiva ePrivacy para cookies estritamente necessários.</p>
+  <p>A Cache API do Service Worker não armazena dados pessoais — apenas ficheiros estáticos (HTML, SVG, JSON) necessários para o modo offline. Base legal: interesse legítimo (Art. 6(1)(f) RGPD) / necessidade técnica.</p>
+</section>
+
+<footer>
+  <a href="./index.html">Portfolio</a>
+  <a href="./privacy.html">Privacidade</a>
+  <a href="./terms.html">Termos</a>
+  <a href="./legal.html">Compliance Completo</a>
+  <a href="./contract.html">Contrato B2B</a>
+</footer>
+
+<script>
+'use strict';
+
+/* ── PWA Service Worker ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});
+  });
+}
+
+/* ── Purge Handler ── */
+document.getElementById('purge-cmd').addEventListener('click', async function() {
+  var btn = document.getElementById('purge-cmd');
+  var log = document.getElementById('audit-log');
+  btn.disabled = true;
+  log.style.display = 'block';
+  log.innerHTML = '> A executar protocolo de descontaminação...<br>';
+
+  try {
+    localStorage.clear();
+    sessionStorage.clear();
+    log.innerHTML += '[OK] localStorage + sessionStorage limpos.<br>';
+
+    if (window.caches) {
+      var cacheKeys = await caches.keys();
+      await Promise.all(cacheKeys.map(function(key) { return caches.delete(key); }));
+      log.innerHTML += '[OK] Cache API purgada (' + cacheKeys.length + ' cache(s) removida(s)).<br>';
+    }
+
+    if ('serviceWorker' in navigator) {
+      var regs = await navigator.serviceWorker.getRegistrations();
+      for (var i = 0; i < regs.length; i++) {
+        await regs[i].unregister();
+      }
+      log.innerHTML += '[OK] ' + regs.length + ' Service Worker(s) desregistado(s).<br>';
+    }
+
+    log.innerHTML += '<span style="color:#00F5A0">[SEC-PASS] Descontaminação concluída. Todos os dados desta aplicação foram eliminados do seu dispositivo.</span>';
+  } catch (err) {
+    log.innerHTML += '<span style="color:#ef4444">[FALHA] ' + (err && err.message ? err.message : 'Erro desconhecido') + '</span>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✓ Purga Concluída';
+  }
+});
+</script>
+</body>
+</html>
