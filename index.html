@@ -1176,6 +1176,13 @@ function applyLocale(locale) {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === locale);
   });
 
+  /* Refresh pricing for new locale, preserving active toggle model */
+  if (window._applyPricing) {
+    var activeBtn = document.querySelector('.pricing-toggle-btn.active');
+    var model = activeBtn ? activeBtn.getAttribute('data-model') : '50/50';
+    window._applyPricing(locale, model);
+  }
+
   if(t.typewriterPhrases) startTypewriter(t.typewriterPhrases);
 }
 
@@ -1305,26 +1312,93 @@ window.addEventListener('scroll', function(){
   });
 })();
 
-/* ── PRICING TOGGLE ── */
+/* ── PRICING TOGGLE (locale-aware) ── */
 (function(){
-  var prices50 = ['800€–1.750€','3.000€–5.500€','5.000€–8.000€+'];
-  var pricesHr = ['55€–80€/h','60€–85€/h','65€–90€/h'];
-  var units50 = ['preço fixo','preço fixo','preço fixo'];
-  var unitsHr = ['por hora','por hora','por hora'];
+  /* Pricing matrix per locale × model
+     50/50 = fixed-price project
+     hourly = time & materials        */
+  var PRICING = {
+    'pt-PT': {
+      p50:  ['800€–1.750€',    '3.000€–5.500€',    '5.000€–8.000€+'],
+      pHr:  ['55€–75€/h',     '60€–80€/h',         '65€–85€/h'],
+      u50:  ['preço fixo',     'preço fixo',         'preço fixo'],
+      uHr:  ['por hora',       'por hora',           'por hora'],
+      maint:'Manutenção Mensal: 50€–150€/mês · Firebase updates · Patches de segurança · 2h de ajustes incluídas'
+    },
+    'en-US': {
+      p50:  ['$900–$2,000',    '$3,500–$6,000',     '$5,500–$9,000+'],
+      pHr:  ['$120–$150/h',   '$130–$160/h',        '$140–$175/h'],
+      u50:  ['fixed price',    'fixed price',        'fixed price'],
+      uHr:  ['per hour',       'per hour',           'per hour'],
+      maint:'Monthly Maintenance: $60–$180/mo · Firebase updates · Security patches · 2h adjustments included'
+    },
+    'fr-CH': {
+      p50:  ['900–1.900 CHF',  '3.200–5.800 CHF',   '5.200–8.500 CHF+'],
+      pHr:  ['130–160 CHF/h', '140–170 CHF/h',      '150–185 CHF/h'],
+      u50:  ['prix fixe',      'prix fixe',          'prix fixe'],
+      uHr:  ['par heure',      'par heure',          'par heure'],
+      maint:'Maintenance Mensuelle: 60–180 CHF/mois · Mises à jour · Patches sécurité · 2h incluses'
+    },
+    'de-CH': {
+      p50:  ['900–1.900 CHF',  '3.200–5.800 CHF',   '5.200–8.500 CHF+'],
+      pHr:  ['130–160 CHF/h', '140–170 CHF/h',      '150–185 CHF/h'],
+      u50:  ['Festpreis',      'Festpreis',          'Festpreis'],
+      uHr:  ['pro Stunde',     'pro Stunde',         'pro Stunde'],
+      maint:'Monatliche Wartung: 60–180 CHF/Monat · Updates · Sicherheits-Patches · 2h inklusive'
+    },
+    'it-IT': {
+      p50:  ['900–1.900 CHF',  '3.200–5.800 CHF',   '5.200–8.500 CHF+'],
+      pHr:  ['130–160 CHF/h', '140–170 CHF/h',      '150–185 CHF/h'],
+      u50:  ['prezzo fisso',   'prezzo fisso',       'prezzo fisso'],
+      uHr:  ["all'ora",        "all'ora",            "all'ora"],
+      maint:'Manutenzione Mensile: 60–180 CHF/mese · Aggiornamenti · Patch sicurezza · 2h incluse'
+    },
+    'es-ES': {
+      p50:  ['800€–1.750€',    '3.000€–5.500€',     '5.000€–8.000€+'],
+      pHr:  ['55€–75€/h',     '60€–80€/h',          '65€–85€/h'],
+      u50:  ['precio fijo',    'precio fijo',        'precio fijo'],
+      uHr:  ['por hora',       'por hora',           'por hora'],
+      maint:'Mantenimiento Mensual: 50€–150€/mes · Actualizaciones · Parches seguridad · 2h incluidas'
+    }
+  };
 
-  document.querySelectorAll('.pricing-toggle-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.pricing-toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+  function getPricing(locale) {
+    return PRICING[locale] || PRICING['pt-PT'];
+  }
+
+  function applyPricing(locale, model) {
+    var p = getPricing(locale);
+    var isHr = (model === 'hourly');
+    for (var i = 0; i < 3; i++) {
+      var pEl = document.querySelector('[data-tier-price="'+i+'"]');
+      var uEl = document.querySelector('[data-tier-unit="'+i+'"]');
+      if (pEl) pEl.textContent = isHr ? p.pHr[i] : p.p50[i];
+      if (uEl) uEl.textContent = isHr ? p.uHr[i] : p.u50[i];
+    }
+    var mEl = document.getElementById('maintenance-text');
+    if (mEl) mEl.textContent = p.maint;
+  }
+
+  /* Expose so applyLocale() can refresh prices on locale change */
+  window._applyPricing = applyPricing;
+
+  /* Detect active model */
+  function activeModel() {
+    var btn = document.querySelector('.pricing-toggle-btn.active');
+    return btn ? btn.getAttribute('data-model') : '50/50';
+  }
+
+  /* Toggle click */
+  document.querySelectorAll('.pricing-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.pricing-toggle-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      var isHr = btn.getAttribute('data-model') === 'hourly';
-      for(var i = 0; i < 3; i++){
-        var pEl = document.querySelector('[data-tier-price="'+i+'"]');
-        var uEl = document.querySelector('[data-tier-unit="'+i+'"]');
-        if(pEl) pEl.textContent = isHr ? pricesHr[i] : prices50[i];
-        if(uEl) uEl.textContent = isHr ? unitsHr[i] : units50[i];
-      }
+      applyPricing(localStorage.getItem('vc-locale') || 'pt-PT', btn.getAttribute('data-model'));
     });
   });
+
+  /* Initial render on page load */
+  applyPricing(localStorage.getItem('vc-locale') || 'pt-PT', activeModel());
 })();
 
 /* ── COOKIE BANNER ── */

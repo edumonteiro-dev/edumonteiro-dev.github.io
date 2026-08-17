@@ -6,6 +6,78 @@
 
 ---
 
+## [v11.0.2] — 2026-08-16 · Dynamic B2B Pricing per Locale + Blog i18n Modal
+
+### Sumário Executivo
+
+Release correctiva com três intervenções cirúrgicas: (1) pricing dinâmico por locale e moeda no `index.html`, eliminando a paridade forçada EUR para todos os mercados; (2) seletor de idioma injectado no `blog.html` com troca instantânea sem reload; (3) cobertura i18n 100% da shell do `blog.html`, incluindo footer links e WIP badges.
+
+Resultado da pipeline: `[SEC-PASS] — 0 violações. Deployment autorizado.`
+
+---
+
+### CHANGED
+
+#### `index.html` · 111,801 B · sha256=`20c9a7b5ae46abe08ce8ea1a393fd730600c864cc63bb7326dc0465d6596a810`
+
+**Pricing dinâmico por locale e moeda — matriz `PRICING`:**
+
+| Locale | Modelo 50/50 (Tier Pro) | Modelo Horário | Moeda |
+|---|---|---|---|
+| `pt-PT` | 3.000€–5.500€ | 60€–80€/h | EUR |
+| `es-ES` | 3.000€–5.500€ | 60€–80€/h | EUR |
+| `en-US` | $3,500–$6,000 | $130–$160/h | USD |
+| `fr-CH` | 3.200–5.800 CHF | 140–170 CHF/h | CHF |
+| `de-CH` | 3.200–5.800 CHF | 140–170 CHF/h | CHF |
+| `it-IT` | 3.200–5.800 CHF | 140–170 CHF/h | CHF |
+
+- Motor `PRICING` substituiu o array estático `prices50` / `pricesHr` — preços e unidades agora derivados de locale, não hardcoded.
+- Função `_applyPricing(locale, model)` exposta em `window` para chamada síncrona por `applyLocale()` a cada troca de idioma.
+- Toggle 50%/50% ↔ Horário preserva o locale activo — sem reset de moeda.
+- `maintenanceText` integrado na matriz `PRICING` por locale com moeda correcta (CHF/EUR/USD).
+- Hook em `applyLocale()`: `window._applyPricing(locale, activeModel)` chamado após cada troca de idioma.
+
+#### `blog.html` · 28,228 B · sha256=`fc3ca6fd5309283f76226c52c8a2300f44eb2b3b3c9a136556d8f7003c535538`
+
+**Seletor de idioma injectado na header:**
+- Dropdown `#lang-dropdown` com 6 opções (`pt-PT`, `en-US`, `fr-CH`, `de-CH`, `es-ES`, `it-IT`).
+- Click fora fecha o dropdown — `document.addEventListener('click', ...)`.
+- Selecção: `localStorage.setItem('vc-locale', locale)` + `applyBlogLocale()` instantâneo — zero page reload.
+- Estado activo sincronizado visualmente via classe `.active` na opção seleccionada.
+
+**Cobertura i18n 100% da shell — strings mapeadas por locale:**
+
+| ID no DOM | Traduzido |
+|---|---|
+| `bh-back` | ✓ (back link) |
+| `bh-lang-current` | ✓ (label do botão) |
+| `blog-eyebrow` | ✓ |
+| `blog-title` | ✓ |
+| `blog-sub` | ✓ |
+| `topics-label` | ✓ |
+| `wip-01` … `wip-10` | ✓ (10 badges) |
+| `cs-title` | ✓ |
+| `cs-desc` | ✓ |
+| `cs-cta` + `href` mailto | ✓ (body localizado) |
+| `ft-privacy` | ✓ |
+| `ft-terms` | ✓ |
+| `ft-cookies` | ✓ |
+
+**Conteúdo editorial protegido:** títulos e descrições dos artigos #03 (DE-CH), #04 (FR-CH), #05 (IT-CH), #06 (EN) sem `data-i18n` — imunes à troca de locale da shell.
+
+---
+
+### INTEGRITY — Artefactos Modificados (v11.0.2 vs v11.0.1)
+
+| Ficheiro | v11.0.1 SHA-256 | v11.0.2 SHA-256 |
+|---|---|---|
+| `index.html` | `5847449d…` | `20c9a7b5ae46abe08ce8ea1a393fd730600c864cc63bb7326dc0465d6596a810` |
+| `blog.html` | `b37f62d0…` | `fc3ca6fd5309283f76226c52c8a2300f44eb2b3b3c9a136556d8f7003c535538` |
+
+Todos os outros artefactos permanecem com os checksums da v11.0.1.
+
+---
+
 ## [v11.0.1] — 2026-08-16 · Hotfix: Blog i18n State Sync
 
 ### Sumário Executivo

@@ -20,11 +20,25 @@
 html{font-size:15px;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.75;padding-bottom:80px;overflow-x:hidden}
 a{color:var(--purple);text-decoration:none}
+
+/* HEADER */
 .blog-header{background:var(--deep);border-bottom:2px solid var(--purple);padding:14px 0;position:sticky;top:0;z-index:50}
 .blog-header-inner{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .bh-logo{font-family:monospace;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;flex:1}
 .bh-back{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;transition:all .2s}
 .bh-back:hover{color:var(--purple);border-color:var(--purple)}
+
+/* LANG SELECTOR */
+.bh-lang-wrap{position:relative}
+.bh-lang-btn{font-family:monospace;font-size:.75rem;color:var(--muted);padding:4px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;background:none;transition:all .2s;display:flex;align-items:center;gap:5px}
+.bh-lang-btn:hover,.bh-lang-btn.open{color:var(--purple);border-color:var(--purple)}
+.lang-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border-h);border-radius:10px;padding:8px;min-width:140px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,.6);flex-direction:column;gap:4px}
+.lang-dropdown.open{display:flex}
+.lang-opt{font-family:monospace;font-size:.75rem;color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;border:none;background:none;text-align:left;transition:all .2s;width:100%}
+.lang-opt:hover{color:var(--text);background:rgba(123,92,240,.08)}
+.lang-opt.active{color:var(--purple);background:rgba(123,92,240,.12)}
+
+/* CONTENT */
 .container{max-width:860px;margin:0 auto;padding:0 24px}
 .blog-hero{padding:48px 0 36px}
 .blog-eyebrow{font-family:monospace;font-size:.72rem;color:var(--purple);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px}
@@ -44,15 +58,13 @@ a{color:var(--purple);text-decoration:none}
 .topic-desc{font-size:.83rem;color:var(--muted);line-height:1.7}
 .topic-meta{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:10px;border-top:1px solid var(--faint)}
 .topic-read{font-family:monospace;font-size:.65rem;color:var(--faint);letter-spacing:.06em}
-.topic-cta{font-family:monospace;font-size:.68rem;color:var(--teal);border:1px solid rgba(0,245,160,.3);padding:3px 10px;border-radius:5px;transition:all .2s;display:inline-block}
-.topic-cta:hover{background:rgba(0,245,160,.08);border-color:var(--teal)}
 .topic-wip{font-family:monospace;font-size:.6rem;color:var(--faint);padding:2px 7px;border:1px dashed var(--faint);border-radius:4px}
 .coming-soon-banner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center;margin-top:32px}
 .cs-title{font-family:monospace;font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:8px}
 .cs-desc{font-size:.85rem;color:var(--muted);margin-bottom:18px}
 .cs-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:8px;background:var(--grad);color:#000;font-family:monospace;font-size:.78rem;font-weight:700;text-decoration:none;transition:opacity .2s}
 .cs-cta:hover{opacity:.85;color:#000}
-@media(max-width:560px){.blog-hero{padding:32px 0 24px}.topic-card{padding:16px 16px}.topic-title{font-size:.88rem}}
+@media(max-width:560px){.blog-hero{padding:32px 0 24px}.topic-card{padding:16px 16px}.topic-title{font-size:.88rem}.lang-dropdown{right:auto;left:0}}
 </style>
 </head>
 <body>
@@ -61,6 +73,20 @@ a{color:var(--purple);text-decoration:none}
   <div class="blog-header-inner">
     <span class="bh-logo">✍ Blog — Eduardo Monteiro Dev</span>
     <a href="./index.html" class="bh-back" id="bh-back">← Portfolio</a>
+    <!-- Lang Selector -->
+    <div class="bh-lang-wrap">
+      <button class="bh-lang-btn" id="bh-lang-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="bh-lang-current">PT</span> ▾
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown" role="listbox">
+        <button class="lang-opt" data-locale="pt-PT" role="option">🇵🇹 PT — Português</button>
+        <button class="lang-opt" data-locale="en-US" role="option">🇬🇧 EN — English</button>
+        <button class="lang-opt" data-locale="fr-CH" role="option">🇨🇭 FR — Français</button>
+        <button class="lang-opt" data-locale="de-CH" role="option">🇨🇭 DE — Deutsch</button>
+        <button class="lang-opt" data-locale="es-ES" role="option">🇪🇸 ES — Español</button>
+        <button class="lang-opt" data-locale="it-IT" role="option">🇮🇹 IT — Italiano</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -77,184 +103,94 @@ a{color:var(--purple);text-decoration:none}
 
   <div class="topics-grid">
 
-    <!-- 01 -->
+    <!-- #01 — PT · EN -->
     <article class="topic-card featured">
       <span class="topic-n">#01</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Custo</span>
-        <span class="topic-tag">Stripe</span>
-        <span class="topic-tag">OpenAI</span>
-        <span class="topic-tag">SaaS</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">Custo</span><span class="topic-tag">Stripe</span><span class="topic-tag">OpenAI</span><span class="topic-tag">SaaS</span></div>
       <h2 class="topic-title">Quanto custa integrar Stripe e OpenAI num MVP SaaS?</h2>
       <p class="topic-desc">Análise real de custos de desenvolvimento e operação: horas de implementação, taxas de transação Stripe, custo por token OpenAI GPT-4o, infraestrutura Firebase/Vercel. Comparação entre implementação própria vs. plataformas no-code para um SaaS B2B com 100–1.000 utilizadores activos.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~8 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-01">Em desenvolvimento</span>
-      </div>
+      <div class="topic-meta"><span class="topic-read">⏱ ~8 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-01">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 02 -->
+    <!-- #02 — PT · EN -->
     <article class="topic-card featured">
       <span class="topic-n">#02</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Firebase</span>
-        <span class="topic-tag">PostgreSQL</span>
-        <span class="topic-tag">Arquitectura</span>
-        <span class="topic-tag">MVP</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">Firebase</span><span class="topic-tag">PostgreSQL</span><span class="topic-tag">Arquitectura</span><span class="topic-tag">MVP</span></div>
       <h2 class="topic-title">Firebase vs PostgreSQL para validar um MVP rápido — decisão técnica sem dogma</h2>
-      <p class="topic-desc">Comparação pragmática: velocidade de setup, custo operacional, limitações de queries complexas, lock-in e migração futura. Quando o Firebase ganha (prototipagem rápida, real-time, auth integrado) e quando o PostgreSQL é obrigatório (relações complexas, compliance, relatórios avançados).</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-02">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Comparação pragmática: velocidade de setup, custo operacional, limitações de queries complexas, lock-in e migração futura. Quando o Firebase ganha e quando o PostgreSQL é obrigatório.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~10 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-02">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 03 — DE-CH: conteúdo editorial intocável -->
+    <!-- #03 — DE-CH editorial content: title/desc untouched -->
     <article class="topic-card">
       <span class="topic-n">#03</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Suíça</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">DE-CH</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">FADP</span><span class="topic-tag">Suíça</span><span class="topic-tag">Compliance</span><span class="topic-tag lang">DE-CH</span></div>
       <h2 class="topic-title">nDSG / FADP für SaaS-Startups — Was Gründer 2024 wissen müssen</h2>
-      <p class="topic-desc">Praktischer Leitfaden zur revidierten Schweizer Datenschutzgesetzgebung (nDSG, in Kraft seit 1. Sept. 2023) für SaaS-Gründer: Pflichten des Verantwortlichen, Datenschutzerklärung, Datenschutz durch Technikgestaltung (Privacy by Design) und wann ein Datenschutzbeauftragter erforderlich ist.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~12 min Lektüre</span>
-        <span class="topic-tag lang">DE-CH</span>
-        <span class="topic-wip" id="wip-label-03">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Praktischer Leitfaden zur revidierten Schweizer Datenschutzgesetzgebung (nDSG, in Kraft seit 1. Sept. 2023) für SaaS-Gründer: Pflichten des Verantwortlichen, Datenschutzerklärung, Privacy by Design und wann ein Datenschutzbeauftragter erforderlich ist.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~12 min</span><span class="topic-tag lang">DE-CH</span><span class="topic-wip" id="wip-03">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 04 — FR-CH: conteúdo editorial intocável -->
+    <!-- #04 — FR-CH editorial content: title/desc untouched -->
     <article class="topic-card">
       <span class="topic-n">#04</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Suíça</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">FR-CH</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">FADP</span><span class="topic-tag">Suíça</span><span class="topic-tag">Compliance</span><span class="topic-tag lang">FR-CH</span></div>
       <h2 class="topic-title">nLPD / FADP pour les startups SaaS en Suisse — Guide pratique pour fondateurs</h2>
       <p class="topic-desc">Guide opérationnel sur la nouvelle Loi fédérale sur la protection des données (nLPD) pour les entreprises SaaS basées ou ciblant la Suisse : obligations légales, politique de confidentialité, transferts transfrontaliers et différences avec le RGPD européen.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min lecture</span>
-        <span class="topic-tag lang">FR-CH</span>
-        <span class="topic-wip" id="wip-label-04">Em desenvolvimento</span>
-      </div>
+      <div class="topic-meta"><span class="topic-read">⏱ ~10 min</span><span class="topic-tag lang">FR-CH</span><span class="topic-wip" id="wip-04">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 05 — IT-CH: conteúdo editorial intocável -->
+    <!-- #05 — IT-CH editorial content: title/desc untouched -->
     <article class="topic-card">
       <span class="topic-n">#05</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Suíça</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">IT-CH</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">FADP</span><span class="topic-tag">Suíça</span><span class="topic-tag">Compliance</span><span class="topic-tag lang">IT-CH</span></div>
       <h2 class="topic-title">nLPD / FADP per le startup SaaS in Svizzera — Guida pratica per fondatori non tecnici</h2>
-      <p class="topic-desc">Guida operativa alla nuova Legge federale sulla protezione dei dati (nLPD) per SaaS che operano o si rivolgono al mercato svizzero: obblighi del titolare del trattamento, informativa sulla privacy, Privacy by Design e differenze rispetto al GDPR europeo.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min lettura</span>
-        <span class="topic-tag lang">IT-CH</span>
-        <span class="topic-wip" id="wip-label-05">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Guida operativa alla nuova Legge federale sulla protezione dei dati (nLPD) per SaaS che operano o si rivolgono al mercato svizzero: obblighi del titolare del trattamento, Privacy by Design e differenze rispetto al GDPR europeo.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~10 min</span><span class="topic-tag lang">IT-CH</span><span class="topic-wip" id="wip-05">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 06 — EN: conteúdo editorial intocável -->
+    <!-- #06 — EN editorial content: title/desc untouched -->
     <article class="topic-card">
       <span class="topic-n">#06</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">GDPR</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">EN</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">FADP</span><span class="topic-tag">GDPR</span><span class="topic-tag">Compliance</span><span class="topic-tag lang">EN</span></div>
       <h2 class="topic-title">FADP vs GDPR — Key differences for B2B SaaS products serving Swiss and EU markets simultaneously</h2>
-      <p class="topic-desc">Technical and legal comparison: jurisdiction primacy, data subject rights, breach notification deadlines (72h GDPR vs 72h nFADP), profiling rules, adequacy decisions, and how to architect a single SaaS that satisfies both frameworks without duplicating compliance infrastructure.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~14 min read</span>
-        <span class="topic-tag lang">EN</span>
-        <span class="topic-wip" id="wip-label-06">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Technical and legal comparison: jurisdiction primacy, data subject rights, breach notification deadlines, profiling rules, adequacy decisions, and how to architect a single SaaS that satisfies both frameworks without duplicating compliance infrastructure.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~14 min</span><span class="topic-tag lang">EN</span><span class="topic-wip" id="wip-06">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 07 -->
+    <!-- #07 — PT · EN -->
     <article class="topic-card">
       <span class="topic-n">#07</span>
-      <div class="topic-tags">
-        <span class="topic-tag">MVP</span>
-        <span class="topic-tag">Tempo</span>
-        <span class="topic-tag">Custo</span>
-        <span class="topic-tag">Fundadores</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">MVP</span><span class="topic-tag">Tempo</span><span class="topic-tag">Custo</span><span class="topic-tag">Fundadores</span></div>
       <h2 class="topic-title">Quanto tempo demora a construir um MVP SaaS? — Estimativas reais por tipo de produto</h2>
-      <p class="topic-desc">Breakdown honesto por tipo de produto: SaaS de subscrição, marketplace B2B, ferramenta IA, plataforma com dashboard. Factores que inflacionam o prazo (scope creep, integrações terceiras, compliance) e estratégias para manter o MVP num ciclo de 3–5 semanas sem sacrificar qualidade.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~9 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-07">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Breakdown honesto por tipo de produto: SaaS de subscrição, marketplace B2B, ferramenta IA, plataforma com dashboard. Factores que inflacionam o prazo e estratégias para manter o MVP num ciclo de 3–5 semanas.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~9 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-07">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 08 -->
+    <!-- #08 — PT · EN -->
     <article class="topic-card">
       <span class="topic-n">#08</span>
-      <div class="topic-tags">
-        <span class="topic-tag">IA</span>
-        <span class="topic-tag">RAG</span>
-        <span class="topic-tag">OpenAI</span>
-        <span class="topic-tag">Produto</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">IA</span><span class="topic-tag">RAG</span><span class="topic-tag">OpenAI</span><span class="topic-tag">Produto</span></div>
       <h2 class="topic-title">Como integrar IA num produto SaaS sem explodir o orçamento — RAG, fine-tuning ou prompts estruturados?</h2>
-      <p class="topic-desc">Comparação técnica e financeira entre as três abordagens de integração IA: prompting estruturado (mais barato, menos preciso), RAG com vector store (equilíbrio óptimo para B2B), e fine-tuning (caro, justificado apenas em casos específicos). Exemplos de custo real por 10.000 chamadas/mês.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~11 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-08">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Comparação técnica e financeira entre as três abordagens de integração IA. Exemplos de custo real por 10.000 chamadas/mês.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~11 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-08">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 09 -->
+    <!-- #09 — PT · EN -->
     <article class="topic-card">
       <span class="topic-n">#09</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Stripe</span>
-        <span class="topic-tag">Subscriptions</span>
-        <span class="topic-tag">SaaS</span>
-        <span class="topic-tag">Receita</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">Stripe</span><span class="topic-tag">Subscriptions</span><span class="topic-tag">SaaS</span><span class="topic-tag">Receita</span></div>
       <h2 class="topic-title">Stripe Subscriptions num MVP SaaS — Implementação completa em 5 passos e os erros que custam dinheiro</h2>
-      <p class="topic-desc">Guia técnico de implementação Stripe em SaaS B2B: Checkout Session vs Payment Intents, gestão de Webhooks com validação HMAC, tratamento de failed payments, dunning automático, portal do cliente e como evitar os erros mais comuns que causam perda de receita (double-charge, webhook race conditions).</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~13 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-09">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Guia técnico de implementação Stripe em SaaS B2B: Checkout Session vs Payment Intents, gestão de Webhooks com validação HMAC, dunning automático e como evitar webhook race conditions.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~13 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-09">Em desenvolvimento</span></div>
     </article>
 
-    <!-- 10 -->
+    <!-- #10 — PT · EN -->
     <article class="topic-card">
       <span class="topic-n">#10</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Next.js</span>
-        <span class="topic-tag">Vercel</span>
-        <span class="topic-tag">Performance</span>
-        <span class="topic-tag">SEO</span>
-      </div>
+      <div class="topic-tags"><span class="topic-tag">Next.js</span><span class="topic-tag">Vercel</span><span class="topic-tag">Performance</span><span class="topic-tag">SEO</span></div>
       <h2 class="topic-title">Next.js 15 + Vercel para SaaS B2B — Quando a stack de portfolio se torna stack de produção</h2>
-      <p class="topic-desc">Análise de quando Next.js/Vercel é a escolha certa para SaaS B2B (speed-to-market, edge functions, ISR) vs. quando é over-engineering (apps altamente interactivas, SSE intensivo, latência crítica). Benchmarks reais de cold start, custo de serverless em escala e estratégias de cache para dashboards com dados em tempo real.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min leitura</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" id="wip-label-10">Em desenvolvimento</span>
-      </div>
+      <p class="topic-desc">Análise de quando Next.js/Vercel é a escolha certa para SaaS B2B vs. quando é over-engineering. Benchmarks reais de cold start e estratégias de cache para dashboards com dados em tempo real.</p>
+      <div class="topic-meta"><span class="topic-read">⏱ ~10 min</span><span class="topic-tag">PT · EN</span><span class="topic-wip" id="wip-10">Em desenvolvimento</span></div>
     </article>
 
   </div>
@@ -264,149 +200,214 @@ a{color:var(--purple);text-decoration:none}
   <div class="coming-soon-banner">
     <p class="cs-title" id="cs-title">✍ Artigos em produção activa</p>
     <p class="cs-desc" id="cs-desc">Quer ser notificado quando os artigos forem publicados? Envie um email e recebe os primeiros 3 artigos antes de toda a gente.</p>
-    <a href="mailto:edumonteiro.dev@gmail.com?subject=Blog%20Notification%20Request&body=Ol%C3%A1%20Eduardo%2C%20quero%20ser%20notificado%20quando%20o%20blog%20for%20publicado." class="cs-cta" id="cs-cta">
-      ✉ Notifique-me quando publicar →
-    </a>
+    <a href="mailto:edumonteiro.dev@gmail.com?subject=Blog%20Notification%20Request&body=Ol%C3%A1%20Eduardo%2C%20quero%20ser%20notificado%20quando%20o%20blog%20for%20publicado." class="cs-cta" id="cs-cta">✉ Notifique-me quando publicar →</a>
   </div>
 
 </div>
 
 <footer style="text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);margin-top:4rem;font-size:.85rem;opacity:.8;font-family:system-ui,sans-serif;">
-  <a href="./privacy.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Privacidade</a> &bull;
-  <a href="./terms.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Termos B2B</a> &bull;
-  <a href="./cookies.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;">Gestão de Cookies</a>
+  <a href="./privacy.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;" id="ft-privacy">Privacidade</a> &bull;
+  <a href="./terms.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;" id="ft-terms">Termos B2B</a> &bull;
+  <a href="./cookies.html" style="color:var(--purple);text-decoration:none;margin:0 .5rem;transition:color .3s;" id="ft-cookies">Gestão de Cookies</a>
 </footer>
 
 <script>
 'use strict';
 
-/* ── i18n: Shell da página (conteúdo editorial dos artigos é intocável) ── */
+/* ─────────────────────────────────────────────────────────────────
+   i18n: Shell-only — editorial article content is intentionally
+   NOT translated (DE-CH, FR-CH, IT-CH, EN titles/descs are native)
+   ───────────────────────────────────────────────────────────────── */
 var BLOG_I18N = {
   'pt-PT': {
-    lang: 'pt-PT',
-    back: '← Portfolio',
-    eyebrow: 'Insights técnicos B2B',
-    title: 'Desenvolvimento de Produto<br/>que Converte',
-    sub: 'Artigos sobre custos reais de MVPs, integrações técnicas, compliance FADP/RGPD e decisões arquitecturais para fundadores que precisam de clareza antes de investir.',
-    topicsLabel: '10 Artigos Programados — Cauda Longa B2B',
-    wip: 'Em desenvolvimento',
-    csTitle: '✍ Artigos em produção activa',
-    csDesc: 'Quer ser notificado quando os artigos forem publicados? Envie um email e recebe os primeiros 3 artigos antes de toda a gente.',
-    csCta: '✉ Notifique-me quando publicar →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Ol%C3%A1%20Eduardo%2C%20quero%20ser%20notificado%20quando%20o%20blog%20for%20publicado.'
+    htmlLang:'pt-PT', langLabel:'PT',
+    back:'← Portfolio',
+    eyebrow:'Insights técnicos B2B',
+    title:'Desenvolvimento de Produto<br/>que Converte',
+    sub:'Artigos sobre custos reais de MVPs, integrações técnicas, compliance FADP/RGPD e decisões arquitecturais para fundadores que precisam de clareza antes de investir.',
+    topicsLabel:'10 Artigos Programados — Cauda Longa B2B',
+    wip:'Em desenvolvimento',
+    csTitle:'✍ Artigos em produção activa',
+    csDesc:'Quer ser notificado quando os artigos forem publicados? Envie um email e recebe os primeiros 3 artigos antes de toda a gente.',
+    csCta:'✉ Notifique-me quando publicar →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Ol%C3%A1%20Eduardo%2C%20quero%20ser%20notificado%20quando%20o%20blog%20for%20publicado.',
+    ftPrivacy:'Privacidade', ftTerms:'Termos B2B', ftCookies:'Gestão de Cookies'
   },
   'en-US': {
-    lang: 'en',
-    back: '← Portfolio',
-    eyebrow: 'B2B Technical Insights',
-    title: 'Product Development<br/>that Converts',
-    sub: 'Articles on real MVP costs, technical integrations, FADP/GDPR compliance, and architectural decisions for founders who need clarity before investing.',
-    topicsLabel: '10 Scheduled Articles — B2B Long Tail',
-    wip: 'In development',
-    csTitle: '✍ Articles in active production',
-    csDesc: 'Want to be notified when articles are published? Send an email and get the first 3 articles before anyone else.',
-    csCta: '✉ Notify me upon publication →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Hi%20Eduardo%2C%20I%20want%20to%20be%20notified%20when%20the%20blog%20is%20published.'
+    htmlLang:'en', langLabel:'EN',
+    back:'← Portfolio',
+    eyebrow:'B2B Technical Insights',
+    title:'Product Development<br/>that Converts',
+    sub:'Articles on real MVP costs, technical integrations, FADP/GDPR compliance, and architectural decisions for founders who need clarity before investing.',
+    topicsLabel:'10 Scheduled Articles — B2B Long Tail',
+    wip:'In development',
+    csTitle:'✍ Articles in active production',
+    csDesc:'Want to be notified when articles are published? Send an email and get the first 3 articles before anyone else.',
+    csCta:'✉ Notify me upon publication →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Hi%20Eduardo%2C%20I%20want%20to%20be%20notified%20when%20the%20blog%20is%20published.',
+    ftPrivacy:'Privacy', ftTerms:'B2B Terms', ftCookies:'Cookie Management'
   },
   'fr-CH': {
-    lang: 'fr',
-    back: '← Portfolio',
-    eyebrow: 'Insights Techniques B2B',
-    title: 'Développement Produit<br/>qui Convertit',
-    sub: 'Articles sur les coûts réels des MVPs, intégrations techniques, conformité FADP/RGPD et décisions architecturales pour les fondateurs qui ont besoin de clarté avant d\'investir.',
-    topicsLabel: '10 Articles Programmés — Longue Traîne B2B',
-    wip: 'En développement',
-    csTitle: '✍ Articles en production active',
-    csDesc: 'Vous souhaitez être notifié lors de la publication des articles ? Envoyez un email et recevez les 3 premiers articles avant tout le monde.',
-    csCta: '✉ Me notifier lors de la publication →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Bonjour%20Eduardo%2C%20je%20souhaite%20%C3%AAtre%20notifi%C3%A9%20lors%20de%20la%20publication%20du%20blog.'
+    htmlLang:'fr', langLabel:'FR',
+    back:'← Portfolio',
+    eyebrow:'Insights Techniques B2B',
+    title:'Développement Produit<br/>qui Convertit',
+    sub:"Articles sur les coûts réels des MVPs, intégrations techniques, conformité FADP/RGPD et décisions architecturales pour les fondateurs qui ont besoin de clarté avant d'investir.",
+    topicsLabel:'10 Articles Programmés — Longue Traîne B2B',
+    wip:'En développement',
+    csTitle:'✍ Articles en production active',
+    csDesc:'Vous souhaitez être notifié lors de la publication des articles ? Envoyez un email et recevez les 3 premiers articles avant tout le monde.',
+    csCta:'✉ Me notifier lors de la publication →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Bonjour%20Eduardo%2C%20je%20souhaite%20%C3%AAtre%20notifi%C3%A9%20lors%20de%20la%20publication%20du%20blog.',
+    ftPrivacy:'Confidentialité', ftTerms:'Conditions B2B', ftCookies:'Gestion des Cookies'
   },
   'de-CH': {
-    lang: 'de',
-    back: '← Portfolio',
-    eyebrow: 'Technische B2B-Einblicke',
-    title: 'Produktentwicklung<br/>die konvertiert',
-    sub: 'Artikel über reale MVP-Kosten, technische Integrationen, FADP/DSGVO-Compliance und Architekturentscheidungen für Gründer, die Klarheit brauchen, bevor sie investieren.',
-    topicsLabel: '10 geplante Artikel — B2B Long Tail',
-    wip: 'In Entwicklung',
-    csTitle: '✍ Artikel in aktiver Produktion',
-    csDesc: 'Möchten Sie benachrichtigt werden, wenn Artikel veröffentlicht werden? Senden Sie eine E-Mail und erhalten Sie die ersten 3 Artikel vor allen anderen.',
-    csCta: '✉ Bei Veröffentlichung benachrichtigen →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Hallo%20Eduardo%2C%20ich%20m%C3%B6chte%20benachrichtigt%20werden%2C%20wenn%20der%20Blog%20ver%C3%B6ffentlicht%20wird.'
+    htmlLang:'de', langLabel:'DE',
+    back:'← Portfolio',
+    eyebrow:'Technische B2B-Einblicke',
+    title:'Produktentwicklung<br/>die konvertiert',
+    sub:'Artikel über reale MVP-Kosten, technische Integrationen, FADP/DSGVO-Compliance und Architekturentscheidungen für Gründer, die Klarheit brauchen, bevor sie investieren.',
+    topicsLabel:'10 geplante Artikel — B2B Long Tail',
+    wip:'In Entwicklung',
+    csTitle:'✍ Artikel in aktiver Produktion',
+    csDesc:'Möchten Sie benachrichtigt werden, wenn Artikel veröffentlicht werden? Senden Sie eine E-Mail und erhalten Sie die ersten 3 Artikel vor allen anderen.',
+    csCta:'✉ Bei Veröffentlichung benachrichtigen →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Hallo%20Eduardo%2C%20ich%20m%C3%B6chte%20benachrichtigt%20werden%2C%20wenn%20der%20Blog%20ver%C3%B6ffentlicht%20wird.',
+    ftPrivacy:'Datenschutz', ftTerms:'B2B-AGB', ftCookies:'Cookie-Verwaltung'
   },
   'es-ES': {
-    lang: 'es',
-    back: '← Portfolio',
-    eyebrow: 'Insights Técnicos B2B',
-    title: 'Desarrollo de Producto<br/>que Convierte',
-    sub: 'Artículos sobre costes reales de MVPs, integraciones técnicas, compliance FADP/RGPD y decisiones arquitecturales para fundadores que necesitan claridad antes de invertir.',
-    topicsLabel: '10 Artículos Programados — Cola Larga B2B',
-    wip: 'En desarrollo',
-    csTitle: '✍ Artículos en producción activa',
-    csDesc: '¿Quieres ser notificado cuando se publiquen los artículos? Envía un email y recibe los primeros 3 artículos antes que nadie.',
-    csCta: '✉ Notificarme cuando publique →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Hola%20Eduardo%2C%20quiero%20ser%20notificado%20cuando%20se%20publique%20el%20blog.'
+    htmlLang:'es', langLabel:'ES',
+    back:'← Portfolio',
+    eyebrow:'Insights Técnicos B2B',
+    title:'Desarrollo de Producto<br/>que Convierte',
+    sub:'Artículos sobre costes reales de MVPs, integraciones técnicas, compliance FADP/RGPD y decisiones arquitecturales para fundadores que necesitan claridad antes de invertir.',
+    topicsLabel:'10 Artículos Programados — Cola Larga B2B',
+    wip:'En desarrollo',
+    csTitle:'✍ Artículos en producción activa',
+    csDesc:'¿Quieres ser notificado cuando se publiquen los artículos? Envía un email y recibe los primeros 3 artículos antes que nadie.',
+    csCta:'✉ Notificarme cuando publique →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Hola%20Eduardo%2C%20quiero%20ser%20notificado%20cuando%20se%20publique%20el%20blog.',
+    ftPrivacy:'Privacidad', ftTerms:'Términos B2B', ftCookies:'Gestión de Cookies'
   },
   'it-IT': {
-    lang: 'it',
-    back: '← Portfolio',
-    eyebrow: 'Insight Tecnici B2B',
-    title: 'Sviluppo Prodotto<br/>che Converte',
-    sub: 'Articoli sui costi reali degli MVP, integrazioni tecniche, conformità FADP/GDPR e decisioni architetturali per i fondatori che hanno bisogno di chiarezza prima di investire.',
-    topicsLabel: '10 Articoli Programmati — Coda Lunga B2B',
-    wip: 'In sviluppo',
-    csTitle: '✍ Articoli in produzione attiva',
-    csDesc: 'Vuoi essere notificato quando gli articoli vengono pubblicati? Invia una email e ricevi i primi 3 articoli prima di tutti.',
-    csCta: '✉ Notificami alla pubblicazione →',
-    mailSubject: 'Blog%20Notification%20Request',
-    mailBody: 'Ciao%20Eduardo%2C%20voglio%20essere%20notificato%20quando%20il%20blog%20viene%20pubblicato.'
+    htmlLang:'it', langLabel:'IT',
+    back:'← Portfolio',
+    eyebrow:'Insight Tecnici B2B',
+    title:'Sviluppo Prodotto<br/>che Converte',
+    sub:'Articoli sui costi reali degli MVP, integrazioni tecniche, conformità FADP/GDPR e decisioni architetturali per i fondatori che hanno bisogno di chiarezza prima di investire.',
+    topicsLabel:'10 Articoli Programmati — Coda Lunga B2B',
+    wip:'In sviluppo',
+    csTitle:'✍ Articoli in produzione attiva',
+    csDesc:'Vuoi essere notificato quando gli articoli vengono pubblicati? Invia una email e ricevi i primi 3 articoli prima di tutti.',
+    csCta:'✉ Notificami alla pubblicazione →',
+    mailSubject:'Blog%20Notification%20Request',
+    mailBody:'Ciao%20Eduardo%2C%20voglio%20essere%20notificato%20quando%20il%20blog%20viene%20pubblicato.',
+    ftPrivacy:'Privacy', ftTerms:'Termini B2B', ftCookies:'Gestione Cookie'
   }
 };
 
+/* ── APPLY LOCALE ────────────────────────────────────────────── */
 function applyBlogLocale() {
   var locale = localStorage.getItem('vc-locale') || 'pt-PT';
   var d = BLOG_I18N[locale] || BLOG_I18N['pt-PT'];
 
-  document.documentElement.lang = d.lang;
+  document.documentElement.lang = d.htmlLang;
 
+  /* Header */
+  var bhBack = document.getElementById('bh-back');
+  if (bhBack) bhBack.textContent = d.back;
+
+  /* Lang button label */
+  var langCurrent = document.getElementById('bh-lang-current');
+  if (langCurrent) langCurrent.textContent = d.langLabel;
+
+  /* Mark active option */
+  document.querySelectorAll('.lang-opt').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-locale') === locale);
+  });
+
+  /* Hero */
   var eyebrow = document.getElementById('blog-eyebrow');
   var title   = document.getElementById('blog-title');
   var sub     = document.getElementById('blog-sub');
-  var label   = document.getElementById('topics-label');
-  var csTitle = document.getElementById('cs-title');
-  var csDesc  = document.getElementById('cs-desc');
-  var csCta   = document.getElementById('cs-cta');
-  var bhBack  = document.getElementById('bh-back');
-
   if (eyebrow) eyebrow.textContent = d.eyebrow;
   if (title)   title.innerHTML     = d.title;
   if (sub)     sub.textContent     = d.sub;
-  if (label)   label.textContent   = d.topicsLabel;
+
+  /* Topics label */
+  var label = document.getElementById('topics-label');
+  if (label) label.textContent = d.topicsLabel;
+
+  /* WIP badges — all 10 articles */
+  for (var i = 1; i <= 10; i++) {
+    var el = document.getElementById('wip-0' + (i < 10 ? '0' + i : i).slice(-2));
+    /* handle wip-01…wip-09 and wip-10 */
+    if (!el) el = document.getElementById('wip-' + (i < 10 ? '0'+i : i));
+    if (el) el.textContent = d.wip;
+  }
+
+  /* Coming-soon banner */
+  var csTitle = document.getElementById('cs-title');
+  var csDesc  = document.getElementById('cs-desc');
+  var csCta   = document.getElementById('cs-cta');
   if (csTitle) csTitle.textContent = d.csTitle;
   if (csDesc)  csDesc.textContent  = d.csDesc;
-  if (bhBack)  bhBack.textContent  = d.back;
   if (csCta) {
     csCta.textContent = d.csCta;
     csCta.href = 'mailto:edumonteiro.dev@gmail.com?subject=' + d.mailSubject + '&body=' + d.mailBody;
   }
 
-  /* WIP badges — same string, all articles */
-  for (var i = 1; i <= 10; i++) {
-    var pad = i < 10 ? '0' + i : '' + i;
-    var el  = document.getElementById('wip-label-' + pad);
-    if (el) el.textContent = d.wip;
-  }
+  /* Footer links */
+  var ftP = document.getElementById('ft-privacy');
+  var ftT = document.getElementById('ft-terms');
+  var ftC = document.getElementById('ft-cookies');
+  if (ftP) ftP.textContent = d.ftPrivacy;
+  if (ftT) ftT.textContent = d.ftTerms;
+  if (ftC) ftC.textContent = d.ftCookies;
 }
 
-/* Run immediately — no DOMContentLoaded needed, script is at end of body */
-applyBlogLocale();
+/* ── LANG DROPDOWN ───────────────────────────────────────────── */
+(function() {
+  var btn      = document.getElementById('bh-lang-btn');
+  var dropdown = document.getElementById('lang-dropdown');
+  if (!btn || !dropdown) return;
 
-/* PWA Service Worker */
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = dropdown.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  document.addEventListener('click', function() {
+    dropdown.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+
+  dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+
+  document.querySelectorAll('.lang-opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var locale = opt.getAttribute('data-locale');
+      localStorage.setItem('vc-locale', locale);
+      dropdown.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      applyBlogLocale(); /* instant — no page reload */
+    });
+  });
+})();
+
+/* ── BOOT ────────────────────────────────────────────────────── */
+applyBlogLocale(); /* sync, before paint */
+
+/* ── PWA SERVICE WORKER ──────────────────────────────────────── */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});

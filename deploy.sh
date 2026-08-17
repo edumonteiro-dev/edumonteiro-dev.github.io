@@ -8,9 +8,9 @@ set -euo pipefail
 # Requires   : git >= 2.30, authenticated remote (SSH key or HTTPS token)
 # ─────────────────────────────────────────────────────────────────────────────
 
-RELEASE_VERSION="v11.0.1"
+RELEASE_VERSION="v11.0.2"
 RELEASE_BRANCH="main"
-COMMIT_MESSAGE="fix(blog): restore vc-locale state sync across pages — Vibecoder v11.0.1"
+COMMIT_MESSAGE="feat(pricing,blog): Dynamic B2B Pricing per locale, Blog i18n modal, fixed static string leaks — Vibecoder v11.0.2"
 REMOTE="origin"
 
 # ── 0. Pre-flight checks ─────────────────────────────────────────────────────
@@ -58,7 +58,7 @@ fi
 # ── 3. Apply annotated tag ───────────────────────────────────────────────────
 git tag \
   --annotate "${RELEASE_VERSION}" \
-  --message "Hotfix ${RELEASE_VERSION}: blog.html i18n state sync — vc-locale localStorage read, 6-locale BLOG_I18N engine, FOUC eliminated."
+  --message "Release ${RELEASE_VERSION}: Dynamic B2B Pricing per locale (CHF/EUR/USD), Blog lang selector modal, 100% i18n shell coverage, static string leaks fixed."
 
 echo "[OK] Tag applied: ${RELEASE_VERSION}"
 
