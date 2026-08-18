@@ -23,7 +23,8 @@ const FILES_TO_CHECK = [
 const ALLOWLIST = [
   'kmlucropro.com', 'vozdocondutor.com', 'vdcpt.github.io',
   'linkedin.com', 'github.com', 'workana.com', 'upwork.com', '99freelas.com',
-  'share.google', 'api.web3forms.com',
+  'share.google', 'api.web3forms.com', 'monteiro.is-a.dev',
+  'www.cnpd.pt', 'www.edoeb.admin.ch',
 ];
 const EXT_ASSET_RE = /<(?:script|link|img|iframe)[^>]+(?:src|href)=["'](https?:\/\/[^"']+)["']/gi;
 
