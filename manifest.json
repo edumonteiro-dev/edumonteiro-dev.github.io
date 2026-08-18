@@ -1,14 +1,14 @@
 {
-  "name": "Eduardo Monteiro — Dev Full-Stack com IA",
+  "name": "Eduardo Monteiro — AI-Powered Full-Stack Developer",
   "short_name": "EM Dev",
-  "description": "Portfolio & MSA — AI-Powered Full-Stack Developer | monteiro.is-a.dev",
+  "description": "Portfolio & B2B MSA — AI-Powered Full-Stack Developer | monteiro.is-a.dev | FADP/DSG · GDPR · RGPD Compliant",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#050508",
   "theme_color": "#7B5CF0",
-  "lang": "pt-PT",
+  "lang": "en",
   "dir": "ltr",
   "categories": [
     "portfolio",
@@ -25,5 +25,6 @@
   ],
   "screenshots": [],
   "related_applications": [],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "version": "11.0.4-i18n-50c192df"
 }

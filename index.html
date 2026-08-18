@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-PT" dir="ltr">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; form-action 'self' mailto:; base-uri 'none'; upgrade-insecure-requests;"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="X-Frame-Options" content="DENY"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
@@ -706,12 +706,12 @@ footer{padding:48px 0 32px;border-top:1px solid var(--border);background:var(--d
         <div id="footer-tagline" class="footer-tagline"><span>Vibe Coder · Eduardo Monteiro · Dev Full-Stack com IA</span></div>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="./terms.html">Termos B2B</a>
-        <a href="./privacy.html">Privacidade</a>
-        <a href="./cookies.html">Cookies</a>
-        <a href="./legal.html?tab=gdpr">RGPD</a>
-        <a href="./blog.html">Blog</a>
-        <a href="./contract.html" target="_blank">Contrato</a>
+        <a href="./terms.html" id="footer-terms">Termos B2B</a>
+        <a href="./privacy.html" id="footer-privacy">Privacidade</a>
+        <a href="./cookies.html" id="footer-cookies">Cookies</a>
+        <a href="./legal.html?tab=gdpr" id="footer-gdpr">RGPD</a>
+        <a href="./blog.html" data-nav="blog">Blog</a>
+        <a href="./contract.html" id="footer-contract" target="_blank">Contrato</a>
       </nav>
       <div class="footer-social">
         <a href="mailto:edumonteiro.dev@gmail.com" aria-label="Email" title="Email">✉</a>
@@ -828,9 +828,27 @@ var i18n = {
     heroCta1:'Ver Portfólio', heroCta2:'Orçamento Gratuito',
     servicesEyebrow:'O que construo', servicesTitle:'Desenvolvimento de Plataformas SaaS com IA',
     servicesSubtitle:'Cada projeto é tratado como um produto de startup: velocidade, qualidade e escalabilidade em simultâneo.',
+    svcTag0:'MVP · 3-5 semanas', svcTitle0:'Desenvolvimento SaaS', svcDesc0:'Plataformas SaaS completas com autenticação, pagamentos Stripe, dashboards e subscrições. Firebase ou PostgreSQL.',
+    svcTag1:'Produto Digital', svcTitle1:'Infoprodutos & E-commerce', svcDesc1:'Lojas digitais, flipbooks, cursos online e sistemas de membros com checkout integrado e entrega automática.',
+    svcTag2:'IA · LLM · RAG', svcTitle2:'Integração com IA', svcDesc2:'APIs OpenAI/Anthropic, embeddings, RAG, agentes multi-tarefa e sistemas de geração de documentos com IA.',
+    svcTag3:'Sistema Crítico', svcTitle3:'Sistemas Personalizados', svcDesc3:'Sistemas biométricos, gestão de frotas, controlo financeiro e aplicações de missão crítica com audit trail completo.',
+    svcTag4:'Análise & BI', svcTitle4:'Dashboards & Analytics', svcDesc4:'Visualizações D3.js interactivas, relatórios em tempo real, dashboards de performance e exportação PDF/Excel.',
+    svcTag5:'50€–150€/mês', svcTitle5:'Manutenção Contínua', svcDesc5:'Atualizações de segurança, monitorização 24/7 e 2h mensais de ajustes incluídas.',
     projectsEyebrow:'Portfólio', projectsTitle:'Projetos em Destaque', projectsSubtitle:'Produtos reais. Código que funciona em produção.',
+    projTag0:'SaaS · TVDE · IA', projTitle0:'kmlucropro.com', projDesc0:'Ecossistema SaaS completo para motoristas TVDE. Auth por telemóvel, Stripe Subscriptions, trial de 7 dias, dashboard em tempo real, geração de PDF e sistema de frotas.',
+    projTag1:'Produção · Transporte · Web', projTitle1:'Voz do Condutor', projDesc1:'Site institucional e plataforma informativa para profissionais do transporte. Projeto em produção com conteúdo dinâmico, design responsivo e SEO optimizado para o mercado TVDE.',
+    projTag2:'Segurança · Biometria', projTitle2:'Sistema Biométrico', projDesc2:'Plataforma de reconhecimento de impressões digitais para uso policial. Algoritmo de matching biunívoco, cross-referencing de base de dados e gestão de cadeia de custódia digital.',
+    projTag3:'Analytics · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Centro de comando de análise para o mercado Uber/Bolt. Visualizações D3.js, dados em tempo real, análise preditiva e relatórios automáticos em PDF.',
+    projTag4:'RH · Scheduling', projTitle4:'Gestão de Turnos', projDesc4:'Sistema de agendamento de colaboradores com workflows de aprovação, cálculo automático de horas extra, integração com payroll e calendário mobile.',
+    projTag5:'QA · Testing', projTitle5:'Metodologia de Testes', projDesc5:'Framework de testes A/B com análise de funil de conversão, heatmaps, session recording e relatórios automáticos de qualidade com CI/CD integrado.',
+    projTag6:'PWA · AI · Mental Health · FHIR', projTitle6:'Haven', projDesc6:'Aplicação PWA de saúde mental com IA Edge on-device (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail anti-hallucination, CRDT offline-first e conformidade FHIR/FADP/RGPD. Mercado suíço primário.',
+    projTag7:'SaaS · Educação · Suíça · IA', projTitle7:'SpriCH', projDesc7:'Plataforma SaaS de aprendizagem de idiomas para o mercado suíço (DE-CH, FR-CH, IT-CH). Gamificação adaptativa com IA, curriculum gerado por LLM e conformidade FADP para dados de menores.',
     processEyebrow:'Como trabalho', processTitle:'Processo de Entrega em 5 Passos', processSubtitle:'Sem surpresas. Sem scope creep. Com métricas claras em cada fase.',
     pricingEyebrow:'Investimento', pricingTitle:'Preços Transparentes', pricingSubtitle:'Dois modelos de pagamento. Sem custos ocultos.',
+    tierFeatures0:['Site Institucional ou Infoproduto','Design Responsivo (Mobile-First)','Integração de pagamentos básica','SEO On-Page','Formulário de contacto','1 ronda de revisões','Suporte 15 dias pós-entrega'],
+    tierFeatures1:['MVP SaaS completo (2-4 semanas)','Firebase Auth + Stripe + Functions','Dashboard em tempo real','Integração IA (OpenAI/Claude)','Admin Panel','Testes automatizados CI/CD','2 rondas de revisões','Suporte 30 dias pós-entrega'],
+    tierFeatures2:['Ecossistema digital completo','Arquitectura multi-plataforma','Sistemas críticos & biometria','Integrações com APIs externas','Documentação técnica completa','Formação da equipa interna','Retainer mensal incluído 3 meses','SLA de uptime definido'],
+    tierPopularBadge:'Mais Popular',
     contactEyebrow:'Vamos trabalhar juntos', contactTitle:'Iniciar Projecto',
     contactSubtitle:'Descreva o seu projecto. Eduardo Monteiro responde em menos de 24 horas com uma análise inicial.',
     contactSocial:'Ou contacte directamente:',
@@ -857,6 +875,7 @@ var i18n = {
     tierName2:'Enterprise', tierTag2:'Ecossistemas Complexos', tierCta2:'Contactar Directo',
     navHome:'Início', navServices:'Serviços', navProjects:'Projetos', navProcess:'Processo',
     navPricing:'Preços', navBlog:'Blog', navContract:'Contrato', navLegal:'Legal', navContact:'Contacto',
+    footerTerms:'Termos B2B', footerPrivacy:'Privacidade', footerCookies:'Cookies', footerGdpr:'RGPD', footerContract:'Contrato',
     projRateLbl0:'Aprovação B2B', projRateLbl1:'SLA Cumprido', projRateLbl2:'Precisão Biunívoca',
     projRateLbl3:'Adoção Analítica', projRateLbl4:'Aprovação Cliente', projRateLbl5:'Aprovação QA',
     projRateLbl6:'Compliance Suíça', projRateLbl7:'Aprovação B2B',
@@ -872,9 +891,27 @@ var i18n = {
     heroCta1:'View Portfolio', heroCta2:'Free Quote',
     servicesEyebrow:'What I build', servicesTitle:'AI-Powered SaaS Platform Development',
     servicesSubtitle:'Every project is treated like a startup product: speed, quality and scalability simultaneously.',
+    svcTag0:'MVP · 3-5 weeks', svcTitle0:'SaaS Development', svcDesc0:'Complete SaaS platforms with authentication, Stripe payments, dashboards and subscriptions. Firebase or PostgreSQL.',
+    svcTag1:'Digital Product', svcTitle1:'Infoproducts & E-commerce', svcDesc1:'Digital shops, flipbooks, online courses and membership systems with integrated checkout and automatic delivery.',
+    svcTag2:'AI · LLM · RAG', svcTitle2:'AI Integration', svcDesc2:'OpenAI/Anthropic APIs, embeddings, RAG, multi-task agents and AI-powered document generation systems.',
+    svcTag3:'Critical System', svcTitle3:'Custom Systems', svcDesc3:'Biometric systems, fleet management, financial control and mission-critical applications with complete audit trail.',
+    svcTag4:'Analytics & BI', svcTitle4:'Dashboards & Analytics', svcDesc4:'Interactive D3.js visualisations, real-time reports, performance dashboards and PDF/Excel export.',
+    svcTag5:'$60–$180/mo', svcTitle5:'Ongoing Maintenance', svcDesc5:'Security updates, 24/7 monitoring and 2 monthly adjustment hours included.',
     projectsEyebrow:'Portfolio', projectsTitle:'Featured Projects', projectsSubtitle:'Real products. Code that works in production.',
+    projTag0:'SaaS · TVDE · AI', projTitle0:'kmlucropro.com', projDesc0:'Complete SaaS ecosystem for TVDE drivers. Phone auth, Stripe Subscriptions, 7-day trial, real-time dashboard, PDF generation and fleet management.',
+    projTag1:'Production · Transport · Web', projTitle1:'Voz do Condutor', projDesc1:'Institutional site and information platform for transport professionals. Live project with dynamic content, responsive design and SEO optimised for the TVDE market.',
+    projTag2:'Security · Biometrics', projTitle2:'Biometric System', projDesc2:'Fingerprint recognition platform for police use. Bijective matching algorithm, database cross-referencing and digital chain-of-custody management.',
+    projTag3:'Analytics · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Analysis command centre for the Uber/Bolt market. D3.js visualisations, real-time data, predictive analytics and automatic PDF reports.',
+    projTag4:'HR · Scheduling', projTitle4:'Shift Management', projDesc4:'Employee scheduling system with approval workflows, automatic overtime calculation, payroll integration and mobile calendar.',
+    projTag5:'QA · Testing', projTitle5:'Testing Methodology', projDesc5:'A/B testing framework with conversion funnel analysis, heatmaps, session recording and automatic quality reports with integrated CI/CD.',
+    projTag6:'PWA · AI · Mental Health · FHIR', projTitle6:'Haven', projDesc6:'Mental health PWA with on-device Edge AI (WASM), Zero-Knowledge BYOC encryption, Clinical Guardrail anti-hallucination, CRDT offline-first and FHIR/FADP/GDPR compliance. Primary Swiss market.',
+    projTag7:'SaaS · Education · Switzerland · AI', projTitle7:'SpriCH', projDesc7:'SaaS language learning platform for the Swiss market (DE-CH, FR-CH, IT-CH). Adaptive gamification with AI, LLM-generated curriculum and FADP compliance for minors\' data.',
     processEyebrow:'How I work', processTitle:'5-Step Delivery Process', processSubtitle:'No surprises. No scope creep. Clear metrics at every phase.',
     pricingEyebrow:'Investment', pricingTitle:'Transparent Pricing', pricingSubtitle:'Two payment models. No hidden costs.',
+    tierFeatures0:['Institutional Website or Infoproduct','Responsive Design (Mobile-First)','Basic payment integration','On-Page SEO','Contact form','1 revision round','15-day post-delivery support'],
+    tierFeatures1:['Complete SaaS MVP (2-4 weeks)','Firebase Auth + Stripe + Functions','Real-time dashboard','AI Integration (OpenAI/Claude)','Admin Panel','Automated CI/CD tests','2 revision rounds','30-day post-delivery support'],
+    tierFeatures2:['Complete digital ecosystem','Multi-platform architecture','Critical systems & biometrics','External API integrations','Complete technical documentation','Internal team training','3-month retainer included','Defined uptime SLA'],
+    tierPopularBadge:'Most Popular',
     contactEyebrow:"Let's work together", contactTitle:'Start a Project',
     contactSubtitle:'Describe your project. Eduardo Monteiro responds in less than 24 hours with an initial analysis.',
     contactSocial:'Or contact directly:',
@@ -894,13 +931,14 @@ var i18n = {
     metricLabel0:'Years in Market', metricLabel1:'Projects Delivered', metricLabel2:'Countries Served', metricLabel3:'Satisfaction Rate',
     stepTitle0:'Discovery', stepTitle1:'Design', stepTitle2:'Development', stepTitle3:'QA & Testing', stepTitle4:'Launch',
     stepDur0:'2-3 days', stepDur1:'3-5 days', stepDur2:'2-4 wks', stepDur3:'3-5 days', stepDur4:'Day 0+',
-    maintenanceText:'Monthly Maintenance: 50€–150€/mo · Firebase updates · Security patches · 2h adjustments included',
+    maintenanceText:'Monthly Maintenance: $60–$180/mo · Firebase updates · Security patches · 2h adjustments included',
     toggle50:'50% + 50%', toggleHr:'Hourly',
     tierName0:'Starter', tierTag0:'Sites & Infoproducts', tierCta0:'Start Project',
     tierName1:'Pro', tierTag1:'SaaS & Systems', tierCta1:'Launch MVP',
     tierName2:'Enterprise', tierTag2:'Complex Ecosystems', tierCta2:'Contact Directly',
     navHome:'Home', navServices:'Services', navProjects:'Projects', navProcess:'Process',
     navPricing:'Pricing', navBlog:'Blog', navContract:'Contract', navLegal:'Legal', navContact:'Contact',
+    footerTerms:'B2B Terms', footerPrivacy:'Privacy', footerCookies:'Cookies', footerGdpr:'GDPR', footerContract:'Contract',
     projRateLbl0:'B2B Approval', projRateLbl1:'SLA Met', projRateLbl2:'Biometric Accuracy',
     projRateLbl3:'Analytics Adoption', projRateLbl4:'Client Approval', projRateLbl5:'QA Approval',
     projRateLbl6:'Swiss Compliance', projRateLbl7:'B2B Approval',
@@ -916,9 +954,27 @@ var i18n = {
     heroCta1:'Voir le Portfolio', heroCta2:'Devis Gratuit',
     servicesEyebrow:'Ce que je développe', servicesTitle:'Développement de Plateformes SaaS avec IA',
     servicesSubtitle:'Chaque projet est traité comme un produit de startup : vitesse, qualité et évolutivité en simultané.',
+    svcTag0:'MVP · 3-5 semaines', svcTitle0:'Développement SaaS', svcDesc0:'Plateformes SaaS complètes avec authentification, paiements Stripe, tableaux de bord et abonnements. Firebase ou PostgreSQL.',
+    svcTag1:'Produit Numérique', svcTitle1:'Infoproduits & E-commerce', svcDesc1:'Boutiques numériques, flipbooks, cours en ligne et systèmes d\'adhésion avec paiement intégré et livraison automatique.',
+    svcTag2:'IA · LLM · RAG', svcTitle2:'Intégration IA', svcDesc2:'APIs OpenAI/Anthropic, embeddings, RAG, agents multi-tâches et systèmes de génération de documents par IA.',
+    svcTag3:'Système Critique', svcTitle3:'Systèmes Personnalisés', svcDesc3:'Systèmes biométriques, gestion de flotte, contrôle financier et applications critiques avec piste d\'audit complète.',
+    svcTag4:'Analytique & BI', svcTitle4:'Tableaux de Bord & Analytique', svcDesc4:'Visualisations D3.js interactives, rapports en temps réel, tableaux de bord de performance et export PDF/Excel.',
+    svcTag5:'60–180 CHF/mois', svcTitle5:'Maintenance Continue', svcDesc5:'Mises à jour de sécurité, surveillance 24h/7 et 2 heures d\'ajustements mensuels incluses.',
     projectsEyebrow:'Portfolio', projectsTitle:'Projets Phares', projectsSubtitle:'Des produits réels. Un code qui fonctionne en production.',
+    projTag0:'SaaS · TVDE · IA', projTitle0:'kmlucropro.com', projDesc0:'Écosystème SaaS complet pour conducteurs TVDE. Auth par téléphone, Stripe Subscriptions, essai 7 jours, tableau de bord temps réel, génération PDF et gestion de flotte.',
+    projTag1:'Production · Transport · Web', projTitle1:'Voz do Condutor', projDesc1:'Site institutionnel et plateforme d\'information pour les professionnels du transport. Projet en production avec contenu dynamique, design adaptatif et SEO optimisé.',
+    projTag2:'Sécurité · Biométrie', projTitle2:'Système Biométrique', projDesc2:'Plateforme de reconnaissance d\'empreintes digitales à usage policier. Algorithme de correspondance bijectif, recoupement de bases de données et gestion de la chaîne de garde numérique.',
+    projTag3:'Analytique · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Centre de commandement analytique pour le marché Uber/Bolt. Visualisations D3.js, données en temps réel, analytique prédictive et rapports PDF automatiques.',
+    projTag4:'RH · Planification', projTitle4:'Gestion des Horaires', projDesc4:'Système de planification des employés avec workflows d\'approbation, calcul automatique des heures supplémentaires, intégration paie et calendrier mobile.',
+    projTag5:'AQ · Tests', projTitle5:'Méthodologie de Tests', projDesc5:'Framework de tests A/B avec analyse d\'entonnoir de conversion, heatmaps, enregistrement de session et rapports qualité automatiques avec CI/CD intégré.',
+    projTag6:'PWA · IA · Santé Mentale · FHIR', projTitle6:'Haven', projDesc6:'PWA de santé mentale avec IA Edge on-device (WASM), chiffrement Zero-Knowledge BYOC, Clinical Guardrail anti-hallucination, CRDT offline-first et conformité FHIR/FADP/LPD. Marché suisse primaire.',
+    projTag7:'SaaS · Éducation · Suisse · IA', projTitle7:'SpriCH', projDesc7:'Plateforme SaaS d\'apprentissage des langues pour le marché suisse (DE-CH, FR-CH, IT-CH). Gamification adaptative avec IA, curriculum généré par LLM et conformité FADP pour les données des mineurs.',
     processEyebrow:'Comment je travaille', processTitle:'Processus de Livraison en 5 Étapes', processSubtitle:'Sans surprises. Sans dérive de périmètre. Avec des métriques claires à chaque phase.',
     pricingEyebrow:'Investissement', pricingTitle:'Tarification Transparente', pricingSubtitle:'Deux modèles de facturation. Aucun frais caché.',
+    tierFeatures0:['Site institutionnel ou infoproduit','Design Adaptatif (Mobile-First)','Intégration paiement de base','SEO On-Page','Formulaire de contact','1 cycle de révisions','Support 15 jours post-livraison'],
+    tierFeatures1:['MVP SaaS complet (2-4 semaines)','Firebase Auth + Stripe + Functions','Tableau de bord temps réel','Intégration IA (OpenAI/Claude)','Panneau d\'administration','Tests CI/CD automatisés','2 cycles de révisions','Support 30 jours post-livraison'],
+    tierFeatures2:['Écosystème numérique complet','Architecture multi-plateforme','Systèmes critiques & biométrie','Intégrations APIs externes','Documentation technique complète','Formation de l\'équipe interne','Retainer mensuel 3 mois inclus','SLA de disponibilité défini'],
+    tierPopularBadge:'Le Plus Populaire',
     contactEyebrow:'Travaillons ensemble', contactTitle:'Démarrer un Projet',
     contactSubtitle:'Décrivez votre projet. Eduardo Monteiro vous répond en moins de 24 heures avec une analyse initiale.',
     contactSocial:'Ou contactez directement :',
@@ -930,7 +986,7 @@ var i18n = {
     cookieText:"Ce site utilise des témoins d'analyse. En continuant, vous acceptez notre",
     cookieLink:'Politique de confidentialité',
     blogBadgeNew:'NOUVEAU', blogBtnLabel:'Blog',
-    blogBannerSub:'Analyses sur le SaaS, l\'IA, le développement MVP et la conformité FADP/LPD',
+    blogBannerSub:"Analyses sur le SaaS, l'IA, le développement MVP et la conformité FADP/LPD",
     a2hsTitle:"Installer l'application", a2hsDesc:"Ajouter à l'écran d'accueil pour un accès rapide.",
     a2hsInstall:'Installer', a2hsDismiss:'Plus tard',
     scopeTitle:'Configurateur de Devis B2B',
@@ -938,13 +994,14 @@ var i18n = {
     metricLabel0:'Ans sur le Marché', metricLabel1:'Projets Livrés', metricLabel2:'Pays Desservis', metricLabel3:'Taux de Satisfaction',
     stepTitle0:'Découverte', stepTitle1:'Design', stepTitle2:'Développement', stepTitle3:'AQ & Tests', stepTitle4:'Lancement',
     stepDur0:'2–3 jours', stepDur1:'3–5 jours', stepDur2:'2–4 sem.', stepDur3:'3–5 jours', stepDur4:'Jour 0+',
-    maintenanceText:'Maintenance Mensuelle : 60–180 CHF/mois · Mises à jour Firebase · Correctifs de sécurité · 2 h d\'ajustements incluses',
+    maintenanceText:"Maintenance Mensuelle : 60–180 CHF/mois · Mises à jour Firebase · Correctifs de sécurité · 2 h d'ajustements incluses",
     toggle50:'50 % + 50 %', toggleHr:'Par Heure',
     tierName0:'Starter', tierTag0:'Sites & Infoproduits', tierCta0:'Démarrer le Projet',
     tierName1:'Pro', tierTag1:'SaaS & Systèmes', tierCta1:'Lancer le MVP',
     tierName2:'Enterprise', tierTag2:'Écosystèmes Complexes', tierCta2:'Contact Direct',
     navHome:'Accueil', navServices:'Services', navProjects:'Projets', navProcess:'Processus',
     navPricing:'Tarifs', navBlog:'Blog', navContract:'Contrat', navLegal:'Légal', navContact:'Contact',
+    footerTerms:'Conditions B2B', footerPrivacy:'Confidentialité', footerCookies:'Cookies', footerGdpr:'LPD / RGPD', footerContract:'Contrat',
     projRateLbl0:'Approbation B2B', projRateLbl1:'SLA Respecté', projRateLbl2:'Précision Biométrique',
     projRateLbl3:'Adoption Analytique', projRateLbl4:'Approbation Client', projRateLbl5:'Approbation AQ',
     projRateLbl6:'Conformité Suisse', projRateLbl7:'Approbation B2B',
@@ -960,9 +1017,27 @@ var i18n = {
     heroCta1:'Portfolio ansehen', heroCta2:'Kostenloses Angebot',
     servicesEyebrow:'Was ich entwickle', servicesTitle:'KI-gestützte SaaS-Plattformentwicklung',
     servicesSubtitle:'Jedes Projekt wird wie ein Startup-Produkt behandelt: Schnelligkeit, Qualität und Skalierbarkeit gleichzeitig.',
+    svcTag0:'MVP · 3-5 Wochen', svcTitle0:'SaaS-Entwicklung', svcDesc0:'Komplette SaaS-Plattformen mit Authentifizierung, Stripe-Zahlungen, Dashboards und Abonnements. Firebase oder PostgreSQL.',
+    svcTag1:'Digitale Produkte', svcTitle1:'Digitale Produkte & E-Commerce', svcDesc1:'Digitale Shops, Flipbooks, Online-Kurse und Mitgliedschaftssysteme mit integriertem Checkout und automatischer Lieferung.',
+    svcTag2:'KI · LLM · RAG', svcTitle2:'KI-Integration', svcDesc2:'OpenAI/Anthropic-APIs, Embeddings, RAG, Multi-Task-Agenten und KI-gestützte Dokumentengenerierungssysteme.',
+    svcTag3:'Kritische Systeme', svcTitle3:'Massgeschneiderte Systeme', svcDesc3:'Biometrische Systeme, Flottenmanagement, Finanzkontrolle und geschäftskritische Anwendungen mit vollständigem Prüfpfad.',
+    svcTag4:'Analytik & BI', svcTitle4:'Dashboards & Analytik', svcDesc4:'Interaktive D3.js-Visualisierungen, Echtzeit-Berichte, Performance-Dashboards und PDF/Excel-Export.',
+    svcTag5:'60–180 CHF/Monat', svcTitle5:'Laufende Wartung', svcDesc5:'Sicherheitsupdates, 24/7-Monitoring und 2 monatliche Anpassungsstunden inklusive.',
     projectsEyebrow:'Portfolio', projectsTitle:'Ausgewählte Projekte', projectsSubtitle:'Echte Produkte. Code, der in der Produktion funktioniert.',
+    projTag0:'SaaS · TVDE · KI', projTitle0:'kmlucropro.com', projDesc0:'Vollständiges SaaS-Ökosystem für TVDE-Fahrer. Telefon-Auth, Stripe Subscriptions, 7-tägige Testphase, Echtzeit-Dashboard, PDF-Generierung und Flottenmanagement.',
+    projTag1:'Produktion · Transport · Web', projTitle1:'Voz do Condutor', projDesc1:'Institutionelle Website und Informationsplattform für Transportfachleute. Laufendes Projekt mit dynamischen Inhalten, responsivem Design und SEO-Optimierung.',
+    projTag2:'Sicherheit · Biometrie', projTitle2:'Biometrisches System', projDesc2:'Fingerabdruck-Erkennungsplattform für den Polizeieinsatz. Bijektiver Matching-Algorithmus, Datenbank-Crossreferenzierung und digitale Beweismittelkette.',
+    projTag3:'Analytik · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Analyse-Kommandozentrale für den Uber/Bolt-Markt. D3.js-Visualisierungen, Echtzeitdaten, prädiktive Analytik und automatische PDF-Berichte.',
+    projTag4:'HR · Schichtplanung', projTitle4:'Schichtmanagement', projDesc4:'Mitarbeiterplanungssystem mit Genehmigungsworkflows, automatischer Überstundenberechnung, Gehaltsabrechnungsintegration und mobilem Kalender.',
+    projTag5:'QS · Tests', projTitle5:'Testmethodik', projDesc5:'A/B-Test-Framework mit Konversionstrichteranalyse, Heatmaps, Session-Recording und automatischen Qualitätsberichten mit integriertem CI/CD.',
+    projTag6:'PWA · KI · Mental Health · FHIR', projTitle6:'Haven', projDesc6:'Mental-Health-PWA mit On-Device Edge KI (WASM), Zero-Knowledge BYOC-Verschlüsselung, Clinical Guardrail Anti-Halluzination, CRDT Offline-First und FHIR/FADP/DSG-Konformität. Primärer Schweizer Markt.',
+    projTag7:'SaaS · Bildung · Schweiz · KI', projTitle7:'SpriCH', projDesc7:'SaaS-Sprachlernplattform für den Schweizer Markt (DE-CH, FR-CH, IT-CH). Adaptive Gamifizierung mit KI, LLM-generiertem Curriculum und FADP-Konformität für Minderjährigendaten.',
     processEyebrow:'Wie ich arbeite', processTitle:'5-Schritte-Lieferprozess', processSubtitle:'Keine Überraschungen. Kein Scope Creep. Klare Kennzahlen in jeder Phase.',
     pricingEyebrow:'Investition', pricingTitle:'Transparente Preise', pricingSubtitle:'Zwei Zahlungsmodelle. Keine versteckten Kosten.',
+    tierFeatures0:['Unternehmenswebsite oder digitales Produkt','Responsives Design (Mobile-First)','Grundlegende Zahlungsintegration','On-Page SEO','Kontaktformular','1 Revisionsrunde','15-tägiger Support nach Lieferung'],
+    tierFeatures1:['Vollständiges SaaS-MVP (2-4 Wochen)','Firebase Auth + Stripe + Functions','Echtzeit-Dashboard','KI-Integration (OpenAI/Claude)','Admin-Panel','Automatisierte CI/CD-Tests','2 Revisionsrunden','30-tägiger Support nach Lieferung'],
+    tierFeatures2:['Vollständiges digitales Ökosystem','Multi-Plattform-Architektur','Kritische Systeme & Biometrie','Externe API-Integrationen','Vollständige technische Dokumentation','Schulung des internen Teams','3 Monate Retainer inklusive','Definiertes Uptime-SLA'],
+    tierPopularBadge:'Am Beliebtesten',
     contactEyebrow:'Arbeiten wir zusammen', contactTitle:'Projekt starten',
     contactSubtitle:'Beschreiben Sie Ihr Projekt. Eduardo Monteiro antwortet innerhalb von 24 Stunden mit einer ersten Analyse.',
     contactSocial:'Oder direkt kontaktieren:',
@@ -989,6 +1064,7 @@ var i18n = {
     tierName2:'Enterprise', tierTag2:'Komplexe Ökosysteme', tierCta2:'Direkt kontaktieren',
     navHome:'Startseite', navServices:'Leistungen', navProjects:'Projekte', navProcess:'Ablauf',
     navPricing:'Preise', navBlog:'Blog', navContract:'Vertrag', navLegal:'Rechtliches', navContact:'Kontakt',
+    footerTerms:'B2B-Bedingungen', footerPrivacy:'Datenschutz', footerCookies:'Cookie-Richtlinie', footerGdpr:'DSG / DSGVO', footerContract:'Vertrag',
     projRateLbl0:'B2B-Zustimmung', projRateLbl1:'SLA eingehalten', projRateLbl2:'Biometrische Genauigkeit',
     projRateLbl3:'Analytik-Akzeptanz', projRateLbl4:'Kundenzustimmung', projRateLbl5:'QS-Zustimmung',
     projRateLbl6:'Schweizer Compliance', projRateLbl7:'B2B-Zustimmung',
@@ -1004,9 +1080,27 @@ var i18n = {
     heroCta1:'Ver Portfolio', heroCta2:'Presupuesto Gratis',
     servicesEyebrow:'Lo que construyo', servicesTitle:'Desarrollo de Plataformas SaaS con IA',
     servicesSubtitle:'Cada proyecto se trata como un producto startup.',
+    svcTag0:'MVP · 3-5 semanas', svcTitle0:'Desarrollo SaaS', svcDesc0:'Plataformas SaaS completas con autenticación, pagos Stripe, dashboards y suscripciones. Firebase o PostgreSQL.',
+    svcTag1:'Producto Digital', svcTitle1:'Infoproductos & E-commerce', svcDesc1:'Tiendas digitales, flipbooks, cursos online y sistemas de membresía con checkout integrado y entrega automática.',
+    svcTag2:'IA · LLM · RAG', svcTitle2:'Integración con IA', svcDesc2:'APIs OpenAI/Anthropic, embeddings, RAG, agentes multi-tarea y sistemas de generación de documentos con IA.',
+    svcTag3:'Sistema Crítico', svcTitle3:'Sistemas Personalizados', svcDesc3:'Sistemas biométricos, gestión de flotas, control financiero y aplicaciones de misión crítica con audit trail completo.',
+    svcTag4:'Analítica & BI', svcTitle4:'Dashboards & Analítica', svcDesc4:'Visualizaciones D3.js interactivas, informes en tiempo real, dashboards de rendimiento y exportación PDF/Excel.',
+    svcTag5:'50€–150€/mes', svcTitle5:'Mantenimiento Continuo', svcDesc5:'Actualizaciones de seguridad, monitorización 24/7 y 2h mensuales de ajustes incluidas.',
     projectsEyebrow:'Portfolio', projectsTitle:'Proyectos Destacados', projectsSubtitle:'Productos reales. Código que funciona en producción.',
+    projTag0:'SaaS · TVDE · IA', projTitle0:'kmlucropro.com', projDesc0:'Ecosistema SaaS completo para conductores TVDE. Auth por teléfono, Stripe Subscriptions, prueba de 7 días, dashboard en tiempo real, generación de PDF y sistema de flotas.',
+    projTag1:'Producción · Transporte · Web', projTitle1:'Voz do Condutor', projDesc1:'Sitio institucional y plataforma informativa para profesionales del transporte. Proyecto en producción con contenido dinámico, diseño responsive y SEO optimizado.',
+    projTag2:'Seguridad · Biometría', projTitle2:'Sistema Biométrico', projDesc2:'Plataforma de reconocimiento de huellas dactilares para uso policial. Algoritmo de matching biyectivo, cross-referencing de bases de datos y gestión de cadena de custodia digital.',
+    projTag3:'Analítica · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Centro de mando de análisis para el mercado Uber/Bolt. Visualizaciones D3.js, datos en tiempo real, análisis predictivo e informes automáticos en PDF.',
+    projTag4:'RRHH · Planificación', projTitle4:'Gestión de Turnos', projDesc4:'Sistema de programación de empleados con flujos de aprobación, cálculo automático de horas extra, integración con nómina y calendario móvil.',
+    projTag5:'QA · Testing', projTitle5:'Metodología de Tests', projDesc5:'Framework de tests A/B con análisis de embudo de conversión, heatmaps, session recording e informes automáticos de calidad con CI/CD integrado.',
+    projTag6:'PWA · IA · Salud Mental · FHIR', projTitle6:'Haven', projDesc6:'PWA de salud mental con IA Edge on-device (WASM), cifrado Zero-Knowledge BYOC, Clinical Guardrail anti-alucinación, CRDT offline-first y conformidad FHIR/FADP/RGPD. Mercado suizo primario.',
+    projTag7:'SaaS · Educación · Suiza · IA', projTitle7:'SpriCH', projDesc7:'Plataforma SaaS de aprendizaje de idiomas para el mercado suizo (DE-CH, FR-CH, IT-CH). Gamificación adaptativa con IA, currículo generado por LLM y conformidad FADP para datos de menores.',
     processEyebrow:'Cómo trabajo', processTitle:'Proceso de Entrega en 5 Pasos', processSubtitle:'Sin sorpresas. Sin scope creep.',
     pricingEyebrow:'Inversión', pricingTitle:'Precios Transparentes', pricingSubtitle:'Dos modelos de pago. Sin costes ocultos.',
+    tierFeatures0:['Sitio web institucional o infoproducto','Diseño Responsivo (Mobile-First)','Integración de pagos básica','SEO On-Page','Formulario de contacto','1 ronda de revisiones','Soporte 15 días post-entrega'],
+    tierFeatures1:['MVP SaaS completo (2-4 semanas)','Firebase Auth + Stripe + Functions','Dashboard en tiempo real','Integración IA (OpenAI/Claude)','Panel de administración','Tests automatizados CI/CD','2 rondas de revisiones','Soporte 30 días post-entrega'],
+    tierFeatures2:['Ecosistema digital completo','Arquitectura multi-plataforma','Sistemas críticos & biometría','Integraciones con APIs externas','Documentación técnica completa','Formación del equipo interno','Retainer mensual 3 meses incluido','SLA de uptime definido'],
+    tierPopularBadge:'Más Popular',
     contactEyebrow:'Trabajemos juntos', contactTitle:'Iniciar Proyecto',
     contactSubtitle:'Describe tu proyecto. Eduardo Monteiro responde en menos de 24 horas.',
     contactSocial:'O contacta directamente:',
@@ -1033,6 +1127,7 @@ var i18n = {
     tierName2:'Enterprise', tierTag2:'Ecosistemas Complejos', tierCta2:'Contacto Directo',
     navHome:'Inicio', navServices:'Servicios', navProjects:'Proyectos', navProcess:'Proceso',
     navPricing:'Precios', navBlog:'Blog', navContract:'Contrato', navLegal:'Legal', navContact:'Contacto',
+    footerTerms:'Términos B2B', footerPrivacy:'Privacidad', footerCookies:'Cookies', footerGdpr:'RGPD', footerContract:'Contrato',
     projRateLbl0:'Aprobación B2B', projRateLbl1:'SLA Cumplido', projRateLbl2:'Precisión Biométrica',
     projRateLbl3:'Adopción Analítica', projRateLbl4:'Aprobación Cliente', projRateLbl5:'Aprobación QA',
     projRateLbl6:'Compliance Suiza', projRateLbl7:'Aprobación B2B',
@@ -1048,11 +1143,29 @@ var i18n = {
     heroCta1:'Vedi il Portfolio', heroCta2:'Preventivo Gratuito',
     servicesEyebrow:'Cosa sviluppo', servicesTitle:'Sviluppo di Piattaforme SaaS con IA',
     servicesSubtitle:'Ogni progetto viene trattato come un prodotto startup: velocità, qualità e scalabilità in simultanea.',
+    svcTag0:'MVP · 3-5 settimane', svcTitle0:'Sviluppo SaaS', svcDesc0:'Piattaforme SaaS complete con autenticazione, pagamenti Stripe, dashboard e abbonamenti. Firebase o PostgreSQL.',
+    svcTag1:'Prodotto Digitale', svcTitle1:'Infoprodotti & E-commerce', svcDesc1:'Negozi digitali, flipbook, corsi online e sistemi di membership con checkout integrato e consegna automatica.',
+    svcTag2:'IA · LLM · RAG', svcTitle2:'Integrazione IA', svcDesc2:'API OpenAI/Anthropic, embeddings, RAG, agenti multi-task e sistemi di generazione documenti con IA.',
+    svcTag3:'Sistema Critico', svcTitle3:'Sistemi Personalizzati', svcDesc3:'Sistemi biometrici, gestione flotte, controllo finanziario e applicazioni mission-critical con audit trail completo.',
+    svcTag4:'Analitica & BI', svcTitle4:'Dashboard & Analitica', svcDesc4:'Visualizzazioni D3.js interattive, report in tempo reale, dashboard di performance ed esportazione PDF/Excel.',
+    svcTag5:'60–180 CHF/mese', svcTitle5:'Manutenzione Continua', svcDesc5:'Aggiornamenti di sicurezza, monitoraggio 24/7 e 2 ore mensili di adeguamenti incluse.',
     projectsEyebrow:'Portfolio', projectsTitle:'Progetti in Evidenza', projectsSubtitle:'Prodotti reali. Codice che funziona in produzione.',
+    projTag0:'SaaS · TVDE · IA', projTitle0:'kmlucropro.com', projDesc0:'Ecosistema SaaS completo per conducenti TVDE. Auth telefonica, Stripe Subscriptions, prova 7 giorni, dashboard in tempo reale, generazione PDF e gestione flotta.',
+    projTag1:'Produzione · Trasporti · Web', projTitle1:'Voz do Condutor', projDesc1:'Sito istituzionale e piattaforma informativa per professionisti dei trasporti. Progetto in produzione con contenuti dinamici, design responsive e SEO ottimizzato.',
+    projTag2:'Sicurezza · Biometria', projTitle2:'Sistema Biometrico', projDesc2:'Piattaforma di riconoscimento delle impronte digitali per uso della polizia. Algoritmo di corrispondenza biettivo, cross-referenziazione database e gestione della catena di custodia digitale.',
+    projTag3:'Analitica · TVDE', projTitle3:'UNIFED PROBATUM', projDesc3:'Centro di comando analitico per il mercato Uber/Bolt. Visualizzazioni D3.js, dati in tempo reale, analitica predittiva e report PDF automatici.',
+    projTag4:'HR · Pianificazione', projTitle4:'Gestione Turni', projDesc4:'Sistema di pianificazione dei dipendenti con workflow di approvazione, calcolo automatico degli straordinari, integrazione paghe e calendario mobile.',
+    projTag5:'CQ · Test', projTitle5:'Metodologia di Test', projDesc5:'Framework A/B testing con analisi del funnel di conversione, heatmap, registrazione sessioni e report automatici di qualità con CI/CD integrato.',
+    projTag6:'PWA · IA · Salute Mentale · FHIR', projTitle6:'Haven', projDesc6:"PWA per la salute mentale con IA Edge on-device (WASM), crittografia Zero-Knowledge BYOC, Clinical Guardrail anti-allucinazione, CRDT offline-first e conformità FHIR/FADP/LPD. Mercato svizzero primario.",
+    projTag7:'SaaS · Istruzione · Svizzera · IA', projTitle7:'SpriCH', projDesc7:"Piattaforma SaaS per l'apprendimento delle lingue per il mercato svizzero (DE-CH, FR-CH, IT-CH). Gamificazione adattiva con IA, curriculum generato da LLM e conformità FADP per i dati dei minori.",
     processEyebrow:'Come lavoro', processTitle:'Processo di Consegna in 5 Fasi', processSubtitle:'Nessuna sorpresa. Nessuno sforamento del perimetro. Metriche chiare in ogni fase.',
     pricingEyebrow:'Investimento', pricingTitle:'Prezzi Trasparenti', pricingSubtitle:'Due modelli di fatturazione. Nessun costo nascosto.',
+    tierFeatures0:['Sito istituzionale o infoprodotto','Design Responsive (Mobile-First)','Integrazione pagamenti base','SEO On-Page','Modulo di contatto','1 ciclo di revisioni','Supporto 15 giorni post-consegna'],
+    tierFeatures1:['MVP SaaS completo (2-4 settimane)','Firebase Auth + Stripe + Functions','Dashboard in tempo reale','Integrazione IA (OpenAI/Claude)','Pannello Admin','Test CI/CD automatizzati','2 cicli di revisioni','Supporto 30 giorni post-consegna'],
+    tierFeatures2:['Ecosistema digitale completo','Architettura multi-piattaforma','Sistemi critici & biometria','Integrazioni API esterne','Documentazione tecnica completa','Formazione del team interno','Retainer mensile 3 mesi incluso','SLA di uptime definito'],
+    tierPopularBadge:'Più Popolare',
     contactEyebrow:'Lavoriamo insieme', contactTitle:'Avviare un Progetto',
-    contactSubtitle:'Descrivete il vostro progetto. Eduardo Monteiro risponde entro 24 ore con un\'analisi iniziale.',
+    contactSubtitle:"Descrivete il vostro progetto. Eduardo Monteiro risponde entro 24 ore con un'analisi iniziale.",
     contactSocial:'O contattate direttamente:',
     scopeCardEy:'Configuratore Preventivo', scopeCardT:'Avviate il vostro progetto in 2 minuti',
     scopeCardD:'Selezionate le funzionalità, definite il budget e inviate la proposta. Risposta entro 24 h.',
@@ -1073,10 +1186,11 @@ var i18n = {
     maintenanceText:'Manutenzione Mensile: 60–180 CHF/mese · Aggiornamenti Firebase · Correzioni di sicurezza · 2 ore di adeguamenti incluse',
     toggle50:'50 % + 50 %', toggleHr:'A ore',
     tierName0:'Starter', tierTag0:'Siti & Infoprodotti', tierCta0:'Avvia il Progetto',
-    tierName1:'Pro', tierTag1:'SaaS & Sistemi', tierCta1:'Lancia l\'MVP',
+    tierName1:'Pro', tierTag1:'SaaS & Sistemi', tierCta1:"Lancia l'MVP",
     tierName2:'Enterprise', tierTag2:'Ecosistemi Complessi', tierCta2:'Contatto Diretto',
     navHome:'Home', navServices:'Servizi', navProjects:'Progetti', navProcess:'Processo',
     navPricing:'Prezzi', navBlog:'Blog', navContract:'Contratto', navLegal:'Legale', navContact:'Contatto',
+    footerTerms:'Termini B2B', footerPrivacy:'Privacy', footerCookies:'Cookie Policy', footerGdpr:'LPD / GDPR', footerContract:'Contratto',
     projRateLbl0:'Approvazione B2B', projRateLbl1:'SLA Rispettato', projRateLbl2:'Precisione Biometrica',
     projRateLbl3:'Adozione Analitica', projRateLbl4:'Approvazione Cliente', projRateLbl5:'Approvazione CQ',
     projRateLbl6:'Conformità Svizzera', projRateLbl7:'Approvazione B2B',
@@ -1107,9 +1221,25 @@ function applyLocale(locale) {
   setText('services-eyebrow', t.servicesEyebrow);
   setText('services-title', t.servicesTitle);
   setText('services-subtitle', t.servicesSubtitle);
+
+  /* ── SERVICES: full dynamic render (anti-language-bleed) ── */
+  for (var si = 0; si < 6; si++) {
+    setText('svc-tag-' + si, t['svcTag' + si]);
+    setText('svc-title-' + si, t['svcTitle' + si]);
+    setText('svc-desc-' + si, t['svcDesc' + si]);
+  }
+
   setText('projects-eyebrow', t.projectsEyebrow);
   setText('projects-title', t.projectsTitle);
   setText('projects-subtitle', t.projectsSubtitle);
+
+  /* ── PROJECTS: full dynamic render (anti-language-bleed) ── */
+  for (var pi = 0; pi < 8; pi++) {
+    setText('proj-tag-' + pi, t['projTag' + pi]);
+    setText('proj-title-' + pi, t['projTitle' + pi]);
+    setText('proj-desc-' + pi, t['projDesc' + pi]);
+  }
+
   setText('process-eyebrow', t.processEyebrow);
   setText('process-title', t.processTitle);
   setText('process-subtitle', t.processSubtitle);
@@ -1159,11 +1289,36 @@ function applyLocale(locale) {
   setText('tier-name-1', t.tierName1); setText('tier-tag-1', t.tierTag1); setText('tier-cta-1', t.tierCta1);
   setText('tier-name-2', t.tierName2); setText('tier-tag-2', t.tierTag2); setText('tier-cta-2', t.tierCta2);
 
+  /* ── PRICING FEATURES: full dynamic render (anti-language-bleed) ── */
+  for (var ti = 0; ti < 3; ti++) {
+    var feats = t['tierFeatures' + ti];
+    var ul = document.querySelector('[data-tier-features="' + ti + '"]');
+    if (ul && Array.isArray(feats)) {
+      ul.innerHTML = feats.map(function(f) { return '<li>' + f + '</li>'; }).join('');
+    }
+    /* Popular badge */
+    var badge = document.querySelector('[data-tier-popular="' + ti + '"]');
+    if (badge && t.tierPopularBadge) badge.textContent = t.tierPopularBadge;
+  }
+
   var navKeys = ['home','services','projects','process','pricing','blog','contract','legal','contact'];
   var navVals = [t.navHome, t.navServices, t.navProjects, t.navProcess, t.navPricing, t.navBlog, t.navContract, t.navLegal, t.navContact];
   document.querySelectorAll('[data-nav]').forEach(function(el){
     var idx = navKeys.indexOf(el.getAttribute('data-nav'));
     if(idx > -1) el.textContent = navVals[idx];
+  });
+
+  /* ── FOOTER LEGAL LINKS: DSG/DSGVO parity (CRÍTICO FADP) ── */
+  var footerMap = {
+    'footer-terms': t.footerTerms,
+    'footer-privacy': t.footerPrivacy,
+    'footer-cookies': t.footerCookies,
+    'footer-gdpr': t.footerGdpr,
+    'footer-contract': t.footerContract
+  };
+  Object.keys(footerMap).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && footerMap[id]) el.textContent = footerMap[id];
   });
 
   for(var i = 0; i < 8; i++) {
