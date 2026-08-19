@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-PT" dir="ltr">
+<html dir="ltr">
 <head>
 <meta charset="UTF-8"/>
+<script src="./i18n.js"></script>
+<script>
+/* FCP locale boot — sync, before any paint */
+(function(){
+  var lc=null;
+  try{lc=localStorage.getItem('vc-locale');}catch(e){}
+  var valid={'pt-PT':1,'en-US':1,'fr-CH':1,'de-CH':1,'es-ES':1,'it-IT':1};
+  if(!lc||!valid[lc]){
+    var nav=(navigator.language||'').toLowerCase();
+    var m={'pt':'pt-PT','en':'en-US','fr':'fr-CH','de':'de-CH','it':'it-IT','es':'es-ES'};
+    lc=m[nav]||m[nav.split('-')[0]]||'de-CH';
+  }
+  window.VC_LOCALE=lc;
+  var htmlEl=document.documentElement;
+  var langMap={'pt-PT':'pt-PT','en-US':'en','fr-CH':'fr','de-CH':'de','es-ES':'es','it-IT':'it'};
+  htmlEl.lang=langMap[lc]||'de';
+})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
@@ -64,7 +82,7 @@ h1,h2,h3{font-family:'Courier New',monospace}
   <div class="header-inner">
     <span class="hdr-title" id="hdr-t">Documentação Legal</span>
     <div class="lang-bar" role="group" aria-label="Language selector">
-      <button class="lang-btn active" data-lang="pt-PT">PT</button>
+      <button class="lang-btn" data-lang="pt-PT">PT</button>
       <button class="lang-btn" data-lang="en-US">EN</button>
       <button class="lang-btn" data-lang="fr-CH">FR</button>
       <button class="lang-btn" data-lang="de-CH">DE</button>
@@ -624,7 +642,7 @@ function activateTab(tabId) {
 }
 
 /* ── Bootstrap ──────────────────────────────────────────────────── */
-let locale = localStorage.getItem('vc-locale') || 'pt-PT';
+let locale = window.VC_LOCALE || localStorage.getItem('vc-locale') || 'de-CH';
 
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(locale);

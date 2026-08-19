@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html lang="de-CH" dir="ltr">
+<html dir="ltr">
 <head>
 <meta charset="UTF-8"/>
+<script src="./i18n.js"></script>
+<script>
+/* FCP locale boot — sync, before any paint */
+(function(){
+  var l=null;
+  try{l=localStorage.getItem('vc-locale');}catch(e){}
+  var valid={'pt-PT':1,'en-US':1,'fr-CH':1,'de-CH':1,'es-ES':1,'it-IT':1};
+  if(!l||!valid[l]){
+    var nav=(navigator.language||'').toLowerCase();
+    var m={'pt':'pt-PT','en':'en-US','fr':'fr-CH','de':'de-CH','it':'it-IT','es':'es-ES'};
+    l=m[nav]||m[nav.split('-')[0]]||'de-CH';
+  }
+  window.VC_LOCALE=l;
+  var htmlEl=document.documentElement;
+  var langMap={'pt-PT':'pt-PT','en-US':'en','fr-CH':'fr','de-CH':'de','es-ES':'es','it-IT':'it'};
+  htmlEl.lang=langMap[l]||'de';
+})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
@@ -162,7 +180,7 @@ body.show-hr #payment-hr,body.show-hr .cls-hr{display:block}
       <p>Eduardo Monteiro · edumonteiro.dev@gmail.com · monteiro.is-a.dev</p>
     </div>
     <div class="header-controls">
-      <button class="lang-btn active" data-lang="pt-PT">PT</button>
+      <button class="lang-btn" data-lang="pt-PT">PT</button>
       <button class="lang-btn" data-lang="en-US">EN</button>
       <button class="lang-btn" data-lang="fr-CH">FR</button>
       <button class="lang-btn" data-lang="de-CH">DE</button>
@@ -319,7 +337,7 @@ body.show-hr #payment-hr,body.show-hr .cls-hr{display:block}
         <tr><td>T01</td><td>Registo de Utilizador</td><td class="criteria">Envio e validação de OTP/Email. Criação correta do perfil na base de dados com sanitização completa dos inputs.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
         <tr><td>T02</td><td>Segurança de Auth</td><td class="criteria">Rejeição de credenciais inválidas com rate-limiting ativo (bloqueio após 5 tentativas consecutivas).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
         <tr><td>T03</td><td>Performance Dashboard</td><td class="criteria">Carregamento total de componentes e gráficos D3.js interativos em menos de <strong>3.0 segundos</strong>.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
-        <tr><td>T04</td><td>Importação CSV Válida</td><td class="criteria">Processamento de ficheiro de teste com cálculo exacto de lucros/margens no servidor (inteiros/cêntimos).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
+        <tr><td>T04</td><td>Importação CSV Válida</td><td class="criteria">CSV-Dateiverarbeitung mit exakter Gewinn-/Margenberechnung auf dem Server (Ganzzahl/Cent-Arithmetik).</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
         <tr><td>T05</td><td>CSV Inválido / Injeção</td><td class="criteria">Sanitização de inputs malformados com retorno de mensagens de erro claras por linha, sem exposição de stack traces.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
         <tr><td>T06</td><td>Subscrição Stripe</td><td class="criteria">Pagamento em sandbox, validação de assinatura criptográfica do webhook, activação do estado "Premium" de forma idempotente.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
         <tr><td>T07</td><td>Cancelamento Stripe</td><td class="criteria">Webhook de cancelamento processado, downgrade de permissões no fim do ciclo de faturação sem perda de dados.</td><td><div class="status-chk"><span>□ OK</span><span>□ FAIL</span></div></td></tr>
@@ -385,7 +403,7 @@ body.show-hr #payment-hr,body.show-hr .cls-hr{display:block}
         <tr><td id="a-stack">Stack de Arquitectura</td><td><input id="sow-stack" placeholder="Next.js + Firebase + Stripe + Python FastAPI"/></td></tr>
         <tr><td id="a-deliverables">Entregáveis Principais</td><td><input id="sow-del" placeholder="1. Auth & RLS · 2. Dashboard · 3. Módulo CSV · 4. Stripe Billing"/></td></tr>
         <tr><td id="a-model">Modelo de Pagamento</td><td>
-          <label style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);cursor:pointer"><input type="radio" name="pm" value="50" style="accent-color:var(--purple)"/> Preço Fixo — 50% entrada / 50% entrega</label><br/>
+          <label style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);cursor:pointer"><input type="radio" name="pm" value="50" style="accent-color:var(--purple)"/> Festpreis — 50% Anzahlung / 50% Lieferung</label><br/>
           <label style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);cursor:pointer;margin-top:6px"><input type="radio" name="pm" value="hr" style="accent-color:var(--purple)"/> T&M — Taxa horária: <input id="sow-rate" style="width:80px;display:inline;margin:0 4px" placeholder="€/h"/> Cap: <input id="sow-cap" style="width:60px;display:inline;margin:0 4px" placeholder="h/mês"/></label>
         </td></tr>
         <tr><td id="a-deadline">Prazo Estimado</td><td><input id="sow-deadline" placeholder="DD/MM/2026 ou X semanas"/></td></tr>
@@ -407,7 +425,7 @@ body.show-hr #payment-hr,body.show-hr .cls-hr{display:block}
         <tr><td id="a-notes">Notas Adicionais</td><td><input id="sow-notes" placeholder="Infraestrutura existente, restrições técnicas, APIs externas..."/></td></tr>
         <tr><td id="a-scope">Controlo de Escopo</td><td style="font-size:.82rem;color:var(--muted)">2 rondas de revisão incluídas. Adicionais à taxa horária em vigor. Scope Creep exige aditamento escrito.</td></tr>
         <tr><td id="a-maint">Manutenção Pós-Launch</td><td>
-          <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> SLA Manutenção: 50€–150€/mês (ou 80–250 CHF/mês) · Patches · 2h ajustes</label>
+          <label style="font-size:.78rem;color:var(--muted);display:flex;gap:4px;align-items:center"><input type="checkbox" style="accent-color:var(--teal)"/> SLA Wartung: 60–180 CHF/Monat · Sicherheits-Patches · 2 Std. Anpassungen</label>
         </td></tr>
       </tbody>
     </table>
@@ -641,7 +659,7 @@ const C={
 };
 
 /* ── STATE ── */
-let locale=localStorage.getItem('vc-locale')||'pt-PT';
+let locale=window.VC_LOCALE||localStorage.getItem('vc-locale')||'de-CH';
 let model='50'; // '50' or 'hr'
 
 /* ── HELPERS ── */
