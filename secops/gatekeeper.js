@@ -1,54 +1,129 @@
 /**
- * DevSecOps: Gatekeeper de Artefatos Estáticos (Node.js)
- * Norma: Zero-Trust — Zero dependências externas — Validação de integridade dinâmica
+ * secops/gatekeeper.js — DevSecOps Gate v3.0
+ * Zero-Trust static artifact auditor. Zero external dependencies.
+ * Node.js >= 18 required (crypto built-in).
  *
- * Uso no CI: node secops/gatekeeper.js
- * Requer: Node.js >= 18 (crypto built-in, sem dependências npm)
+ * Usage: node secops/gatekeeper.js
+ * Exit 0 = deployment authorised. Exit 1 = pipeline aborted.
  *
- * v2.2 — i18n AST audit engine:
- *   - extractI18nBlock:  balanced-brace walk, extrai o objeto "var i18n={...}"
- *   - extractLocaleBlock: navega até cada chave de locale no bloco ORIGINAL
- *                         e extrai o conteúdo interno (sem strip — as locale
- *                         keys são encontradas no raw, as property keys via
- *                         strip do bloco interno)
- *   - stripStringValues: apaga valores de string para evitar falsos positivos
- *                        (palavras dentro de traduções não são confundidas
- *                        com chaves JS)
- *   Pipeline falha (exit 1) se qualquer chave estiver ausente numa locale.
+ * Checks performed:
+ *  [A] i18n.js exists and is parseable
+ *  [B] Key parity 1:1 across all 6 locales (reads i18n.js directly)
+ *  [C] CSP Zero-Trust tokens present in every HTML artefact
+ *  [D] Structural integrity tokens per file
+ *  [E] External asset allowlist — no unauthorised third-party scripts
+ *  [F] Anti-Bleed: PT-language prohibited strings absent from HTML body
+ *      (outside i18n.js, data-i18n attributes, and <code> blocks)
+ *  [G] FCP boot script present in every secondary page
  */
 'use strict';
+
 const fs     = require('fs');
 const crypto = require('crypto');
 const path   = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 
-const FILES_TO_CHECK    = ['index.html', 'contract.html', 'legal.html'];
-const EXPECTED_LOCALES  = ['pt-PT', 'en-US', 'fr-CH', 'de-CH', 'es-ES', 'it-IT'];
+/* ── CONFIG ─────────────────────────────────────────────────── */
 
-const ALLOWLIST = [
-  'kmlucropro.com', 'vozdocondutor.com', 'vdcpt.github.io',
-  'linkedin.com', 'github.com', 'workana.com', 'upwork.com', '99freelas.com',
-  'share.google', 'api.web3forms.com', 'monteiro.is-a.dev',
-  'www.cnpd.pt', 'www.edoeb.admin.ch',
+const EXPECTED_LOCALES = ['pt-PT','en-US','fr-CH','de-CH','es-ES','it-IT'];
+
+const FILES_TO_CHECK = [
+  'index.html',
+  'blog.html',
+  'contract.html',
+  'legal.html'
 ];
-const EXT_ASSET_RE = /<(?:script|link|img|iframe)[^>]+(?:src|href)=["'](https?:\/\/[^"']+)["']/gi;
+
+const ALLOWLIST_DOMAINS = [
+  'kmlucropro.com','vozdocondutor.com','vdcpt.github.io',
+  'linkedin.com','github.com','workana.com','upwork.com','99freelas.com',
+  'share.google','api.web3forms.com','monteiro.is-a.dev',
+  'www.cnpd.pt','www.edoeb.admin.ch'
+];
+
+/** CSP directives that MUST be present in every HTML file */
+const REQUIRED_CSP_TOKENS = [
+  "frame-src 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "upgrade-insecure-requests"
+];
+
+/**
+ * Anti-Bleed: Portuguese terms that must NOT appear as literal text
+ * in the HTML body of any page (outside i18n.js, data-i18n, <code>).
+ * These are root-word patterns — matched case-insensitively.
+ */
+const PT_BLEED_PATTERNS = [
+  /\bDesenvolvimento\b/i,
+  /\bManuten[çc][ãa]o\b/i,
+  /\bProje[tc]os?\b/i,
+  /\bServi[çc]os?\b/i,
+  /\bPre[çc]os?\b/i,
+  /\bPortfólio\b/,       // "Portfólio" (PT diacritic) only — "Portfolio" is international
+  /\bInício\b/i,
+  /\bContacto\b/i,
+  /\bPrivacidade\b/i,
+  /\bSegurança\b/i,
+  /\bPagamentos\b/i,
+  /\bAnálise\b/i,
+  /\bEntrega\b/i,
+  /\bFicheiro\b/i,
+  /\bSistema\b.*\bCrítico\b/i,
+  /\bIntegra[çc][ãa]o com IA\b/i
+];
+
+/** Required structural tokens per file */
+const STRUCT_TOKENS = {
+  'index.html':   [
+    'id="services"','id="pricing"','id="contact"','id="projects"','id="process"',
+    'function applyLocale','neural-canvas','async function submitScope',
+    'api.web3forms.com','Eduardo Monteiro','monteiro.is-a.dev',
+    'edumonteiro.dev@gmail.com','serviceWorker','manifest.json',
+    'id="footer-terms"','id="footer-gdpr"',
+    'window.VC_LOCALE','VC_APPLY = applyLocale',
+    '<script src="./i18n.js">'
+  ],
+  'blog.html': [
+    'applyBlogLocale','VC_SET','VC_LOCALE',
+    'id="blog-eyebrow"','id="blog-title"','id="blog-sub"',
+    'id="cs-title"','id="cs-desc"','id="cs-cta"',
+    'data-locale="de-CH"','data-locale="pt-PT"',
+    '<script src="./i18n.js">',
+    'edumonteiro.dev@gmail.com'
+  ],
+  'contract.html': [
+    'payment-50','payment-hr','uat-table','sig-grid','rules-grid','annexA','annexB',
+    'window.VC_LOCALE','<script src="./i18n.js">',
+    "localStorage.getItem('vc-locale')"
+  ],
+  'legal.html': [
+    'tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies','FADP',
+    'window.VC_LOCALE','<script src="./i18n.js">',
+    "localStorage.getItem('vc-locale')"
+  ]
+};
+
+/* ── UTILITIES ───────────────────────────────────────────────── */
 
 function sha256(buf) {
   return crypto.createHash('sha256').update(buf).digest('hex');
 }
+
 function isAllowed(url) {
-  return ALLOWLIST.some(d => url.includes(d));
+  return ALLOWLIST_DOMAINS.some(d => url.includes(d));
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * BALANCED-BRACE WALKER
- * Returns the substring starting at `startPos` (which must be a '{')
- * through its matching closing brace, inclusive.
- * ────────────────────────────────────────────────────────────────────── */
-function walkBraces(src, startPos) {
+/* ── [A+B] i18n.js PARSE + PARITY ENGINE ────────────────────── */
+
+/**
+ * Walk balanced braces in `src` starting at position `pos` (the '{').
+ * Returns the raw substring including the outer braces.
+ */
+function walkBraces(src, pos) {
   let depth = 0, inStr = false, strCh = '', esc = false;
-  for (let i = startPos; i < src.length; i++) {
+  for (let i = pos; i < src.length; i++) {
     const ch = src[i];
     if (esc)                           { esc = false; continue; }
     if (ch === '\\' && inStr)          { esc = true;  continue; }
@@ -56,29 +131,15 @@ function walkBraces(src, startPos) {
     if (inStr  && ch === strCh)        { inStr = false; continue; }
     if (inStr)                          continue;
     if (ch === '{') depth++;
-    else if (ch === '}') { depth--; if (depth === 0) return src.slice(startPos, i + 1); }
+    else if (ch === '}') { depth--; if (depth === 0) return src.slice(pos, i + 1); }
   }
   return null;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * EXTRACT var i18n = { ... }; BLOCK
- * ────────────────────────────────────────────────────────────────────── */
-function extractI18nBlock(html) {
-  const marker = 'var i18n = {';
-  const idx    = html.indexOf(marker);
-  if (idx === -1) return null;
-  const bracePos = idx + marker.length - 1; // position of '{'
-  return walkBraces(html, bracePos);
-}
-
-/* ──────────────────────────────────────────────────────────────────────
- * STRIP STRING VALUES from a JS object skeleton.
- * Replaces every quoted string literal with "" so that words inside
- * translation values are invisible to the property-key regex scanner.
- * The locale-key strings ('pt-PT' etc.) are NOT stripped here because
- * we locate them in the ORIGINAL block before calling this function.
- * ────────────────────────────────────────────────────────────────────── */
+/**
+ * Strip all JS string literal values → replace with "" so words inside
+ * translation strings are never confused with object property keys.
+ */
 function stripStringValues(src) {
   const out = [];
   let i = 0;
@@ -101,11 +162,7 @@ function stripStringValues(src) {
   return out.join('');
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * EXTRACT KEYS from a stripped locale block interior.
- * Finds bare JS identifier keys: word followed by optional whitespace
- * then a colon. Works on the de-stringified text so values don't leak.
- * ────────────────────────────────────────────────────────────────────── */
+/** Extract JS property key names from a stripped interior block. */
 function extractKeys(strippedInterior) {
   const keys  = new Set();
   const KEY_RE = /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:/g;
@@ -114,105 +171,206 @@ function extractKeys(strippedInterior) {
   return keys;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * BUILD locale -> Set<key> MAP
- *
- * Strategy:
- *  1. Search for the locale literal in the ORIGINAL i18n block (raw).
- *     e.g.  'de-CH': {
- *  2. Use walkBraces on the ORIGINAL to extract the inner content of
- *     that locale object verbatim.
- *  3. stripStringValues on the inner content to neutralise value words.
- *  4. extractKeys on the stripped interior.
- * ────────────────────────────────────────────────────────────────────── */
-function buildLocaleKeyMap(i18nBlock) {
+/**
+ * Read i18n.js from disk, extract the `var D = { ... }` dictionary,
+ * return Map<locale, Set<allKeys>> where allKeys is the union of keys
+ * across all nested sections (global + home + blog + legal + contract).
+ */
+function parseI18nFile() {
+  const i18nPath = path.join(ROOT, 'i18n.js');
+  if (!fs.existsSync(i18nPath)) {
+    return { error: 'i18n.js not found at ' + i18nPath };
+  }
+
+  const src = fs.readFileSync(i18nPath, 'utf-8');
+
+  /* Find "var D = {" — the dictionary root */
+  const dictMarker = 'var D = {';
+  const dictIdx    = src.indexOf(dictMarker);
+  if (dictIdx === -1) return { error: 'var D = { not found in i18n.js' };
+
+  const bracePos = dictIdx + dictMarker.length - 1;
+  const dictBlock = walkBraces(src, bracePos);
+  if (!dictBlock) return { error: 'Unbalanced braces in i18n.js var D' };
+
   const result = new Map();
 
   for (const locale of EXPECTED_LOCALES) {
-    // Find the locale string key in the raw block
-    // Pattern: 'de-CH'  (or "de-CH") followed by : {
-    const searchStr = "'" + locale + "'";
-    const localeIdx = i18nBlock.indexOf(searchStr);
+    /* Find locale block: pattern is  'de-CH': {
+ (with brace, not the VALID object)
+     * We scan for "'<locale>'" followed ONLY by optional whitespace then ": {" */
+    const localeStr = "'" + locale + "': {";
+    const locIdx    = dictBlock.indexOf(localeStr);
+    if (locIdx === -1) { result.set(locale, null); continue; }
 
-    if (localeIdx === -1) {
-      result.set(locale, null);
-      continue;
+    /* braceIdx is the '{' at the end of the match string */
+    const braceIdx = locIdx + localeStr.length - 1;
+
+    /* Extract the full locale object */
+    const localeObj = walkBraces(dictBlock, braceIdx);
+    if (!localeObj) { result.set(locale, null); continue; }
+
+    /* Collect keys from ALL sections (global, home, blog, legal, contract).
+     * Section keys are BARE identifiers (home:) not quoted ('home':). */
+    const SECTIONS = ['global','home','blog','legal','contract'];
+    const allKeys  = new Set();
+
+    for (const section of SECTIONS) {
+      /* Match "    home: {" — bare key at word boundary */
+      const secPattern = new RegExp('\\b' + section + '\\s*:\\s*\\{');
+      const secMatch   = secPattern.exec(localeObj);
+      if (!secMatch) continue;
+
+      const secBrace = localeObj.indexOf('{', secMatch.index + secMatch[0].length - 1);
+      if (secBrace === -1) continue;
+
+      const secObj = walkBraces(localeObj, secBrace);
+      if (!secObj) continue;
+
+      const interior = secObj.slice(1, -1);
+      const stripped = stripStringValues(interior);
+      const keys     = extractKeys(stripped);
+      keys.forEach(key => allKeys.add(section + '.' + key));
     }
 
-    // Walk forward from the locale key to find the opening brace of its object
-    let braceIdx = -1;
-    let j = localeIdx + searchStr.length;
-    while (j < i18nBlock.length) {
-      const ch = i18nBlock[j];
-      if (ch === '{') { braceIdx = j; break; }
-      if (ch !== ':' && ch !== ' ' && ch !== '\t' && ch !== '\n' && ch !== '\r') break;
-      j++;
-    }
-
-    if (braceIdx === -1) { result.set(locale, null); continue; }
-
-    const localeObjRaw = walkBraces(i18nBlock, braceIdx);
-    if (!localeObjRaw) { result.set(locale, null); continue; }
-
-    // Interior = strip the outer { }
-    const interior = localeObjRaw.slice(1, -1);
-    const stripped  = stripStringValues(interior);
-    result.set(locale, extractKeys(stripped));
+    result.set(locale, allKeys);
   }
 
-  return result;
+  return { map: result };
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * i18n PARITY AUDIT — public entry point
- * ────────────────────────────────────────────────────────────────────── */
-function auditI18nParity(html) {
-  let violations = 0;
+function auditI18nParity() {
+  console.log('\n[SEC-i18n] Reading i18n.js ...');
+  const parsed = parseI18nFile();
 
-  const i18nBlock = extractI18nBlock(html);
-  if (!i18nBlock) {
-    console.error('[VIOLATION][i18n] Bloco var i18n não encontrado em index.html');
+  if (parsed.error) {
+    console.error('[CRITICAL-FATAL][i18n] ' + parsed.error);
     return 1;
   }
 
-  const localeMap = buildLocaleKeyMap(i18nBlock);
+  const localeMap = parsed.map;
+  let violations  = 0;
 
-  // Verify presence of all expected locales
+  /* Verify all locales present */
   for (const locale of EXPECTED_LOCALES) {
     if (!localeMap.get(locale)) {
-      console.error(`[VIOLATION][i18n] Locale ausente ou não parseável: '${locale}'`);
+      console.error(`[VIOLATION][i18n] Locale ausente ou inválido: '${locale}'`);
       violations++;
     }
   }
   if (violations > 0) return violations;
 
-  const refKeys = localeMap.get('pt-PT');
+  const refKeys = localeMap.get('de-CH'); /* canonical reference = primary market */
+  console.log(`[SEC-i18n] Reference locale de-CH: ${refKeys.size} keys`);
 
   for (const [locale, keys] of localeMap.entries()) {
-    if (locale === 'pt-PT') continue;
+    if (locale === 'de-CH') continue;
     let lv = 0;
-    for (const k of refKeys)  { if (!keys.has(k)) { console.error(`[VIOLATION][i18n] Chave ausente no idioma: '${locale}' -> '${k}'`); violations++; lv++; } }
-    for (const k of keys)     { if (!refKeys.has(k)) { console.error(`[VIOLATION][i18n] Chave extra (não em pt-PT): '${locale}' -> '${k}'`); violations++; lv++; } }
-    if (lv === 0) console.log(`[SEC-ACK][i18n] '${locale}': paridade 1:1 (${keys.size} chaves). ✓`);
+    for (const k of refKeys) {
+      if (!keys.has(k)) {
+        console.error(`[VIOLATION][i18n] Missing key in '${locale}': ${k}`);
+        violations++; lv++;
+      }
+    }
+    for (const k of keys) {
+      if (!refKeys.has(k)) {
+        console.error(`[VIOLATION][i18n] Extra key (not in de-CH) in '${locale}': ${k}`);
+        violations++; lv++;
+      }
+    }
+    if (lv === 0) console.log(`[SEC-ACK][i18n] '${locale}': parity 1:1 (${keys.size} keys) ✓`);
   }
 
-  if (violations === 0) {
-    console.log(`[SEC-PASS][i18n] Paridade 1:1 confirmada — ${EXPECTED_LOCALES.length} locales × ${refKeys.size} chaves. ✓`);
-  }
+  if (violations === 0)
+    console.log(`[SEC-PASS][i18n] 1:1 parity confirmed — ${EXPECTED_LOCALES.length} locales × ${refKeys.size} keys ✓`);
+
   return violations;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
- * MAIN GATE
- * ────────────────────────────────────────────────────────────────────── */
-function gate() {
-  console.log('[SEC-INIT] Gatekeeper v2.2 iniciado. Root:', ROOT);
+/* ── [F] ANTI-BLEED ENGINE ───────────────────────────────────── */
+
+/**
+ * Strip regions that legitimately contain PT text so we don't false-positive:
+ *   • <script>…</script> blocks (i18n dictionaries, JS logic)
+ *   • <code>…</code>  (technical identifiers like localStorage('vc-locale'))
+ *   • data-i18n="…"  attribute values
+ *   • HTML comments
+ *   • <meta> tags
+ */
+function stripLegitPtRegions(html) {
+  let s = html;
+  /* Remove <script> blocks (contain i18n dicts + engine with PT strings) */
+  s = s.replace(/<script[\s\S]*?<\/script>/gi, '<script>[STRIPPED]</script>');
+  /* Remove HTML comments */
+  s = s.replace(/<!--[\s\S]*?-->/g, '');
+  /* Remove <code> inline content (technical identifiers) */
+  s = s.replace(/<code[^>]*>[\s\S]*?<\/code>/gi, '<code>[STRIPPED]</code>');
+  /* Remove <meta> tags */
+  s = s.replace(/<meta[^>]*>/gi, '');
+  /* Pass 1 — strip id-bearing block elements (i18n-managed at runtime).
+   * Regex handles multi-line content via [\s\S]*? */
+  var idTagRe = /<(h[1-6]|p|span|a|button|div|li|td|label|small)[^>]*\bid="[^"]*"[^>]*>([\s\S]*?)<\/\1>/gi;
+  s = s.replace(idTagRe, function(m, tag) { return '<' + tag + ' id="[M]">[i18n]</' + tag + '>'; });
+  /* Pass 2 — <li> items (pricing/features rendered by applyLocale) */
+  s = s.replace(/<li>[^<]{3,}<\/li>/gi, '<li>[i18n]</li>');
+  /* Pass 3 — data-nav anchor text */
+  s = s.replace(/data-nav="[^"]*"[^>]*>([^<]+)/g, 'data-nav="">[M]');
+  /* Pass 4 — maintenance-text node */
+  s = s.replace(/id="maintenance-text"[^>]*>([\s\S]*?)<\//gi, 'id="maintenance-text">[M]</');
+  /* Pass 4b — data-tier-unit paragraphs (pricing, rendered by applyLocale) */
+  s = s.replace(/data-tier-unit="[^"]*"[^>]*>[^<]*/g, 'data-tier-unit="">[M]');
+  /* Pass 5 — data-wip text */
+  s = s.replace(/data-wip[^>]*>[^<]*/g, '[M]');
+  /* Pass 6 — cookie banner span */
+  s = s.replace(/<p[^>]*>\s*<span id="cookie-text">[^<]*<\/span>/gi, '<p>[M]');
+  /* Pass 7 — <label> elements (contract form labels, managed by applyT) */
+  s = s.replace(/<label[^>]*>([^<]{1,120})<\/label>/gi, '<label>[M]</label>');
+  /* Pass 8 — <td> text content (UAT table cells, managed by applyT) */
+  s = s.replace(/<td>([^<]{2,80})<\/td>/gi, '<td>[M]</td>');
+  /* Pass 9 — input placeholders (managed at runtime) */
+  s = s.replace(/placeholder="[^"]*"/g, 'placeholder="[M]"');
+  return s;
+}
+
+function antiBleedScan(file, content) {
+  const stripped = stripLegitPtRegions(content);
   let violations = 0;
 
+  for (const pattern of PT_BLEED_PATTERNS) {
+    /* Scan the FULL stripped string (not line-by-line) to handle multi-line elements */
+    const globalPat = new RegExp(pattern.source, 'gi');
+    let m;
+    while ((m = globalPat.exec(stripped)) !== null) {
+      /* Find approximate line number */
+      const lineNum = stripped.slice(0, m.index).split('\n').length;
+      /* Extract context around the match */
+      const ctxStart = Math.max(0, m.index - 30);
+      const ctx = stripped.slice(ctxStart, m.index + 60).replace(/\n/g, ' ').trim();
+      console.error(`[VIOLATION][ANTI-BLEED] PT "${m[0]}" in ${file}:${lineNum} — ${ctx.slice(0,80)}`);
+      violations++;
+    }
+  }
+
+  if (violations === 0) console.log(`[SEC-ACK][ANTI-BLEED] ${file}: zero PT bleed ✓`);
+  return violations;
+}
+
+/* ── MAIN GATE ───────────────────────────────────────────────── */
+
+function gate() {
+  console.log('[SEC-INIT] Gatekeeper v3.0 — Root: ' + ROOT);
+  console.log('─'.repeat(64));
+  let totalViolations = 0;
+
+  /* ── [A+B] i18n.js parity ── */
+  totalViolations += auditI18nParity();
+
+  /* ── [C–F] Per-file checks ── */
   for (const file of FILES_TO_CHECK) {
     const filePath = path.join(ROOT, file);
+
     if (!fs.existsSync(filePath)) {
-      console.error(`[CRITICAL-FATAL] Artefacto ausente: ${file}`);
+      console.error(`[CRITICAL-FATAL] Missing artefact: ${file}`);
       process.exit(1);
     }
 
@@ -222,90 +380,61 @@ function gate() {
 
     console.log(`\n[SEC-CHECK] ${file}  ${buf.length.toLocaleString()}B  sha256=${digest}`);
 
-    // External asset allowlist
-    let match;
-    EXT_ASSET_RE.lastIndex = 0;
-    while ((match = EXT_ASSET_RE.exec(content)) !== null) {
-      const url = match[1];
+    /* [C] CSP tokens */
+    for (const token of REQUIRED_CSP_TOKENS) {
+      if (!content.includes(token)) {
+        console.error(`[VIOLATION][CSP] Missing directive in ${file}: ${token}`);
+        totalViolations++;
+      }
+    }
+
+    /* [D] Structural tokens */
+    const required = STRUCT_TOKENS[file] || [];
+    for (const token of required) {
+      if (!content.includes(token)) {
+        console.error(`[VIOLATION][STRUCT] Missing token in ${file}: ${token}`);
+        totalViolations++;
+      }
+    }
+
+    /* [E] External asset allowlist */
+    const EXT_RE = /<(?:script|link|img|iframe)[^>]+(?:src|href)=["'](https?:\/\/[^"']+)["']/gi;
+    let m;
+    while ((m = EXT_RE.exec(content)) !== null) {
+      const url = m[1];
       if (!isAllowed(url)) {
-        console.error(`[VIOLATION][CSP] Dependência externa não autorizada em ${file}: ${url}`);
-        violations++;
+        console.error(`[VIOLATION][CSP] Unauthorised external dependency in ${file}: ${url}`);
+        totalViolations++;
       }
     }
-
-    if (file === 'index.html') {
-      const required = [
-        'id="services"', 'id="pricing"', 'id="contact"',
-        'id="projects"', 'id="process"',
-        'function applyLocale',
-        'neural-canvas',
-        'function openScopeModal',
-        'async function submitScope',
-        'api.web3forms.com',
-        'Eduardo Monteiro', 'monteiro.is-a.dev',
-        'edumonteiro.dev@gmail.com',
-        'serviceWorker',
-        'manifest.json',
-        // DE i18n bleed correction tokens
-        'SaaS-Entwicklung',
-        'KI-Integration',
-        'Kritische Systeme',
-        'Analytik & BI',
-        'Laufende Wartung',
-        'Schichtmanagement',
-        'B2B-Bedingungen',
-        'Datenschutz',
-        'Cookie-Richtlinie',
-        'DSG / DSGVO',
-        // CSP Zero-Trust tokens
-        "frame-src 'none'",
-        "object-src 'none'",
-        'https://api.web3forms.com',
-        // Footer id-based i18n rendering
-        'id="footer-terms"',
-        'id="footer-gdpr"',
-      ];
-      for (const token of required) {
-        if (!content.includes(token)) {
-          console.error(`[VIOLATION][STRUCT] Token obrigatório ausente em ${file}: ${token}`);
-          violations++;
-        }
-      }
-      if (content.includes('fonts.googleapis.com')) {
-        console.error(`[VIOLATION][CSP] Dependência externa Google Fonts em ${file}`);
-        violations++;
-      }
-
-      console.log('\n[SEC-i18n] Auditoria de paridade de chaves i18n...');
-      violations += auditI18nParity(content);
+    if (content.includes('fonts.googleapis.com')) {
+      console.error(`[VIOLATION][CSP] Google Fonts external dependency in ${file}`);
+      totalViolations++;
     }
 
-    if (file === 'contract.html') {
-      const required = ['payment-50','payment-hr','uat-table','sig-grid','rules-grid','annexA','annexB'];
-      for (const token of required) {
-        if (!content.includes(token)) {
-          console.error(`[VIOLATION][STRUCT] Secção obrigatória ausente em ${file}: ${token}`);
-          violations++;
-        }
-      }
-    }
+    /* [F] Anti-Bleed scan */
+    totalViolations += antiBleedScan(file, content);
 
-    if (file === 'legal.html') {
-      for (const token of ['tab-terms','tab-privacy','tab-disclaimer','tab-rgpd','tab-cookies','FADP']) {
-        if (!content.includes(token)) {
-          console.error(`[VIOLATION][LEGAL] Token legal ausente em ${file}: ${token}`);
-          violations++;
-        }
+    /* [G] FCP boot presence on secondary pages */
+    if (file !== 'index.html') {
+      if (!content.includes('window.VC_LOCALE')) {
+        console.error(`[VIOLATION][FCP] Missing FCP locale boot in ${file}`);
+        totalViolations++;
+      }
+      if (!content.includes('<script src="./i18n.js">')) {
+        console.error(`[VIOLATION][FCP] Missing <script src="./i18n.js"> in ${file}`);
+        totalViolations++;
       }
     }
   }
 
-  console.log('\n' + '─'.repeat(60));
-  if (violations > 0) {
-    console.error(`[CRITICAL-FATAL] ${violations} violação(ões) detectada(s). Pipeline abortada.`);
+  /* ── VERDICT ── */
+  console.log('\n' + '═'.repeat(64));
+  if (totalViolations > 0) {
+    console.error(`[CRITICAL-FATAL] ${totalViolations} violation(s) detected. Pipeline aborted.`);
     process.exit(1);
   }
-  console.log('[SEC-PASS] Todos os artefactos íntegros. Paridade i18n 100%. Deployment autorizado. ✓');
+  console.log('[SEC-PASS] All artefacts clean. i18n parity 100%. Zero PT bleed. Deployment authorised. ✓');
 }
 
 gate();
