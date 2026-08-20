@@ -71,7 +71,13 @@ const PT_BLEED_PATTERNS = [
   /\bEntrega\b/i,
   /\bFicheiro\b/i,
   /\bSistema\b.*\bCrítico\b/i,
-  /\bIntegra[çc][ãa]o com IA\b/i
+  /\bIntegra[çc][ãa]o com IA\b/i,
+  /\bmonitoriza[çc][ãa]o\b/i,
+  /\brepositório\b/i,
+  /\btestes unitários\b/i,
+  /\bArquitectura de informação\b/i,
+  /\bviabilidade técnica\b/i,
+  /\bDeploy em produção\b/i
 ];
 
 /** Required structural tokens per file */
@@ -83,7 +89,11 @@ const STRUCT_TOKENS = {
     'edumonteiro.dev@gmail.com','serviceWorker','manifest.json',
     'id="footer-terms"','id="footer-gdpr"',
     'window.VC_LOCALE','VC_APPLY = applyLocale',
-    '<script src="./i18n.js">'
+    '<script src="./i18n.js">',
+    'id="step-desc-0"',
+    'id="contact-upwork"',
+    'id="contact-google"',
+    'data-i18n="home:portfolioLive"'
   ],
   'blog.html': [
     'applyBlogLocale','VC_SET','VC_LOCALE',
@@ -335,6 +345,32 @@ function stripLegitPtRegions(html) {
 function antiBleedScan(file, content) {
   const stripped = stripLegitPtRegions(content);
   let violations = 0;
+
+  /* ── PT STOPWORDS: verbatim strings that are unambiguously Portuguese.
+   * Presence in any HTML artefact (outside <script> blocks, already stripped)
+   * constitutes a hard Language-Bleed violation → immediate SEC-FAIL.        */
+  const ptStopwords = [
+    'Briefing, análise',       // step-desc-0 PT
+    'Arquitectura de informação', // step-desc-1 PT
+    'repositório',              // step-desc-2 PT
+    'testes unitários',         // step-desc-2 PT
+    'UAT, cross-browser, performance Lighthouse, scan de vulnerabilidades', // step-desc-3 PT
+    'monitorização 24h',        // step-desc-4 PT
+    'configuração DNS',         // step-desc-4 PT
+    'Contratar via Upwork',     // contact PT
+    'Deixe a sua avaliação',    // contact PT
+    'Ver ao Vivo',              // proj-link PT
+    'avaliação',                // generic PT
+    'configuração',             // generic PT (not in DE/EN/FR/IT)
+  ];
+
+  for (const word of ptStopwords) {
+    if (stripped.includes(word)) {
+      const lineNum = stripped.slice(0, stripped.indexOf(word)).split('\n').length;
+      console.error(`[CRITICAL-FATAL][STOPWORD] PT stopword "${word}" detected in ${file}:${lineNum} — Language Bleed confirmed. Pipeline aborted.`);
+      violations++;
+    }
+  }
 
   for (const pattern of PT_BLEED_PATTERNS) {
     /* Scan the FULL stripped string (not line-by-line) to handle multi-line elements */
