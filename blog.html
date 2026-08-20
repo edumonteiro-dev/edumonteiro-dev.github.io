@@ -23,11 +23,9 @@
 <meta property="og:title" content="Blog | Eduardo Monteiro Dev — SaaS · AI · MVP · FADP"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://monteiro.is-a.dev/blog.html"/>
-<title>Blog — Eduardo Monteiro Dev</title>
-
-<!-- i18n dictionary (loads synchronously, sets html[lang] before FCP) -->
+<!-- i18n.js loads synchronously — sets html[lang] and VC_LOCALE before FCP -->
 <script src="./i18n.js"></script>
-
+<title data-i18n="blog:pageTitle">Blog — Eduardo Monteiro Dev</title>
 <style>
 :root{--bg:#050508;--deep:#0A0A0F;--card:#0E0E16;--border:rgba(123,92,240,.2);--border-h:rgba(123,92,240,.45);--purple:#7B5CF0;--teal:#00F5A0;--coral:#FF3CAC;--text:#E8E8FF;--muted:#9090B0;--faint:#2A2A3A;--grad:linear-gradient(135deg,#7B5CF0,#00F5A0)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -82,10 +80,10 @@ footer a{color:var(--purple);text-decoration:none;margin:0 .5rem;transition:colo
 <header class="blog-header">
   <div class="blog-header-inner">
     <span class="bh-logo">✍ Blog — Eduardo Monteiro Dev</span>
-    <a href="./index.html" class="bh-back" id="bh-back">← Portfolio</a>
+    <a href="./index.html" class="bh-back" id="bh-back" data-i18n="global:backPortfolio"></a>
     <div class="bh-lang-wrap">
       <button class="bh-lang-btn" id="bh-lang-btn" aria-haspopup="listbox" aria-expanded="false">
-        <span id="bh-lang-current">DE</span> ▾
+        <span id="bh-lang-current"></span> ▾
       </button>
       <div class="lang-dropdown" id="lang-dropdown" role="listbox">
         <button class="lang-opt" data-locale="de-CH" role="option">🇨🇭 DE — Deutsch</button>
@@ -101,313 +99,331 @@ footer a{color:var(--purple);text-decoration:none;margin:0 .5rem;transition:colo
 
 <div class="container">
   <div class="blog-hero">
-    <p class="blog-eyebrow" id="blog-eyebrow"></p>
-    <h1 class="blog-title" id="blog-title"></h1>
-    <p class="blog-sub" id="blog-sub"></p>
+    <p class="blog-eyebrow" id="blog-eyebrow" data-i18n="blog:eyebrow"></p>
+    <h1 class="blog-title" id="blog-title" data-i18n="blog:title"></h1>
+    <p class="blog-sub" id="blog-sub" data-i18n="blog:sub"></p>
   </div>
 
   <div class="section-divider"></div>
-  <p class="topics-label" id="topics-label"></p>
+  <p class="topics-label" id="topics-label" data-i18n="blog:topicsLabel"></p>
 
-  <div class="topics-grid">
-
-    <!-- #01 — multilingual UI chrome only; editorial title/desc: PT/EN (unchanged) -->
-    <article class="topic-card featured">
-      <span class="topic-n">#01</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Cost</span>
-        <span class="topic-tag">Stripe</span>
-        <span class="topic-tag">OpenAI</span>
-        <span class="topic-tag">SaaS</span>
-      </div>
-      <h2 class="topic-title">How much does it cost to integrate Stripe and OpenAI into a SaaS MVP?</h2>
-      <p class="topic-desc">Real cost analysis: development hours, Stripe transaction fees, OpenAI GPT-4o token cost, Firebase/Vercel infrastructure. Comparison between custom implementation and no-code platforms for a B2B SaaS with 100–1,000 active users.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~8 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #02 -->
-    <article class="topic-card featured">
-      <span class="topic-n">#02</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Firebase</span>
-        <span class="topic-tag">PostgreSQL</span>
-        <span class="topic-tag">Architecture</span>
-        <span class="topic-tag">MVP</span>
-      </div>
-      <h2 class="topic-title">Firebase vs PostgreSQL for fast MVP validation — technical decision without dogma</h2>
-      <p class="topic-desc">Pragmatic comparison: setup speed, operational cost, complex query limitations, vendor lock-in and future migration. When Firebase wins and when PostgreSQL is mandatory.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #03 — editorial content intentionally in DE-CH (native language article) -->
-    <article class="topic-card">
-      <span class="topic-n">#03</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Schweiz</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">DE-CH</span>
-      </div>
-      <h2 class="topic-title">nDSG / FADP für SaaS-Startups — Was Gründer 2024 wissen müssen</h2>
-      <p class="topic-desc">Praktischer Leitfaden zur revidierten Schweizer Datenschutzgesetzgebung (nDSG, in Kraft seit 1. Sept. 2023) für SaaS-Gründer: Pflichten des Verantwortlichen, Datenschutzerklärung, Privacy by Design und wann ein Datenschutzbeauftragter erforderlich ist.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~12 min</span>
-        <span class="topic-tag lang">DE-CH</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #04 — editorial content intentionally in FR-CH -->
-    <article class="topic-card">
-      <span class="topic-n">#04</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Suisse</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">FR-CH</span>
-      </div>
-      <h2 class="topic-title">nLPD / FADP pour les startups SaaS en Suisse — Guide pratique pour fondateurs</h2>
-      <p class="topic-desc">Guide opérationnel sur la nouvelle Loi fédérale sur la protection des données (nLPD) pour les entreprises SaaS basées ou ciblant la Suisse : obligations légales, politique de confidentialité, transferts transfrontaliers et différences avec le RGPD européen.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min</span>
-        <span class="topic-tag lang">FR-CH</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #05 — editorial content intentionally in IT-CH -->
-    <article class="topic-card">
-      <span class="topic-n">#05</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">Svizzera</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">IT-CH</span>
-      </div>
-      <h2 class="topic-title">nLPD / FADP per le startup SaaS in Svizzera — Guida pratica per fondatori non tecnici</h2>
-      <p class="topic-desc">Guida operativa alla nuova Legge federale sulla protezione dei dati (nLPD) per SaaS che operano o si rivolgono al mercato svizzero: obblighi del titolare del trattamento, Privacy by Design e differenze rispetto al GDPR europeo.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min</span>
-        <span class="topic-tag lang">IT-CH</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #06 — editorial content in EN -->
-    <article class="topic-card">
-      <span class="topic-n">#06</span>
-      <div class="topic-tags">
-        <span class="topic-tag">FADP</span>
-        <span class="topic-tag">GDPR</span>
-        <span class="topic-tag">Compliance</span>
-        <span class="topic-tag lang">EN</span>
-      </div>
-      <h2 class="topic-title">FADP vs GDPR — Key differences for B2B SaaS products serving Swiss and EU markets simultaneously</h2>
-      <p class="topic-desc">Technical and legal comparison: jurisdiction primacy, data subject rights, breach notification deadlines, profiling rules, adequacy decisions, and how to architect a single SaaS that satisfies both frameworks without duplicating compliance infrastructure.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~14 min</span>
-        <span class="topic-tag lang">EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #07 -->
-    <article class="topic-card">
-      <span class="topic-n">#07</span>
-      <div class="topic-tags">
-        <span class="topic-tag">MVP</span>
-        <span class="topic-tag">Timeline</span>
-        <span class="topic-tag">Cost</span>
-        <span class="topic-tag">Founders</span>
-      </div>
-      <h2 class="topic-title">How long does it take to build a SaaS MVP? — Real estimates by product type</h2>
-      <p class="topic-desc">Honest breakdown by product type: subscription SaaS, B2B marketplace, AI tool, dashboard platform. Factors that inflate timelines and strategies to keep the MVP within a 3–5 week cycle.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~9 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #08 -->
-    <article class="topic-card">
-      <span class="topic-n">#08</span>
-      <div class="topic-tags">
-        <span class="topic-tag">AI</span>
-        <span class="topic-tag">RAG</span>
-        <span class="topic-tag">OpenAI</span>
-        <span class="topic-tag">Product</span>
-      </div>
-      <h2 class="topic-title">How to integrate AI into a SaaS product without blowing the budget — RAG, fine-tuning or structured prompts?</h2>
-      <p class="topic-desc">Technical and financial comparison between the three AI integration approaches. Real cost examples per 10,000 calls/month.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~11 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #09 -->
-    <article class="topic-card">
-      <span class="topic-n">#09</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Stripe</span>
-        <span class="topic-tag">Subscriptions</span>
-        <span class="topic-tag">SaaS</span>
-        <span class="topic-tag">Revenue</span>
-      </div>
-      <h2 class="topic-title">Stripe Subscriptions in a SaaS MVP — Complete implementation in 5 steps and the mistakes that cost money</h2>
-      <p class="topic-desc">Technical guide for Stripe implementation in B2B SaaS: Checkout Session vs Payment Intents, Webhook management with HMAC validation, automatic dunning and how to avoid webhook race conditions.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~13 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-    <!-- #10 -->
-    <article class="topic-card">
-      <span class="topic-n">#10</span>
-      <div class="topic-tags">
-        <span class="topic-tag">Next.js</span>
-        <span class="topic-tag">Vercel</span>
-        <span class="topic-tag">Performance</span>
-        <span class="topic-tag">SEO</span>
-      </div>
-      <h2 class="topic-title">Next.js 15 + Vercel for B2B SaaS — When the portfolio stack becomes the production stack</h2>
-      <p class="topic-desc">Analysis of when Next.js/Vercel is the right choice for B2B SaaS vs. when it is over-engineering. Real cold start benchmarks and caching strategies for real-time data dashboards.</p>
-      <div class="topic-meta">
-        <span class="topic-read">⏱ ~10 min</span>
-        <span class="topic-tag">PT · EN</span>
-        <span class="topic-wip" data-wip="true"></span>
-      </div>
-    </article>
-
-  </div><!-- /.topics-grid -->
+  <!-- Topics grid — rebuilt entirely by renderBlogGrid() on every locale change -->
+  <div class="topics-grid" id="topics-grid"></div>
 
   <div class="section-divider"></div>
 
   <div class="coming-soon-banner">
-    <p class="cs-title" id="cs-title"></p>
-    <p class="cs-desc" id="cs-desc"></p>
-    <a href="#" class="cs-cta" id="cs-cta"></a>
+    <p class="cs-title" id="cs-title" data-i18n="blog:csTitle"></p>
+    <p class="cs-desc" id="cs-desc" data-i18n="blog:csDesc"></p>
+    <a href="#" class="cs-cta" id="cs-cta" data-i18n="blog:csCta"></a>
   </div>
-
-</div><!-- /.container -->
+</div>
 
 <footer>
-  <a href="./privacy.html" id="ft-privacy"></a> &bull;
-  <a href="./terms.html" id="ft-terms"></a> &bull;
-  <a href="./cookies.html" id="ft-cookies"></a>
+  <a href="./privacy.html" id="ft-privacy" data-i18n="global:ftPrivacy"></a> &bull;
+  <a href="./terms.html" id="ft-terms" data-i18n="global:ftTerms"></a> &bull;
+  <a href="./cookies.html" id="ft-cookies" data-i18n="global:ftCookies"></a>
 </footer>
 
 <script>
 'use strict';
-/* ── i18n.js loaded in <head> — VC_I18N, VC_LOCALE, VC_SET are available ── */
+/* ─────────────────────────────────────────────────────────────────────────
+ * blog.js — Reactive i18n engine for blog.html
+ * Depends on i18n.js (loaded synchronously in <head>).
+ * ─────────────────────────────────────────────────────────────────────── */
 
+/* ── ARTICLE DATA ────────────────────────────────────────────────────────
+ * Each article has:
+ *   n        — display number ('#01')
+ *   featured — boolean (teal border)
+ *   tags     — tech tag chips (static, language-neutral technical terms)
+ *   langTag  — editorial language label (e.g. 'PT · EN', 'DE-CH')
+ *   langTagCls — 'lang' class applied when the tag denotes a native-language article
+ *   readMin  — reading time integer
+ *   titleKey — i18n key in blog section, OR titleStatic for non-i18n titles
+ *   descKey  — i18n key in blog section, OR descStatic for non-i18n descs
+ *
+ * Articles #01, #02, #07–#10 are published in PT+EN → title/desc in i18n.
+ * Articles #03 (DE-CH), #04 (FR-CH), #05 (IT-CH), #06 (EN) are intentionally
+ * in their native editorial language — their titles/descs are language-fixed
+ * static strings. The `langTag` badge makes this explicit to the reader.
+ * ────────────────────────────────────────────────────────────────────── */
+var ARTICLES = [
+  {
+    n:'#01', featured:true,
+    tags:['Cost','Stripe','OpenAI','SaaS'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:8,
+    titleKey:'art01Title', descKey:'art01Desc'
+  },
+  {
+    n:'#02', featured:true,
+    tags:['Firebase','PostgreSQL','Architecture','MVP'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:10,
+    titleKey:'art02Title', descKey:'art02Desc'
+  },
+  {
+    n:'#03', featured:false,
+    tags:['FADP','Schweiz','Compliance'],
+    langTag:'DE-CH', langTagCls:'lang',
+    readMin:12,
+    titleStatic:'nDSG / FADP für SaaS-Startups — Was Gründer 2024 wissen müssen',
+    descStatic:'Praktischer Leitfaden zur revidierten Schweizer Datenschutzgesetzgebung (nDSG, in Kraft seit 1. Sept. 2023) für SaaS-Gründer: Pflichten des Verantwortlichen, Datenschutzerklärung, Privacy by Design und wann ein Datenschutzbeauftragter erforderlich ist.'
+  },
+  {
+    n:'#04', featured:false,
+    tags:['FADP','Suisse','Compliance'],
+    langTag:'FR-CH', langTagCls:'lang',
+    readMin:10,
+    titleStatic:'nLPD / FADP pour les startups SaaS en Suisse — Guide pratique pour fondateurs',
+    descStatic:"Guide opérationnel sur la nouvelle Loi fédérale sur la protection des données (nLPD) pour les entreprises SaaS basées ou ciblant la Suisse : obligations légales, politique de confidentialité, transferts transfrontaliers et différences avec le RGPD européen."
+  },
+  {
+    n:'#05', featured:false,
+    tags:['FADP','Svizzera','Compliance'],
+    langTag:'IT-CH', langTagCls:'lang',
+    readMin:10,
+    titleStatic:'nLPD / FADP per le startup SaaS in Svizzera — Guida pratica per fondatori non tecnici',
+    descStatic:"Guida operativa alla nuova Legge federale sulla protezione dei dati (nLPD) per SaaS che operano o si rivolgono al mercato svizzero: obblighi del titolare del trattamento, Privacy by Design e differenze rispetto al GDPR europeo."
+  },
+  {
+    n:'#06', featured:false,
+    tags:['FADP','GDPR','Compliance'],
+    langTag:'EN', langTagCls:'lang',
+    readMin:14,
+    titleStatic:'FADP vs GDPR — Key differences for B2B SaaS products serving Swiss and EU markets simultaneously',
+    descStatic:'Technical and legal comparison: jurisdiction primacy, data subject rights, breach notification deadlines, profiling rules, adequacy decisions, and how to architect a single SaaS that satisfies both frameworks without duplicating compliance infrastructure.'
+  },
+  {
+    n:'#07', featured:false,
+    tags:['MVP','Timeline','Cost','Founders'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:9,
+    titleKey:'art07Title', descKey:'art07Desc'
+  },
+  {
+    n:'#08', featured:false,
+    tags:['AI','RAG','OpenAI','Product'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:11,
+    titleKey:'art08Title', descKey:'art08Desc'
+  },
+  {
+    n:'#09', featured:false,
+    tags:['Stripe','Subscriptions','SaaS','Revenue'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:13,
+    titleKey:'art09Title', descKey:'art09Desc'
+  },
+  {
+    n:'#10', featured:false,
+    tags:['Next.js','Vercel','Performance','SEO'],
+    langTag:'PT · EN', langTagCls:'',
+    readMin:10,
+    titleKey:'art10Title', descKey:'art10Desc'
+  }
+];
+
+/* ── DOM HELPERS ─────────────────────────────────────────────────────── */
+function $(id) { return document.getElementById(id); }
+function setText(id, val, html) {
+  var el = $(id);
+  if (!el || val === undefined || val === null) return;
+  if (html) { el.innerHTML = val; } else { el.textContent = val; }
+}
+
+/* ── ARTICLE GRID RENDERER ───────────────────────────────────────────── */
+/**
+ * Destroys and rebuilds the entire topics-grid innerHTML.
+ * Called on every locale change. ~10-25ms DOM reflow cost — acceptable trade-off
+ * for absolute translation parity.
+ * @param {string} loc      — resolved locale string (e.g. 'de-CH')
+ * @param {object} d        — blog i18n section for this locale
+ */
+function renderBlogGrid(loc, d) {
+  var grid = $('topics-grid');
+  if (!grid) return;
+
+  var readLabel = d.readLabel || '⏱ ~';   /* fallback prefix */
+  var readSuffix = d.readSuffix || ' min';
+
+  var html = '';
+  for (var i = 0; i < ARTICLES.length; i++) {
+    var a = ARTICLES[i];
+
+    /* Resolve title and description */
+    var title = a.titleStatic || (d[a.titleKey] || '');
+    var desc  = a.descStatic  || (d[a.descKey]  || '');
+
+    /* Build tag chips */
+    var tagsHtml = '';
+    for (var j = 0; j < a.tags.length; j++) {
+      tagsHtml += '<span class="topic-tag">' + a.tags[j] + '</span>';
+    }
+    /* Lang tag */
+    tagsHtml += '<span class="topic-tag ' + a.langTagCls + '">' + a.langTag + '</span>';
+
+    html +=
+      '<article class="topic-card' + (a.featured ? ' featured' : '') + '">' +
+        '<span class="topic-n">' + a.n + '</span>' +
+        '<div class="topic-tags">' + tagsHtml + '</div>' +
+        '<h2 class="topic-title">' + escHtml(title) + '</h2>' +
+        '<p class="topic-desc">' + escHtml(desc) + '</p>' +
+        '<div class="topic-meta">' +
+          '<span class="topic-read">' + readLabel + a.readMin + readSuffix + '</span>' +
+          '<span class="topic-wip">' + escHtml(d.wip || '') + '</span>' +
+        '</div>' +
+      '</article>';
+  }
+  grid.innerHTML = html;
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ── DECLARATIVE data-i18n PARSER ───────────────────────────────────── */
+/**
+ * Resolves all [data-i18n="section:key"] attributes in the current DOM.
+ * Format: "section:key"  — section is 'blog' or 'global'.
+ * Called after id-based setText calls so it acts as a catch-all.
+ * @param {string} loc — active locale
+ */
+function applyDataI18n(loc) {
+  var dict = window.VC_I18N && window.VC_I18N[loc];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var raw = el.getAttribute('data-i18n');
+    if (!raw) return;
+    var parts   = raw.split(':');
+    var section = parts[0];
+    var key     = parts[1];
+    if (!section || !key) return;
+    var sec = dict[section];
+    if (!sec) return;
+    var val = sec[key];
+    if (val === undefined || val === null) return;
+    /* Use innerHTML for keys that contain HTML (e.g. blog:title with <br/>) */
+    if (el.hasAttribute('data-i18n-html') || key === 'title') {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+}
+
+/* ── PRIMARY APPLY FUNCTION ──────────────────────────────────────────── */
+/**
+ * Full reactive re-render of blog.html for the given locale.
+ * Called on boot (FCP) and on every lang-picker interaction.
+ * @param {string} locale
+ */
 function applyBlogLocale(locale) {
-  var loc   = (window.VC_I18N && window.VC_I18N[locale]) ? locale : 'de-CH';
-  var d     = window.VC_I18N[loc].blog;
-  var g     = window.VC_I18N[loc].global;
+  var loc = (window.VC_I18N && window.VC_I18N[locale]) ? locale : 'de-CH';
+  var d   = window.VC_I18N[loc].blog;
+  var g   = window.VC_I18N[loc].global;
 
+  /* 1. Update <html lang=""> */
   document.documentElement.lang = window.VC_I18N[loc].htmlLang;
 
-  /* Header */
-  var bhBack = document.getElementById('bh-back');
-  if (bhBack) bhBack.textContent = g.backPortfolio;
-
-  var langCur = document.getElementById('bh-lang-current');
+  /* 2. Lang-picker UI state */
+  var langCur = $('bh-lang-current');
   if (langCur) langCur.textContent = g.langLabel;
-
   document.querySelectorAll('.lang-opt').forEach(function(btn) {
     btn.classList.toggle('active', btn.getAttribute('data-locale') === loc);
   });
 
-  /* Hero */
-  var eyebrow = document.getElementById('blog-eyebrow');
-  var title   = document.getElementById('blog-title');
-  var sub     = document.getElementById('blog-sub');
-  if (eyebrow) eyebrow.textContent = d.eyebrow;
-  if (title)   title.innerHTML     = d.title;
-  if (sub)     sub.textContent     = d.sub;
+  /* 3. Header back-link */
+  setText('bh-back', g.backPortfolio);
 
-  /* Topics label */
-  var label = document.getElementById('topics-label');
-  if (label) label.textContent = d.topicsLabel;
+  /* 4. Hero section */
+  setText('blog-eyebrow', d.eyebrow);
+  setText('blog-title', d.title, true);  /* innerHTML — may contain <br/> */
+  setText('blog-sub', d.sub);
 
-  /* WIP badges — all articles sharing same locale-specific label */
-  document.querySelectorAll('[data-wip]').forEach(function(el) {
-    el.textContent = d.wip;
-  });
+  /* 5. Topics label */
+  setText('topics-label', d.topicsLabel);
 
-  /* Coming-soon banner */
-  var csTitle = document.getElementById('cs-title');
-  var csDesc  = document.getElementById('cs-desc');
-  var csCta   = document.getElementById('cs-cta');
-  if (csTitle) csTitle.textContent = d.csTitle;
-  if (csDesc)  csDesc.textContent  = d.csDesc;
-  if (csCta) {
+  /* 6. Article grid — full destroy + rebuild (guaranteed translation parity) */
+  renderBlogGrid(loc, d);
+
+  /* 7. Coming-soon banner */
+  setText('cs-title', d.csTitle);
+  setText('cs-desc', d.csDesc);
+  var csCta = $('cs-cta');
+  if (csCta && d.csCta) {
     csCta.textContent = d.csCta;
     csCta.href = 'mailto:edumonteiro.dev@gmail.com?subject=' + d.mailSubject + '&body=' + d.mailBody;
   }
 
-  /* Footer */
-  var ftP = document.getElementById('ft-privacy');
-  var ftT = document.getElementById('ft-terms');
-  var ftC = document.getElementById('ft-cookies');
-  if (ftP) ftP.textContent = g.ftPrivacy;
-  if (ftT) ftT.textContent = g.ftTerms;
-  if (ftC) ftC.textContent = g.ftCookies;
+  /* 8. Footer */
+  setText('ft-privacy', g.ftPrivacy);
+  setText('ft-terms',   g.ftTerms);
+  setText('ft-cookies', g.ftCookies);
+
+  /* 9. Declarative data-i18n sweep — catch-all for any remaining tagged elements */
+  applyDataI18n(loc);
 }
 
-/* ── EXPOSE so VC_SET can call it cross-page ── */
+/* ── EXPOSE as VC_APPLY so VC_SET() in i18n.js calls this function ──── */
 window.VC_APPLY = applyBlogLocale;
 
-/* ── LANG DROPDOWN ── */
-(function() {
-  var btn      = document.getElementById('bh-lang-btn');
-  var dropdown = document.getElementById('lang-dropdown');
+/* ── LANG DROPDOWN EVENT LISTENERS ──────────────────────────────────── */
+(function () {
+  var btn      = $('bh-lang-btn');
+  var dropdown = $('lang-dropdown');
   if (!btn || !dropdown) return;
 
-  btn.addEventListener('click', function(e) {
+  /* Toggle open/close */
+  btn.addEventListener('click', function (e) {
     e.stopPropagation();
-    var open = dropdown.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
+    var isOpen = dropdown.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
   });
-  document.addEventListener('click', function() {
+
+  /* Close on outside click */
+  document.addEventListener('click', function () {
     dropdown.classList.remove('open');
     btn.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
   });
-  dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
 
-  document.querySelectorAll('.lang-opt').forEach(function(opt) {
-    opt.addEventListener('click', function() {
-      var locale = opt.getAttribute('data-locale');
+  /* Prevent close when clicking inside dropdown */
+  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  /* Lang option click:
+   * 1. Persist to localStorage via VC_SET (also calls VC_APPLY → applyBlogLocale)
+   * 2. Explicit direct call to applyBlogLocale as redundant safety net
+   *    in case VC_APPLY reference was not yet established when VC_SET fires. */
+  document.querySelectorAll('.lang-opt').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var newLocale = opt.getAttribute('data-locale');
+
+      /* Close dropdown */
       dropdown.classList.remove('open');
       btn.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
-      window.VC_SET(locale);          /* persist + apply via VC_APPLY */
+
+      /* Persist state */
+      window.VC_SET(newLocale);
+
+      /* Explicit re-render — guaranteed even if VC_APPLY hook was stale */
+      applyBlogLocale(newLocale);
     });
   });
-})();
+}());
 
-/* ── BOOT (sync — before paint, no flash) ── */
+/* ── BOOT — FCP (synchronous, zero flash) ────────────────────────────── */
 applyBlogLocale(window.VC_LOCALE || 'de-CH');
 
-/* ── PWA ── */
+/* ── PWA ─────────────────────────────────────────────────────────────── */
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function () {});
   });
 }
 </script>
